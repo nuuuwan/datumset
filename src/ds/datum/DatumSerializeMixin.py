@@ -17,7 +17,7 @@ class DatumSerializeMixin:
             return {}
         return self._get_extra_values(class_names_required)
 
-    def to_json_inner(self, idx, measurement_part):
+    def to_data_inner(self, idx, measurement_part):
         class_names_required = measurement_part.split('*')
         idx_temp = idx
         for i, class_name in enumerate(class_names_required):
