@@ -1,0 +1,27 @@
+from dataclasses import dataclass
+from functools import cached_property
+
+
+@dataclass(frozen=True)
+class Query:
+    query_str: str
+
+    DELIM_PART = "/"
+    OPR_ADD = "+"
+    OPR_MULT = "*"
+
+    @cached_property
+    def parts(self):
+        return self.query_str.split(self.DELIM_PART)
+
+    @cached_property
+    def entity_part(self):
+        return self.parts[0]
+
+    @cached_property
+    def time_part(self):
+        return self.parts[1]
+
+    @cached_property
+    def measurement_part(self):
+        return self.parts[2]
