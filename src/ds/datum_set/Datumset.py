@@ -1,4 +1,3 @@
-import json
 from dataclasses import dataclass
 
 from utils_future import Log
@@ -16,53 +15,52 @@ class Datumset:
     def __init__(self, *data: Datum):
         object.__setattr__(self, '_value', set(data))
 
-    @property
-    def first_datum(self):
-        return next(iter(self._value))
+    def sorted_values(self, query):
+        entity_list = query.entity_list
+        time_list = query.time_list
 
-    @staticmethod
-    def _flatten_match_list(x_list):
-        assert isinstance(x_list, list)
-        first_item = x_list[0]
-        if not isinstance(first_item, dict):
-            return x_list
-        final = {}
-        for item in x_list:
-            for k, v in item.items():
-                final[k] = v
-        return final
-
-    def _flatten_all_matches(self, raw):
-        return {
-            k: self._flatten_match_list([json.loads(v_item) for v_item in v])
-            for k, v in raw.items()
+        entity_to_rank = {
+            entity: rank for rank, entity in enumerate(entity_list)
         }
+        time_to_rank = {time: rank for rank, time in enumerate(time_list)}
 
-    def _build_raw_matches(self, matches):
-        raw = {}
-        for match_items in matches:
-            for k, v in json.loads(match_items).items():
-                if k not in raw:
-                    raw[k] = set()
-                raw[k].add(json.dumps(v))
-        return raw
-
-    def _build_final_match(self, matches):
-        return self._flatten_all_matches(self._build_raw_matches(matches))
+        return sorted(
+            self._value,
+            key=lambda datam: (
+                entity_to_rank.get(datam.entity_class.__name__, float('inf')),
+                time_to_rank.get(datam.time._value, float('inf')),
+            ),
+        )
 
     def _find_matches(self, query):
-        matching_subset = set()
-        matches = set()
-        for datam in self._value:
+        matching_subset = []
+        all_time = []
+        all_entity = []
+        all_measurement = {}
+        for datam in self.sorted_values(query):
             candidate_match = datam.is_match(query)
             if candidate_match:
-                log.debug(f'{candidate_match=}')
-                matching_subset.add(datam)
-                matches.add(json.dumps(candidate_match))
-        return matching_subset, matches
+                matching_subset.append(datam)
+                candidate_time = candidate_match['time']
+                candidate_entity = candidate_match['entity']
+                candidate_measurement = candidate_match['measurement']
+
+                if candidate_time not in all_time:
+                    all_time.append(candidate_time)
+                if candidate_entity not in all_entity:
+                    all_entity.append(candidate_entity)
+                for k, v in candidate_measurement.items():
+                    if k not in all_measurement:
+                        all_measurement[k] = v
+
+        return matching_subset, dict(
+            time=all_time,
+            entity=all_entity,
+            measurement=all_measurement,
+        )
 
     def is_match(self, query: Query) -> bool:
         matching_subset, matches = self._find_matches(query)
         if not matching_subset:
             return False
-        return Datumset(*matching_subset), self._build_final_match(matches)
+        return Datumset(*matching_subset), matches

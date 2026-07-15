@@ -33,3 +33,16 @@ class MatchedDatumset:
 
     def to_str(self):
         return json.dumps(self.to_data(), indent=4)
+
+    @classmethod
+    def from_data(cls, data):
+        metadata = data['metadata']
+        return cls(
+            query=Query.from_metadata(metadata),
+            datumset=None,
+            match=metadata,
+        )
+
+    @classmethod
+    def from_str(cls, data_str):
+        return cls.from_data(json.loads(data_str))

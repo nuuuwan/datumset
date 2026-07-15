@@ -33,13 +33,13 @@ class DatumMatchMixin:
     def is_match(self, query: Query) -> bool:
         time_part = self.is_match_time(query.time_part)
         entity_part = self.is_match_entity(query.entity_part)
-        mesurement_part = self.is_match_measurement_idx(
+        measurement_part = self.is_match_measurement_idx(
             query.measurement_part
         )
-        if not (time_part and entity_part and mesurement_part):
+        if not (time_part and entity_part and measurement_part):
             return None
         return dict(
             entity=entity_part,
             time=time_part,
-            mesurement=mesurement_part,
+            measurement=measurement_part,
         )

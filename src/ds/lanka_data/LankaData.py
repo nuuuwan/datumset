@@ -55,17 +55,3 @@ class LankaData:
                 matching_datumset, match = match_info
                 return MatchedDatumset(query, matching_datumset, match)
         raise ValueError(f"No matching Datumset found for label: \"{query}\"")
-
-
-if __name__ == '__main__':
-    for query_str in [
-        'Person/2012/Religion*District',
-        'Person/2024/Religion*District',
-        'Person/2024/District*Religion',
-        'Person/2024/District',
-        'Person/2024/Religion',
-        'Person/2012+2024/Religion',
-        'Person+House/2012+2024/Religion',
-    ]:
-        print(LankaData[query_str].to_str())
-        print('-' * 32)
