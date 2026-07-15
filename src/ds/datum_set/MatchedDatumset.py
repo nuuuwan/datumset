@@ -9,26 +9,11 @@ from ds.query.Query import Query
 class MatchedDatumset:
     query: Query
     datumset: Datumset
-    match: dict
 
     def to_data(self):
-        idx = {}
-        idx_inner = {}
-        for datum in self.datumset._value:
-            entity_class = datum.entity_class.__name__
-            time = datum.time._value
-            idx_inner = datum.to_data_inner(
-                idx_inner, self.query.measurement_part
-            )
-            if entity_class not in idx:
-                idx[entity_class] = {}
-            if time not in idx[entity_class]:
-                idx[entity_class][time] = []
-            idx[entity_class][time] = idx_inner
-
         return dict(
-            metadata=self.match,
-            data=idx,
+            query=self.query.to_data(),
+            datumset=self.datumset.to_data(),
         )
 
     def to_str(self):
@@ -36,11 +21,9 @@ class MatchedDatumset:
 
     @classmethod
     def from_data(cls, data):
-        metadata = data['metadata']
         return cls(
-            query=Query.from_metadata(metadata),
-            datumset=None,
-            match=metadata,
+            query=Query.from_data(data['query']),
+            datumset=Datumset.from_data(data['datumset']),
         )
 
     @classmethod

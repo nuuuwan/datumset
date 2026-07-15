@@ -39,17 +39,8 @@ class Query:
         return self.measurement_part.split(self.OPR_MULT)
 
     @classmethod
-    def from_metadata(cls, metadata):
-        entity = metadata['entity']
-        time = metadata['time']
-        measurement = metadata['measurement']
+    def from_data(cls, query_str):
+        return cls(query_str=query_str)
 
-        return cls(
-            query_str=Query.DELIM_PART.join(
-                [
-                    Query.OPR_ADD.join(entity),
-                    Query.OPR_ADD.join(time),
-                    Query.OPR_MULT.join(measurement.values()),
-                ]
-            )
-        )
+    def to_data(self):
+        return self.query_str

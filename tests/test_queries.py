@@ -11,6 +11,7 @@ class TestCase(unittest.TestCase):
             'Person/2024/Religion',
             'Person/2012+2024/Religion',
             'Person+House/2012+2024/Religion',
+            'House+Person/2012+2024/Religion',
         ]:
             print('=' * 32)
             print(query_str)

@@ -50,8 +50,7 @@ class LankaData:
     def __class_getitem__(cls, query_str):
         query = Query(query_str)
         for datumset in cls.list():
-            match_info = datumset.is_match(query)
-            if match_info:
-                matching_datumset, match = match_info
-                return MatchedDatumset(query, matching_datumset, match)
+            matching_datumset = datumset.is_match(query)
+            if datumset.is_match(query):
+                return MatchedDatumset(query, matching_datumset)
         raise ValueError(f"No matching Datumset found for label: \"{query}\"")

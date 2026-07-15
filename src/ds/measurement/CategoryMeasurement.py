@@ -28,5 +28,9 @@ class CategoryMeasurement(Measurement):
     def __class_getitem__(cls, label: str):
         return cls.from_label(label)
 
-    def to_json(self):
+    def to_data(self):
         return f'{self.__class__.__name__}:{self.label}'
+
+    @classmethod
+    def from_data(cls, data):
+        return cls.from_label(data.split(':', 1)[1])
