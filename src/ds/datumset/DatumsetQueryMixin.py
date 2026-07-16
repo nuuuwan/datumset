@@ -10,17 +10,23 @@ class DatumsetQueryMixin:
         return self.infer_query()
 
     def infer_query(self) -> Query:
-        entity_class_names = set()
-        time_values = set()
-        concept_labels = set()
+        entity_class_names = []
+        time_values = []
+        concept_labels = []
 
         for datum in self._value:
-            entity_class_names.add(datum.entity_class.__name__)
-            time_values.add(datum.time.get_value())
-            concept_labels.update(datum.get_concept_labels())
+            if datum.entity_class.__name__ not in entity_class_names:
+                entity_class_names.append(datum.entity_class.__name__)
+            if datum.time.get_value() not in time_values:
+                time_values.append(datum.time.get_value())
+            for label in datum.get_concept_labels():
+                if label not in concept_labels:
+                    concept_labels.append(label)
 
-        return Query.from_parts(
-            sorted(time_values),
-            sorted(entity_class_names),
-            sorted(concept_labels),
+        query = Query.from_parts(
+            time_values,
+            entity_class_names,
+            concept_labels,
         )
+        print(query.query_str)
+        return query

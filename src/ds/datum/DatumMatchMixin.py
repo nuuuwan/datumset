@@ -19,11 +19,11 @@ class DatumMatchMixin:
                 return time_value
         return False
 
-    def get_concept_labels(self) -> set[str]:
-        return set(self.concept_idx.keys())
+    def get_concept_labels(self) -> list[str]:
+        return list(self.concept_idx.keys())
 
     def is_match_concept_idx(self, concept_part: str) -> bool:
-        labels_required = set(concept_part.split(Query.OPR_MULT))
+        labels_required = concept_part.split(Query.OPR_MULT)
         if labels_required != self.get_concept_labels():
             return False
         return True

@@ -5,6 +5,7 @@ from ds.thing.concept.Concept import Concept
 from ds.thing.concept.Time import Time
 from ds.thing.entity.Entity import Entity
 from ds.thing.ThingFactory import ThingFactory
+from utils_future import ShallowDict
 
 
 @dataclass(frozen=True)
@@ -29,17 +30,27 @@ class Datum(DatumMatchMixin):
         return hash((self.time, frozenset(self.concept_idx.items())))
 
     def to_data(self):
+        nesting_values = [
+            self.entity_class.__name__,
+            self.time.get_value(),
+        ] + list([v.to_kvpair() for v in self.concept_idx.values()])
 
-        return {
-            self.entity_class.__name__: {
-                self.time.get_value(): {
-                    k: v.to_kvpair()
-                    for k, v in sorted(
-                        self.concept_idx.items(), key=lambda x: x[0]
-                    )
-                }
-            }
+        shallow_dict = ShallowDict()
+        shallow_dict[tuple(nesting_values)] = 1
+        return shallow_dict.to_deep()
+
+    @classmethod
+    def from_data(cls, data):
+        shallow_d = ShallowDict.from_deep(data)
+        key_tuple, _ = next(iter(shallow_d.items()))
+        entity_class_name = key_tuple[0]
+        time_value = key_tuple[1]
+        time_data_item = {
+            f"concept_{i}": v for i, v in enumerate(key_tuple[2:])
         }
+        return cls.from_attributes(
+            entity_class_name, time_value, time_data_item
+        )
 
     @classmethod
     def from_attributes(cls, entity_class_name, time_value, time_data_item):

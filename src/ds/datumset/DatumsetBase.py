@@ -8,4 +8,4 @@ class DatumsetBase:
     _value: list[Datum]
 
     def __init__(self, *data: Datum):
-        object.__setattr__(self, "_value", set(data))
+        object.__setattr__(self, "_value", list(data))

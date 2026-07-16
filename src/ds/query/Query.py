@@ -57,7 +57,7 @@ class Query:
     def normalize(self):
         time_values = sorted(self.time_values)
         entity_class_names = sorted(self.entity_class_names)
-        concept_labels = sorted(self.concept_labels)
+        concept_labels = self.concept_labels
 
         return self.from_parts(
             time_values, entity_class_names, concept_labels

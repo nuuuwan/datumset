@@ -5,9 +5,9 @@ from ds.datumset.DatumsetSerializeMixin import DatumsetSerializeMixin
 
 
 class Datumset(
-    DatumsetBase,
     DatumsetQueryMixin,
     DatumsetMatchMixin,
     DatumsetSerializeMixin,
+    DatumsetBase,
 ):
     pass

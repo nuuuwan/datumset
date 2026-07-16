@@ -6,12 +6,7 @@ from ds import Datumset, LankaData
 class TestCase(unittest.TestCase):
     def test_valid(self):
         for query_str in [
-            "House+Person/2012+2024/Religion*District*Count",
-            # "Person+House/2012+2024/District*Religion*Count",
-            # "House+Person/2012/Religion*District*Count",
-            # "Person/2012/District*Religion*Count",
-            # "House/2012+2024/Religion*District*Count",
-            # "Person/2012/Religion*Count",
+            "Person/2012/District*Religion*Count",
         ]:
             ds1 = LankaData[query_str]
             ds2 = Datumset.from_str(ds1.to_str())

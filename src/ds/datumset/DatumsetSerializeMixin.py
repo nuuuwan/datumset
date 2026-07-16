@@ -3,7 +3,7 @@ import json
 from propcache import cached_property
 
 from ds.datum.Datum import Datum
-from utils_future import Directory, JSONFile, Log
+from utils_future import Directory, JSONFile, Log, ShallowDict
 
 log = Log("DatumsetSerializeMixin")
 
@@ -20,42 +20,22 @@ class DatumsetSerializeMixin:
         return JSONFile(self.dir_data.path, "data.json")
 
     def to_data(self):
-        arr = [datum.to_data() for datum in self._value]
-        idx = {}
-        for data in arr:
-            entity_class_name = list(data.keys())[0]
-            entity_data = data[entity_class_name]
-            time_value = list(entity_data.keys())[0]
-            time_data = entity_data[time_value]
-
-            if entity_class_name not in idx:
-                idx[entity_class_name] = {}
-            if time_value not in idx[entity_class_name]:
-                idx[entity_class_name][time_value] = []
-            idx[entity_class_name][time_value].append(time_data)
-
-        sorted_idx = {}
-        for entity_class_name, entity_data in idx.items():
-            sorted_idx[entity_class_name] = dict(
-                sorted(entity_data.items(), key=lambda x: x[0])
-            )
-        sorted_sorted_idx = dict(
-            sorted(sorted_idx.items(), key=lambda x: x[0])
-        )
-
-        return sorted_sorted_idx
+        shallow_d = ShallowDict()
+        for datum in self._value:
+            deep_d = datum.to_data()
+            shallow_d_for_datum = ShallowDict.from_deep(deep_d)
+            shallow_d += shallow_d_for_datum
+        return shallow_d.to_deep()
 
     @classmethod
     def from_data(cls, data):
+        shallow_d = ShallowDict.from_deep(data)
         datum_list = []
-        for entity_class_name, entity_data in data.items():
-            for time_value, time_data in entity_data.items():
-                for time_data_item in time_data:
-                    datum = Datum.from_attributes(
-                        entity_class_name, time_value, time_data_item
-                    )
-                    datum_list.append(datum)
-
+        for key_tuple, _ in shallow_d.items():
+            shallow_d_for_datum = ShallowDict({key_tuple: 1})
+            deep_d_for_datum = shallow_d_for_datum.to_deep()
+            datum = Datum.from_data(deep_d_for_datum)
+            datum_list.append(datum)
         return cls(*datum_list)
 
     def to_file(self):
@@ -69,3 +49,6 @@ class DatumsetSerializeMixin:
     def from_str(cls, data_str):
         data = json.loads(data_str)
         return cls.from_data(data)
+
+    def __eq__(self, other):
+        return self.to_data() == other.to_data()
