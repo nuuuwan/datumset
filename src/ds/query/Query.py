@@ -26,18 +26,6 @@ class Query:
     def concept_part(self):
         return self.parts[2]
 
-    @cached_property
-    def entity_list(self):
-        return self.entity_part.split(self.OPR_ADD)
-
-    @cached_property
-    def time_list(self):
-        return self.time_part.split(self.OPR_ADD)
-
-    @cached_property
-    def concept_list(self):
-        return self.concept_part.split(self.OPR_MULT)
-
     @classmethod
     def from_data(cls, query_str):
         return cls(query_str=query_str)

@@ -11,7 +11,7 @@ class CategoryConcept(Concept):
     @classmethod
     @abstractmethod
     def list(cls):
-        pass
+        pass  # pragma: no cover
 
     @classmethod
     def idx(cls):
@@ -29,8 +29,8 @@ class CategoryConcept(Concept):
         return cls.from_label(label)
 
     def to_data(self):
-        return f'{self.__class__.__name__}:{self.label}'
+        return f"{self.__class__.__name__}:{self.label}"
 
     @classmethod
     def from_data(cls, data):
-        return cls.from_label(data.split(':', 1)[1])
+        return cls.from_label(data.split(":", 1)[1])

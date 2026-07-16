@@ -6,8 +6,8 @@ from ds.thing.entity.Person import Person
 
 
 class ThingFactory:
-    @staticmethod
-    def get(class_name: str):
+    @classmethod
+    def __class_getitem__(cls, class_name: str):
         entity_class = dict(
             Religion=Religion,
             District=District,
@@ -22,8 +22,8 @@ class ThingFactory:
             )
         return entity_class
 
-    @staticmethod
-    def from_value(data):
-        class_name, _ = data.split(':', 1)
-        cls = ThingFactory.get(class_name)
-        return cls.from_data(data)
+    @classmethod
+    def from_value(cls, data):
+        class_name, _ = data.split(":", 1)
+        cls_for_name = ThingFactory[class_name]
+        return cls_for_name.from_data(data)

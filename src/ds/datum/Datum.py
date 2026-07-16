@@ -38,7 +38,7 @@ class Datum(DatumMatchMixin):
     @classmethod
     def from_data(cls, data):
         time = Time.from_data(data["time"])
-        entity_class = ThingFactory.get(data["entity_class"])
+        entity_class = ThingFactory[data["entity_class"]]
         concept_idx = {
             k: ThingFactory.from_value(v)
             for k, v in data["concept_idx"].items()
