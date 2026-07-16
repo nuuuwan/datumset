@@ -6,7 +6,7 @@
         "2012": {
           "district": "District:LK-11",
           "religion": "Religion:Buddhist",
-          "n": 88
+          "n": "Int:88"
         }
       }
     }
