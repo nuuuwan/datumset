@@ -20,9 +20,9 @@ class FileOrDirectory(ABC):
             return "N/A"
         for unit in ["B", "KB", "MB", "GB", "TB"]:
             if size_bytes < 1024:
-                return f"{size_bytes:.2f} {unit}"
+                return f"{size_bytes:.1f} {unit}"
             size_bytes /= 1024
-        return f"{size_bytes:.2f} PB"
+        return f"{size_bytes:.1f} PB"
 
     def __str__(self):
         return f"{self.path} ({self.size_human_readable()})"

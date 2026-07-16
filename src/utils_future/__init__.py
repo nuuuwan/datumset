@@ -5,3 +5,5 @@ from utils_future.File import File
 from utils_future.JSONFile import JSONFile
 from utils_future.Log import Log
 from utils_future.Parse import Parse
+from utils_future.TSVFile import TSVFile
+from utils_future.WWW import WWW
