@@ -30,17 +30,19 @@ class Datum(DatumMatchMixin):
 
     def to_data(self):
         return dict(
-            time=self.time.to_data(),
+            time=self.time.to_kvpair(),
             entity_class=self.entity_class.__name__,
-            concept_idx={k: v.to_data() for k, v in self.concept_idx.items()},
+            concept_idx={
+                k: v.to_kvpair() for k, v in self.concept_idx.items()
+            },
         )
 
     @classmethod
     def from_data(cls, data):
-        time = ThingFactory.from_value(data["time"])
+        time = ThingFactory.from_kvpair(data["time"])
         entity_class = ThingFactory[data["entity_class"]]
         concept_idx = {
-            k: ThingFactory.from_value(v)
+            k: ThingFactory.from_kvpair(v)
             for k, v in data["concept_idx"].items()
         }
         return cls(

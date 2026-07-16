@@ -28,5 +28,5 @@ class CategoryConcept(Concept):
         return cls.from_value(value)
 
     @classmethod
-    def from_data(cls, data):
+    def from_kvpair(cls, data):
         return cls[data]

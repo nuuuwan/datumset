@@ -25,8 +25,8 @@ class ThingFactory:
         return entity_class
 
     @classmethod
-    def from_value(cls, data):
-        class_name, value = data.split(":", 1)
+    def from_kvpair(cls, kvpair):
+        class_name, value = kvpair.split(":")
         cls_for_name = ThingFactory[class_name]
-        inst = cls_for_name.from_data(value)
+        inst = cls_for_name.from_value(value)
         return inst

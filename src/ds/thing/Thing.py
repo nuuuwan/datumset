@@ -16,9 +16,9 @@ class Thing(ABC):
     def is_match(self, query_str):
         return query_str == self._value
 
-    def to_data(self):
+    def to_kvpair(self):
         return f"{self.__class__.__name__}:{self._value}"
 
     @classmethod
-    def from_data(cls, data):
+    def from_value(cls, data):
         return cls(data)
