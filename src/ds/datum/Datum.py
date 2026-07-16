@@ -33,7 +33,10 @@ class Datum(DatumMatchMixin):
         return {
             self.entity_class.__name__: {
                 self.time.get_value(): {
-                    k: v.to_kvpair() for k, v in self.concept_idx.items()
+                    k: v.to_kvpair()
+                    for k, v in sorted(
+                        self.concept_idx.items(), key=lambda x: x[0]
+                    )
                 }
             }
         }
