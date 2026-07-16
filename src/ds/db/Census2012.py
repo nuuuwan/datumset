@@ -1,7 +1,3 @@
-import hashlib
-
-import requests
-
 from ds.datum.Datum import Datum
 from ds.datumset.Datumset import Datumset
 from ds.thing.concept.Int import Int
@@ -23,7 +19,7 @@ class Census2012:
         region_id = d["entity_id"]
         try:
             region_cls = RegionFactory.from_region_id(region_id)
-        except Exception as e:
+        except Exception:
             return None
 
         datum_list = []
