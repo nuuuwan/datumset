@@ -26,9 +26,6 @@ class Datum(DatumMatchMixin):
         object.__setattr__(self, "time", time)
         object.__setattr__(self, "concept_idx", concept_idx)
 
-    def __hash__(self):
-        return hash((self.time, frozenset(self.concept_idx.items())))
-
     def to_data(self):
         nesting_values = [
             self.entity_class.__name__,
