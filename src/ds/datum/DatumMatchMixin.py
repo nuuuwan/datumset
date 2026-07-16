@@ -17,14 +17,14 @@ class DatumMatchMixin:
         return None
 
     def is_match_concept_idx(self, concept_part: str) -> bool:
-        class_names_required = concept_part.split(Query.OPR_MULT)
+        labels_required = concept_part.split(Query.OPR_MULT)
         matches = {}
-        for class_name in class_names_required:
+        for label in labels_required:
             has_match = False
-            for concept_key, concept in self.concept_idx.items():
-                if concept.is_class_match(class_name):
+            for concept_label in self.concept_idx.keys():
+                if concept_label == label:
                     has_match = True
-                    matches[concept_key] = class_name
+                    matches[concept_label] = label
                     break
             if not has_match:
                 return None
