@@ -1,7 +1,7 @@
-from ds.measurement.CategoryMeasurement import CategoryMeasurement
+from ds.thing.concept.CategoryConcept import CategoryConcept
 
 
-class Sex(CategoryMeasurement):
+class Sex(CategoryConcept):
     @classmethod
     def list(cls):
         return [

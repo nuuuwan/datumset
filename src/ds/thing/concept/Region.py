@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 
-from ds.measurement.CategoryMeasurement import CategoryMeasurement
+from ds.thing.concept.CategoryConcept import CategoryConcept
 
 
 @dataclass(frozen=True)
-class Region(CategoryMeasurement):
+class Region(CategoryConcept):
     id: str
     name: str
 

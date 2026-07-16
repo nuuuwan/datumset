@@ -1,13 +1,13 @@
 from ds.datum.Datum import Datum
 from ds.datum_set.Datumset import Datumset
 from ds.datum_set.MatchedDatumset import MatchedDatumset
-from ds.measurement.District import District
-from ds.measurement.House import House
-from ds.measurement.Int import Int
-from ds.measurement.Person import Person
-from ds.measurement.Religion import Religion
-from ds.measurement.Time import Time
 from ds.query.Query import Query
+from ds.thing.concept.District import District
+from ds.thing.concept.Int import Int
+from ds.thing.concept.Religion import Religion
+from ds.thing.concept.Time import Time
+from ds.thing.entity.House import House
+from ds.thing.entity.Person import Person
 
 
 class LankaData:

@@ -23,7 +23,7 @@ class Query:
         return self.parts[1]
 
     @cached_property
-    def measurement_part(self):
+    def concept_part(self):
         return self.parts[2]
 
     @cached_property
@@ -35,8 +35,8 @@ class Query:
         return self.time_part.split(self.OPR_ADD)
 
     @cached_property
-    def measurement_list(self):
-        return self.measurement_part.split(self.OPR_MULT)
+    def concept_list(self):
+        return self.concept_part.split(self.OPR_MULT)
 
     @classmethod
     def from_data(cls, query_str):

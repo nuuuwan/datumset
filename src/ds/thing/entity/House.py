@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 
-from ds.measurement.Measurement import Measurement
+from ds.thing.entity.Entity import Entity
 
 
 @dataclass(frozen=True)
-class House(Measurement):
+class House(Entity):
     id: str
     address: str

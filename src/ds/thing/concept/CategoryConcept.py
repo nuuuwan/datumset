@@ -1,11 +1,11 @@
 from abc import abstractmethod
 from dataclasses import dataclass
 
-from ds.measurement.Measurement import Measurement
+from ds.thing.concept.Concept import Concept
 
 
 @dataclass(frozen=True)
-class CategoryMeasurement(Measurement):
+class CategoryConcept(Concept):
     label: str
 
     @classmethod

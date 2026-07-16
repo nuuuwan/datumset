@@ -1,4 +1,4 @@
-from ds.measurement.Region import Region
+from ds.thing.concept.Region import Region
 
 
 class District(Region):
