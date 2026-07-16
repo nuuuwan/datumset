@@ -4,7 +4,7 @@ from ds import LankaData, MatchedDatumset
 
 
 class TestCase(unittest.TestCase):
-    def test_basic(self):
+    def test_valid(self):
         for query_str in [
             "Person/2012/Religion*District",
             "Person/2024/Religion*District",
@@ -22,3 +22,13 @@ class TestCase(unittest.TestCase):
 
             self.assertEqual(mds1, mds2)
             self.assertEqual(mds1, mds3)
+
+    def test_invalid(self):
+        for query_str in [
+            "Person/2024/Religion*Invalid",
+            "Person/3999/Religion*Invalid",
+            "Cat/2024/Religion*Invalid",
+        ]:
+            with self.assertRaises(ValueError):
+                output = LankaData[query_str]
+                self.assertIsNone(output)
