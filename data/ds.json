@@ -3,6 +3,15 @@
   "datumset": [
     {
       "time": "Time:2024",
+      "entity_class": "House",
+      "concept_idx": {
+        "district": "District:LK-12",
+        "religion": "Religion:Buddhist",
+        "n": "Int:200"
+      }
+    },
+    {
+      "time": "Time:2024",
       "entity_class": "Person",
       "concept_idx": {
         "district": "District:LK-11",
@@ -17,15 +26,6 @@
         "district": "District:LK-11",
         "religion": "Religion:Buddhist",
         "n": "Int:88"
-      }
-    },
-    {
-      "time": "Time:2024",
-      "entity_class": "House",
-      "concept_idx": {
-        "district": "District:LK-12",
-        "religion": "Religion:Buddhist",
-        "n": "Int:200"
       }
     },
     {
