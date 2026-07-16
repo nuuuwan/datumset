@@ -1,9 +1,8 @@
 from dataclasses import dataclass
 
-from utils_future import Log
-
 from ds.datum.Datum import Datum
 from ds.query.Query import Query
+from utils_future import Log
 
 log = Log('Datumset')
 

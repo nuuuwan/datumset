@@ -18,29 +18,29 @@ class LankaData:
                 Datum(
                     Person,
                     Time("2012"),
-                    district=District['LK-11'],
-                    religion=Religion['Buddhist'],
+                    district=District["LK-11"],
+                    religion=Religion["Buddhist"],
                     n=Int(88),
                 ),
                 Datum(
                     Person,
                     Time("2024"),
-                    district=District['LK-11'],
-                    religion=Religion['Buddhist'],
+                    district=District["LK-11"],
+                    religion=Religion["Buddhist"],
                     n=Int(100),
                 ),
                 Datum(
                     House,
                     Time("2024"),
-                    district=District['LK-12'],
-                    religion=Religion['Buddhist'],
+                    district=District["LK-12"],
+                    religion=Religion["Buddhist"],
                     n=Int(200),
                 ),
                 Datum(
                     Person,
                     Time("2024"),
-                    district=District['LK-12'],
-                    religion=Religion['Hindu'],
+                    district=District["LK-12"],
+                    religion=Religion["Hindu"],
                     n=Int(150),
                 ),
             )
@@ -52,5 +52,7 @@ class LankaData:
         for datumset in cls.list():
             matching_datumset = datumset.is_match(query)
             if datumset.is_match(query):
-                return MatchedDatumset(query, matching_datumset)
-        raise ValueError(f"No matching Datumset found for label: \"{query}\"")
+                matched_datumset = MatchedDatumset(query, matching_datumset)
+                matched_datumset.to_file()
+                return matched_datumset
+        raise ValueError(f'No matching Datumset found for label: "{query}"')
