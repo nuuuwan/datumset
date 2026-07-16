@@ -26,7 +26,3 @@ class CategoryConcept(Concept):
     @classmethod
     def __class_getitem__(cls, value: str):
         return cls.from_value(value)
-
-    @classmethod
-    def from_kvpair(cls, data):
-        return cls[data]
