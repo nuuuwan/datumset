@@ -1,7 +1,5 @@
 from ds.datum.Datum import Datum
 from ds.datum_set.Datumset import Datumset
-from ds.datum_set.MatchedDatumset import MatchedDatumset
-from ds.query.Query import Query
 from ds.thing.concept.District import District
 from ds.thing.concept.Int import Int
 from ds.thing.concept.Religion import Religion
@@ -60,17 +58,3 @@ class LankaDataDBMixin:
                 ),
             ),
         ]
-
-
-class LankaData(LankaDataDBMixin):
-
-    @classmethod
-    def __class_getitem__(cls, query_str):
-        query = Query(query_str).normalize()
-        for datumset in cls.list():
-            matching_datumset = datumset.is_match(query)
-            if datumset.is_match(query):
-                matched_datumset = MatchedDatumset(query, matching_datumset)
-                matched_datumset.to_file()
-                return matched_datumset
-        raise ValueError(f'No matching Datumset found for label: "{query}"')
