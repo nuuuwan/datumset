@@ -1,10 +1,10 @@
 import json
-import os
 from dataclasses import dataclass
+from functools import cached_property
 
 from ds.datum_set.Datumset import Datumset
 from ds.query.Query import Query
-from utils_future import JSONFile, Log
+from utils_future import Directory, JSONFile, Log
 
 log = Log("MatchedDatumset")
 
@@ -13,6 +13,16 @@ log = Log("MatchedDatumset")
 class MatchedDatumset:
     query: Query
     datumset: Datumset
+
+    @cached_property
+    def dir_data(self):
+        dir_data = Directory("data", self.query.query_str)
+        dir_data.make()
+        return dir_data
+
+    @cached_property
+    def data_file(self):
+        return JSONFile(self.dir_data.path, "data.json")
 
     def to_data(self):
         return dict(
@@ -35,7 +45,5 @@ class MatchedDatumset:
         return cls.from_data(json.loads(data_str))
 
     def to_file(self):
-        os.makedirs("data", exist_ok=True)
-        json_file = JSONFile(os.path.join("data", "ds.json"))
-        json_file.write(self.to_data())
-        log.info(f"Wrote {json_file}")
+        self.data_file.write(self.to_data())
+        log.info(f"Wrote {self.data_file}")
