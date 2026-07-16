@@ -11,6 +11,7 @@ class LankaData(LankaDataDBMixin):
         for datumset in cls.list():
             matching_datumset = datumset.is_match(query)
             if datumset.is_match(query):
+                assert matching_datumset.infer_query() == query
                 matched_datumset = MatchedDatumset(query, matching_datumset)
                 matched_datumset.to_file()
                 return matched_datumset

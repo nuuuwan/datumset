@@ -75,7 +75,7 @@ class Datumset:
 
         for datum in self._value:
             entity_class_names.add(datum.entity_class.__name__)
-            time_values.add(datum.time.value)
+            time_values.add(datum.time.get_value())
             concept_labels.update(datum.get_concept_labels())
 
         return Query.from_parts(
