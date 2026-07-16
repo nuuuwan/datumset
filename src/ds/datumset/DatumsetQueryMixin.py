@@ -7,9 +7,9 @@ class DatumsetQueryMixin:
 
     @cached_property
     def query(self):
-        return self.infer_query()
+        return self._infer_query()
 
-    def infer_query(self) -> Query:
+    def _infer_query(self) -> Query:
         entity_class_names = []
         time_values = []
         concept_labels = []
