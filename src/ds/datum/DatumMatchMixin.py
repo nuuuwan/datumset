@@ -10,10 +10,6 @@ class DatumMatchMixin:
         for entity_class_name in entity_class_names:
             if self.entity_class.__name__ == entity_class_name:
                 return entity_class_name
-        log.debug(
-            "Entity did not match:"
-            + f" {entity_part=} != {self.entity_class.__name__}"
-        )
         return False
 
     def is_match_time(self, time_part: str) -> bool:
@@ -21,7 +17,6 @@ class DatumMatchMixin:
         for time_value in time_values:
             if self.time.is_match(time_value):
                 return time_value
-        log.debug(f"Time did not match: {time_part=} != {self.time}")
         return False
 
     def get_concept_labels(self) -> set[str]:
@@ -30,10 +25,6 @@ class DatumMatchMixin:
     def is_match_concept_idx(self, concept_part: str) -> bool:
         labels_required = set(concept_part.split(Query.OPR_MULT))
         if labels_required != self.get_concept_labels():
-            log.debug(
-                "Concept did not match:"
-                + f" {labels_required} != {self.get_concept_labels()}"
-            )
             return False
         return True
 

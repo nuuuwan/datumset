@@ -35,6 +35,13 @@ class LankaDataDBMixin:
                     Count=Int(200),
                 ),
                 Datum(
+                    House,
+                    Time("2012"),
+                    District=District["LK-12"],
+                    Religion=Religion["Buddhist"],
+                    Count=Int(200),
+                ),
+                Datum(
                     Person,
                     Time("2024"),
                     District=District["LK-12"],

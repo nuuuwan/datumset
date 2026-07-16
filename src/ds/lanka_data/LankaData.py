@@ -9,10 +9,13 @@ class LankaData(LankaDataDBMixin):
     def __class_getitem__(cls, query_str):
         query = Query(query_str).normalize()
         for datumset in cls.list():
-            matching_datumset = datumset.is_match(query)
-            if datumset.is_match(query):
-                assert matching_datumset.infer_query() == query
-                matched_datumset = MatchedDatumset(query, matching_datumset)
-                matched_datumset.to_file()
-                return matched_datumset
+            partially_matching_datumset = datumset.is_match(query)
+            if partially_matching_datumset:
+                infered_query = partially_matching_datumset.infer_query()
+                if infered_query == query:
+                    matched_datumset = MatchedDatumset(
+                        query, partially_matching_datumset
+                    )
+                    matched_datumset.to_file()
+                    return matched_datumset
         raise ValueError(f'No matching Datumset found for label: "{query}"')
