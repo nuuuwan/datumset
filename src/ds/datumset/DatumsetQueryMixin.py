@@ -28,5 +28,4 @@ class DatumsetQueryMixin:
             entity_class_names,
             concept_labels,
         )
-        print(query.query_str)
         return query
