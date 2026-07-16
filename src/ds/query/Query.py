@@ -25,10 +25,3 @@ class Query:
     @cached_property
     def concept_part(self):
         return self.parts[2]
-
-    @classmethod
-    def from_data(cls, query_str):
-        return cls(query_str=query_str)
-
-    def to_data(self):
-        return self.query_str

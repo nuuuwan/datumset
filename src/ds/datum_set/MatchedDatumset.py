@@ -16,7 +16,7 @@ class MatchedDatumset:
 
     def to_data(self):
         return dict(
-            query=self.query.to_data(),
+            query=self.query.query_str,
             datumset=self.datumset.to_data(),
         )
 
@@ -26,7 +26,7 @@ class MatchedDatumset:
     @classmethod
     def from_data(cls, data):
         return cls(
-            query=Query.from_data(data["query"]),
+            query=Query(data["query"]),
             datumset=Datumset.from_data(data["datumset"]),
         )
 
