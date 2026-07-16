@@ -44,7 +44,16 @@ class Datumset:
                 idx[entity_class_name][time_value] = []
             idx[entity_class_name][time_value].append(time_data)
 
-        return idx
+        sorted_idx = {}
+        for entity_class_name, entity_data in idx.items():
+            sorted_idx[entity_class_name] = dict(
+                sorted(entity_data.items(), key=lambda x: x[0])
+            )
+        sorted_sorted_idx = dict(
+            sorted(sorted_idx.items(), key=lambda x: x[0])
+        )
+
+        return sorted_sorted_idx
 
     @classmethod
     def from_data(cls, data):
