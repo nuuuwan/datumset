@@ -1,85 +1,13 @@
-from dataclasses import dataclass
-
-from ds.datum.Datum import Datum
-from ds.query.Query import Query
-from utils_future import Log
-
-log = Log("Datumset")
+from ds.datum_set.DatumsetBase import DatumsetBase
+from ds.datum_set.DatumsetMatchMixin import DatumsetMatchMixin
+from ds.datum_set.DatumsetQueryMixin import DatumsetQueryMixin
+from ds.datum_set.DatumsetSerializeMixin import DatumsetSerializeMixin
 
 
-@dataclass(frozen=True)
-class Datumset:
-    _value: list[Datum]
-
-    def __init__(self, *data: Datum):
-        object.__setattr__(self, "_value", set(data))
-
-    def _find_matches(self, query):
-        matching_subset = []
-        for datam in self._value:
-            candidate_match = datam.is_match(query)
-            if candidate_match:
-                matching_subset.append(datam)
-
-        return matching_subset
-
-    def is_match(self, query: Query) -> bool:
-        matching_subset = self._find_matches(query)
-        if not matching_subset:
-            return False
-        return Datumset(*matching_subset)
-
-    def to_data(self):
-        arr = [datum.to_data() for datum in self._value]
-        idx = {}
-        for data in arr:
-            entity_class_name = list(data.keys())[0]
-            entity_data = data[entity_class_name]
-            time_value = list(entity_data.keys())[0]
-            time_data = entity_data[time_value]
-
-            if entity_class_name not in idx:
-                idx[entity_class_name] = {}
-            if time_value not in idx[entity_class_name]:
-                idx[entity_class_name][time_value] = []
-            idx[entity_class_name][time_value].append(time_data)
-
-        sorted_idx = {}
-        for entity_class_name, entity_data in idx.items():
-            sorted_idx[entity_class_name] = dict(
-                sorted(entity_data.items(), key=lambda x: x[0])
-            )
-        sorted_sorted_idx = dict(
-            sorted(sorted_idx.items(), key=lambda x: x[0])
-        )
-
-        return sorted_sorted_idx
-
-    @classmethod
-    def from_data(cls, data):
-        datum_list = []
-        for entity_class_name, entity_data in data.items():
-            for time_value, time_data in entity_data.items():
-                for time_data_item in time_data:
-                    datum = Datum.from_attributes(
-                        entity_class_name, time_value, time_data_item
-                    )
-                    datum_list.append(datum)
-
-        return cls(*datum_list)
-
-    def infer_query(self) -> Query:
-        entity_class_names = set()
-        time_values = set()
-        concept_labels = set()
-
-        for datum in self._value:
-            entity_class_names.add(datum.entity_class.__name__)
-            time_values.add(datum.time.get_value())
-            concept_labels.update(datum.get_concept_labels())
-
-        return Query.from_parts(
-            sorted(time_values),
-            sorted(entity_class_names),
-            sorted(concept_labels),
-        )
+class Datumset(
+    DatumsetBase,
+    DatumsetQueryMixin,
+    DatumsetMatchMixin,
+    DatumsetSerializeMixin,
+):
+    pass

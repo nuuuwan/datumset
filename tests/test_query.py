@@ -1,6 +1,6 @@
 import unittest
 
-from ds import LankaData, MatchedDatumset
+from ds import Datumset, LankaData
 
 
 class TestCase(unittest.TestCase):
@@ -13,12 +13,12 @@ class TestCase(unittest.TestCase):
             "House/2012+2024/Religion*District*Count",
             "Person/2012/Religion*Count",
         ]:
-            mds1 = LankaData[query_str]
-            mds2 = MatchedDatumset.from_str(mds1.to_str())
-            self.assertEqual(mds1, mds2)
+            ds1 = LankaData[query_str]
+            ds2 = Datumset.from_str(ds1.to_str())
+            self.assertEqual(ds1, ds2)
 
-            mds3 = MatchedDatumset.from_str(mds2.to_str())
-            self.assertEqual(mds1, mds3)
+            ds3 = Datumset.from_str(ds2.to_str())
+            self.assertEqual(ds1, ds3)
 
     def test_invalid(self):
         for query_str in [
