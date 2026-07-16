@@ -29,24 +29,29 @@ class Datum(DatumMatchMixin):
         return hash((self.time, frozenset(self.concept_idx.items())))
 
     def to_data(self):
-        return dict(
-            time=self.time.to_kvpair(),
-            entity_class=self.entity_class.__name__,
-            concept_idx={
-                k: v.to_kvpair() for k, v in self.concept_idx.items()
-            },
-        )
+
+        return {
+            self.entity_class.__name__: {
+                self.time.get_value(): {
+                    k: v.to_kvpair() for k, v in self.concept_idx.items()
+                }
+            }
+        }
 
     @classmethod
     def from_data(cls, data):
-        time = ThingFactory.from_kvpair(data["time"])
-        entity_class = ThingFactory[data["entity_class"]]
+        entity_class_name = list(data.keys())[0]
+        entity_data = data[entity_class_name]
+
+        time_value = list(entity_data.keys())[0]
+        time_data = entity_data[time_value]
+
         concept_idx = {
-            k: ThingFactory.from_kvpair(v)
-            for k, v in data["concept_idx"].items()
+            k: ThingFactory.from_kvpair(v) for k, v in time_data.items()
         }
+
         return cls(
-            entity_class=entity_class,
-            time=time,
+            entity_class=ThingFactory[entity_class_name],
+            time=Time.from_value(time_value),
             **concept_idx,
         )

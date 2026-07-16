@@ -2,12 +2,12 @@
   "query": "House+Person/2012+2024/Religion",
   "datumset": [
     {
-      "time": "Time:2012",
-      "entity_class": "Person",
-      "concept_idx": {
-        "district": "District:LK-11",
-        "religion": "Religion:Buddhist",
-        "n": "Int:88"
+      "Person": {
+        "2012": {
+          "district": "District:LK-11",
+          "religion": "Religion:Buddhist",
+          "n": 88
+        }
       }
     }
   ]

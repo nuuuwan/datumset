@@ -26,6 +26,10 @@ class ThingFactory:
 
     @classmethod
     def from_kvpair(cls, kvpair):
+
+        if isinstance(kvpair, int):
+            return Int(kvpair)
+
         class_name, value = kvpair.split(":")
         cls_for_name = ThingFactory[class_name]
         inst = cls_for_name.from_value(value)

@@ -22,3 +22,6 @@ class Thing(ABC):
     @classmethod
     def from_value(cls, data):
         return cls(data)
+
+    def get_value(self):
+        return self._value
