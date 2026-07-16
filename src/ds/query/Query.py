@@ -35,19 +35,30 @@ class Query:
         return self.entity_part.split(self.OPR_ADD)
 
     @cached_property
-    def concept_class_names(self):
+    def concept_labels(self):
         return self.concept_part.split(self.OPR_MULT)
+
+    @classmethod
+    def from_parts(
+        cls,
+        time_values: list[str],
+        entity_class_names: list[str],
+        concept_labels: list[str],
+    ):
+        normalized_query_str = cls.DELIM_PART.join(
+            [
+                cls.OPR_ADD.join(entity_class_names),
+                cls.OPR_ADD.join(time_values),
+                cls.OPR_MULT.join(concept_labels),
+            ]
+        )
+        return Query(normalized_query_str)
 
     def normalize(self):
         time_values = sorted(self.time_values)
         entity_class_names = sorted(self.entity_class_names)
-        concept_class_names = sorted(self.concept_class_names)
+        concept_labels = sorted(self.concept_labels)
 
-        normalized_query_str = self.DELIM_PART.join(
-            [
-                self.OPR_ADD.join(entity_class_names),
-                self.OPR_ADD.join(time_values),
-                self.OPR_MULT.join(concept_class_names),
-            ]
+        return self.from_parts(
+            time_values, entity_class_names, concept_labels
         )
-        return Query(normalized_query_str)
