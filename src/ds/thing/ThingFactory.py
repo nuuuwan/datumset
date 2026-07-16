@@ -1,6 +1,7 @@
 from ds.thing.concept.District import District
 from ds.thing.concept.Int import Int
 from ds.thing.concept.Religion import Religion
+from ds.thing.concept.Time import Time
 from ds.thing.entity.House import House
 from ds.thing.entity.Person import Person
 
@@ -14,6 +15,7 @@ class ThingFactory:
             Person=Person,
             House=House,
             Int=Int,
+            Time=Time,
         ).get(class_name)
 
         if not entity_class:
@@ -24,6 +26,7 @@ class ThingFactory:
 
     @classmethod
     def from_value(cls, data):
-        class_name, _ = data.split(":", 1)
+        class_name, value = data.split(":", 1)
         cls_for_name = ThingFactory[class_name]
-        return cls_for_name.from_data(data)
+        inst = cls_for_name.from_data(value)
+        return inst

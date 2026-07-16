@@ -6,7 +6,6 @@ from ds.thing.concept.Concept import Concept
 
 @dataclass(frozen=True)
 class CategoryConcept(Concept):
-    label: str
 
     @classmethod
     @abstractmethod
@@ -15,22 +14,19 @@ class CategoryConcept(Concept):
 
     @classmethod
     def idx(cls):
-        return {m.label: m for m in cls.list()}
+        return {m._value: m for m in cls.list()}
 
     @classmethod
-    def from_label(cls, label: str):
+    def from_value(cls, value: str):
         idx = cls.idx()
-        if label not in idx:
-            raise ValueError(f"Invalid label: {label}")
-        return idx[label]
+        if value not in idx:
+            raise ValueError(f"Invalid label: {value}")
+        return idx[value]
 
     @classmethod
-    def __class_getitem__(cls, label: str):
-        return cls.from_label(label)
-
-    def to_data(self):
-        return f"{self.__class__.__name__}:{self.label}"
+    def __class_getitem__(cls, value: str):
+        return cls.from_value(value)
 
     @classmethod
     def from_data(cls, data):
-        return cls.from_label(data.split(":", 1)[1])
+        return cls[data]

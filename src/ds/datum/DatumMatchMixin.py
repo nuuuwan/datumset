@@ -22,7 +22,7 @@ class DatumMatchMixin:
         for class_name in class_names_required:
             has_match = False
             for concept_key, concept in self.concept_idx.items():
-                if concept.is_match(class_name):
+                if concept.is_class_match(class_name):
                     has_match = True
                     matches[concept_key] = class_name
                     break

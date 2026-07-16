@@ -19,6 +19,7 @@ class LankaData:
                     Person,
                     Time("2012"),
                     district=District["LK-11"],
+                    religion=Religion["Buddhist"],
                     n=Int(88),
                 ),
             ),

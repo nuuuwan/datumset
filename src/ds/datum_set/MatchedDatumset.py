@@ -35,6 +35,7 @@ class MatchedDatumset:
         return cls.from_data(json.loads(data_str))
 
     def to_file(self):
+        os.makedirs("data", exist_ok=True)
         json_file = JSONFile(os.path.join("data", "ds.json"))
         json_file.write(self.to_data())
         log.info(f"Wrote {json_file}")

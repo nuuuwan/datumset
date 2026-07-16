@@ -2,33 +2,6 @@
   "query": "House+Person/2012+2024/Religion",
   "datumset": [
     {
-      "time": "Time:2024",
-      "entity_class": "Person",
-      "concept_idx": {
-        "district": "District:LK-11",
-        "religion": "Religion:Buddhist",
-        "n": "Int:100"
-      }
-    },
-    {
-      "time": "Time:2024",
-      "entity_class": "Person",
-      "concept_idx": {
-        "district": "District:LK-12",
-        "religion": "Religion:Hindu",
-        "n": "Int:150"
-      }
-    },
-    {
-      "time": "Time:2024",
-      "entity_class": "House",
-      "concept_idx": {
-        "district": "District:LK-12",
-        "religion": "Religion:Buddhist",
-        "n": "Int:200"
-      }
-    },
-    {
       "time": "Time:2012",
       "entity_class": "Person",
       "concept_idx": {

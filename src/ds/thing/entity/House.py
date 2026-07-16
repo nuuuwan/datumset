@@ -7,3 +7,8 @@ from ds.thing.entity.Entity import Entity
 class House(Entity):
     id: str
     address: str
+
+    def __init__(self, id: str, address: str):
+        object.__setattr__(self, "_value", id)
+        object.__setattr__(self, "id", id)
+        object.__setattr__(self, "address", address)
