@@ -19,6 +19,14 @@ class LankaData:
                     Person,
                     Time("2012"),
                     district=District["LK-11"],
+                    n=Int(88),
+                ),
+            ),
+            Datumset(
+                Datum(
+                    Person,
+                    Time("2012"),
+                    district=District["LK-11"],
                     religion=Religion["Buddhist"],
                     n=Int(88),
                 ),
@@ -43,7 +51,13 @@ class LankaData:
                     religion=Religion["Hindu"],
                     n=Int(150),
                 ),
-            )
+                Datum(
+                    Person,
+                    Time("2024"),
+                    district=District["LK-12"],
+                    n=Int(150),
+                ),
+            ),
         ]
 
     @classmethod

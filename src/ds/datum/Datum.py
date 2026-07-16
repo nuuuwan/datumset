@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 
 from ds.datum.DatumMatchMixin import DatumMatchMixin
-from ds.datum.DatumSerializeMixin import DatumSerializeMixin
 from ds.thing.concept.Concept import Concept
 from ds.thing.concept.Time import Time
 from ds.thing.entity.Entity import Entity
@@ -9,7 +8,7 @@ from ds.thing.ThingFactory import ThingFactory
 
 
 @dataclass(frozen=True)
-class Datum(DatumMatchMixin, DatumSerializeMixin):
+class Datum(DatumMatchMixin):
     time: Time
     entity_class: type[Concept]
     concept_idx: dict[str, Concept]
@@ -21,10 +20,10 @@ class Datum(DatumMatchMixin, DatumSerializeMixin):
         **concept_idx: Concept,
     ):
         assert issubclass(entity_class, Entity)
-        object.__setattr__(self, 'entity_class', entity_class)
+        object.__setattr__(self, "entity_class", entity_class)
         assert isinstance(time, Time)
-        object.__setattr__(self, 'time', time)
-        object.__setattr__(self, 'concept_idx', concept_idx)
+        object.__setattr__(self, "time", time)
+        object.__setattr__(self, "concept_idx", concept_idx)
 
     def __hash__(self):
         return hash((self.time, frozenset(self.concept_idx.items())))
@@ -38,11 +37,11 @@ class Datum(DatumMatchMixin, DatumSerializeMixin):
 
     @classmethod
     def from_data(cls, data):
-        time = Time.from_data(data['time'])
-        entity_class = ThingFactory.get(data['entity_class'])
+        time = Time.from_data(data["time"])
+        entity_class = ThingFactory.get(data["entity_class"])
         concept_idx = {
             k: ThingFactory.from_value(v)
-            for k, v in data['concept_idx'].items()
+            for k, v in data["concept_idx"].items()
         }
         return cls(
             entity_class=entity_class,
