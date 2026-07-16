@@ -63,7 +63,7 @@ class LankaData:
 
     @classmethod
     def __class_getitem__(cls, query_str):
-        query = Query(query_str)
+        query = Query(query_str).normalize()
         for datumset in cls.list():
             matching_datumset = datumset.is_match(query)
             if datumset.is_match(query):
