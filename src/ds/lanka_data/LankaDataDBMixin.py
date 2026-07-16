@@ -58,9 +58,8 @@ class LankaDataDBMixin:
             ),
             Datumset(
                 Datum(
-                    House,
+                    Person,
                     Time("2012"),
-                    District=District["LK-11"],
                     Religion=Religion["Buddhist"],
                     Count=Int(88),
                 ),
