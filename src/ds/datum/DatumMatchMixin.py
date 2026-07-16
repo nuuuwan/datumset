@@ -1,4 +1,7 @@
 from ds.query.Query import Query
+from utils_future import Log
+
+log = Log("DatumMatchMixin")
 
 
 class DatumMatchMixin:
@@ -7,28 +10,29 @@ class DatumMatchMixin:
         for entity_class_name in entity_class_names:
             if self.entity_class.__name__ == entity_class_name:
                 return entity_class_name
-        return None
+        log.debug("Entity did not match")
+        return False
 
     def is_match_time(self, time_part: str) -> bool:
         time_values = time_part.split(Query.OPR_ADD)
         for time_value in time_values:
             if self.time.is_match(time_value):
                 return time_value
-        return None
+        log.debug("Time did not match")
+        return False
+
+    def get_concept_labels(self) -> set[str]:
+        return set(self.concept_idx.keys())
 
     def is_match_concept_idx(self, concept_part: str) -> bool:
-        labels_required = concept_part.split(Query.OPR_MULT)
-        matches = {}
-        for label in labels_required:
-            has_match = False
-            for concept_label in self.concept_idx.keys():
-                if concept_label == label:
-                    has_match = True
-                    matches[concept_label] = label
-                    break
-            if not has_match:
-                return None
-        return matches
+        labels_required = set(concept_part.split(Query.OPR_MULT))
+        if labels_required != self.get_concept_labels():
+            log.debug(
+                "Concept did not match:"
+                + f" {labels_required} != {self.get_concept_labels()}"
+            )
+            return False
+        return True
 
     def is_match(self, query: Query) -> bool:
         time_part = self.is_match_time(query.time_part)
