@@ -9,8 +9,8 @@ from ds.thing.ThingFactory import ThingFactory
 
 @dataclass(frozen=True)
 class Datum(DatumMatchMixin):
-    time: Time
     entity_class: type[Concept]
+    time: Time
     concept_idx: dict[str, Concept]
 
     def __init__(
