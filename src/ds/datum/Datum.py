@@ -39,15 +39,9 @@ class Datum(DatumMatchMixin):
         }
 
     @classmethod
-    def from_data(cls, data):
-        entity_class_name = list(data.keys())[0]
-        entity_data = data[entity_class_name]
-
-        time_value = list(entity_data.keys())[0]
-        time_data = entity_data[time_value]
-
+    def from_attributes(cls, entity_class_name, time_value, time_data_item):
         concept_idx = {
-            k: ThingFactory.from_kvpair(v) for k, v in time_data.items()
+            k: ThingFactory.from_kvpair(v) for k, v in time_data_item.items()
         }
 
         return cls(

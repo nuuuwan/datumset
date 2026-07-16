@@ -4,7 +4,7 @@ from ds.datum.Datum import Datum
 from ds.query.Query import Query
 from utils_future import Log
 
-log = Log('Datumset')
+log = Log("Datumset")
 
 
 @dataclass(frozen=True)
@@ -12,7 +12,7 @@ class Datumset:
     _value: list[Datum]
 
     def __init__(self, *data: Datum):
-        object.__setattr__(self, '_value', set(data))
+        object.__setattr__(self, "_value", set(data))
 
     def _find_matches(self, query):
         matching_subset = []
@@ -30,8 +30,31 @@ class Datumset:
         return Datumset(*matching_subset)
 
     def to_data(self):
-        return [datum.to_data() for datum in self._value]
+        arr = [datum.to_data() for datum in self._value]
+        idx = {}
+        for data in arr:
+            entity_class_name = list(data.keys())[0]
+            entity_data = data[entity_class_name]
+            time_value = list(entity_data.keys())[0]
+            time_data = entity_data[time_value]
+
+            if entity_class_name not in idx:
+                idx[entity_class_name] = {}
+            if time_value not in idx[entity_class_name]:
+                idx[entity_class_name][time_value] = []
+            idx[entity_class_name][time_value].append(time_data)
+
+        return idx
 
     @classmethod
     def from_data(cls, data):
-        return cls(*[Datum.from_data(datum_data) for datum_data in data])
+        datum_list = []
+        for entity_class_name, entity_data in data.items():
+            for time_value, time_data in entity_data.items():
+                for time_data_item in time_data:
+                    datum = Datum.from_attributes(
+                        entity_class_name, time_value, time_data_item
+                    )
+                    datum_list.append(datum)
+
+        return cls(*datum_list)
