@@ -9,6 +9,6 @@ class Person(Entity):
     name: str
 
     def __init__(self, id: str, name: str):
-        object.__setattr__(self, "_value", id)
+        Entity.__init__(self, id)
         object.__setattr__(self, "id", id)
         object.__setattr__(self, "name", name)

@@ -9,6 +9,6 @@ class House(Entity):
     address: str
 
     def __init__(self, id: str, address: str):
-        object.__setattr__(self, "_value", id)
+        Entity.__init__(self, id)
         object.__setattr__(self, "id", id)
         object.__setattr__(self, "address", address)
