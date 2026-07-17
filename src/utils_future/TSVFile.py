@@ -1,4 +1,5 @@
 import csv
+from functools import cache
 
 from utils_future.File import File
 from utils_future.Log import Log
@@ -7,6 +8,7 @@ log = Log("TSVFile")
 
 
 class TSVFile(File):
+    @cache
     def read(self):
         with open(self.path, encoding="utf-8") as f:
             reader = csv.reader(f, delimiter="\t")
