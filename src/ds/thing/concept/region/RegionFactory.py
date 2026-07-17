@@ -3,6 +3,7 @@ from functools import cache
 from ds.thing.concept.region.District import District
 from ds.thing.concept.region.DSD import DSD
 from ds.thing.concept.region.ED import ED
+from ds.thing.concept.region.LG import LG
 from ds.thing.concept.region.PD import PD
 from ds.thing.concept.region.Province import Province
 
@@ -37,6 +38,8 @@ class RegionFactory:
             return cls.from_region_id_for_admin_region(region_id)
         if region_id.startswith("EC-"):
             return cls.from_region_id_to_ec_regions(region_id)
+        if region_id.startswith("LG-"):
+            return LG
         raise ValueError(f"Unknown region_id: {region_id}")
 
     @classmethod
@@ -48,6 +51,7 @@ class RegionFactory:
             DSD,
             ED,
             PD,
+            LG,
         ]
 
         for entity_class in entity_classes:
