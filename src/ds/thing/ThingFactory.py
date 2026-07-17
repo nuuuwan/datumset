@@ -12,6 +12,19 @@ from ds.thing.entity.Person import Person
 
 
 class ThingFactory:
+
+    ENTITY_CLASS_LIST = [
+        Religion,
+        Ethnicity,
+        Person,
+        House,
+        Int,
+        Time,
+        IsEconomicallyActive,
+        HighestEducationLevel,
+    ]
+    ENTITY_CLASS_IDX = {cls.__name__: cls for cls in ENTITY_CLASS_LIST}
+
     @classmethod
     @cache
     def __class_getitem__(cls, class_name: str):
@@ -22,27 +35,14 @@ class ThingFactory:
         except ValueError:
             pass
 
-        entity_class = dict(
-            Religion=Religion,
-            Ethnicity=Ethnicity,
-            Person=Person,
-            House=House,
-            Int=Int,
-            Time=Time,
-            IsEconomicallyActive=IsEconomicallyActive,
-            HighestEducationLevel=HighestEducationLevel,
-        ).get(class_name)
+        if class_name in cls.ENTITY_CLASS_IDX:
+            return cls.ENTITY_CLASS_IDX[class_name]
 
-        if not entity_class:
-            raise ValueError(
-                f"[ThingFactory] Unknown class_name: {class_name}"
-            )
-        return entity_class
+        raise ValueError(f"[ThingFactory] Unknown class_name: {class_name}")
 
     @classmethod
     @cache
     def from_kvpair(cls, kvpair):
-
         class_name, value = kvpair.split(":")
         cls_for_name = ThingFactory[class_name]
         inst = cls_for_name.from_value(value)
