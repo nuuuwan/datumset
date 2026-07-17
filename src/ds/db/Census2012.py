@@ -80,11 +80,15 @@ class Census2012:
         return JSONFile("src", "ds", "db", "census2012.metadata.json").read()
 
     @classmethod
-    def gen_list(cls):
+    @cache
+    def list(cls):
+        datumset_list = []
         for item in cls.get_metadata():
-            yield cls.get_datumset(
+            datumset = cls.get_datumset(
                 item["entity_class_name"],
                 item["measurement_class_name"],
                 item["measurement_id"],
                 item["region_group_id"],
             )
+            datumset_list.append(datumset)
+        return datumset_list

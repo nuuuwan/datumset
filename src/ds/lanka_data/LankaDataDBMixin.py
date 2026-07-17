@@ -1,4 +1,4 @@
-from typing import Generator
+from functools import cache
 
 from ds.datumset.Datumset import Datumset
 from ds.db.Census2012 import Census2012
@@ -6,5 +6,6 @@ from ds.db.Census2012 import Census2012
 
 class LankaDataDBMixin:
     @classmethod
-    def gen_list(cls) -> Generator[Datumset, None, None]:
-        yield from Census2012.gen_list()
+    @cache
+    def list(cls) -> list[Datumset]:
+        return Census2012.list()
