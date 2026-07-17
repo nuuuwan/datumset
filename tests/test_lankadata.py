@@ -11,14 +11,28 @@ class TestCase(unittest.TestCase):
             "Person/Time*Country*Religion/Count",
             "Person/Time*Province*Religion/Count",
             "Person/Time*District*Religion/Count",
-            # "Person/Time*GND*Religion/Count",  # slow
             "Person/Time*ED*Religion/Count",
             "Person/Time*PD*Religion/Count",
             "Person/Time*LG*Religion/Count",
-            #
             "Person/Time*District*Ethnicity/Count",
             "Person/Time*District*HighestEducationLevel/Count",
             "Person/Time*District*IsEconomicallyActive/Count",
+            "Person/Time*District*AgeGroup/Count",
+            "Person/Time*District*Gender/Count",
+            "Person/Time*District*MaritalStatus/Count",
+            "House/Time*District*CookingFuel/Count",
+            "House/Time*District*FloorType/Count",
+            "House/Time*District*Lighting/Count",
+            "House/Time*District*RoofType/Count",
+            "House/Time*District*ToiletFacilities/Count",
+            "House/Time*District*WallType/Count",
+            "House/Time*District*HouseholdStructure/Count",
+            "House/Time*District*OccupationStatus/Count",
+            "House/Time*District*OwnershipStatus/Count",
+            "House/Time*District*LivingQuarters/Count",
+            "House/Time*District*SourceOfDrinkingWater/Count",
+            "House/Time*District*SolidWasteDisposal/Count",
+            "House/Time*District*TypeOfUnit/Count",
         ]:
             ds1 = LankaData[query_str]
             ds2 = Datumset.from_data(ds1.to_data())

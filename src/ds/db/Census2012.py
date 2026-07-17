@@ -13,7 +13,7 @@ log = Log("Census2012")
 
 class Census2012:
     TIME = Time("2012")
-    SKIP_KEYS = {"entity_id", "total_population", "region_id"}
+    SKIP_KEYS = {"entity_id", "region_id"}
 
     @classmethod
     def _get_datum_list_from_d(cls, d, entity_cls, col_map):
@@ -61,7 +61,7 @@ class Census2012:
         col_map = {
             k: (m_name, measurement_cls[String(k).pascal])
             for k in (d_list[0] if d_list else {})
-            if k not in cls.SKIP_KEYS
+            if k not in cls.SKIP_KEYS and not k.startswith("total_")
         }
         datum_list = []
         for d in d_list:

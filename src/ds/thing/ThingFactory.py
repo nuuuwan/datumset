@@ -1,12 +1,28 @@
 from functools import cache
 
+from ds.thing.concept.AgeGroup import AgeGroup
+from ds.thing.concept.CookingFuel import CookingFuel
 from ds.thing.concept.Ethnicity import Ethnicity
+from ds.thing.concept.FloorType import FloorType
+from ds.thing.concept.Gender import Gender
 from ds.thing.concept.HighestEducationLevel import HighestEducationLevel
+from ds.thing.concept.HouseholdStructure import HouseholdStructure
 from ds.thing.concept.Int import Int
 from ds.thing.concept.IsEconomicallyActive import IsEconomicallyActive
+from ds.thing.concept.Lighting import Lighting
+from ds.thing.concept.LivingQuarters import LivingQuarters
+from ds.thing.concept.MaritalStatus import MaritalStatus
+from ds.thing.concept.OccupationStatus import OccupationStatus
+from ds.thing.concept.OwnershipStatus import OwnershipStatus
 from ds.thing.concept.region.RegionFactory import RegionFactory
 from ds.thing.concept.Religion import Religion
+from ds.thing.concept.RoofType import RoofType
+from ds.thing.concept.SolidWasteDisposal import SolidWasteDisposal
+from ds.thing.concept.SourceOfDrinkingWater import SourceOfDrinkingWater
 from ds.thing.concept.Time import Time
+from ds.thing.concept.ToiletFacilities import ToiletFacilities
+from ds.thing.concept.TypeOfUnit import TypeOfUnit
+from ds.thing.concept.WallType import WallType
 from ds.thing.entity.House import House
 from ds.thing.entity.Person import Person
 
@@ -14,14 +30,30 @@ from ds.thing.entity.Person import Person
 class ThingFactory:
 
     ENTITY_CLASS_LIST = [
-        Religion,
+        AgeGroup,
+        CookingFuel,
         Ethnicity,
-        Person,
-        House,
-        Int,
-        Time,
-        IsEconomicallyActive,
+        FloorType,
+        Gender,
         HighestEducationLevel,
+        House,
+        HouseholdStructure,
+        Int,
+        IsEconomicallyActive,
+        Lighting,
+        LivingQuarters,
+        MaritalStatus,
+        OccupationStatus,
+        OwnershipStatus,
+        Person,
+        Religion,
+        RoofType,
+        SolidWasteDisposal,
+        SourceOfDrinkingWater,
+        Time,
+        ToiletFacilities,
+        TypeOfUnit,
+        WallType,
     ]
     ENTITY_CLASS_IDX = {cls.__name__: cls for cls in ENTITY_CLASS_LIST}
 

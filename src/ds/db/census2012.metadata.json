@@ -22,5 +22,101 @@
     "measurement_class_name": "HighestEducationLevel",
     "measurement_id": "education-educational-attainment",
     "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "Person",
+    "measurement_class_name": "AgeGroup",
+    "measurement_id": "population-age_group",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "Person",
+    "measurement_class_name": "Gender",
+    "measurement_id": "population-gender",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "Person",
+    "measurement_class_name": "MaritalStatus",
+    "measurement_id": "population-marital_status",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "House",
+    "measurement_class_name": "CookingFuel",
+    "measurement_id": "social-household-cooking_fuel",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "House",
+    "measurement_class_name": "FloorType",
+    "measurement_id": "social-household-floor_type",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "House",
+    "measurement_class_name": "Lighting",
+    "measurement_id": "social-household-lighting",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "House",
+    "measurement_class_name": "RoofType",
+    "measurement_id": "social-household-roof_type",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "House",
+    "measurement_class_name": "ToiletFacilities",
+    "measurement_id": "social-household-toilet_facilities",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "House",
+    "measurement_class_name": "WallType",
+    "measurement_id": "social-household-wall_type",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "House",
+    "measurement_class_name": "HouseholdStructure",
+    "measurement_id": "social-household-structure",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "House",
+    "measurement_class_name": "OccupationStatus",
+    "measurement_id": "social-household-occupation_status",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "House",
+    "measurement_class_name": "OwnershipStatus",
+    "measurement_id": "social-household-ownership-status",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "House",
+    "measurement_class_name": "LivingQuarters",
+    "measurement_id": "social-household-living_quarters",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "House",
+    "measurement_class_name": "SourceOfDrinkingWater",
+    "measurement_id": "social-household-source_of_drinking_water",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "House",
+    "measurement_class_name": "SolidWasteDisposal",
+    "measurement_id": "social-household-solid_waste_disposal",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "House",
+    "measurement_class_name": "TypeOfUnit",
+    "measurement_id": "social-household-type_of_unit",
+    "region_group_id": "regions"
   }
 ]
