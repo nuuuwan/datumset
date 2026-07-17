@@ -1,0 +1,154 @@
+[
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-parliamentary",
+    "region_group_id": "regions-ec",
+    "year_id": "1989",
+    "election_type_name": "Parliamentary"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-parliamentary",
+    "region_group_id": "regions-ec",
+    "year_id": "1994",
+    "election_type_name": "Parliamentary"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-parliamentary",
+    "region_group_id": "regions-ec",
+    "year_id": "2000",
+    "election_type_name": "Parliamentary"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-parliamentary",
+    "region_group_id": "regions-ec",
+    "year_id": "2001",
+    "election_type_name": "Parliamentary"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-parliamentary",
+    "region_group_id": "regions-ec",
+    "year_id": "2004",
+    "election_type_name": "Parliamentary"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-parliamentary",
+    "region_group_id": "regions-ec",
+    "year_id": "2010",
+    "election_type_name": "Parliamentary"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-parliamentary",
+    "region_group_id": "regions-ec",
+    "year_id": "2015",
+    "election_type_name": "Parliamentary"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-parliamentary",
+    "region_group_id": "regions-ec",
+    "year_id": "2020",
+    "election_type_name": "Parliamentary"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-parliamentary",
+    "region_group_id": "regions-ec",
+    "year_id": "2024",
+    "election_type_name": "Parliamentary"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-presidential",
+    "region_group_id": "regions-ec",
+    "year_id": "1982",
+    "election_type_name": "Presidential"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-presidential",
+    "region_group_id": "regions-ec",
+    "year_id": "1988",
+    "election_type_name": "Presidential"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-presidential",
+    "region_group_id": "regions-ec",
+    "year_id": "1994",
+    "election_type_name": "Presidential"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-presidential",
+    "region_group_id": "regions-ec",
+    "year_id": "1999",
+    "election_type_name": "Presidential"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-presidential",
+    "region_group_id": "regions-ec",
+    "year_id": "2005",
+    "election_type_name": "Presidential"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-presidential",
+    "region_group_id": "regions-ec",
+    "year_id": "2010",
+    "election_type_name": "Presidential"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-presidential",
+    "region_group_id": "regions-ec",
+    "year_id": "2015",
+    "election_type_name": "Presidential"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-presidential",
+    "region_group_id": "regions-ec",
+    "year_id": "2019",
+    "election_type_name": "Presidential"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-presidential",
+    "region_group_id": "regions-ec",
+    "year_id": "2024",
+    "election_type_name": "Presidential"
+  },
+  {
+    "entity_class_name": "Vote",
+    "measurement_class_name": "Party",
+    "measurement_id": "government-elections-local-government",
+    "region_group_id": "regions-ec",
+    "year_id": "2025",
+    "election_type_name": "LocalGovernment"
+  }
+]
