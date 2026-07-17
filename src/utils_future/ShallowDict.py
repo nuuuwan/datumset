@@ -10,6 +10,10 @@ class ShallowDict(MutableMapping):
         return self._dict[key]
 
     def __setitem__(self, key, value):
+        for existing in list(self._dict.keys()):
+            n = min(len(key), len(existing))
+            if existing[:n] == key[:n]:
+                del self._dict[existing]
         self._dict[key] = value
 
     def __delitem__(self, key):
@@ -43,6 +47,11 @@ class ShallowDict(MutableMapping):
 
         _recurse(nested_dict, [])
         return cls(flat)
+
+    def __eq__(self, other):
+        if isinstance(other, ShallowDict):
+            return self.to_deep() == other.to_deep()
+        return NotImplemented
 
     def __add__(self, other):
         if not isinstance(other, ShallowDict):
