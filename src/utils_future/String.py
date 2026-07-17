@@ -1,4 +1,4 @@
-from functools import cached_property
+from functools import cache, cached_property
 
 
 class String:

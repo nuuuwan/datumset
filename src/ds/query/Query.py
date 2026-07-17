@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from functools import cached_property
+from functools import cache, cached_property
 
 
 @dataclass(frozen=True)
@@ -44,6 +44,7 @@ class Query:
 
     # ---
     @classmethod
+    @cache
     def from_parts(cls, entity_class_names, dim_labels, cell_labels):
         entity_part = cls.OPR_ADD.join(entity_class_names)
         dim_part = cls.OPR_MULT.join(dim_labels)

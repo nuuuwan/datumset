@@ -30,9 +30,9 @@ class DatumsetQueryMixin:
 
     def _infer_query(self) -> Query:
         query = Query.from_parts(
-            self._get_entity_class_names(),
-            self._get_dim_labels(),
-            self._get_cell_labels(),
+            tuple(self._get_entity_class_names()),
+            tuple(self._get_dim_labels()),
+            tuple(self._get_cell_labels()),
         )
         return query
 
