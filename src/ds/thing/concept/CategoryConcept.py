@@ -1,5 +1,6 @@
 from abc import abstractmethod
 from dataclasses import dataclass
+from functools import cache
 
 from ds.thing.concept.Concept import Concept
 
@@ -17,6 +18,7 @@ class CategoryConcept(Concept):
         return {m._value: m for m in cls.list()}
 
     @classmethod
+    @cache
     def from_value(cls, value: str):
         idx = cls.idx()
         if value not in idx:
