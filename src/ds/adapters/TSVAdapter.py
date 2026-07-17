@@ -50,22 +50,25 @@ class TSVAdapter:
         ]
 
     @classmethod
-    def load(
-        cls,
-        url,
-        entity_cls,
-        measurement_cls,
-        skip_keys,
-        time_concept,
-        extra_dims=None,
-    ) -> Datumset:
+    def read(cls, url) -> list:
         file_name = url.split("/")[-1]
         tsv_file = TSVFile(
             Directory.get_temp("datumset", cls.TEMP_DIR).path,
             file_name,
         )
         WWW(url).download(tsv_file)
-        d_list = tsv_file.read()
+        return tsv_file.read()
+
+    @classmethod
+    def build_datumset(
+        cls,
+        d_list,
+        entity_cls,
+        measurement_cls,
+        skip_keys,
+        time_concept,
+        extra_dims=None,
+    ) -> Datumset:
         col_map = cls._build_col_map(d_list, measurement_cls, skip_keys)
         datum_list = []
         for d in d_list:
@@ -75,3 +78,22 @@ class TSVAdapter:
             if rows:
                 datum_list.extend(rows)
         return Datumset(*datum_list)
+
+    @classmethod
+    def load(
+        cls,
+        url,
+        entity_cls,
+        measurement_cls,
+        skip_keys,
+        time_concept,
+        extra_dims=None,
+    ) -> Datumset:
+        return cls.build_datumset(
+            cls.read(url),
+            entity_cls,
+            measurement_cls,
+            skip_keys,
+            time_concept,
+            extra_dims,
+        )

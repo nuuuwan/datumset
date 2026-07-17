@@ -1,10 +1,13 @@
 from functools import cache
 
 from ds.adapters.TSVAdapter import TSVAdapter
+from ds.datum.Datum import Datum
 from ds.datumset.Datumset import Datumset
+from ds.thing.concept.Int import Int
+from ds.thing.concept.region.RegionFactory import RegionFactory
 from ds.thing.concept.Time import Time
 from ds.thing.ThingFactory import ThingFactory
-from utils_future import JSONFile
+from utils_future import JSONFile, String
 
 
 class Elections:
@@ -20,6 +23,28 @@ class Elections:
         "polled",
         "electors",
     }
+    TURNOUT_COLS = ["electors", "polled", "valid", "rejected"]
+
+    @classmethod
+    def _build_turnout_datum(cls, d, entity_cls, time_concept, extra_dims):
+        region_id = d["entity_id"]
+        try:
+            region_cls = RegionFactory.from_region_id(region_id)
+            region_instance = region_cls[region_id]
+        except ValueError:
+            return None
+        r_name = region_cls.__name__
+        return Datum(
+            entity_cls,
+            {**extra_dims, "Time": time_concept, r_name: region_instance},
+            {
+                String(k).pascal: Int(
+                    int(float(d.get(k, "0").strip().replace(",", "") or "0"))
+                )
+                for k in cls.TURNOUT_COLS
+                if k in d
+            },
+        )
 
     @classmethod
     def get_datumset(cls, item) -> Datumset:
@@ -29,18 +54,26 @@ class Elections:
         entity_cls = ThingFactory[item["entity_class_name"]]
         measurement_cls = ThingFactory[item["measurement_class_name"]]
         et = ThingFactory["ElectionType"][item["election_type_name"]]
+        time_concept = Time(year_id)
+        extra_dims = {"ElectionType": et}
         url = (
             f"{cls.BASE_URL}"
             f"/{measurement_id}.{region_group_id}.{year_id}.tsv"
         )
-        return TSVAdapter.load(
-            url,
+        d_list = TSVAdapter.read(url)
+        party = TSVAdapter.build_datumset(
+            d_list,
             entity_cls,
             measurement_cls,
             cls.SKIP_KEYS,
-            Time(year_id),
-            {"ElectionType": et},
+            time_concept,
+            extra_dims,
         )
+        turnout = [
+            cls._build_turnout_datum(d, entity_cls, time_concept, extra_dims)
+            for d in d_list
+        ]
+        return Datumset(*list(party) + [t for t in turnout if t])
 
     @classmethod
     @cache
