@@ -29,6 +29,6 @@ class DatumMatchMixin:
     def is_match(self, query: Query) -> bool:
         return (
             self.is_match_entity(query.entity_part)
-            and self.is_match_dim_idx(query.concept_part)
+            and self.is_match_dim_idx(query.dim_part)
             and self.is_match_cell_idx(query.cell_part)
         )

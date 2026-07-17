@@ -1,6 +1,7 @@
 import unittest
 
 from ds.datum.Datum import Datum
+from ds.query.Query import Query
 from ds.thing.ThingFactory import ThingFactory
 
 
@@ -61,3 +62,12 @@ class TestCase(unittest.TestCase):
 
         self.assertTrue(datum.is_match_cell_idx("Count1*Count2"))
         self.assertFalse(datum.is_match_cell_idx("Count1"))
+
+        self.assertTrue(
+            datum.is_match(
+                Query("Person/Time*District*Religion/Count1*Count2")
+            )
+        )
+        self.assertFalse(
+            datum.is_match(Query("Person/Time*District*Religion/Count1"))
+        )

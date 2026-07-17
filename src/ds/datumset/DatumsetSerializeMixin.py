@@ -30,11 +30,14 @@ class DatumsetSerializeMixin:
     @classmethod
     def from_data(cls, data):
         shallow_d = ShallowDict.from_deep(data)
+        datum_cells = {}
+        for key_tuple, value in shallow_d.items():
+            datum_key = key_tuple[:-1]
+            datum_cells.setdefault(datum_key, {})[key_tuple[-1]] = value
         datum_list = []
-        for key_tuple, _ in shallow_d.items():
-            shallow_d_for_datum = ShallowDict({key_tuple: 1})
-            deep_d_for_datum = shallow_d_for_datum.to_deep()
-            datum = Datum.from_data(deep_d_for_datum)
+        for datum_key, cells in datum_cells.items():
+            sd = ShallowDict({datum_key: cells})
+            datum = Datum.from_data(sd.to_deep())
             datum_list.append(datum)
         return cls(*datum_list)
 

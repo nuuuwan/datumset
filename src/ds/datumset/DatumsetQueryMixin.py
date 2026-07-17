@@ -12,26 +12,27 @@ class DatumsetQueryMixin:
                 entity_class_names.append(datum.entity_class.__name__)
         return entity_class_names
 
-    def _get_time_values(self):
-        time_values = []
+    def _get_dim_labels(self):
+        dim_labels = []
         for datum in self._value:
-            if datum.time.get_value() not in time_values:
-                time_values.append(datum.time.get_value())
-        return time_values
+            for dim_label in datum.dim_idx.keys():
+                if dim_label not in dim_labels:
+                    dim_labels.append(dim_label)
+        return dim_labels
 
-    def _get_concept_labels(self):
-        concept_labels = []
+    def _get_cell_labels(self):
+        cell_labels = []
         for datum in self._value:
-            for label in datum.get_concept_labels():
-                if label not in concept_labels:
-                    concept_labels.append(label)
-        return concept_labels
+            for cell_label in datum.cell_idx.keys():
+                if cell_label not in cell_labels:
+                    cell_labels.append(cell_label)
+        return cell_labels
 
     def _infer_query(self) -> Query:
         query = Query.from_parts(
-            self._get_time_values(),
             self._get_entity_class_names(),
-            self._get_concept_labels(),
+            self._get_dim_labels(),
+            self._get_cell_labels(),
         )
         return query
 

@@ -14,31 +14,39 @@ class LankaDataDBMixin:
             Datumset(
                 Datum(
                     Person,
-                    Time("2012"),
-                    District=District["LK-11"],
-                    Religion=Religion["Hindu"],
-                    Count=Int(88),
+                    dict(
+                        Time=Time("2012"),
+                        District=District["LK-11"],
+                        Religion=Religion["Buddhist"],
+                    ),
+                    dict(Count=Int(88)),
                 ),
                 Datum(
                     Person,
-                    Time("2012"),
-                    District=District["LK-11"],
-                    Religion=Religion["Buddhist"],
-                    Count=Int(200),
+                    dict(
+                        Time=Time("2012"),
+                        District=District["LK-11"],
+                        Religion=Religion["Hindu"],
+                    ),
+                    dict(Count=Int(44)),
                 ),
                 Datum(
                     Person,
-                    Time("2012"),
-                    District=District["LK-12"],
-                    Religion=Religion["Hindu"],
-                    Count=Int(150),
+                    dict(
+                        Time=Time("2012"),
+                        District=District["LK-12"],
+                        Religion=Religion["Buddhist"],
+                    ),
+                    dict(Count=Int(121)),
                 ),
                 Datum(
                     Person,
-                    Time("2012"),
-                    District=District["LK-12"],
-                    Religion=Religion["Buddhist"],
-                    Count=Int(120),
+                    dict(
+                        Time=Time("2012"),
+                        District=District["LK-12"],
+                        Religion=Religion["Hindu"],
+                    ),
+                    dict(Count=Int(12)),
                 ),
             ),
         ]
