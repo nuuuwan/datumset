@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from functools import cache
 
 from ds.thing.concept.CategoryConcept import CategoryConcept
 from utils_future import WWW, Directory, File, JSONFile
@@ -19,6 +20,7 @@ class Region(CategoryConcept):
         return cls.__name__.lower()
 
     @classmethod
+    @cache
     def list(cls):
         data_file = JSONFile(
             Directory.get_temp("datumset", "regions").path,
