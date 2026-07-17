@@ -81,16 +81,10 @@ class Census2012:
 
     @classmethod
     def gen_list(cls):
-        if cls._list_cache is None:
-            result = []
-            for item in cls.get_metadata():
-                result.append(
-                    cls.get_datumset(
-                        item["entity_class_name"],
-                        item["measurement_class_name"],
-                        item["measurement_id"],
-                        item["region_group_id"],
-                    )
-                )
-            cls._list_cache = result
-        yield from cls._list_cache
+        for item in cls.get_metadata():
+            yield cls.get_datumset(
+                item["entity_class_name"],
+                item["measurement_class_name"],
+                item["measurement_id"],
+                item["region_group_id"],
+            )
