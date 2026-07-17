@@ -1,7 +1,7 @@
 import unittest
 
+from ds.thing.concept.person.Religion import Religion
 from ds.thing.concept.region.RegionFactory import RegionFactory
-from ds.thing.concept.Religion import Religion
 from ds.thing.ThingFactory import ThingFactory
 
 

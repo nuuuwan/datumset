@@ -1,28 +1,32 @@
 from functools import cache
 
-from ds.thing.concept.AgeGroup import AgeGroup
-from ds.thing.concept.CookingFuel import CookingFuel
-from ds.thing.concept.Ethnicity import Ethnicity
-from ds.thing.concept.FloorType import FloorType
-from ds.thing.concept.Gender import Gender
-from ds.thing.concept.HighestEducationLevel import HighestEducationLevel
-from ds.thing.concept.HouseholdStructure import HouseholdStructure
+from ds.thing.concept.household.CookingFuel import CookingFuel
+from ds.thing.concept.household.FloorType import FloorType
+from ds.thing.concept.household.HouseholdStructure import HouseholdStructure
+from ds.thing.concept.household.Lighting import Lighting
+from ds.thing.concept.household.LivingQuarters import LivingQuarters
+from ds.thing.concept.household.OccupationStatus import OccupationStatus
+from ds.thing.concept.household.OwnershipStatus import OwnershipStatus
+from ds.thing.concept.household.RoofType import RoofType
+from ds.thing.concept.household.SolidWasteDisposal import SolidWasteDisposal
+from ds.thing.concept.household.SourceOfDrinkingWater import (
+    SourceOfDrinkingWater,
+)
+from ds.thing.concept.household.ToiletFacilities import ToiletFacilities
+from ds.thing.concept.household.TypeOfUnit import TypeOfUnit
+from ds.thing.concept.household.WallType import WallType
 from ds.thing.concept.Int import Int
-from ds.thing.concept.IsEconomicallyActive import IsEconomicallyActive
-from ds.thing.concept.Lighting import Lighting
-from ds.thing.concept.LivingQuarters import LivingQuarters
-from ds.thing.concept.MaritalStatus import MaritalStatus
-from ds.thing.concept.OccupationStatus import OccupationStatus
-from ds.thing.concept.OwnershipStatus import OwnershipStatus
+from ds.thing.concept.person.AgeGroup import AgeGroup
+from ds.thing.concept.person.Ethnicity import Ethnicity
+from ds.thing.concept.person.Gender import Gender
+from ds.thing.concept.person.HighestEducationLevel import (
+    HighestEducationLevel,
+)
+from ds.thing.concept.person.IsEconomicallyActive import IsEconomicallyActive
+from ds.thing.concept.person.MaritalStatus import MaritalStatus
+from ds.thing.concept.person.Religion import Religion
 from ds.thing.concept.region.RegionFactory import RegionFactory
-from ds.thing.concept.Religion import Religion
-from ds.thing.concept.RoofType import RoofType
-from ds.thing.concept.SolidWasteDisposal import SolidWasteDisposal
-from ds.thing.concept.SourceOfDrinkingWater import SourceOfDrinkingWater
 from ds.thing.concept.Time import Time
-from ds.thing.concept.ToiletFacilities import ToiletFacilities
-from ds.thing.concept.TypeOfUnit import TypeOfUnit
-from ds.thing.concept.WallType import WallType
 from ds.thing.entity.House import House
 from ds.thing.entity.Person import Person
 
