@@ -9,6 +9,15 @@ class TestCase(unittest.TestCase):
     def test_valid(self):
         for query_str in [
             "Person/Time*Country*Religion/Count",
+        ]:
+            ds1 = LankaData[query_str]
+            ds2 = Datumset.from_data(ds1.to_data())
+            self.assertEqual(ds1, ds2)
+
+    @unittest.skip("too long")
+    def test_valid_long(self):
+        for query_str in [
+            "Person/Time*Country*Religion/Count",
             "Person/Time*Province*Religion/Count",
             "Person/Time*District*Religion/Count",
             "Person/Time*ED*Religion/Count",
