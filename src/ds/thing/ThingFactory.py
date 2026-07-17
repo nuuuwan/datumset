@@ -1,5 +1,5 @@
 from ds.thing.concept.Int import Int
-from ds.thing.concept.region.District import District
+from ds.thing.concept.region.RegionFactory import RegionFactory
 from ds.thing.concept.Religion import Religion
 from ds.thing.concept.Time import Time
 from ds.thing.entity.House import House
@@ -9,9 +9,15 @@ from ds.thing.entity.Person import Person
 class ThingFactory:
     @classmethod
     def __class_getitem__(cls, class_name: str):
+
+        try:
+            region_entity_class = RegionFactory[class_name]
+            return region_entity_class
+        except ValueError:
+            pass
+
         entity_class = dict(
             Religion=Religion,
-            District=District,
             Person=Person,
             House=House,
             Int=Int,

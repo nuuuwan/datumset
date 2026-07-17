@@ -11,7 +11,7 @@ class TestCase(unittest.TestCase):
         expected_data = {
             "Person": {
                 "Time:2012": {
-                    "District:LK-11": {
+                    "ED:EC-01": {
                         "Religion:Buddhist": {"Count": "Int:1632125"}
                     }
                 }

@@ -1,6 +1,6 @@
 from ds.thing.concept.region.Region import Region
 
 
-class District(Region):
+class PD(Region):
 
     pass
