@@ -7,7 +7,7 @@ class LankaData(LankaDataDBMixin):
     @classmethod
     def __class_getitem__(cls, query_str):
         query = Query(query_str)
-        for datumset in cls.list():
+        for datumset in cls.gen_list():
             partially_matching_datumset = datumset.is_match(query)
             if partially_matching_datumset:
                 infered_query = partially_matching_datumset.query

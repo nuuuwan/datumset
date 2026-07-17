@@ -1,3 +1,5 @@
+from typing import Generator
+
 from ds.datum.Datum import Datum
 from ds.datumset.Datumset import Datumset
 from ds.thing.concept.Int import Int
@@ -75,10 +77,9 @@ class Census2012:
     _list_cache = None
 
     @classmethod
-    def list(cls) -> list[Datumset]:
+    def gen_list(cls) -> Generator[Datumset, None, None]:
         if cls._list_cache is not None:
             return cls._list_cache
-        datumset_list = []
         for (
             entity_class_name,
             measurement_class_name,
@@ -100,7 +101,4 @@ class Census2012:
                 measurement_id,
                 region_group_id,
             )
-            datumset_list.append(datumset)
-
-        cls._list_cache = datumset_list
-        return datumset_list
+            yield datumset
