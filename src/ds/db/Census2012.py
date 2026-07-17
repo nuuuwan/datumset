@@ -71,8 +71,12 @@ class Census2012:
                 datum_list.extend(datum_list_for_d)
         return Datumset(*datum_list)
 
+    _list_cache = None
+
     @classmethod
     def list(cls) -> list[Datumset]:
+        if cls._list_cache is not None:
+            return cls._list_cache
         datumset_list = []
         for (
             entity_class_name,
@@ -97,4 +101,5 @@ class Census2012:
             )
             datumset_list.append(datumset)
 
+        cls._list_cache = datumset_list
         return datumset_list

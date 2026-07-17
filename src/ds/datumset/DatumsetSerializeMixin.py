@@ -1,5 +1,3 @@
-import json
-
 from propcache import cached_property
 
 from ds.datum.Datum import Datum
@@ -44,14 +42,6 @@ class DatumsetSerializeMixin:
     def to_file(self):
         self.data_file.write(self.to_data())
         log.info(f"Wrote {self.data_file}")
-
-    def to_str(self):
-        return json.dumps(self.to_data(), indent=4)
-
-    @classmethod
-    def from_str(cls, data_str):
-        data = json.loads(data_str)
-        return cls.from_data(data)
 
     def __eq__(self, other):
         return self.to_data() == other.to_data()
