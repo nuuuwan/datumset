@@ -6,6 +6,9 @@ class DatumsetMatchMixin:
         matching_datum_sublist = []
         for datam in self._value:
             candidate_match = datam.is_match(query)
+            d = datam.to_data()
+            if "Province" in str(d):
+                print(candidate_match, d)
             if candidate_match:
                 matching_datum_sublist.append(datam)
         return matching_datum_sublist

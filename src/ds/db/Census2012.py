@@ -20,6 +20,8 @@ class Census2012:
         except Exception:
             return None
 
+        region_cls_name = region_cls.__name__
+
         datum_list = []
         for k, v in d.items():
             if k in ["entity_id", "total_population"]:
@@ -28,11 +30,11 @@ class Census2012:
 
             datum = Datum(
                 cls.ENTITY_CLASS,
-                dict(
-                    Time=cls.TIME,
-                    District=region_cls[region_id],
-                    Religion=Religion[concept_name],
-                ),
+                {
+                    "Time": cls.TIME,
+                    f"{region_cls_name}": region_cls[region_id],
+                    "Religion": Religion[concept_name],
+                },
                 dict(Count=Int(String(v).int)),
             )
             datum_list.append(datum)

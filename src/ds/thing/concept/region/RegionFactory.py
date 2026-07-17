@@ -1,4 +1,5 @@
 from ds.thing.concept.region.District import District
+from ds.thing.concept.region.DSD import DSD
 from ds.thing.concept.region.ED import ED
 from ds.thing.concept.region.PD import PD
 from ds.thing.concept.region.Province import Province
@@ -20,10 +21,7 @@ class RegionFactory:
     @classmethod
     def from_region_id_for_admin_region(cls, region_id: str):
         assert region_id.startswith("LK-"), f"Invalid region_id: {region_id}"
-        region_cls = {
-            4: Province,
-            5: District,
-        }.get(len(region_id))
+        region_cls = {4: Province, 5: District, 7: DSD}.get(len(region_id))
         if not region_cls:
             raise ValueError(f"Unknown region_id: {region_id}")
         return region_cls
@@ -41,6 +39,7 @@ class RegionFactory:
         entity_classes = [
             Province,
             District,
+            DSD,
             ED,
             PD,
         ]
