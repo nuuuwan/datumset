@@ -1,3 +1,5 @@
+from functools import cache
+
 from ds.thing.concept.region.District import District
 from ds.thing.concept.region.DSD import DSD
 from ds.thing.concept.region.ED import ED
@@ -8,6 +10,7 @@ from ds.thing.concept.region.Province import Province
 class RegionFactory:
 
     @classmethod
+    @cache
     def from_region_id_to_ec_regions(cls, region_id: str):
         assert region_id.startswith("EC-"), f"Invalid region_id: {region_id}"
         region_cls = {
@@ -19,6 +22,7 @@ class RegionFactory:
         return region_cls
 
     @classmethod
+    @cache
     def from_region_id_for_admin_region(cls, region_id: str):
         assert region_id.startswith("LK-"), f"Invalid region_id: {region_id}"
         region_cls = {4: Province, 5: District, 7: DSD}.get(len(region_id))
@@ -27,6 +31,7 @@ class RegionFactory:
         return region_cls
 
     @classmethod
+    @cache
     def from_region_id(cls, region_id: str):
         if region_id.startswith("LK-"):
             return cls.from_region_id_for_admin_region(region_id)
@@ -35,6 +40,7 @@ class RegionFactory:
         raise ValueError(f"Unknown region_id: {region_id}")
 
     @classmethod
+    @cache
     def __class_getitem__(cls, class_name: str):
         entity_classes = [
             Province,

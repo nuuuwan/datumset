@@ -1,3 +1,5 @@
+from functools import cache
+
 from ds.thing.concept.Ethnicity import Ethnicity
 from ds.thing.concept.Int import Int
 from ds.thing.concept.IsEconomicallyActive import IsEconomicallyActive
@@ -10,6 +12,7 @@ from ds.thing.entity.Person import Person
 
 class ThingFactory:
     @classmethod
+    @cache
     def __class_getitem__(cls, class_name: str):
 
         try:
@@ -35,6 +38,7 @@ class ThingFactory:
         return entity_class
 
     @classmethod
+    @cache
     def from_kvpair(cls, kvpair):
 
         class_name, value = kvpair.split(":")
