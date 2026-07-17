@@ -8,10 +8,17 @@ class TestCase(unittest.TestCase):
 
     def test_valid(self):
         for query_str in [
-            "Person/Time*District*Religion/Count",
+            "Person/Time*Country*Religion/Count",
             "Person/Time*Province*Religion/Count",
+            "Person/Time*District*Religion/Count",
+            # "Person/Time*GND*Religion/Count",  # slow
             "Person/Time*ED*Religion/Count",
             "Person/Time*PD*Religion/Count",
+            "Person/Time*LG*Religion/Count",
+            #
+            "Person/Time*District*Ethnicity/Count",
+            "Person/Time*District*HighestEducationLevel/Count",
+            "Person/Time*District*IsEconomicallyActive/Count",
         ]:
             ds1 = LankaData[query_str]
             ds2 = Datumset.from_data(ds1.to_data())

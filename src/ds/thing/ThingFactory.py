@@ -1,6 +1,7 @@
 from functools import cache
 
 from ds.thing.concept.Ethnicity import Ethnicity
+from ds.thing.concept.HighestEducationLevel import HighestEducationLevel
 from ds.thing.concept.Int import Int
 from ds.thing.concept.IsEconomicallyActive import IsEconomicallyActive
 from ds.thing.concept.region.RegionFactory import RegionFactory
@@ -29,6 +30,7 @@ class ThingFactory:
             Int=Int,
             Time=Time,
             IsEconomicallyActive=IsEconomicallyActive,
+            HighestEducationLevel=HighestEducationLevel,
         ).get(class_name)
 
         if not entity_class:

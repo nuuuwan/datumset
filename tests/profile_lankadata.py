@@ -8,10 +8,17 @@ if __name__ == "__main__":
     profiler.enable()
 
     for query_str in [
-        "Person/Time*District*Religion/Count",
+        "Person/Time*Country*Religion/Count",
         "Person/Time*Province*Religion/Count",
+        "Person/Time*District*Religion/Count",
+        "Person/Time*GND*Religion/Count",
         "Person/Time*ED*Religion/Count",
         "Person/Time*PD*Religion/Count",
+        "Person/Time*LG*Religion/Count",
+        #
+        "Person/Time*District*Ethnicity/Count",
+        "Person/Time*District*HighestEducationLevel/Count",
+        "Person/Time*District*IsEconomicallyActive/Count",
     ]:
         LankaData[query_str]
 

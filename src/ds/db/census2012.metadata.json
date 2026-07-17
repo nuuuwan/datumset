@@ -16,5 +16,11 @@
     "measurement_class_name": "Ethnicity",
     "measurement_id": "population-ethnicity",
     "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "Person",
+    "measurement_class_name": "HighestEducationLevel",
+    "measurement_id": "education-educational-attainment",
+    "region_group_id": "regions"
   }
 ]
