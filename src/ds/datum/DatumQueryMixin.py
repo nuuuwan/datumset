@@ -7,7 +7,7 @@ class DatumQueryMixin:
 
     def _infer_query(self) -> Query:
         query = Query.from_parts(
-            self.entity_class.__name__,
+            (self.entity_class.__name__,),
             tuple(self.dim_idx.keys()),
             tuple(self.cell_idx.keys()),
         )

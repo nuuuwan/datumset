@@ -12,3 +12,6 @@ class DatumsetBase:
 
     def __getitem__(self, index):
         return self._value[index]
+
+    def __iter__(self):
+        return iter(self._value)

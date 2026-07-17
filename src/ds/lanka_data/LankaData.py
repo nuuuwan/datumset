@@ -9,7 +9,8 @@ class LankaData(LankaDataDBMixin):
     @classmethod
     @cache
     def __class_getitem__(cls, query_str):
-        datum_list = cls.idx().get(query_str)
+        idx = cls.idx()
+        datum_list = idx.get(query_str)
         if datum_list is not None:
             return Datumset(*datum_list)
 
