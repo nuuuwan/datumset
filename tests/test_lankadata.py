@@ -28,7 +28,7 @@ class TestCase(unittest.TestCase):
             datumset = LankaData[query_str]
             self.assertIsNotNone(datumset)
             elapsed_ms = (time.time() - t0) * 1000.0
-            MAX_T_MS = 500.0
+            MAX_T_MS = 100.0
             self.assertLess(
                 elapsed_ms,
                 MAX_T_MS,
