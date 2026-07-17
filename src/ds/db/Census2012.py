@@ -14,8 +14,6 @@ class Census2012:
 
     @classmethod
     def get_datum_list_from_d(cls, d):
-        dim_idx = {}
-
         region_id = d["entity_id"]
         try:
             region_cls = RegionFactory.from_region_id(region_id)
@@ -27,16 +25,15 @@ class Census2012:
             if k in ["entity_id", "total_population"]:
                 continue
             concept_name = String(k).pascal
-            dim_idx = {
-                "Region": region_cls[region_id],
-                "Religion": Religion[concept_name],
-                "Count": Int(String(v).int),
-            }
 
             datum = Datum(
-                entity_class=cls.ENTITY_CLASS,
-                time=cls.TIME,
-                **dim_idx,
+                cls.ENTITY_CLASS,
+                dict(
+                    Time=cls.TIME,
+                    District=region_cls[region_id],
+                    Religion=Religion[concept_name],
+                ),
+                dict(Count=Int(String(v).int)),
             )
             datum_list.append(datum)
         return datum_list
@@ -68,9 +65,3 @@ class Census2012:
     @classmethod
     def list(cls) -> list[Datumset]:
         return [cls.get_religion()]
-
-
-if __name__ == "__main__":
-    datumset = Census2012.get_religion()
-    datumset.to_file()
-    print(datumset)

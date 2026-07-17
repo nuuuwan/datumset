@@ -9,3 +9,6 @@ class DatumsetBase:
 
     def __init__(self, *data: Datum):
         object.__setattr__(self, "_value", list(data))
+
+    def __getitem__(self, index):
+        return self._value[index]
