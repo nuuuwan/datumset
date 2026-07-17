@@ -5,8 +5,7 @@ class DatumsetMatchMixin:
     def _find_matching_datum_sublist(self, query):
         matching_datum_sublist = []
         for datam in self._value:
-            candidate_match = datam.is_match(query)
-            if candidate_match:
+            if datam.is_match(query):
                 matching_datum_sublist.append(datam)
         return matching_datum_sublist
 

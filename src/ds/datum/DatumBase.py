@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 
 from ds.thing.concept.Concept import Concept
-from ds.thing.entity.Entity import Entity
 
 
 @dataclass
@@ -16,7 +15,6 @@ class DatumBase:
         dim_idx: dict[str, Concept],
         cell_idx: dict[str, Concept],
     ):
-        assert issubclass(entity_class, Entity)
         object.__setattr__(self, "entity_class", entity_class)
         object.__setattr__(self, "dim_idx", dim_idx)
         object.__setattr__(self, "cell_idx", cell_idx)
