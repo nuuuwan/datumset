@@ -1,4 +1,4 @@
-from typing import Generator
+from functools import cache
 
 from ds.datum.Datum import Datum
 from ds.datumset.Datumset import Datumset
@@ -6,7 +6,7 @@ from ds.thing.concept.Int import Int
 from ds.thing.concept.region.RegionFactory import RegionFactory
 from ds.thing.concept.Time import Time
 from ds.thing.ThingFactory import ThingFactory
-from utils_future import WWW, Directory, Log, String, TSVFile
+from utils_future import WWW, Directory, JSONFile, Log, String, TSVFile
 
 log = Log("Census2012")
 
@@ -75,28 +75,22 @@ class Census2012:
     _list_cache = None
 
     @classmethod
-    def gen_list(cls) -> Generator[Datumset, None, None]:
-        if cls._list_cache is not None:
-            return cls._list_cache
-        for (
-            entity_class_name,
-            measurement_class_name,
-            measurement_id,
-            region_group_id,
-        ) in [
-            ["Person", "Religion", "population-religion", "regions"],
-            [
-                "Person",
-                "IsEconomicallyActive",
-                "economy-economic-activity",
-                "regions",
-            ],
-            ["Person", "Ethnicity", "population-ethnicity", "regions"],
-        ]:
-            datumset = cls.get_datumset(
-                entity_class_name,
-                measurement_class_name,
-                measurement_id,
-                region_group_id,
-            )
-            yield datumset
+    @cache
+    def get_metadata(cls):
+        return JSONFile("src", "ds", "db", "census2012.metadata.json").read()
+
+    @classmethod
+    def gen_list(cls):
+        if cls._list_cache is None:
+            result = []
+            for item in cls.get_metadata():
+                result.append(
+                    cls.get_datumset(
+                        item["entity_class_name"],
+                        item["measurement_class_name"],
+                        item["measurement_id"],
+                        item["region_group_id"],
+                    )
+                )
+            cls._list_cache = result
+        yield from cls._list_cache

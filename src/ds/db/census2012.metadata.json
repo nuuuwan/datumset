@@ -1,0 +1,20 @@
+[
+  {
+    "entity_class_name": "Person",
+    "measurement_class_name": "Religion",
+    "measurement_id": "population-religion",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "Person",
+    "measurement_class_name": "IsEconomicallyActive",
+    "measurement_id": "economy-economic-activity",
+    "region_group_id": "regions"
+  },
+  {
+    "entity_class_name": "Person",
+    "measurement_class_name": "Ethnicity",
+    "measurement_id": "population-ethnicity",
+    "region_group_id": "regions"
+  }
+]
