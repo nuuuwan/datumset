@@ -7,15 +7,6 @@ log = Log("DatumsetSerializeMixin")
 
 
 class DatumsetSerializeMixin:
-    @cached_property
-    def dir_data(self):
-        dir_data = Directory("data", self.query.query_str)
-        dir_data.make()
-        return dir_data
-
-    @cached_property
-    def data_file(self):
-        return JSONFile(self.dir_data.path, "data.json")
 
     def to_data(self):
         shallow_d = ShallowDict()
