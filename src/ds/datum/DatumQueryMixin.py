@@ -1,3 +1,5 @@
+from functools import cache
+
 from propcache import cached_property
 
 from ds.query.Query import Query
@@ -5,6 +7,7 @@ from ds.query.Query import Query
 
 class DatumQueryMixin:
 
+    @cache
     def _infer_query(self) -> Query:
         query = Query.from_parts(
             (self.entity_class.__name__,),
