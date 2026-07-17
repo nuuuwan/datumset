@@ -1,4 +1,5 @@
 from ds.thing.concept.Int import Int
+from ds.thing.concept.IsEconomicallyActive import IsEconomicallyActive
 from ds.thing.concept.region.RegionFactory import RegionFactory
 from ds.thing.concept.Religion import Religion
 from ds.thing.concept.Time import Time
@@ -22,6 +23,7 @@ class ThingFactory:
             House=House,
             Int=Int,
             Time=Time,
+            IsEconomicallyActive=IsEconomicallyActive,
         ).get(class_name)
 
         if not entity_class:
