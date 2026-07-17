@@ -2,6 +2,7 @@ from functools import cache
 
 from ds.thing.concept.election.ElectionType import ElectionType
 from ds.thing.concept.election.Party import Party
+from ds.thing.concept.election.Summary import Summary
 from ds.thing.concept.household.CookingFuel import CookingFuel
 from ds.thing.concept.household.FloorType import FloorType
 from ds.thing.concept.household.HouseholdStructure import HouseholdStructure
@@ -59,6 +60,7 @@ class ThingFactory:
         RoofType,
         SolidWasteDisposal,
         SourceOfDrinkingWater,
+        Summary,
         Time,
         ToiletFacilities,
         TypeOfUnit,

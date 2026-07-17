@@ -76,3 +76,42 @@ class TestCase(unittest.TestCase):
         ]:
             with self.assertRaises(ValueError):
                 LankaData[query_str]
+
+    def test_election(self):
+        datumset = LankaData["Vote/ElectionType*Time*ED*Party/Count"]
+        first_datum = datumset[0]
+        self.assertEqual(
+            first_datum.to_data(),
+            {
+                "Vote": {
+                    "ElectionType:Parliamentary": {
+                        "Time:1989": {
+                            "ED:EC-01": {"Party:UNP": {"Count": "Int:374530"}}
+                        }
+                    }
+                }
+            },
+        )
+
+    def test_election_summary(self):
+        datumset = LankaData[
+            "Vote/ElectionType*Time*ED/Electors*Polled*Valid*Rejected"
+        ]
+        first_datum = datumset[0]
+        self.assertEqual(
+            first_datum.to_data(),
+            {
+                "Vote": {
+                    "ElectionType:Parliamentary": {
+                        "Time:1989": {
+                            "ED:EC-01": {
+                                "Electors": "Int:1087891",
+                                "Polled": "Int:760113",
+                                "Valid": "Int:724842",
+                                "Rejected": "Int:35271",
+                            }
+                        }
+                    }
+                }
+            },
+        )

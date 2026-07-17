@@ -36,7 +36,11 @@ class Elections:
         r_name = region_cls.__name__
         return Datum(
             entity_cls,
-            {**extra_dims, "Time": time_concept, r_name: region_instance},
+            {
+                **extra_dims,
+                "Time": time_concept,
+                r_name: region_instance,
+            },
             {
                 String(k).pascal: Int(
                     int(float(d.get(k, "0").strip().replace(",", "") or "0"))
