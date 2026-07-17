@@ -95,7 +95,7 @@ class TestCase(unittest.TestCase):
 
     def test_election_summary(self):
         datumset = LankaData[
-            "Vote/ElectionType*Time*ED/Electors*Polled*Valid*Rejected"
+            "Vote/ElectionType*Time*PD/Electors*Polled*Valid*Rejected"
         ]
         first_datum = datumset[0]
         self.assertEqual(
@@ -104,11 +104,11 @@ class TestCase(unittest.TestCase):
                 "Vote": {
                     "ElectionType:Parliamentary": {
                         "Time:1989": {
-                            "ED:EC-01": {
-                                "Electors": "Int:1087891",
-                                "Polled": "Int:760113",
-                                "Valid": "Int:724842",
-                                "Rejected": "Int:35271",
+                            "PD:EC-01A": {
+                                "Electors": "Int:53356",
+                                "Polled": "Int:35640",
+                                "Valid": "Int:33180",
+                                "Rejected": "Int:2460",
                             }
                         }
                     }
