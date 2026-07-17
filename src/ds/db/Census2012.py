@@ -13,12 +13,9 @@ class Census2012:
     TIME = Time("2012")
 
     @classmethod
-    def get_datum_list_from_d(cls, d, entity_cls, measurement_cls):
+    def _get_datum_list_from_d(cls, d, entity_cls, measurement_cls):
         region_id = d["entity_id"]
-        try:
-            region_cls = RegionFactory.from_region_id(region_id)
-        except Exception:
-            return None
+        region_cls = RegionFactory.from_region_id(region_id)
 
         region_cls_name = region_cls.__name__
         region_instance = region_cls[region_id]
@@ -67,7 +64,7 @@ class Census2012:
         datum_list = []
         d_list = tsv_file.read()
         for d in d_list:
-            datum_list_for_d = cls.get_datum_list_from_d(
+            datum_list_for_d = cls._get_datum_list_from_d(
                 d, entity_cls, measurement_cls
             )
             if datum_list_for_d:
