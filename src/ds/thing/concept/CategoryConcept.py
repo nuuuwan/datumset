@@ -9,11 +9,13 @@ from ds.thing.concept.Concept import Concept
 class CategoryConcept(Concept):
 
     @classmethod
+    @cache
     @abstractmethod
     def list(cls):
         pass  # pragma: no cover
 
     @classmethod
+    @cache
     def idx(cls):
         return {m._value: m for m in cls.list()}
 
@@ -26,5 +28,6 @@ class CategoryConcept(Concept):
         return idx[value]
 
     @classmethod
+    @cache
     def __class_getitem__(cls, value: str):
         return cls.from_value(value)
