@@ -14,7 +14,7 @@ class Census2012:
 
     @classmethod
     def get_datum_list_from_d(cls, d):
-        concept_idx = {}
+        dim_idx = {}
 
         region_id = d["entity_id"]
         try:
@@ -27,7 +27,7 @@ class Census2012:
             if k in ["entity_id", "total_population"]:
                 continue
             concept_name = String(k).pascal
-            concept_idx = {
+            dim_idx = {
                 "Region": region_cls[region_id],
                 "Religion": Religion[concept_name],
                 "Count": Int(String(v).int),
@@ -36,7 +36,7 @@ class Census2012:
             datum = Datum(
                 entity_class=cls.ENTITY_CLASS,
                 time=cls.TIME,
-                **concept_idx,
+                **dim_idx,
             )
             datum_list.append(datum)
         return datum_list

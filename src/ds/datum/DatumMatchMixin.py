@@ -12,30 +12,23 @@ class DatumMatchMixin:
                 return entity_class_name
         return False
 
-    def is_match_time(self, time_part: str) -> bool:
-        time_values = time_part.split(Query.OPR_ADD)
-        for time_value in time_values:
-            if self.time.is_match(time_value):
-                return time_value
-        return False
-
-    def get_concept_labels(self) -> list[str]:
-        return list(self.concept_idx.keys())
-
-    def is_match_concept_idx(self, concept_part: str) -> bool:
+    def is_match_dim_idx(self, concept_part: str) -> bool:
+        dim_labels = list(self.dim_idx.keys())
         labels_required = concept_part.split(Query.OPR_MULT)
-        if labels_required != self.get_concept_labels():
+        if labels_required != dim_labels:
+            return False
+        return True
+
+    def is_match_cell_idx(self, cell_part: str) -> bool:
+        cell_labels = list(self.cell_idx.keys())
+        labels_required = cell_part.split(Query.OPR_MULT)
+        if labels_required != cell_labels:
             return False
         return True
 
     def is_match(self, query: Query) -> bool:
-        time_part = self.is_match_time(query.time_part)
-        entity_part = self.is_match_entity(query.entity_part)
-        concept_part = self.is_match_concept_idx(query.concept_part)
-        if not (time_part and entity_part and concept_part):
-            return None
-        return dict(
-            entity=entity_part,
-            time=time_part,
-            concept=concept_part,
+        return (
+            self.is_match_entity(query.entity_part)
+            and self.is_match_dim_idx(query.concept_part)
+            and self.is_match_cell_idx(query.cell_part)
         )
