@@ -19,19 +19,20 @@ class Census2012:
             return None
 
         region_cls_name = region_cls.__name__
+        region_instance = region_cls[region_id]
+        measurement_cls_name = measurement_cls.__name__
+        skip = {"entity_id", "total_population", "region_id"}
 
         datum_list = []
         for k, v in d.items():
-            if k in ["entity_id", "total_population", "region_id"]:
+            if k in skip:
                 continue
-            concept_name = String(k).pascal
-
             datum = Datum(
                 entity_cls,
                 {
                     "Time": cls.TIME,
-                    region_cls_name: region_cls[region_id],
-                    measurement_cls.__name__: measurement_cls[concept_name],
+                    region_cls_name: region_instance,
+                    measurement_cls_name: measurement_cls[String(k).pascal],
                 },
                 dict(Count=Int(String(v).int)),
             )
