@@ -87,6 +87,7 @@ class Census2012:
                 "economy-economic-activity",
                 "regions",
             ],
+            ["Person", "Ethnicity", "population-ethnicity", "regions"],
         ]:
             datumset = cls.get_datumset(
                 entity_class_name,

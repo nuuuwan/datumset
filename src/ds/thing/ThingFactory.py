@@ -1,3 +1,4 @@
+from ds.thing.concept.Ethnicity import Ethnicity
 from ds.thing.concept.Int import Int
 from ds.thing.concept.IsEconomicallyActive import IsEconomicallyActive
 from ds.thing.concept.region.RegionFactory import RegionFactory
@@ -19,6 +20,7 @@ class ThingFactory:
 
         entity_class = dict(
             Religion=Religion,
+            Ethnicity=Ethnicity,
             Person=Person,
             House=House,
             Int=Int,
