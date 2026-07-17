@@ -37,7 +37,7 @@ class TestCase(unittest.TestCase):
 
     def test_invalid(self):
         for query_str in [
-            "Person/Time*GND*Religion/Count",
+            "Person/Time*GND*Religion1/Count",
             "Person/Time*DSD*Ethnicity1/Count",
         ]:
             with self.assertRaises(ValueError):

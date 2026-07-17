@@ -6,7 +6,9 @@ from ds.thing.concept.Int import Int
 from ds.thing.concept.region.RegionFactory import RegionFactory
 from ds.thing.concept.Time import Time
 from ds.thing.ThingFactory import ThingFactory
-from utils_future import WWW, Directory, String, TSVFile
+from utils_future import WWW, Directory, Log, String, TSVFile
+
+log = Log("Census2012")
 
 
 class Census2012:
@@ -15,10 +17,15 @@ class Census2012:
     @classmethod
     def _get_datum_list_from_d(cls, d, entity_cls, measurement_cls):
         region_id = d["entity_id"]
-        region_cls = RegionFactory.from_region_id(region_id)
-
+        try:
+            region_cls = RegionFactory.from_region_id(region_id)
+        except ValueError:
+            return None
         region_cls_name = region_cls.__name__
-        region_instance = region_cls[region_id]
+        try:
+            region_instance = region_cls[region_id]
+        except ValueError:
+            return None
         measurement_cls_name = measurement_cls.__name__
         skip = {"entity_id", "total_population", "region_id"}
 

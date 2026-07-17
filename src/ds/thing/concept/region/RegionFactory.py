@@ -1,8 +1,10 @@
 from functools import cache
 
+from ds.thing.concept.region.Country import Country
 from ds.thing.concept.region.District import District
 from ds.thing.concept.region.DSD import DSD
 from ds.thing.concept.region.ED import ED
+from ds.thing.concept.region.GND import GND
 from ds.thing.concept.region.LG import LG
 from ds.thing.concept.region.PD import PD
 from ds.thing.concept.region.Province import Province
@@ -13,7 +15,7 @@ class RegionFactory:
     @classmethod
     @cache
     def from_region_id_to_ec_regions(cls, region_id: str):
-        assert region_id.startswith("EC-"), f"Invalid region_id: {region_id}"
+        assert region_id.startswith("EC"), f"Invalid region_id: {region_id}"
         region_cls = {
             5: ED,
             6: PD,
@@ -25,8 +27,14 @@ class RegionFactory:
     @classmethod
     @cache
     def from_region_id_for_admin_region(cls, region_id: str):
-        assert region_id.startswith("LK-"), f"Invalid region_id: {region_id}"
-        region_cls = {4: Province, 5: District, 7: DSD}.get(len(region_id))
+        assert region_id.startswith("LK"), f"Invalid region_id: {region_id}"
+        region_cls = {
+            2: Country,
+            4: Province,
+            5: District,
+            7: DSD,
+            10: GND,
+        }.get(len(region_id))
         if not region_cls:
             raise ValueError(f"Unknown region_id: {region_id}")
         return region_cls
@@ -34,11 +42,11 @@ class RegionFactory:
     @classmethod
     @cache
     def from_region_id(cls, region_id: str):
-        if region_id.startswith("LK-"):
+        if region_id.startswith("LK"):
             return cls.from_region_id_for_admin_region(region_id)
-        if region_id.startswith("EC-"):
+        if region_id.startswith("EC"):
             return cls.from_region_id_to_ec_regions(region_id)
-        if region_id.startswith("LG-"):
+        if region_id.startswith("LG"):
             return LG
         raise ValueError(f"Unknown region_id: {region_id}")
 
@@ -46,9 +54,11 @@ class RegionFactory:
     @cache
     def __class_getitem__(cls, class_name: str):
         entity_classes = [
+            Country,
             Province,
             District,
             DSD,
+            GND,
             ED,
             PD,
             LG,
