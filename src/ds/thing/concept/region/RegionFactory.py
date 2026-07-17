@@ -4,7 +4,8 @@ from ds.thing.concept.region.Country import Country
 from ds.thing.concept.region.District import District
 from ds.thing.concept.region.DSD import DSD
 from ds.thing.concept.region.ED import ED
-from ds.thing.concept.region.GND import GND
+
+# from ds.thing.concept.region.GND import GND
 from ds.thing.concept.region.LG import LG
 from ds.thing.concept.region.PD import PD
 from ds.thing.concept.region.Province import Province
@@ -33,7 +34,7 @@ class RegionFactory:
             4: Province,
             5: District,
             7: DSD,
-            10: GND,
+            # 10: GND,
         }.get(len(region_id))
         if not region_cls:
             raise ValueError(f"Unknown region_id: {region_id}")
@@ -58,7 +59,7 @@ class RegionFactory:
             Province,
             District,
             DSD,
-            GND,
+            # GND,
             ED,
             PD,
             LG,

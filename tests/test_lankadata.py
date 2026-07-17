@@ -33,6 +33,8 @@ class TestCase(unittest.TestCase):
             "House/Time*District*SourceOfDrinkingWater/Count",
             "House/Time*District*SolidWasteDisposal/Count",
             "House/Time*District*TypeOfUnit/Count",
+            "Vote/ElectionType*Time*ED*Party/Count",
+            "Vote/ElectionType*Time*PD*Party/Count",
         ]:
             ds1 = LankaData[query_str]
             ds2 = Datumset.from_data(ds1.to_data())

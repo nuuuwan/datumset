@@ -11,7 +11,7 @@ if __name__ == "__main__":
         "Person/Time*Country*Religion/Count",
         "Person/Time*Province*Religion/Count",
         "Person/Time*District*Religion/Count",
-        "Person/Time*GND*Religion/Count",
+        # "Person/Time*GND*Religion/Count",
         "Person/Time*ED*Religion/Count",
         "Person/Time*PD*Religion/Count",
         "Person/Time*LG*Religion/Count",

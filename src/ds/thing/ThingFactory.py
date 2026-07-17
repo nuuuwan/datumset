@@ -1,5 +1,7 @@
 from functools import cache
 
+from ds.thing.concept.election.ElectionType import ElectionType
+from ds.thing.concept.election.Party import Party
 from ds.thing.concept.household.CookingFuel import CookingFuel
 from ds.thing.concept.household.FloorType import FloorType
 from ds.thing.concept.household.HouseholdStructure import HouseholdStructure
@@ -29,6 +31,7 @@ from ds.thing.concept.region.RegionFactory import RegionFactory
 from ds.thing.concept.Time import Time
 from ds.thing.entity.House import House
 from ds.thing.entity.Person import Person
+from ds.thing.entity.Vote import Vote
 
 
 class ThingFactory:
@@ -36,6 +39,7 @@ class ThingFactory:
     ENTITY_CLASS_LIST = [
         AgeGroup,
         CookingFuel,
+        ElectionType,
         Ethnicity,
         FloorType,
         Gender,
@@ -49,6 +53,7 @@ class ThingFactory:
         MaritalStatus,
         OccupationStatus,
         OwnershipStatus,
+        Party,
         Person,
         Religion,
         RoofType,
@@ -57,6 +62,7 @@ class ThingFactory:
         Time,
         ToiletFacilities,
         TypeOfUnit,
+        Vote,
         WallType,
     ]
     ENTITY_CLASS_IDX = {cls.__name__: cls for cls in ENTITY_CLASS_LIST}
