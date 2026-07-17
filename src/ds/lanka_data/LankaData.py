@@ -1,7 +1,7 @@
 from functools import cache
 
+from ds.datumset.Datumset import Datumset
 from ds.lanka_data.LankaDataDBMixin import LankaDataDBMixin
-from ds.query.Query import Query
 
 
 class LankaData(LankaDataDBMixin):
@@ -9,12 +9,10 @@ class LankaData(LankaDataDBMixin):
     @classmethod
     @cache
     def __class_getitem__(cls, query_str):
-        query = Query(query_str)
-        for datumset in cls.list():
-            partially_matching_datumset = datumset.is_match(query)
-            if partially_matching_datumset:
-                infered_query = partially_matching_datumset.query
-                assert infered_query == query
-                return partially_matching_datumset
+        datum_list = cls.idx().get(query_str)
+        if datum_list is not None:
+            return Datumset(*datum_list)
 
-        raise ValueError(f'No matching Datumset found for label: "{query}"')
+        raise ValueError(
+            f'No matching Datumset found for label: "{query_str}"'
+        )

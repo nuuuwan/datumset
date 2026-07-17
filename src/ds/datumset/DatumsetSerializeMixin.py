@@ -39,9 +39,5 @@ class DatumsetSerializeMixin:
             datum_list.append(datum)
         return cls(*datum_list)
 
-    def to_file(self):
-        self.data_file.write(self.to_data())
-        log.info(f"Wrote {self.data_file}")
-
     def __eq__(self, other):
         return self.to_data() == other.to_data()
