@@ -11,9 +11,8 @@ class LankaData(LankaDataDBMixin):
             partially_matching_datumset = datumset.is_match(query)
             if partially_matching_datumset:
                 infered_query = partially_matching_datumset.query
-                print(f"{infered_query=}")
-                if infered_query == query:
-                    partially_matching_datumset.to_file()
-                    return partially_matching_datumset
+                assert infered_query == query
+                partially_matching_datumset.to_file()
+                return partially_matching_datumset
 
         raise ValueError(f'No matching Datumset found for label: "{query}"')
