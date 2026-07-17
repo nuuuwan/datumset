@@ -21,11 +21,13 @@ class DatumBase:
         object.__setattr__(self, "dim_idx", dim_idx)
         object.__setattr__(self, "cell_idx", cell_idx)
 
-    def __hash__(self):
-        return hash(
+        self.__hash_value = hash(
             (
                 self.entity_class.__name__,
                 tuple(self.dim_idx.items()),
                 tuple(self.cell_idx.items()),
             )
         )
+
+    def __hash__(self):
+        return self.__hash_value
