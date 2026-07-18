@@ -191,6 +191,16 @@ if __name__ == "__main__":
                 "in_other_district",
             ],
         },
+        {
+            "class_group": "people",
+            "class_name": "EmmigrationReason",
+            "value_list": [
+                "employment",
+                "education",
+                "accompanying_family_member_in_need",
+                "other",
+            ],
+        },
     ]
 
     for spec in specs:

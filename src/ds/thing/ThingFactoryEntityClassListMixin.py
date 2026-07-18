@@ -10,6 +10,7 @@ from ds.thing.concept.region.DSD import DSD
 from ds.thing.concept.region.District import District
 from ds.thing.concept.region.ED import ED
 from ds.thing.concept.election.ElectionType import ElectionType
+from ds.thing.concept.people.EmmigrationReason import EmmigrationReason
 from ds.thing.concept.person.Ethnicity import Ethnicity
 from ds.thing.concept.household.FloorType import FloorType
 from ds.thing.concept.region.GND import GND
@@ -98,12 +99,14 @@ class ThingFactoryEntityClassListMixin:
         TypeOfUnit,
         WallType,
         # --------------------
-        # people (4)
+        # people (5)
         # --------------------
+        EmmigrationReason,
         MigrationDirection,
         MigrationReason,
         MigrationStatus,
         ResidentRelativeToDistrict,
+        #
         # --------------------
         # person (8)
         # --------------------
