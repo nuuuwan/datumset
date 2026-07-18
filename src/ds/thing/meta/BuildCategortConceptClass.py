@@ -28,10 +28,11 @@ class BuildCategortConceptClass:
 
     def get_content_lines(self):
         class_init_list = []
-        for i_value, value in enumerate(self.values, start=1):
-            class_init_list.append(f'cls("{value}"),')
+        for i_value, value in enumerate(self.values, start=0):
             if i_value % 5 == 0:
                 class_init_list.append("#")
+            class_init_list.append(f'cls("{value}"),')
+
         class_init_list = "\n            ".join(class_init_list)
 
         content_lines = [
@@ -116,6 +117,17 @@ if __name__ == "__main__":
                 "School Attendance/ Attend in educational",
                 "Vocational & Apprenticeship qualification",
             ],
+        },
+        {
+            "class_group": "government",
+            "class_name": "AdministrativeEntity",
+            "value_to_value": {
+                "assistant_government_agend_divisions": 10,
+                "grama_sevaka_divisions": 230,
+                "municipal_councils": 0,
+                "urban_councils": 4,
+                "town_councils": 6,
+            },
         },
     ]
 

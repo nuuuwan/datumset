@@ -6,6 +6,7 @@ class CensusOfficer(CategoryConcept):
     @classmethod
     def list(cls):
         return [
+            #
             cls("DeputyCensusCommissioners"),
             cls("AssistantCensusCommissioners"),
             cls("TechnicalStaffZonalSupervisorsAndDistrictStatisticalBranchHead"),

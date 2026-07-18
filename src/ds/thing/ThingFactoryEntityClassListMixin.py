@@ -1,3 +1,4 @@
+from ds.thing.concept.government.AdministrativeEntity import AdministrativeEntity
 from ds.thing.concept.person.AgeGroup import AgeGroup
 from ds.thing.concept.Bool import Bool
 from ds.thing.entity.Census import Census
@@ -67,6 +68,10 @@ class ThingFactoryEntityClassListMixin:
         House,
         Person,
         Vote,
+        # --------------------
+        # government (1)
+        # --------------------
+        AdministrativeEntity,
         # --------------------
         # household (13)
         # --------------------

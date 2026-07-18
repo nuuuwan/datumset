@@ -6,6 +6,7 @@ class CensusTopic(CategoryConcept):
     @classmethod
     def list(cls):
         return [
+            #
             cls("Schedule"),
             cls("DemographicAndPersonalInformation"),
             cls("Name"),
@@ -35,5 +36,4 @@ class CensusTopic(CategoryConcept):
             cls("EducationalAttainmentOrHighestLevelOf"),
             cls("SchoolAttendanceOrAttendInEducational"),
             cls("VocationalAndApprenticeshipQualification"),
-            #
         ]
