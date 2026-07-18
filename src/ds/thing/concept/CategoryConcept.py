@@ -22,9 +22,13 @@ class CategoryConcept(Concept):
     @classmethod
     @cache
     def from_value(cls, value: str):
+        value = value.replace("Population", "")
         idx = cls.idx()
         if value not in idx:
-            raise ValueError(f"Invalid label: {value}")
+            raise ValueError(
+                f"Invalid label: {value} for {cls.__name__}."
+                + f" Valid labels: {list(idx.keys())}"
+            )
         return idx[value]
 
     @classmethod

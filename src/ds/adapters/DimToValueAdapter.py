@@ -7,7 +7,7 @@ from ds.thing.ThingFactory import ThingFactory
 from utils_future import String
 
 
-class DimToTimeToValueAdapter:
+class DimToValueAdapter:
 
     @classmethod
     def _build_datum_list_from_d(
@@ -16,24 +16,22 @@ class DimToTimeToValueAdapter:
         entity_cls,
         dim_cls,
         dim_class_key,
+        value_cls,
         value_label,
     ):
-        dim1_value = d[dim_class_key]
+        dim_value = d[dim_class_key]
         if not issubclass(dim_cls, Region):
-            dim1_value = String(dim1_value).pascal
-        dim1 = dim_cls[dim1_value]
+            dim_value = String(dim_value).pascal
+        dim = dim_cls[dim_value]
 
         datum_list = []
-        for k, v in d["values"].items():
-            time_str = k.split("_")[-1]
-            time = Time(time_str)
+        for _, v in d["values"].items():
             datum = Datum(
                 entity_cls,
                 {
-                    dim_cls.__name__: dim1,
-                    "Time": time,
+                    dim_cls.__name__: dim,
                 },
-                {value_label: Bool(v)},
+                {value_label: value_cls(v)},
             )
             datum_list.append(datum)
         return datum_list
@@ -45,10 +43,12 @@ class DimToTimeToValueAdapter:
         entity_class_name,
         dim_class_name,
         dim_class_key,
+        value_class_name,
         value_label,
     ):
         entity_cls = ThingFactory[entity_class_name]
         dim_cls = ThingFactory[dim_class_name]
+        value_cls = ThingFactory[value_class_name]
 
         datum_list = []
         for d in d_list:
@@ -58,6 +58,7 @@ class DimToTimeToValueAdapter:
                     entity_cls,
                     dim_cls,
                     dim_class_key,
+                    value_cls,
                     value_label,
                 )
             )
