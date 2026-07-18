@@ -141,6 +141,23 @@
   },
   {
     "class_group": "person",
+    "class_name": "AgeGroupIn5YearIntervalsUpto49Years",
+    "value_list": [
+      "00_to_04_years",
+      "05_to_09_years",
+      "10_14_years",
+      "15_to_19_years",
+      "20_to_24_years",
+      "25_to_29_years",
+      "30_to_34_years",
+      "35_to_39_years",
+      "40_to_44_years",
+      "45_to_49_years",
+      "49_years_and_over"
+    ]
+  },
+  {
+    "class_group": "person",
     "class_name": "AgeGroupUnderAndOver18Years",
     "value_list": ["Under_18_years", "18_years_and_over"]
   },
