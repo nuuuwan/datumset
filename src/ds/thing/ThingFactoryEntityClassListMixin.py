@@ -1,5 +1,9 @@
 from ds.thing.concept.government.AdministrativeEntity import AdministrativeEntity
 from ds.thing.concept.person.AgeGroup import AgeGroup
+from ds.thing.concept.person.AgeGroupIn5YearIntervalsUpto60 import AgeGroupIn5YearIntervalsUpto60
+from ds.thing.concept.person.AgeGroupIn5YearIntervalsUpto60Years import AgeGroupIn5YearIntervalsUpto60Years
+from ds.thing.concept.person.AgeGroupOverAndUnder18 import AgeGroupOverAndUnder18
+from ds.thing.concept.person.AgeGroupUnderAndOver18Years import AgeGroupUnderAndOver18Years
 from ds.thing.concept.atom.Bool import Bool
 from ds.thing.entity.Census import Census
 from ds.thing.concept.census.CensusOfficer import CensusOfficer
@@ -106,21 +110,26 @@ class ThingFactoryEntityClassListMixin:
         TypeOfUnit,
         WallType,
         # --------------------
-        # person (13)
+        # person (17)
         # --------------------
         AgeGroup,
+        AgeGroupIn5YearIntervalsUpto60,
+        AgeGroupIn5YearIntervalsUpto60Years,
+        AgeGroupOverAndUnder18,
+        AgeGroupUnderAndOver18Years,
+        #
         EmmigrationReason,
         Ethnicity,
         Gender,
         HighestEducationLevel,
-        #
         IsEconomicallyActive,
+        #
         MaritalStatus,
         MigrationDirection,
         MigrationReason,
         MigrationStatus,
-        #
         Religion,
+        #
         ResidentRelativeToDistrict,
         Sex,
         # --------------------
