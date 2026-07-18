@@ -6,7 +6,7 @@ class EmmigrationReason(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            # 0 - 3
+            # 1 - 4
             cls("Employment"),
             cls("Education"),
             cls("AccompanyingFamilyMemberInNeed"),

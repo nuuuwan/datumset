@@ -6,13 +6,13 @@ class MigrationReason(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            # 0 - 4
+            # 1 - 5
             cls("Marriage"),
             cls("EmploymentSearchingForJob"),
             cls("Education"),
             cls("AccompaniedAFamilyMember"),
             cls("ReturningForPermanentResidence"),
-            # 5 - 8
+            # 6 - 9
             cls("DevelopmentProjects"),
             cls("ResettledAfterDisplacement"),
             cls("ADisasterADisplacedHappenedInThePriorPlace"),

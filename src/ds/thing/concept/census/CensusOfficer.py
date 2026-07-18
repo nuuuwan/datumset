@@ -6,13 +6,13 @@ class CensusOfficer(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            # 0 - 4
+            # 1 - 5
             cls("DeputyCensusCommissioners"),
             cls("AssistantCensusCommissioners"),
             cls("TechnicalStaffZonalSupervisorsAndDistrictStatisticalBranchHead"),
             cls("TechnicalStaffDivisionalCensusOfficer"),
             cls("TechnicalStaffAreaSupervisors"),
-            # 5 - 8
+            # 6 - 9
             cls("TechnicalStaffCircleOfficers"),
             cls("OtherNonTechnicalStaff"),
             cls("EnumeratorsWhoUsedTabletComputersCapi"),

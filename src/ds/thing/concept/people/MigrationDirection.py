@@ -6,7 +6,7 @@ class MigrationDirection(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            # 0 - 1
+            # 1 - 2
             cls("InMigrants"),
             cls("OutMigrants"),
         ]

@@ -30,8 +30,8 @@ class BuildCategortConceptClass:
         class_init_list = []
         for i_value, value in enumerate(self.values, start=0):
             if i_value % 5 == 0:
-                min_value = i_value
-                max_value = min(i_value + 4, len(self.values) - 1)
+                min_value = i_value + 1
+                max_value = min(i_value + 5, len(self.values))
                 class_init_list.append(f"# {min_value} - {max_value}")
             class_init_list.append(f'cls("{value}"),')
 

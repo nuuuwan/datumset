@@ -6,7 +6,7 @@ class ResidentRelativeToDistrict(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            # 0 - 1
+            # 1 - 2
             cls("InDistrict"),
             cls("InOtherDistrict"),
         ]

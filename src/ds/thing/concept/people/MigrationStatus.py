@@ -6,7 +6,7 @@ class MigrationStatus(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            # 0 - 2
+            # 1 - 3
             cls("Local"),
             cls("Foreign"),
             cls("Migrant"),

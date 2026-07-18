@@ -6,7 +6,7 @@ class Sector(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            # 0 - 4
+            # 1 - 5
             cls("Urban"),
             cls("Rural"),
             cls("Estate"),

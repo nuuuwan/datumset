@@ -6,31 +6,31 @@ class CensusTopic(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            # 0 - 4
+            # 1 - 5
             cls("Schedule"),
             cls("DemographicAndPersonalInformation"),
             cls("Name"),
             cls("RelationshipToHeadOfTheHousehold"),
             cls("Sex"),
-            # 5 - 9
+            # 6 - 10
             cls("DateOfBirth"),
             cls("Age"),
             cls("MaritalStatus"),
             cls("EthnicGroup"),
             cls("Religion"),
-            # 10 - 14
+            # 11 - 15
             cls("Citizenship"),
             cls("NICNo"),
             cls("StatusOfClergyOrPriest"),
             cls("EducationalCharacteristics"),
             cls("AbilityToSpeakSinhalaAndTamil"),
-            # 15 - 19
+            # 16 - 20
             cls("AbilityToSpeakEnglish"),
             cls("AbilityToSpeakSinhalaEnglishAndTamil"),
             cls("Literacy"),
             cls("EnglishLiteracy"),
             cls("SinhalaEnglishAndTamilLiteracy"),
-            # 20 - 24
+            # 21 - 25
             cls("ComputerLiteracy"),
             cls("DigitalLiteracy"),
             cls("EducationalAttainmentOrHighestLevelOf"),
