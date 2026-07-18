@@ -1,6 +1,8 @@
 from ds.thing.concept.person.AgeGroup import AgeGroup
+from ds.thing.concept.Bool import Bool
 from ds.thing.entity.Census import Census
 from ds.thing.concept.census.CensusOfficer import CensusOfficer
+from ds.thing.concept.census.CensusTopic import CensusTopic
 from ds.thing.concept.household.CookingFuel import CookingFuel
 from ds.thing.concept.region.Country import Country
 from ds.thing.concept.region.DSD import DSD
@@ -42,12 +44,14 @@ from ds.thing.concept.household.WallType import WallType
 class ThingFactoryEntityClassListMixin:
     ENTITY_CLASS_LIST = [
         # --------------------
-        # census (1)
+        # census (2)
         # --------------------
         CensusOfficer,
+        CensusTopic,
         # --------------------
-        # concept (2)
+        # concept (3)
         # --------------------
+        Bool,
         Int,
         Time,
         # --------------------

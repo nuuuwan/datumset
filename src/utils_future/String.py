@@ -11,7 +11,15 @@ class String:
 
     @cached_property
     def pascal(self) -> str:
-        return "".join(word.capitalize() for word in self.s.split("_"))
+        s = self.s
+        s = s.replace("&", "_and_")
+        s = s.replace("/", "_or_")
+        s = s.replace(".", "_")
+        s = s.replace(",", "_")
+        s = s.replace(" ", "_")
+        s = s.replace("-", "_")
+
+        return "".join(word.capitalize() for word in s.split("_"))
 
     @cached_property
     def int(self) -> int:

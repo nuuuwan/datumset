@@ -4,19 +4,35 @@ log = Log("BuildCategortConceptClass")
 
 
 class BuildCategortConceptClass:
-    def __init__(self, class_group: str, class_name: str, values: dict):
+    def __init__(
+        self,
+        class_group: str,
+        class_name: str,
+        value_list: list = None,
+        value_to_value: dict = None,
+    ):
         self.class_group = class_group
         self.class_name = class_name
-        self.values = values
+        self.value_list = value_list
+        self.value_to_value = value_to_value
 
     @property
-    def value_list(self):
-        return [String(v).pascal for v in self.values.keys()]
+    def values(self):
+        if self.value_to_value is not None:
+            return [String(v).pascal for v in self.value_to_value.keys()]
+        if self.value_list is not None:
+            return [String(v).pascal for v in self.value_list]
+        raise ValueError(
+            "Either value_list or value_to_value must be provided."
+        )
 
     def get_content_lines(self):
-        class_init_list = "\n            ".join(
-            [f'cls("{value}"),' for value in self.value_list]
-        )
+        class_init_list = []
+        for i_value, value in enumerate(self.values, start=1):
+            class_init_list.append(f'cls("{value}"),')
+            if i_value % 5 == 0:
+                class_init_list.append("#")
+        class_init_list = "\n            ".join(class_init_list)
 
         content_lines = [
             "# 🤖 via BuildCategortConceptClass.py",
@@ -58,7 +74,7 @@ if __name__ == "__main__":
         {
             "class_group": "census",
             "class_name": "CensusOfficer",
-            "values": {
+            "value_to_value": {
                 "deputy_census_commissioners": 14,
                 "assistant_census_commissioners": 14,
                 "technical_staff_zonal_supervisors_and_district_statistical_branch_head": 18,
@@ -69,13 +85,45 @@ if __name__ == "__main__":
                 "enumerators_who_used_tablet_computers_capi": 1104,
                 "enumerators_who_used_smart_phones_byoad": 1986,
             },
-        }
+        },
+        {
+            "class_group": "census",
+            "class_name": "CensusTopic",
+            "value_list": [
+                "schedule",
+                "Demographic and Personal Information",
+                "Name",
+                "Relationship to head of the household",
+                "Sex",
+                "Date of birth",
+                "Age",
+                "Marital Status",
+                "Ethnic group",
+                "Religion",
+                "Citizenship",
+                "N.I.C. No.",
+                "Status of clergy/priest",
+                "Educational Characteristics",
+                "Ability to speak Sinhala & Tamil",
+                "Ability to speak English",
+                "Ability to speak Sinhala, English & Tamil",
+                "Literacy",
+                "English Literacy",
+                "Sinhala, English & Tamil Literacy",
+                "Computer Literacy",
+                "Digital Literacy",
+                "Educational attainment/Highest level of",
+                "School Attendance/ Attend in educational",
+                "Vocational & Apprenticeship qualification",
+            ],
+        },
     ]
 
     for spec in specs:
         builder = BuildCategortConceptClass(
             spec["class_group"],
             spec["class_name"],
-            spec["values"],
+            value_list=spec.get("value_list"),
+            value_to_value=spec.get("value_to_value"),
         )
         builder.build()
