@@ -25,7 +25,7 @@ class TestCase(unittest.TestCase):
         datumset = RegionValueAdapter.build_datumset(
             d_list,
             entity_cls=Person,
-            year=2024,
+            time_str=2024,
             region_id_field="region_id",
             measurement_cls=Religion,
         )

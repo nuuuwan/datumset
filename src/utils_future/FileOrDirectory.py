@@ -44,3 +44,7 @@ class FileOrDirectory(ABC):
     @cached_property
     def short_str(self):
         return f"{self.short_path} ({self.size_human_readable()})"
+
+    def open(self, app=None):
+        app = app or "open"
+        os.system(f'{app} "{self.path}"')
