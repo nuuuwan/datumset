@@ -21,8 +21,14 @@ class CategoryConcept(Concept):
 
     @classmethod
     @cache
+    def map_alias(cls, value):
+        return value
+
+    @classmethod
+    @cache
     def from_value(cls, value: str):
         value = value.replace("Population", "")
+        value = cls.map_alias(value)
         idx = cls.idx()
         if value not in idx:
             raise ValueError(

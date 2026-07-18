@@ -25,12 +25,19 @@ class StandardTableAdapter:
         row_value = d[row_dim_key]
         try:
             row_dim_instance = row_dim_cls.from_value(row_value)
-        except Exception as e:
-            log.warning(f'Failed to create "{row_value}": {e}')
-            return []
+        except ValueError as e:
+            try:
+                row_dim_instance = row_dim_cls.from_value(
+                    String(row_value).pascal
+                )
+            except ValueError as e2:
+                log.warning(f'Failed to create "{row_value}": {e}/{e2}')
+                return []
 
         datum_list = []
         for k, v in d["values"].items():
+            if "total" in k.lower():
+                continue
             if col_dim_cls:
                 col_dim_instance = (
                     ThingFactory.from_kvpair(k)

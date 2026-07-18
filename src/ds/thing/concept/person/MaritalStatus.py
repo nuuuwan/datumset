@@ -8,6 +8,7 @@ class MaritalStatus(CategoryConcept):
             cls("NeverMarried"),
             cls("MarriedRegistered"),
             cls("MarriedCustomary"),
+            cls("Married"),
             cls("Widowed"),
             cls("Divorced"),
             cls("LegallySeparated"),
