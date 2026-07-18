@@ -1,5 +1,6 @@
 from ds.thing.concept.government.AdministrativeEntity import AdministrativeEntity
 from ds.thing.concept.person.AgeGroup import AgeGroup
+from ds.thing.concept.person.AgeGroupCustom import AgeGroupCustom
 from ds.thing.concept.person.AgeGroupIn5YearIntervalsUpto49Years import AgeGroupIn5YearIntervalsUpto49Years
 from ds.thing.concept.person.AgeGroupIn5YearIntervalsUpto60Years import AgeGroupIn5YearIntervalsUpto60Years
 from ds.thing.concept.person.AgeGroupUnderAndOver18Years import AgeGroupUnderAndOver18Years
@@ -126,38 +127,39 @@ class ThingFactoryEntityClassListMixin:
         #
         WallType,
         # --------------------
-        # person (26)
+        # person (27)
         # --------------------
         AgeGroup,
+        AgeGroupCustom,
         AgeGroupIn5YearIntervalsUpto49Years,
         AgeGroupIn5YearIntervalsUpto60Years,
         AgeGroupUnderAndOver18Years,
-        AgeGroupWorking,
         #
+        AgeGroupWorking,
         DisabilityTypes,
         EconomicInactivityReason,
         EducationActivity,
         EmmigrationReason,
-        EmploymentStatus,
         #
+        EmploymentStatus,
         Ethnicity,
         Gender,
         HighestEducationLevel,
         HighestEducationLevel2,
-        IsEconomicallyActive,
         #
+        IsEconomicallyActive,
         LanguageLiteracy,
         LiveBirths,
         MaritalStatus,
         MigrationDirection,
-        MigrationReason,
         #
+        MigrationReason,
         MigrationStatus,
         NonCommunicableDisease,
         Religion,
         ResidentRelativeToDistrict,
-        Sex,
         #
+        Sex,
         SingleOrMultipleDisabilities,
         # --------------------
         # region (8)
