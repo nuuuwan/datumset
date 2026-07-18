@@ -13,8 +13,8 @@ class Thing(ABC):
         return f"{self.__class__.__name__}:{self._value}"
 
     @classmethod
-    def from_value(cls, data):
-        return cls(data)
+    def from_value(cls, value):
+        return cls(value)
 
     def get_value(self):
         return self._value
