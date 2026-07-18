@@ -12,6 +12,7 @@ from ds.thing.concept.region.DSD import DSD
 from ds.thing.concept.person.DisabilityTypes import DisabilityTypes
 from ds.thing.concept.region.District import District
 from ds.thing.concept.region.ED import ED
+from ds.thing.concept.person.EducationActivity import EducationActivity
 from ds.thing.concept.election.ElectionType import ElectionType
 from ds.thing.concept.person.EmmigrationReason import EmmigrationReason
 from ds.thing.concept.person.Ethnicity import Ethnicity
@@ -111,26 +112,27 @@ class ThingFactoryEntityClassListMixin:
         TypeOfUnit,
         WallType,
         # --------------------
-        # person (18)
+        # person (19)
         # --------------------
         AgeGroup,
         AgeGroupIn5YearIntervalsUpto60Years,
         AgeGroupUnderAndOver18Years,
         DisabilityTypes,
-        EmmigrationReason,
+        EducationActivity,
         #
+        EmmigrationReason,
         Ethnicity,
         Gender,
         HighestEducationLevel,
         IsEconomicallyActive,
-        MaritalStatus,
         #
+        MaritalStatus,
         MigrationDirection,
         MigrationReason,
         MigrationStatus,
         NonCommunicableDisease,
-        Religion,
         #
+        Religion,
         ResidentRelativeToDistrict,
         Sex,
         SingleOrMultipleDisabilities,

@@ -181,5 +181,17 @@
       "Epilepsy",
       "Thalassemia"
     ]
+  },
+  {
+    "class_group": "person",
+    "class_name": "EducationActivity",
+    "value_list": [
+      "Preschool education",
+      "School education",
+      "Degree/Postgraduate education",
+      "Vocational training/Technical education",
+      "Other educational activity",
+      "Not studying"
+    ]
   }
 ]
