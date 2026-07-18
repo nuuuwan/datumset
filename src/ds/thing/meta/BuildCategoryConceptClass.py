@@ -84,6 +84,6 @@ if __name__ == "__main__":
             spec["class_group"],
             spec["class_name"],
             value_list=spec.get("value_list"),
-            value_to_value=spec.get("value_to_value"),
+            value_to_value=spec.get("value_to_value") or spec.get("values"),
         )
         builder.build()

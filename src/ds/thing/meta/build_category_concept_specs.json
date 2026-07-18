@@ -2,7 +2,7 @@
   {
     "class_group": "census",
     "class_name": "CensusOfficer",
-    "value_to_value": {
+    "values": {
       "deputy_census_commissioners": 14,
       "assistant_census_commissioners": 14,
       "technical_staff_zonal_supervisors_and_district_statistical_branch_head": 18,
@@ -48,7 +48,7 @@
   {
     "class_group": "government",
     "class_name": "AdministrativeEntity",
-    "value_to_value": {
+    "values": {
       "assistant_government_agend_divisions": 10,
       "grama_sevaka_divisions": 230,
       "municipal_councils": 0,
@@ -59,7 +59,7 @@
   {
     "class_group": "government",
     "class_name": "Sector",
-    "value_to_value": {
+    "values": {
       "urban": 10,
       "rural": 230,
       "estate": 0,
@@ -70,7 +70,7 @@
   {
     "class_group": "person",
     "class_name": "MigrationStatus",
-    "value_to_value": {
+    "values": {
       "local": 1123880,
       "foreign": 951,
       "migrant": 180877
@@ -79,7 +79,7 @@
   {
     "class_group": "person",
     "class_name": "MigrationDirection",
-    "value_to_value": {
+    "values": {
       "in_migrants": 1123880,
       "out_migrants": 951
     }
@@ -92,7 +92,7 @@
   {
     "class_group": "person",
     "class_name": "MigrationReason",
-    "value_to_value": {
+    "values": {
       "marriage": 0.349,
       "employment_searching_for_job": 0.261,
       "education": 0.043,
@@ -164,7 +164,7 @@
   {
     "class_group": "person",
     "class_name": "DisabilityTypes",
-    "value_to_value": {
+    "values": {
       "difficulty_in_seeing": 194156,
       "difficulty_in_hearing": 76279,
       "difficulty_in_walking_or_climbing_steps": 184771,
@@ -177,7 +177,7 @@
   {
     "class_group": "person",
     "class_name": "SingleOrMultipleDisabilities",
-    "value_to_value": {
+    "values": {
       "with_single_disability": 7643,
       "with_more_than_one_disability": 6713,
       "no_disability": 1780682
@@ -214,7 +214,7 @@
   {
     "class_group": "person",
     "class_name": "LanguageLiteracy",
-    "value_to_value": {
+    "values": {
       "at_least_one_language": 0.985,
       "sinhala": 0.96,
       "tamil": 0.366,
@@ -268,5 +268,32 @@
     "class_group": "household",
     "class_name": "HouseholdSize",
     "value_list": ["0", "1", "2", "3", "4", "5", "6", "7_or_more"]
+  },
+  {
+    "class_group": "household",
+    "class_name": "HouseholdType",
+    "values": {
+      "one_person": 37663,
+      "nuclear": 227856,
+      "extended": 128989,
+      "composite": 3118
+    }
+  },
+  {
+    "class_group": "person",
+    "class_name": "AgeGroupWorking",
+    "values": {
+      "age_below_20": 259,
+      "age_20_64": 259458,
+      "age_65_above": 93246
+    }
+  },
+  {
+    "class_group": "household",
+    "class_name": "HouseholdOccupancy",
+    "values": {
+      "occupied": 259,
+      "permanently_closed_or_vacant": 259458
+    }
   }
 ]

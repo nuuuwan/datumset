@@ -3,6 +3,7 @@ from ds.thing.concept.person.AgeGroup import AgeGroup
 from ds.thing.concept.person.AgeGroupIn5YearIntervalsUpto49Years import AgeGroupIn5YearIntervalsUpto49Years
 from ds.thing.concept.person.AgeGroupIn5YearIntervalsUpto60Years import AgeGroupIn5YearIntervalsUpto60Years
 from ds.thing.concept.person.AgeGroupUnderAndOver18Years import AgeGroupUnderAndOver18Years
+from ds.thing.concept.person.AgeGroupWorking import AgeGroupWorking
 from ds.thing.concept.atom.Bool import Bool
 from ds.thing.entity.Census import Census
 from ds.thing.concept.census.CensusOfficer import CensusOfficer
@@ -26,8 +27,10 @@ from ds.thing.concept.person.Gender import Gender
 from ds.thing.concept.person.HighestEducationLevel import HighestEducationLevel
 from ds.thing.concept.person.HighestEducationLevel2 import HighestEducationLevel2
 from ds.thing.entity.House import House
+from ds.thing.concept.household.HouseholdOccupancy import HouseholdOccupancy
 from ds.thing.concept.household.HouseholdSize import HouseholdSize
 from ds.thing.concept.household.HouseholdStructure import HouseholdStructure
+from ds.thing.concept.household.HouseholdType import HouseholdType
 from ds.thing.concept.atom.Int import Int
 from ds.thing.concept.person.IsEconomicallyActive import IsEconomicallyActive
 from ds.thing.concept.region.LG import LG
@@ -101,57 +104,61 @@ class ThingFactoryEntityClassListMixin:
         AdministrativeEntity,
         Sector,
         # --------------------
-        # household (14)
+        # household (16)
         # --------------------
         CookingFuel,
         FloorType,
+        HouseholdOccupancy,
         HouseholdSize,
         HouseholdStructure,
-        Lighting,
         #
+        HouseholdType,
+        Lighting,
         LivingQuarters,
         OccupationStatus,
         OwnershipStatus,
+        #
         RoofType,
         SolidWasteDisposal,
-        #
         SourceOfDrinkingWater,
         ToiletFacilities,
         TypeOfUnit,
+        #
         WallType,
         # --------------------
-        # person (25)
+        # person (26)
         # --------------------
         AgeGroup,
         AgeGroupIn5YearIntervalsUpto49Years,
         AgeGroupIn5YearIntervalsUpto60Years,
         AgeGroupUnderAndOver18Years,
-        DisabilityTypes,
+        AgeGroupWorking,
         #
+        DisabilityTypes,
         EconomicInactivityReason,
         EducationActivity,
         EmmigrationReason,
         EmploymentStatus,
-        Ethnicity,
         #
+        Ethnicity,
         Gender,
         HighestEducationLevel,
         HighestEducationLevel2,
         IsEconomicallyActive,
-        LanguageLiteracy,
         #
+        LanguageLiteracy,
         LiveBirths,
         MaritalStatus,
         MigrationDirection,
         MigrationReason,
-        MigrationStatus,
         #
+        MigrationStatus,
         NonCommunicableDisease,
         Religion,
         ResidentRelativeToDistrict,
         Sex,
-        SingleOrMultipleDisabilities,
         #
+        SingleOrMultipleDisabilities,
         # --------------------
         # region (8)
         # --------------------
