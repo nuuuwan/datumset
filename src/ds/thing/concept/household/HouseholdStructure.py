@@ -8,10 +8,10 @@ class HouseholdStructure(CategoryConcept):
             cls("SingleHouseSingleFloor"),
             cls("SingleHouseDoubleFloor"),
             cls("SingleHouseMoreThan2Floors"),
-            cls("AttachedHouse/annex"),
+            cls("AttachedHouseOrAnnex"),
             cls("Flat"),
             cls("Condominium"),
             cls("TwinHouse"),
-            cls("RowHouse/LineRoom"),
-            cls("Hut/shanty"),
+            cls("RowHouseOrLineRoom"),
+            cls("HutOrShanty"),
         ]

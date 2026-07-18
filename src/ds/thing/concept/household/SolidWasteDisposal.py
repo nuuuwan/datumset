@@ -10,8 +10,7 @@ class SolidWasteDisposal(CategoryConcept):
             cls("OccupantsBury"),
             cls("OccupantsCompostingSolidWaste"),
             cls(
-                "OccupantsDisposeSolidWasteIntoRoad"
-                "/river/canal/sea/creek/forestEtc"
+                "OccupantsDisposeSolidWasteIntoRoadOrRiverOrCanalOrSeaOrCreekOrForestEtc"
             ),
             cls("Other"),
         ]

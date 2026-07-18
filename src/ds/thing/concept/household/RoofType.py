@@ -10,6 +10,6 @@ class RoofType(CategoryConcept):
             cls("Concrete"),
             cls("ZinkAluminiumSheet"),
             cls("MetalSheet"),
-            cls("Cadjan/palmyrah/straw"),
+            cls("CadjanOrPalmyrahOrStraw"),
             cls("Other"),
         ]

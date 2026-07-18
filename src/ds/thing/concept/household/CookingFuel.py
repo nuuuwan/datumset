@@ -9,6 +9,6 @@ class CookingFuel(CategoryConcept):
             cls("Kerosene"),
             cls("Gas"),
             cls("Electricity"),
-            cls("SawDust/paddyHusk"),
+            cls("SawDustOrPaddyHusk"),
             cls("Other"),
         ]

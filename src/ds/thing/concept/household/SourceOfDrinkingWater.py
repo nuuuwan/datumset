@@ -14,7 +14,7 @@ class SourceOfDrinkingWater(CategoryConcept):
             cls("RuralWaterProjects"),
             cls("TubeWell"),
             cls("Bowser"),
-            cls("River/tank/stream"),
+            cls("RiverOrTankOrStream"),
             cls("RainWater"),
             cls("BottledWater"),
             cls("Other"),

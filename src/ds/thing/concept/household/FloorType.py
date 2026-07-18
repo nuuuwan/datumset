@@ -6,7 +6,7 @@ class FloorType(CategoryConcept):
     def list(cls):
         return [
             cls("Cement"),
-            cls("Tile/granite/terrazo"),
+            cls("TileOrGraniteOrTerrazo"),
             cls("Mud"),
             cls("Wood"),
             cls("Sand"),

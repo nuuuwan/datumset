@@ -6,11 +6,11 @@ class WallType(CategoryConcept):
     def list(cls):
         return [
             cls("Brick"),
-            cls("CementBlock/stone"),
+            cls("CementBlockOrStone"),
             cls("Cabook"),
             cls("SoilBricks"),
             cls("Mud"),
-            cls("Cadjan/palmyrah"),
-            cls("Plank/metalSheet"),
+            cls("CadjanOrPalmyrah"),
+            cls("PlankOrMetalSheet"),
             cls("Other"),
         ]
