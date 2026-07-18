@@ -9,6 +9,7 @@ from ds.thing.concept.census.CensusTopic import CensusTopic
 from ds.thing.concept.household.CookingFuel import CookingFuel
 from ds.thing.concept.region.Country import Country
 from ds.thing.concept.region.DSD import DSD
+from ds.thing.concept.person.DisabilityTypes import DisabilityTypes
 from ds.thing.concept.region.District import District
 from ds.thing.concept.region.ED import ED
 from ds.thing.concept.election.ElectionType import ElectionType
@@ -108,26 +109,27 @@ class ThingFactoryEntityClassListMixin:
         TypeOfUnit,
         WallType,
         # --------------------
-        # person (15)
+        # person (16)
         # --------------------
         AgeGroup,
         AgeGroupIn5YearIntervalsUpto60Years,
         AgeGroupUnderAndOver18Years,
+        DisabilityTypes,
         EmmigrationReason,
-        Ethnicity,
         #
+        Ethnicity,
         Gender,
         HighestEducationLevel,
         IsEconomicallyActive,
         MaritalStatus,
-        MigrationDirection,
         #
+        MigrationDirection,
         MigrationReason,
         MigrationStatus,
         Religion,
         ResidentRelativeToDistrict,
-        Sex,
         #
+        Sex,
         # --------------------
         # region (8)
         # --------------------

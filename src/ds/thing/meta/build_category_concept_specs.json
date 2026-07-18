@@ -143,5 +143,18 @@
     "class_group": "person",
     "class_name": "AgeGroupUnderAndOver18Years",
     "value_list": ["Under_18_years", "18_years_and_over"]
+  },
+  {
+    "class_group": "person",
+    "class_name": "DisabilityTypes",
+    "value_to_value": {
+      "difficulty_in_seeing": 194156,
+      "difficulty_in_hearing": 76279,
+      "difficulty_in_walking_or_climbing_steps": 184771,
+      "difficulty_in_remembering_or_concentrating": 85190,
+      "difficulty_in_selfcare_such_as_washing_or_dressing": 65653,
+      "difficulty_in_communicating_with_others": 44483,
+      "no_disability": 1668658
+    }
   }
 ]
