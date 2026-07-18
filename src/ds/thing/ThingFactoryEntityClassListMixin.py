@@ -56,6 +56,7 @@ from ds.thing.concept.household.SolidWasteDisposal import SolidWasteDisposal
 from ds.thing.concept.household.SourceOfDrinkingWater import SourceOfDrinkingWater
 from ds.thing.concept.election.Summary import Summary
 from ds.thing.concept.Time import Time
+from ds.thing.concept.TimeDurationGroup import TimeDurationGroup
 from ds.thing.concept.time.TimeGroup0510More import TimeGroup0510More
 from ds.thing.concept.household.ToiletFacilities import ToiletFacilities
 from ds.thing.concept.household.TypeOfUnit import TypeOfUnit
@@ -78,9 +79,10 @@ class ThingFactoryEntityClassListMixin:
         CensusOfficer,
         CensusTopic,
         # --------------------
-        # concept (1)
+        # concept (2)
         # --------------------
         Time,
+        TimeDurationGroup,
         # --------------------
         # election (3)
         # --------------------
