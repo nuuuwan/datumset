@@ -31,6 +31,7 @@ from ds.thing.concept.person.IsEconomicallyActive import IsEconomicallyActive
 from ds.thing.concept.region.LG import LG
 from ds.thing.concept.person.LanguageLiteracy import LanguageLiteracy
 from ds.thing.concept.household.Lighting import Lighting
+from ds.thing.concept.person.LiveBirths import LiveBirths
 from ds.thing.concept.household.LivingQuarters import LivingQuarters
 from ds.thing.concept.person.MaritalStatus import MaritalStatus
 from ds.thing.concept.person.MigrationDirection import MigrationDirection
@@ -116,7 +117,7 @@ class ThingFactoryEntityClassListMixin:
         TypeOfUnit,
         WallType,
         # --------------------
-        # person (23)
+        # person (24)
         # --------------------
         AgeGroup,
         AgeGroupIn5YearIntervalsUpto60Years,
@@ -134,14 +135,15 @@ class ThingFactoryEntityClassListMixin:
         HighestEducationLevel2,
         IsEconomicallyActive,
         LanguageLiteracy,
-        MaritalStatus,
+        LiveBirths,
         #
+        MaritalStatus,
         MigrationDirection,
         MigrationReason,
         MigrationStatus,
         NonCommunicableDisease,
-        Religion,
         #
+        Religion,
         ResidentRelativeToDistrict,
         Sex,
         SingleOrMultipleDisabilities,
