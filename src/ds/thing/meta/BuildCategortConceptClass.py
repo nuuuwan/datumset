@@ -151,6 +151,14 @@ if __name__ == "__main__":
                 "migrant": 180877,
             },
         },
+        {
+            "class_group": "people",
+            "class_name": "MigrationDirection",
+            "value_to_value": {
+                "in_migrants": 1123880,
+                "out_migrants": 951,
+            },
+        },
     ]
 
     for spec in specs:

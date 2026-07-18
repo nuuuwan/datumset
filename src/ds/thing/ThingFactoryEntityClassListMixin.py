@@ -23,6 +23,7 @@ from ds.thing.concept.region.LG import LG
 from ds.thing.concept.household.Lighting import Lighting
 from ds.thing.concept.household.LivingQuarters import LivingQuarters
 from ds.thing.concept.person.MaritalStatus import MaritalStatus
+from ds.thing.concept.people.MigrationDirection import MigrationDirection
 from ds.thing.concept.people.MigrationStatus import MigrationStatus
 from ds.thing.concept.household.OccupationStatus import OccupationStatus
 from ds.thing.concept.household.OwnershipStatus import OwnershipStatus
@@ -94,8 +95,9 @@ class ThingFactoryEntityClassListMixin:
         TypeOfUnit,
         WallType,
         # --------------------
-        # people (1)
+        # people (2)
         # --------------------
+        MigrationDirection,
         MigrationStatus,
         # --------------------
         # person (8)
