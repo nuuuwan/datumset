@@ -7,7 +7,7 @@ class TimeGroup0510More(CategoryConcept):
     def list(cls):
         return [
             # 1 - 3
-            cls("0004Years"),
-            cls("0509Years"),
+            cls("00To04Years"),
+            cls("05To09Years"),
             cls("10OrMoreYears"),
         ]

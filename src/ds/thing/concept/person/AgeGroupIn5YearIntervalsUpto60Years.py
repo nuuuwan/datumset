@@ -7,20 +7,20 @@ class AgeGroupIn5YearIntervalsUpto60Years(CategoryConcept):
     def list(cls):
         return [
             # 1 - 5
-            cls("0004Years"),
-            cls("0509Years"),
+            cls("00To04Years"),
+            cls("05To09Years"),
             cls("1014Years"),
-            cls("1519Years"),
-            cls("2024Years"),
+            cls("15To19Years"),
+            cls("20To24Years"),
             # 6 - 10
-            cls("2529Years"),
-            cls("3034Years"),
-            cls("3539Years"),
-            cls("4044Years"),
-            cls("4549Years"),
+            cls("25To29Years"),
+            cls("30To34Years"),
+            cls("35To39Years"),
+            cls("40To44Years"),
+            cls("45To49Years"),
             # 11 - 14
-            cls("5054Years"),
-            cls("5559Years"),
-            cls("6064Years"),
+            cls("50To54Years"),
+            cls("55To59Years"),
+            cls("60To64Years"),
             cls("60YearsAndOver"),
         ]

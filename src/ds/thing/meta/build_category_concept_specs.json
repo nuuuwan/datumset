@@ -87,7 +87,7 @@
   {
     "class_group": "time",
     "class_name": "TimeGroup0510More",
-    "value_list": ["00_04_years", "05_09_years", "10_or_more_years"]
+    "value_list": ["00_to_04_years", "05_to_09_years", "10_or_more_years"]
   },
   {
     "class_group": "person",
@@ -123,19 +123,19 @@
     "class_group": "person",
     "class_name": "AgeGroupIn5YearIntervalsUpto60Years",
     "value_list": [
-      "00_04_years",
-      "05_09_years",
+      "00_to_04_years",
+      "05_to_09_years",
       "10_14_years",
-      "15_19_years",
-      "20_24_years",
-      "25_29_years",
-      "30_34_years",
-      "35_39_years",
-      "40_44_years",
-      "45_49_years",
-      "50_54_years",
-      "55_59_years",
-      "60_64_years",
+      "15_to_19_years",
+      "20_to_24_years",
+      "25_to_29_years",
+      "30_to_34_years",
+      "35_to_39_years",
+      "40_to_44_years",
+      "45_to_49_years",
+      "50_to_54_years",
+      "55_to_59_years",
+      "60_to_64_years",
       "60_years_and_over"
     ]
   },
