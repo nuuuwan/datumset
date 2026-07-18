@@ -263,5 +263,10 @@
     "class_group": "person",
     "class_name": "LiveBirths",
     "value_list": ["0", "1", "2", "3", "4", "5", "6", "7_or_more"]
+  },
+  {
+    "class_group": "household",
+    "class_name": "HouseholdSize",
+    "value_list": ["0", "1", "2", "3", "4", "5", "6", "7_or_more"]
   }
 ]

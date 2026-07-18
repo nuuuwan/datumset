@@ -26,6 +26,7 @@ from ds.thing.concept.person.Gender import Gender
 from ds.thing.concept.person.HighestEducationLevel import HighestEducationLevel
 from ds.thing.concept.person.HighestEducationLevel2 import HighestEducationLevel2
 from ds.thing.entity.House import House
+from ds.thing.concept.household.HouseholdSize import HouseholdSize
 from ds.thing.concept.household.HouseholdStructure import HouseholdStructure
 from ds.thing.concept.atom.Int import Int
 from ds.thing.concept.person.IsEconomicallyActive import IsEconomicallyActive
@@ -100,20 +101,21 @@ class ThingFactoryEntityClassListMixin:
         AdministrativeEntity,
         Sector,
         # --------------------
-        # household (13)
+        # household (14)
         # --------------------
         CookingFuel,
         FloorType,
+        HouseholdSize,
         HouseholdStructure,
         Lighting,
-        LivingQuarters,
         #
+        LivingQuarters,
         OccupationStatus,
         OwnershipStatus,
         RoofType,
         SolidWasteDisposal,
-        SourceOfDrinkingWater,
         #
+        SourceOfDrinkingWater,
         ToiletFacilities,
         TypeOfUnit,
         WallType,
