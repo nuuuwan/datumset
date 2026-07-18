@@ -53,7 +53,6 @@ class BuildCategoryConceptClass:
         return content_lines
 
     def build(self):
-        content_lines = self.get_content_lines()
         directory = Directory(
             "src",
             "ds",
@@ -62,11 +61,14 @@ class BuildCategoryConceptClass:
             self.class_group,
         )
         directory.make()
-
         class_file = File(
             directory.path,
             f"{self.class_name}.py",
         )
+        if class_file.exists():
+            return
+        content_lines = self.get_content_lines()
+
         class_file.write("\n".join(content_lines))
         log.info(f"Wrote {class_file}")
 
