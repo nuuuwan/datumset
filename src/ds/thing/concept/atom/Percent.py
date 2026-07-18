@@ -1,5 +1,5 @@
-from ds.thing.concept.Concept import Concept
+from ds.thing.concept.atom.Float import Float
 
 
-class Percent(Concept):
+class Percent(Float):
     pass
