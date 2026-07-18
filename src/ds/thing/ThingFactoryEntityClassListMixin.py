@@ -33,6 +33,7 @@ from ds.thing.concept.election.Party import Party
 from ds.thing.entity.Person import Person
 from ds.thing.concept.region.Province import Province
 from ds.thing.concept.person.Religion import Religion
+from ds.thing.concept.people.ResidentRelativeToDistrict import ResidentRelativeToDistrict
 from ds.thing.concept.household.RoofType import RoofType
 from ds.thing.concept.government.Sector import Sector
 from ds.thing.concept.person.Sex import Sex
@@ -97,11 +98,12 @@ class ThingFactoryEntityClassListMixin:
         TypeOfUnit,
         WallType,
         # --------------------
-        # people (3)
+        # people (4)
         # --------------------
         MigrationDirection,
         MigrationReason,
         MigrationStatus,
+        ResidentRelativeToDistrict,
         # --------------------
         # person (8)
         # --------------------

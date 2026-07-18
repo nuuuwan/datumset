@@ -183,6 +183,14 @@ if __name__ == "__main__":
                 "other": 0.018,
             },
         },
+        {
+            "class_group": "people",
+            "class_name": "ResidentRelativeToDistrict",
+            "value_list": [
+                "in_district",
+                "in_other_district",
+            ],
+        },
     ]
 
     for spec in specs:
