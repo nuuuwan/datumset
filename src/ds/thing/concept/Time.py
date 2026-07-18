@@ -5,4 +5,6 @@ from ds.thing.concept.Concept import Concept
 
 @dataclass(frozen=True)
 class Time(Concept):
-    pass
+    @classmethod
+    def from_value(cls, value: str) -> "Time":
+        return cls(value[-4:])
