@@ -24,6 +24,7 @@ from ds.thing.concept.household.Lighting import Lighting
 from ds.thing.concept.household.LivingQuarters import LivingQuarters
 from ds.thing.concept.person.MaritalStatus import MaritalStatus
 from ds.thing.concept.people.MigrationDirection import MigrationDirection
+from ds.thing.concept.people.MigrationReason import MigrationReason
 from ds.thing.concept.people.MigrationStatus import MigrationStatus
 from ds.thing.concept.household.OccupationStatus import OccupationStatus
 from ds.thing.concept.household.OwnershipStatus import OwnershipStatus
@@ -96,9 +97,10 @@ class ThingFactoryEntityClassListMixin:
         TypeOfUnit,
         WallType,
         # --------------------
-        # people (2)
+        # people (3)
         # --------------------
         MigrationDirection,
+        MigrationReason,
         MigrationStatus,
         # --------------------
         # person (8)

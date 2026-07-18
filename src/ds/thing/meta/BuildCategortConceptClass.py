@@ -168,6 +168,21 @@ if __name__ == "__main__":
                 "10_or_more_years",
             ],
         },
+        {
+            "class_group": "people",
+            "class_name": "MigrationReason",
+            "value_to_value": {
+                "marriage": 0.349,
+                "employment_searching_for_job": 0.261,
+                "education": 0.043,
+                "accompanied_a_family_member": 0.19,
+                "returning_for_permanent_residence": 0.128,
+                "development_projects": 0.002,
+                "resettled_after_displacement": 0.002,
+                "a_disaster_a_displaced_happened_in_the_prior_place": 0.006,
+                "other": 0.018,
+            },
+        },
     ]
 
     for spec in specs:
