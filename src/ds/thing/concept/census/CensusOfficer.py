@@ -8,7 +8,9 @@ class CensusOfficer(CategoryConcept):
         return [
             cls("DeputyCensusCommissioners"),
             cls("AssistantCensusCommissioners"),
-            cls("TechnicalStaffZonalSupervisorsAndDistrictStatisticalBranchHead"),
+            cls(
+                "TechnicalStaffZonalSupervisorsAndDistrictStatisticalBranchHead"
+            ),
             cls("TechnicalStaffDivisionalCensusOfficer"),
             cls("TechnicalStaffAreaSupervisors"),
             cls("TechnicalStaffCircleOfficers"),
