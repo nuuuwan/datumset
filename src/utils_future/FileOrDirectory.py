@@ -1,5 +1,6 @@
 import os
 from abc import ABC
+from functools import cached_property
 
 
 class FileOrDirectory(ABC):
@@ -29,3 +30,17 @@ class FileOrDirectory(ABC):
 
     def __repr__(self):
         return str(self)
+
+    @cached_property
+    def short_path(self):
+        parts = self.path.split(os.sep)
+        n = len(parts)
+        for i in range(n):
+            partial_path = os.sep.join(parts[i:])
+            if len(partial_path) <= 30:
+                return partial_path
+        raise ValueError("Path is too long to shorten")
+
+    @cached_property
+    def short_str(self):
+        return f"{self.short_path} ({self.size_human_readable()})"
