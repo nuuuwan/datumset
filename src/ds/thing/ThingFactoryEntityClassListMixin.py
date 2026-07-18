@@ -31,6 +31,7 @@ from ds.thing.concept.person.MaritalStatus import MaritalStatus
 from ds.thing.concept.person.MigrationDirection import MigrationDirection
 from ds.thing.concept.person.MigrationReason import MigrationReason
 from ds.thing.concept.person.MigrationStatus import MigrationStatus
+from ds.thing.concept.person.NonCommunicableDisease import NonCommunicableDisease
 from ds.thing.concept.household.OccupationStatus import OccupationStatus
 from ds.thing.concept.household.OwnershipStatus import OwnershipStatus
 from ds.thing.concept.region.PD import PD
@@ -43,6 +44,7 @@ from ds.thing.concept.person.ResidentRelativeToDistrict import ResidentRelativeT
 from ds.thing.concept.household.RoofType import RoofType
 from ds.thing.concept.government.Sector import Sector
 from ds.thing.concept.person.Sex import Sex
+from ds.thing.concept.person.SingleOrMultipleDisabilities import SingleOrMultipleDisabilities
 from ds.thing.concept.household.SolidWasteDisposal import SolidWasteDisposal
 from ds.thing.concept.household.SourceOfDrinkingWater import SourceOfDrinkingWater
 from ds.thing.concept.election.Summary import Summary
@@ -109,7 +111,7 @@ class ThingFactoryEntityClassListMixin:
         TypeOfUnit,
         WallType,
         # --------------------
-        # person (16)
+        # person (18)
         # --------------------
         AgeGroup,
         AgeGroupIn5YearIntervalsUpto60Years,
@@ -126,10 +128,12 @@ class ThingFactoryEntityClassListMixin:
         MigrationDirection,
         MigrationReason,
         MigrationStatus,
+        NonCommunicableDisease,
         Religion,
-        ResidentRelativeToDistrict,
         #
+        ResidentRelativeToDistrict,
         Sex,
+        SingleOrMultipleDisabilities,
         # --------------------
         # region (8)
         # --------------------

@@ -156,5 +156,30 @@
       "difficulty_in_communicating_with_others": 44483,
       "no_disability": 1668658
     }
+  },
+  {
+    "class_group": "person",
+    "class_name": "SingleOrMultipleDisabilities",
+    "value_to_value": {
+      "with_single_disability": 7643,
+      "with_more_than_one_disability": 6713,
+      "no_disability": 1780682
+    }
+  },
+  {
+    "class_group": "person",
+    "class_name": "NonCommunicableDisease",
+    "value_list": [
+      "High Blood Pressure",
+      "Diabetes",
+      "High Cholesterol",
+      "Heart Disease",
+      "Asthma",
+      "Kidney Disease",
+      "Stroke/Paralysis",
+      "Cancer",
+      "Epilepsy",
+      "Thalassemia"
+    ]
   }
 ]
