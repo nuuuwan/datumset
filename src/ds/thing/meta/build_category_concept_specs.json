@@ -193,5 +193,29 @@
       "Other educational activity",
       "Not studying"
     ]
+  },
+  {
+    "class_group": "person",
+    "class_name": "LanguageLiteracy",
+    "value_to_value": {
+      "at_least_one_language": 0.985,
+      "sinhala": 0.96,
+      "tamil": 0.366,
+      "english": 0.625
+    }
+  },
+  {
+    "class_group": "person",
+    "class_name": "HighestEducationLevel2",
+    "value_list": [
+      "Never attended School",
+      "Studied in a special school / special unit",
+      "Passed Grade 1 - 5",
+      "Passed Grade 6 - 8",
+      "Passed Grade 9 - 10",
+      "Passed GCE O/L",
+      "Passed GCE A/L",
+      "Degree or above"
+    ]
   }
 ]

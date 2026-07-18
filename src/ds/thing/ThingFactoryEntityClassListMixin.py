@@ -21,11 +21,13 @@ from ds.thing.concept.household.FloorType import FloorType
 from ds.thing.concept.region.GND import GND
 from ds.thing.concept.person.Gender import Gender
 from ds.thing.concept.person.HighestEducationLevel import HighestEducationLevel
+from ds.thing.concept.person.HighestEducationLevel2 import HighestEducationLevel2
 from ds.thing.entity.House import House
 from ds.thing.concept.household.HouseholdStructure import HouseholdStructure
 from ds.thing.concept.atom.Int import Int
 from ds.thing.concept.person.IsEconomicallyActive import IsEconomicallyActive
 from ds.thing.concept.region.LG import LG
+from ds.thing.concept.person.LanguageLiteracy import LanguageLiteracy
 from ds.thing.concept.household.Lighting import Lighting
 from ds.thing.concept.household.LivingQuarters import LivingQuarters
 from ds.thing.concept.person.MaritalStatus import MaritalStatus
@@ -112,7 +114,7 @@ class ThingFactoryEntityClassListMixin:
         TypeOfUnit,
         WallType,
         # --------------------
-        # person (19)
+        # person (21)
         # --------------------
         AgeGroup,
         AgeGroupIn5YearIntervalsUpto60Years,
@@ -124,17 +126,20 @@ class ThingFactoryEntityClassListMixin:
         Ethnicity,
         Gender,
         HighestEducationLevel,
-        IsEconomicallyActive,
+        HighestEducationLevel2,
         #
+        IsEconomicallyActive,
+        LanguageLiteracy,
         MaritalStatus,
         MigrationDirection,
         MigrationReason,
+        #
         MigrationStatus,
         NonCommunicableDisease,
-        #
         Religion,
         ResidentRelativeToDistrict,
         Sex,
+        #
         SingleOrMultipleDisabilities,
         # --------------------
         # region (8)
