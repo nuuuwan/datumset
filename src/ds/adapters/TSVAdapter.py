@@ -1,6 +1,6 @@
 from ds.datum.Datum import Datum
 from ds.datumset.Datumset import Datumset
-from ds.thing.concept.Int import Int
+from ds.thing.concept.atom.Int import Int
 from ds.thing.concept.region.RegionFactory import RegionFactory
 from utils_future import WWW, Directory, String, TSVFile
 
