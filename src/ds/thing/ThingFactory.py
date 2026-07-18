@@ -1,9 +1,7 @@
 from functools import cache
 
-from ds.thing.concept.region.RegionFactory import RegionFactory
-from ds.thing.ThingFactoryEntityClassListMixin import (
-    ThingFactoryEntityClassListMixin,
-)
+from ds.thing.ThingFactoryEntityClassListMixin import \
+    ThingFactoryEntityClassListMixin
 
 
 class ThingFactory(ThingFactoryEntityClassListMixin):
@@ -16,12 +14,6 @@ class ThingFactory(ThingFactoryEntityClassListMixin):
     @classmethod
     @cache
     def __class_getitem__(cls, class_name: str):
-
-        try:
-            region_entity_class = RegionFactory[class_name]
-            return region_entity_class
-        except ValueError:
-            pass
 
         if class_name in cls.ENTITY_CLASS_IDX:
             return cls.ENTITY_CLASS_IDX[class_name]

@@ -1,8 +1,8 @@
 import unittest
 
 from ds.adapters.RegionValueAdapter import RegionValueAdapter
-from ds.thing.concept.Person import Person
-from ds.thing.concept.Religion import Religion
+from ds.thing.concept.person.Religion import Religion
+from ds.thing.entity.Person import Person
 
 
 class TestCase(unittest.TestCase):
