@@ -142,6 +142,15 @@ if __name__ == "__main__":
                 "estate-urban": 6,
             },
         },
+        {
+            "class_group": "people",
+            "class_name": "MigrationStatus",
+            "value_to_value": {
+                "local": 1123880,
+                "foreign": 951,
+                "migrant": 180877,
+            },
+        },
     ]
 
     for spec in specs:

@@ -23,6 +23,7 @@ from ds.thing.concept.region.LG import LG
 from ds.thing.concept.household.Lighting import Lighting
 from ds.thing.concept.household.LivingQuarters import LivingQuarters
 from ds.thing.concept.person.MaritalStatus import MaritalStatus
+from ds.thing.concept.people.MigrationStatus import MigrationStatus
 from ds.thing.concept.household.OccupationStatus import OccupationStatus
 from ds.thing.concept.household.OwnershipStatus import OwnershipStatus
 from ds.thing.concept.region.PD import PD
@@ -92,6 +93,10 @@ class ThingFactoryEntityClassListMixin:
         ToiletFacilities,
         TypeOfUnit,
         WallType,
+        # --------------------
+        # people (1)
+        # --------------------
+        MigrationStatus,
         # --------------------
         # person (8)
         # --------------------
