@@ -15,6 +15,7 @@ from ds.thing.concept.region.ED import ED
 from ds.thing.concept.person.EducationActivity import EducationActivity
 from ds.thing.concept.election.ElectionType import ElectionType
 from ds.thing.concept.person.EmmigrationReason import EmmigrationReason
+from ds.thing.concept.person.EmploymentStatus import EmploymentStatus
 from ds.thing.concept.person.Ethnicity import Ethnicity
 from ds.thing.concept.atom.Float import Float
 from ds.thing.concept.household.FloorType import FloorType
@@ -114,7 +115,7 @@ class ThingFactoryEntityClassListMixin:
         TypeOfUnit,
         WallType,
         # --------------------
-        # person (21)
+        # person (22)
         # --------------------
         AgeGroup,
         AgeGroupIn5YearIntervalsUpto60Years,
@@ -123,23 +124,24 @@ class ThingFactoryEntityClassListMixin:
         EducationActivity,
         #
         EmmigrationReason,
+        EmploymentStatus,
         Ethnicity,
         Gender,
         HighestEducationLevel,
-        HighestEducationLevel2,
         #
+        HighestEducationLevel2,
         IsEconomicallyActive,
         LanguageLiteracy,
         MaritalStatus,
         MigrationDirection,
-        MigrationReason,
         #
+        MigrationReason,
         MigrationStatus,
         NonCommunicableDisease,
         Religion,
         ResidentRelativeToDistrict,
-        Sex,
         #
+        Sex,
         SingleOrMultipleDisabilities,
         # --------------------
         # region (8)

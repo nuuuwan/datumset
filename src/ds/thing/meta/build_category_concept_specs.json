@@ -217,5 +217,16 @@
       "Passed GCE A/L",
       "Degree or above"
     ]
+  },
+  {
+    "class_group": "person",
+    "class_name": "EmploymentStatus",
+    "value_list": [
+      "Government/Semi-Government Paid Employee",
+      "Private Sector Paid Employee",
+      "Employer",
+      "Own Account Worker",
+      "Contributing to Family Enterprise"
+    ]
   }
 ]
