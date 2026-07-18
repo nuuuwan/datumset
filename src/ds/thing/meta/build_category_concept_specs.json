@@ -141,6 +141,11 @@
   },
   {
     "class_group": "person",
+    "class_name": "AgeGroupCustom",
+    "value_list": ["Less than 18", "18 - 28", "30 - 59", "60 & over"]
+  },
+  {
+    "class_group": "person",
     "class_name": "AgeGroupIn5YearIntervalsUpto49Years",
     "value_list": [
       "00_to_04_years",

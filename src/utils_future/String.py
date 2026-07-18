@@ -13,6 +13,8 @@ class String:
     def pascal(self) -> str:
         s = self.s
 
+        s = s.replace(" - ", "_to_")
+
         if "years" in s:
             if s[2:3] == "_":
                 s = s[0:2] + "_to_" + s[3:]

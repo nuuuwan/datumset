@@ -20,6 +20,9 @@ class DimToValueAdapter:
         value_label,
     ):
         dim_value = d[dim_class_key]
+        if dim_value == "Total":
+            return []
+
         if not issubclass(dim_cls, Region):
             dim_value = String(dim_value).pascal
         dim = dim_cls[dim_value]
