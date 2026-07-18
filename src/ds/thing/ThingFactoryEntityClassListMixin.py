@@ -16,6 +16,7 @@ from ds.thing.concept.election.ElectionType import ElectionType
 from ds.thing.concept.person.EmmigrationReason import EmmigrationReason
 from ds.thing.concept.person.EmploymentStatus import EmploymentStatus
 from ds.thing.concept.person.Ethnicity import Ethnicity
+from ds.thing.concept.atom.Float import Float
 from ds.thing.concept.household.FloorType import FloorType
 from ds.thing.concept.region.GND import GND
 from ds.thing.concept.person.Gender import Gender
@@ -65,9 +66,10 @@ from ds.thing.concept.household.WallType import WallType
 class ThingFactoryEntityClassListMixin:
     ENTITY_CLASS_LIST = [
         # --------------------
-        # atom (3)
+        # atom (4)
         # --------------------
         Bool,
+        Float,
         Int,
         Percent,
         # --------------------

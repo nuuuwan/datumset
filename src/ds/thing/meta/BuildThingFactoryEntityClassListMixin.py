@@ -52,18 +52,25 @@ class BuildThingFactoryEntityClassListMixin:
         return found
 
     def _leaf_classes(self, all_classes):
-        superclasses = set()
+        all_set = set(all_classes)
+        direct_subcount = {cls: 0 for cls in all_classes}
         for cls in all_classes:
-            for parent in cls.__mro__[1:]:
-                superclasses.add(parent)
-        return [c for c in all_classes if c not in superclasses]
+            for parent in cls.__bases__:
+                if parent in all_set:
+                    direct_subcount[parent] += 1
+        return [c for c in all_classes if direct_subcount[c] < 2]
 
     def _dedup(self, classes):
         by_name = {}
-        for cls in sorted(
-            classes, key=lambda c: (len(c.__module__), c.__module__)
-        ):
-            by_name[cls.__name__] = cls
+        for cls in classes:
+            name = cls.__name__
+            if name in by_name:
+                raise Exception(
+                    f"Duplicate: {name} in "
+                    f"{cls.__module__} and "
+                    f"{by_name[name].__module__}"
+                )
+            by_name[name] = cls
         return sorted(by_name.values(), key=lambda c: c.__name__)
 
     def _group_key(self, cls):
