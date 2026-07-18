@@ -1,7 +1,8 @@
 from functools import cache
 
-from ds.query.Query import Query
 from utils_future import Log
+
+from ds.query.Query import Query
 
 log = Log("DatumMatchMixin")
 

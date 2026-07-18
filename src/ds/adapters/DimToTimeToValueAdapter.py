@@ -1,10 +1,11 @@
+from utils_future import String
+
 from ds.datum.Datum import Datum
 from ds.datumset.Datumset import Datumset
 from ds.thing.concept.atom.Bool import Bool
 from ds.thing.concept.region.Region import Region
 from ds.thing.concept.Time import Time
 from ds.thing.ThingFactory import ThingFactory
-from utils_future import String
 
 
 class DimToTimeToValueAdapter:
@@ -21,6 +22,9 @@ class DimToTimeToValueAdapter:
         dim1_value = d[dim_class_key]
         if not issubclass(dim_cls, Region):
             dim1_value = String(dim1_value).pascal
+        if dim1_value in ["SriLanka"]:
+            return []
+
         dim1 = dim_cls[dim1_value]
 
         datum_list = []

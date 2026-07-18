@@ -1,8 +1,9 @@
 from dataclasses import dataclass
 from functools import cache
 
-from ds.thing.concept.CategoryConcept import CategoryConcept
 from utils_future import WWW, Directory, File, JSONFile
+
+from ds.thing.concept.CategoryConcept import CategoryConcept
 
 
 @dataclass(frozen=True)

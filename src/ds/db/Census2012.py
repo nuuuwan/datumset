@@ -1,10 +1,11 @@
 from functools import cache
 
+from utils_future import JSONFile
+
 from ds.adapters.TSVAdapter import TSVAdapter
 from ds.datumset.Datumset import Datumset
 from ds.thing.concept.Time import Time
 from ds.thing.ThingFactory import ThingFactory
-from utils_future import JSONFile
 
 
 class Census2012:

@@ -1,5 +1,7 @@
 from functools import cache
 
+from utils_future import JSONFile, String
+
 from ds.adapters.TSVAdapter import TSVAdapter
 from ds.datum.Datum import Datum
 from ds.datumset.Datumset import Datumset
@@ -7,7 +9,6 @@ from ds.thing.concept.atom.Int import Int
 from ds.thing.concept.region.RegionFactory import RegionFactory
 from ds.thing.concept.Time import Time
 from ds.thing.ThingFactory import ThingFactory
-from utils_future import JSONFile, String
 
 
 class Elections:

@@ -1,7 +1,8 @@
 from functools import cache
 
-from ds.thing.concept.region.Region import Region
 from utils_future import JSONFile
+
+from ds.thing.concept.region.Region import Region
 
 
 class LG(Region):

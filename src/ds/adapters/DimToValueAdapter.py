@@ -1,10 +1,10 @@
+from utils_future import String
+
 from ds.datum.Datum import Datum
 from ds.datumset.Datumset import Datumset
-from ds.thing.concept.atom.Bool import Bool
+from ds.thing.concept.atom.Int import Int
 from ds.thing.concept.region.Region import Region
-from ds.thing.concept.Time import Time
 from ds.thing.ThingFactory import ThingFactory
-from utils_future import String
 
 
 class DimToValueAdapter:
@@ -28,13 +28,11 @@ class DimToValueAdapter:
         dim = dim_cls[dim_value]
 
         datum_list = []
-        for _, v in d["values"].items():
+        for k, v in d["values"].items():
             datum = Datum(
                 entity_cls,
-                {
-                    dim_cls.__name__: dim,
-                },
-                {value_label: value_cls(v)},
+                {dim_cls.__name__: dim, value_label: value_cls(k)},
+                {"Count": Int(v)},
             )
             datum_list.append(datum)
         return datum_list

@@ -2,8 +2,9 @@ import importlib
 import inspect
 import os
 
-from ds.thing.Thing import Thing
 from utils_future import File, Log
+
+from ds.thing.Thing import Thing
 
 log = Log("BuildThingFactoryEntityClassListMixin")
 

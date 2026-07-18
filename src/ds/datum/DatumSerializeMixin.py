@@ -1,5 +1,6 @@
-from ds.thing.ThingFactory import ThingFactory
 from utils_future import ShallowDict
+
+from ds.thing.ThingFactory import ThingFactory
 
 
 class DatumSerializeMixin:

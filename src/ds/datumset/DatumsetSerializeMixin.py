@@ -1,5 +1,6 @@
-from ds.datum.Datum import Datum
 from utils_future import Log, ShallowDict
+
+from ds.datum.Datum import Datum
 
 log = Log("DatumsetSerializeMixin")
 
