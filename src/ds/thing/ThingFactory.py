@@ -12,9 +12,8 @@ from ds.thing.concept.household.OccupationStatus import OccupationStatus
 from ds.thing.concept.household.OwnershipStatus import OwnershipStatus
 from ds.thing.concept.household.RoofType import RoofType
 from ds.thing.concept.household.SolidWasteDisposal import SolidWasteDisposal
-from ds.thing.concept.household.SourceOfDrinkingWater import (
-    SourceOfDrinkingWater,
-)
+from ds.thing.concept.household.SourceOfDrinkingWater import \
+    SourceOfDrinkingWater
 from ds.thing.concept.household.ToiletFacilities import ToiletFacilities
 from ds.thing.concept.household.TypeOfUnit import TypeOfUnit
 from ds.thing.concept.household.WallType import WallType
@@ -22,9 +21,7 @@ from ds.thing.concept.Int import Int
 from ds.thing.concept.person.AgeGroup import AgeGroup
 from ds.thing.concept.person.Ethnicity import Ethnicity
 from ds.thing.concept.person.Gender import Gender
-from ds.thing.concept.person.HighestEducationLevel import (
-    HighestEducationLevel,
-)
+from ds.thing.concept.person.HighestEducationLevel import HighestEducationLevel
 from ds.thing.concept.person.IsEconomicallyActive import IsEconomicallyActive
 from ds.thing.concept.person.MaritalStatus import MaritalStatus
 from ds.thing.concept.person.Religion import Religion
