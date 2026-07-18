@@ -6,7 +6,7 @@ class AdministrativeEntity(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            #
+            # 0 - 4
             cls("AssistantGovernmentAgendDivisions"),
             cls("GramaSevakaDivisions"),
             cls("MunicipalCouncils"),
