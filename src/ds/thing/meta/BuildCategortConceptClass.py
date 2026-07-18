@@ -129,6 +129,17 @@ if __name__ == "__main__":
                 "town_councils": 6,
             },
         },
+        {
+            "class_group": "government",
+            "class_name": "Sector",
+            "value_to_value": {
+                "urban": 10,
+                "rural": 230,
+                "estate": 0,
+                "estate-rural": 4,
+                "estate-urban": 6,
+            },
+        },
     ]
 
     for spec in specs:

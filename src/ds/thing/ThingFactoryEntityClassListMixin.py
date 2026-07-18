@@ -31,6 +31,7 @@ from ds.thing.entity.Person import Person
 from ds.thing.concept.region.Province import Province
 from ds.thing.concept.person.Religion import Religion
 from ds.thing.concept.household.RoofType import RoofType
+from ds.thing.concept.government.Sector import Sector
 from ds.thing.concept.person.Sex import Sex
 from ds.thing.concept.household.SolidWasteDisposal import SolidWasteDisposal
 from ds.thing.concept.household.SourceOfDrinkingWater import SourceOfDrinkingWater
@@ -69,9 +70,10 @@ class ThingFactoryEntityClassListMixin:
         Person,
         Vote,
         # --------------------
-        # government (1)
+        # government (2)
         # --------------------
         AdministrativeEntity,
+        Sector,
         # --------------------
         # household (13)
         # --------------------
