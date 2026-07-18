@@ -105,9 +105,15 @@ class BuildThingFactoryEntityClassListMixin:
     def build(self):
         raw = self._leaf_classes(self._discover_all())
         classes = self._dedup(raw)
+
+        new_content = self._content(classes)
+
         file = File(self.OUT_PATH)
-        file.write(self._content(classes))
-        log.info(f"Wrote {file}")
+        old_content = file.read() if file.exists() else None
+
+        if old_content != new_content:
+            file.write(new_content)
+            log.info(f"Wrote {file}")
 
 
 if __name__ == "__main__":
