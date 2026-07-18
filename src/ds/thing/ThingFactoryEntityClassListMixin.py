@@ -10,7 +10,7 @@ from ds.thing.concept.region.DSD import DSD
 from ds.thing.concept.region.District import District
 from ds.thing.concept.region.ED import ED
 from ds.thing.concept.election.ElectionType import ElectionType
-from ds.thing.concept.people.EmmigrationReason import EmmigrationReason
+from ds.thing.concept.person.EmmigrationReason import EmmigrationReason
 from ds.thing.concept.person.Ethnicity import Ethnicity
 from ds.thing.concept.atom.Float import Float
 from ds.thing.concept.household.FloorType import FloorType
@@ -25,9 +25,9 @@ from ds.thing.concept.region.LG import LG
 from ds.thing.concept.household.Lighting import Lighting
 from ds.thing.concept.household.LivingQuarters import LivingQuarters
 from ds.thing.concept.person.MaritalStatus import MaritalStatus
-from ds.thing.concept.people.MigrationDirection import MigrationDirection
-from ds.thing.concept.people.MigrationReason import MigrationReason
-from ds.thing.concept.people.MigrationStatus import MigrationStatus
+from ds.thing.concept.person.MigrationDirection import MigrationDirection
+from ds.thing.concept.person.MigrationReason import MigrationReason
+from ds.thing.concept.person.MigrationStatus import MigrationStatus
 from ds.thing.concept.household.OccupationStatus import OccupationStatus
 from ds.thing.concept.household.OwnershipStatus import OwnershipStatus
 from ds.thing.concept.region.PD import PD
@@ -36,7 +36,7 @@ from ds.thing.concept.atom.Percent import Percent
 from ds.thing.entity.Person import Person
 from ds.thing.concept.region.Province import Province
 from ds.thing.concept.person.Religion import Religion
-from ds.thing.concept.people.ResidentRelativeToDistrict import ResidentRelativeToDistrict
+from ds.thing.concept.person.ResidentRelativeToDistrict import ResidentRelativeToDistrict
 from ds.thing.concept.household.RoofType import RoofType
 from ds.thing.concept.government.Sector import Sector
 from ds.thing.concept.person.Sex import Sex
@@ -106,25 +106,22 @@ class ThingFactoryEntityClassListMixin:
         TypeOfUnit,
         WallType,
         # --------------------
-        # people (5)
-        # --------------------
-        EmmigrationReason,
-        MigrationDirection,
-        MigrationReason,
-        MigrationStatus,
-        ResidentRelativeToDistrict,
-        #
-        # --------------------
-        # person (8)
+        # person (13)
         # --------------------
         AgeGroup,
+        EmmigrationReason,
         Ethnicity,
         Gender,
         HighestEducationLevel,
-        IsEconomicallyActive,
         #
+        IsEconomicallyActive,
         MaritalStatus,
+        MigrationDirection,
+        MigrationReason,
+        MigrationStatus,
+        #
         Religion,
+        ResidentRelativeToDistrict,
         Sex,
         # --------------------
         # region (8)

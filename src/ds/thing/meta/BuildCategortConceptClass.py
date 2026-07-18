@@ -143,7 +143,7 @@ if __name__ == "__main__":
             },
         },
         {
-            "class_group": "people",
+            "class_group": "person",
             "class_name": "MigrationStatus",
             "value_to_value": {
                 "local": 1123880,
@@ -152,7 +152,7 @@ if __name__ == "__main__":
             },
         },
         {
-            "class_group": "people",
+            "class_group": "person",
             "class_name": "MigrationDirection",
             "value_to_value": {
                 "in_migrants": 1123880,
@@ -169,7 +169,7 @@ if __name__ == "__main__":
             ],
         },
         {
-            "class_group": "people",
+            "class_group": "person",
             "class_name": "MigrationReason",
             "value_to_value": {
                 "marriage": 0.349,
@@ -184,7 +184,7 @@ if __name__ == "__main__":
             },
         },
         {
-            "class_group": "people",
+            "class_group": "person",
             "class_name": "ResidentRelativeToDistrict",
             "value_list": [
                 "in_district",
@@ -192,7 +192,7 @@ if __name__ == "__main__":
             ],
         },
         {
-            "class_group": "people",
+            "class_group": "person",
             "class_name": "EmmigrationReason",
             "value_list": [
                 "employment",
