@@ -7,7 +7,7 @@ class ToiletFacilities(CategoryConcept):
         return [
             cls("WaterSealAndConnectedToAPipedSewerSystem"),
             cls("WaterSealAndConnectedToASepticTank"),
-            cls("PourFlushToilet(notWaterSeal)"),
+            cls("PourFlushToiletNotWaterSeal"),
             cls("DirectPit"),
             cls("Other"),
             cls("NotUsingAToilet"),

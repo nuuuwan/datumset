@@ -18,6 +18,7 @@ class String:
         s = s.replace(",", "_")
         s = s.replace(" ", "_")
         s = s.replace("-", "_")
+        s = "".join(c if c.isalnum() else "_" for c in s)
 
         return "".join(word.capitalize() for word in s.split("_"))
 

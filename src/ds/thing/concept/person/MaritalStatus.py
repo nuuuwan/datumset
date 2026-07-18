@@ -6,11 +6,11 @@ class MaritalStatus(CategoryConcept):
     def list(cls):
         return [
             cls("NeverMarried"),
-            cls("Married((registered)"),
-            cls("Married(customary)"),
+            cls("MarriedRegistered"),
+            cls("MarriedCustomary"),
             cls("Widowed"),
             cls("Divorced"),
             cls("LegallySeparated"),
-            cls("Separated(notLegally)"),
+            cls("SeparatedNotLegally"),
             cls("NotStated"),
         ]
