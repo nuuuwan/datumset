@@ -8,7 +8,7 @@ class AgeGroupCustom(CategoryConcept):
         return [
             # 1 - 4
             cls("LessThan18"),
-            cls("18To28"),
+            cls("18To29"),
             cls("30To59"),
             cls("60AndOver"),
         ]
