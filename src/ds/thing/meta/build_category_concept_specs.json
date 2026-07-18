@@ -228,5 +228,18 @@
       "Own Account Worker",
       "Contributing to Family Enterprise"
     ]
+  },
+  {
+    "class_group": "person",
+    "class_name": "EconomicInactivityReason",
+    "value_list": [
+      "Engaged in Household work/Childcare/Elder Care",
+      "Engage in educational/Vocational training",
+      "Unable/Too old to work/Retired",
+      "Long term illness/Disabled",
+      "Does not want/interest to do any economic activity",
+      "Other",
+      "Income Recipient such as from investment, rental and interest"
+    ]
   }
 ]
