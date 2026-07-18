@@ -159,6 +159,15 @@ if __name__ == "__main__":
                 "out_migrants": 951,
             },
         },
+        {
+            "class_group": "time",
+            "class_name": "TimeGroup0510More",
+            "value_list": [
+                "00_04_years",
+                "05_09_years",
+                "10_or_more_years",
+            ],
+        },
     ]
 
     for spec in specs:

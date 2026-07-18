@@ -39,6 +39,7 @@ from ds.thing.concept.household.SolidWasteDisposal import SolidWasteDisposal
 from ds.thing.concept.household.SourceOfDrinkingWater import SourceOfDrinkingWater
 from ds.thing.concept.election.Summary import Summary
 from ds.thing.concept.Time import Time
+from ds.thing.concept.time.TimeGroup0510More import TimeGroup0510More
 from ds.thing.concept.household.ToiletFacilities import ToiletFacilities
 from ds.thing.concept.household.TypeOfUnit import TypeOfUnit
 from ds.thing.entity.Vote import Vote
@@ -123,4 +124,8 @@ class ThingFactoryEntityClassListMixin:
         LG,
         PD,
         Province,
+        # --------------------
+        # time (1)
+        # --------------------
+        TimeGroup0510More,
     ]
