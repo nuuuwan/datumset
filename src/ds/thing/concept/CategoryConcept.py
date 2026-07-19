@@ -10,7 +10,7 @@ from ds.thing.concept.Concept import Concept
 @dataclass(frozen=True)
 class CategoryConcept(Concept):
 
-    @classmethodE
+    @classmethod
     @cache
     @abstractmethod
     def list(cls):
