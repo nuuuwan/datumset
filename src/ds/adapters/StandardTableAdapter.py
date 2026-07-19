@@ -1,4 +1,4 @@
-from utils_future import Log, String
+from utils_future import Log
 
 from ds.datum.Datum import Datum
 from ds.datumset.Datumset import Datumset
@@ -27,9 +27,7 @@ class StandardTableAdapter:
             row_dim_instance = row_dim_cls.from_value(row_value)
         except ValueError as e:
             try:
-                row_dim_instance = row_dim_cls.from_value(
-                    String(row_value).pascal
-                )
+                row_dim_instance = row_dim_cls.from_value(row_value)
             except ValueError as e2:
                 log.warning(f'Failed to create "{row_value}": {e}/{e2}')
                 return []
@@ -42,7 +40,7 @@ class StandardTableAdapter:
                 col_dim_instance = (
                     ThingFactory.from_kvpair(k)
                     if ":" in k
-                    else col_dim_cls.from_value(String(k).pascal)
+                    else col_dim_cls.from_value(k)
                 )
             cell_instance = cell_cls.from_value(v)
 

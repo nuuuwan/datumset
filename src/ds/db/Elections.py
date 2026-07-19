@@ -1,6 +1,6 @@
 from functools import cache
 
-from utils_future import JSONFile, String
+from utils_future import JSONFile
 
 from ds.adapters.TSVAdapter import TSVAdapter
 from ds.datum.Datum import Datum
@@ -43,7 +43,7 @@ class Elections:
                 r_name: region_instance,
             },
             {
-                String(k).pascal: Int(
+                k: Int(
                     int(float(d.get(k, "0").strip().replace(",", "") or "0"))
                 )
                 for k in cls.TURNOUT_COLS

@@ -2,8 +2,6 @@ from abc import abstractmethod
 from dataclasses import dataclass
 from functools import cache
 
-from utils_future import String
-
 from ds.thing.concept.Concept import Concept
 
 
