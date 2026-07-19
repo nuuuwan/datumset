@@ -6,6 +6,7 @@ class TypeOfUnit(CategoryConcept):
     def list(cls):
         return [
             cls("Permanent"),
+            cls("NotPermanent"),
             cls("SemiPermanent"),
             cls("Improvised"),
             cls("Unclassified"),

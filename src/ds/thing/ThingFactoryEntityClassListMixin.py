@@ -41,6 +41,7 @@ from ds.thing.concept.person.MigrationReason import MigrationReason
 from ds.thing.concept.person.MigrationStatus import MigrationStatus
 from ds.thing.concept.person.NonCommunicableDisease import NonCommunicableDisease
 from ds.thing.concept.household.OccupationStatus import OccupationStatus
+from ds.thing.concept.household.OneRoomOrMore import OneRoomOrMore
 from ds.thing.concept.household.OwnershipStatus import OwnershipStatus
 from ds.thing.concept.region.PD import PD
 from ds.thing.concept.election.Party import Party
@@ -103,7 +104,7 @@ class ThingFactoryEntityClassListMixin:
         AdministrativeEntity,
         Sector,
         # --------------------
-        # household (16)
+        # household (17)
         # --------------------
         CookingFuel,
         FloorType,
@@ -115,14 +116,15 @@ class ThingFactoryEntityClassListMixin:
         Lighting,
         LivingQuarters,
         OccupationStatus,
-        OwnershipStatus,
+        OneRoomOrMore,
         #
+        OwnershipStatus,
         RoofType,
         SolidWasteDisposal,
         SourceOfDrinkingWater,
         ToiletFacilities,
-        TypeOfUnit,
         #
+        TypeOfUnit,
         WallType,
         # --------------------
         # person (23)
