@@ -65,8 +65,8 @@ class BuildCategoryConceptClass:
             directory.path,
             f"{self.class_name}.py",
         )
-        # if class_file.exists():
-        #     return
+        if class_file.exists():
+            return
         content_lines = self.get_content_lines()
 
         class_file.write("\n".join(content_lines))
