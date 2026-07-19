@@ -7,15 +7,15 @@ class NonCommunicableDisease(CategoryConcept):
     def list(cls):
         return [
             # 1 - 5
-            cls("HighBloodPressure"),
-            cls("Diabetes"),
-            cls("HighCholesterol"),
-            cls("HeartDisease"),
-            cls("Asthma"),
+            cls("high_blood_pressure"),
+            cls("diabetes"),
+            cls("high_cholesterol"),
+            cls("heart_disease"),
+            cls("asthma"),
             # 6 - 10
-            cls("KidneyDisease"),
-            cls("StrokeOrParalysis"),
-            cls("Cancer"),
-            cls("Epilepsy"),
-            cls("Thalassemia"),
+            cls("kidney_disease"),
+            cls("stroke_or_paralysis"),
+            cls("cancer"),
+            cls("epilepsy"),
+            cls("thalassemia"),
         ]

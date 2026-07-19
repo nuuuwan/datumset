@@ -7,13 +7,13 @@ class HighestEducationLevel2(CategoryConcept):
     def list(cls):
         return [
             # 1 - 5
-            cls("NeverAttendedSchool"),
-            cls("StudiedInASpecialSchoolOrSpecialUnit"),
-            cls("PassedGrade15"),
-            cls("PassedGrade68"),
-            cls("PassedGrade910"),
+            cls("never_attended_school"),
+            cls("studied_in_a_special_school_or_special_unit"),
+            cls("passed_grade_1_5"),
+            cls("passed_grade_6_8"),
+            cls("passed_grade_9_10"),
             # 6 - 8
-            cls("PassedGceOOrL"),
-            cls("PassedGceAOrL"),
-            cls("DegreeOrAbove"),
+            cls("passed_gce_o_or_l"),
+            cls("passed_gce_a_or_l"),
+            cls("degree_or_above"),
         ]

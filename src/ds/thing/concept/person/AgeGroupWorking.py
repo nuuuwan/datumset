@@ -2,11 +2,12 @@
 from ds.thing.concept.CategoryConcept import CategoryConcept
 
 
-class HouseholdOccupancy(CategoryConcept):
+class AgeGroupWorking(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            # 1 - 2
-            cls("occupied"),
-            cls("permanently_closed_or_vacant"),
+            # 1 - 3
+            cls("age_below_20"),
+            cls("age_20_64"),
+            cls("age_65_above"),
         ]

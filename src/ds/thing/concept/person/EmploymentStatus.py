@@ -7,9 +7,9 @@ class EmploymentStatus(CategoryConcept):
     def list(cls):
         return [
             # 1 - 5
-            cls("GovernmentOrSemiGovernmentPaidEmployee"),
-            cls("PrivateSectorPaidEmployee"),
-            cls("Employer"),
-            cls("OwnAccountWorker"),
-            cls("ContributingToFamilyEnterprise"),
+            cls("government_or_semi_government_paid_employee"),
+            cls("private_sector_paid_employee"),
+            cls("employer"),
+            cls("own_account_worker"),
+            cls("contributing_to_family_enterprise"),
         ]

@@ -15,5 +15,5 @@ class HouseholdSize(CategoryConcept):
             # 6 - 8
             cls("5"),
             cls("6"),
-            cls("7OrMore"),
+            cls("7_or_more"),
         ]

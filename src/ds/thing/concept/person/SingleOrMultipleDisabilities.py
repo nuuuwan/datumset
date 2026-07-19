@@ -7,7 +7,7 @@ class SingleOrMultipleDisabilities(CategoryConcept):
     def list(cls):
         return [
             # 1 - 3
-            cls("WithSingleDisability"),
-            cls("WithMoreThanOneDisability"),
-            cls("NoDisability"),
+            cls("with_single_disability"),
+            cls("with_more_than_one_disability"),
+            cls("no_disability"),
         ]

@@ -7,11 +7,11 @@ class EducationActivity(CategoryConcept):
     def list(cls):
         return [
             # 1 - 5
-            cls("PreschoolEducation"),
-            cls("SchoolEducation"),
-            cls("DegreeOrPostgraduateEducation"),
-            cls("VocationalTrainingOrTechnicalEducation"),
-            cls("OtherEducationalActivity"),
+            cls("preschool_education"),
+            cls("school_education"),
+            cls("degree_or_postgraduate_education"),
+            cls("vocational_training_or_technical_education"),
+            cls("other_educational_activity"),
             # 6 - 6
-            cls("NotStudying"),
+            cls("not_studying"),
         ]

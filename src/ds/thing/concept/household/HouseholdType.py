@@ -7,8 +7,8 @@ class HouseholdType(CategoryConcept):
     def list(cls):
         return [
             # 1 - 4
-            cls("OnePerson"),
-            cls("Nuclear"),
-            cls("Extended"),
-            cls("Composite"),
+            cls("one_person"),
+            cls("nuclear"),
+            cls("extended"),
+            cls("composite"),
         ]

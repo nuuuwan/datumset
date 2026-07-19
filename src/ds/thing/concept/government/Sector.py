@@ -7,9 +7,9 @@ class Sector(CategoryConcept):
     def list(cls):
         return [
             # 1 - 5
-            cls("Urban"),
-            cls("Rural"),
-            cls("Estate"),
-            cls("EstateRural"),
-            cls("EstateUrban"),
+            cls("urban"),
+            cls("rural"),
+            cls("estate"),
+            cls("estate_rural"),
+            cls("estate_urban"),
         ]

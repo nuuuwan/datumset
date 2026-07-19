@@ -7,9 +7,9 @@ class AdministrativeEntity(CategoryConcept):
     def list(cls):
         return [
             # 1 - 5
-            cls("AssistantGovernmentAgendDivisions"),
-            cls("GramaSevakaDivisions"),
-            cls("MunicipalCouncils"),
-            cls("UrbanCouncils"),
-            cls("TownCouncils"),
+            cls("assistant_government_agend_divisions"),
+            cls("grama_sevaka_divisions"),
+            cls("municipal_councils"),
+            cls("urban_councils"),
+            cls("town_councils"),
         ]

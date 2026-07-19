@@ -19,9 +19,9 @@ class BuildCategoryConceptClass:
     @property
     def values(self):
         if self.value_to_value is not None:
-            return [String(v).pascal for v in self.value_to_value.keys()]
+            return [String(v).snake for v in self.value_to_value.keys()]
         if self.value_list is not None:
-            return [String(v).pascal for v in self.value_list]
+            return [String(v).snake for v in self.value_list]
         raise ValueError(
             "Either value_list or value_to_value must be provided."
         )
@@ -65,8 +65,8 @@ class BuildCategoryConceptClass:
             directory.path,
             f"{self.class_name}.py",
         )
-        if class_file.exists():
-            return
+        # if class_file.exists():
+        #     return
         content_lines = self.get_content_lines()
 
         class_file.write("\n".join(content_lines))

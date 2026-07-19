@@ -7,6 +7,6 @@ class MigrationDirection(CategoryConcept):
     def list(cls):
         return [
             # 1 - 2
-            cls("InMigrants"),
-            cls("OutMigrants"),
+            cls("in_migrants"),
+            cls("out_migrants"),
         ]

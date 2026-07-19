@@ -7,8 +7,8 @@ class LanguageLiteracy(CategoryConcept):
     def list(cls):
         return [
             # 1 - 4
-            cls("AtLeastOneLanguage"),
-            cls("Sinhala"),
-            cls("Tamil"),
-            cls("English"),
+            cls("at_least_one_language"),
+            cls("sinhala"),
+            cls("tamil"),
+            cls("english"),
         ]

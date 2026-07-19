@@ -29,16 +29,11 @@ class CategoryConcept(Concept):
     @classmethod
     @cache
     def from_value(cls, value: str):
-        value = value.replace("Population", "")
         value = cls.map_alias(value)
 
         idx = cls.idx()
         if value in idx:
             return idx[value]
-
-        value2 = String(value).pascal
-        if value2 in idx:
-            return idx[value2]
 
         raise ValueError(
             f"Invalid label: {value} for {cls.__name__}."

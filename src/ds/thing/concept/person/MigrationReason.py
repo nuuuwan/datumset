@@ -7,14 +7,14 @@ class MigrationReason(CategoryConcept):
     def list(cls):
         return [
             # 1 - 5
-            cls("Marriage"),
-            cls("EmploymentSearchingForJob"),
-            cls("Education"),
-            cls("AccompaniedAFamilyMember"),
-            cls("ReturningForPermanentResidence"),
+            cls("marriage"),
+            cls("employment_searching_for_job"),
+            cls("education"),
+            cls("accompanied_a_family_member"),
+            cls("returning_for_permanent_residence"),
             # 6 - 9
-            cls("DevelopmentProjects"),
-            cls("ResettledAfterDisplacement"),
-            cls("ADisasterADisplacedHappenedInThePriorPlace"),
-            cls("Other"),
+            cls("development_projects"),
+            cls("resettled_after_displacement"),
+            cls("a_disaster_a_displaced_happened_in_the_prior_place"),
+            cls("other"),
         ]

@@ -7,6 +7,6 @@ class ResidentRelativeToDistrict(CategoryConcept):
     def list(cls):
         return [
             # 1 - 2
-            cls("InDistrict"),
-            cls("InOtherDistrict"),
+            cls("in_district"),
+            cls("in_other_district"),
         ]
