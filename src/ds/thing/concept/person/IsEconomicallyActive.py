@@ -8,4 +8,6 @@ class IsEconomicallyActive(CategoryConcept):
             cls("Employed"),
             cls("Unemployed"),
             cls("EconomicallyNotActive"),
+            cls("EconomicallyActive"),
+            cls("EconomicallyInactive"),
         ]
