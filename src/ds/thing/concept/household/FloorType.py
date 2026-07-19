@@ -5,11 +5,11 @@ class FloorType(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            cls("Cement"),
-            cls("TileOrGraniteOrTerrazo"),
-            cls("Mud"),
-            cls("Wood"),
-            cls("Sand"),
-            cls("Concrete"),
-            cls("Other"),
+            cls("cement"),
+            cls("tile_or_granite_or_terrazo"),
+            cls("mud"),
+            cls("wood"),
+            cls("sand"),
+            cls("concrete"),
+            cls("other"),
         ]

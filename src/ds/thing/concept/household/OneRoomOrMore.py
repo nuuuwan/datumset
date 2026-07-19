@@ -7,6 +7,6 @@ class OneRoomOrMore(CategoryConcept):
     def list(cls):
         return [
             # 1 - 2
-            cls("WithOnlyOneRoom"),
-            cls("WithOnlyMoreThanOneRoom"),
+            cls("with_only_one_room"),
+            cls("with_only_more_than_one_room"),
         ]

@@ -6,9 +6,9 @@ class HighestEducationLevel3(CategoryConcept):
     def list(cls):
         return [
             # 1 - 5
-            cls("NoSchooling"),
-            cls("Passed15Years"),
-            cls("Passed610Years"),
-            cls("GceOl"),
-            cls("GceAl"),
+            cls("no_schooling"),
+            cls("passed15_years"),
+            cls("passed610_years"),
+            cls("gce_ol"),
+            cls("gce_al"),
         ]

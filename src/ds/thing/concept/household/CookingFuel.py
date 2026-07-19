@@ -5,10 +5,10 @@ class CookingFuel(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            cls("FireWood"),
-            cls("Kerosene"),
-            cls("Gas"),
-            cls("Electricity"),
-            cls("SawDustOrPaddyHusk"),
-            cls("Other"),
+            cls("fire_wood"),
+            cls("kerosene"),
+            cls("gas"),
+            cls("electricity"),
+            cls("saw_dust_or_paddy_husk"),
+            cls("other"),
         ]

@@ -5,7 +5,7 @@ class ElectionType(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            cls("Parliamentary"),
-            cls("Presidential"),
-            cls("LocalGovernment"),
+            cls("parliamentary"),
+            cls("presidential"),
+            cls("local_government"),
         ]

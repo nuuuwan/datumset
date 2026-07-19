@@ -5,6 +5,6 @@ class Sex(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            cls("Male"),
-            cls("Female"),
+            cls("male"),
+            cls("female"),
         ]

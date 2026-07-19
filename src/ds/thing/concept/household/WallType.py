@@ -5,12 +5,12 @@ class WallType(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            cls("Brick"),
-            cls("CementBlockOrStone"),
-            cls("Cabook"),
-            cls("SoilBricks"),
-            cls("Mud"),
-            cls("CadjanOrPalmyrah"),
-            cls("PlankOrMetalSheet"),
-            cls("Other"),
+            cls("brick"),
+            cls("cement_block_or_stone"),
+            cls("cabook"),
+            cls("soil_bricks"),
+            cls("mud"),
+            cls("cadjan_or_palmyrah"),
+            cls("plank_or_metal_sheet"),
+            cls("other"),
         ]

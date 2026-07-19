@@ -5,11 +5,11 @@ class RoofType(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            cls("Tile"),
-            cls("Asbestos"),
-            cls("Concrete"),
-            cls("ZinkAluminiumSheet"),
-            cls("MetalSheet"),
-            cls("CadjanOrPalmyrahOrStraw"),
-            cls("Other"),
+            cls("tile"),
+            cls("asbestos"),
+            cls("concrete"),
+            cls("zink_aluminium_sheet"),
+            cls("metal_sheet"),
+            cls("cadjan_or_palmyrah_or_straw"),
+            cls("other"),
         ]

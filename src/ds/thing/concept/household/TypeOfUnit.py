@@ -5,9 +5,9 @@ class TypeOfUnit(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            cls("Permanent"),
-            cls("NotPermanent"),
-            cls("SemiPermanent"),
-            cls("Improvised"),
-            cls("Unclassified"),
+            cls("permanent"),
+            cls("not_permanent"),
+            cls("semi_permanent"),
+            cls("improvised"),
+            cls("unclassified"),
         ]

@@ -5,9 +5,9 @@ class IsEconomicallyActive(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            cls("Employed"),
-            cls("Unemployed"),
-            cls("EconomicallyNotActive"),
-            cls("EconomicallyActive"),
-            cls("EconomicallyInactive"),
+            cls("employed"),
+            cls("unemployed"),
+            cls("economically_not_active"),
+            cls("economically_active"),
+            cls("economically_inactive"),
         ]

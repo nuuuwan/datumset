@@ -5,10 +5,10 @@ class OwnershipStatus(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            cls("OwnedByAHouseholdMember"),
-            cls("RentOrLeaseGovernmentOwned"),
-            cls("RentOrLeasePrivatelyOwned"),
-            cls("OccupiedFreeOfRent"),
-            cls("Encroached"),
-            cls("Other"),
+            cls("owned_by_a_household_member"),
+            cls("rent_or_lease_government_owned"),
+            cls("rent_or_lease_privately_owned"),
+            cls("occupied_free_of_rent"),
+            cls("encroached"),
+            cls("other"),
         ]

@@ -6,31 +6,33 @@ class Ethnicity(CategoryConcept):
     @classmethod
     def list(cls):
         return (
-            cls("Sinhalese"),
-            cls("SlTamil"),
-            cls("IndTamil"),
-            cls("SlMoor"),
-            cls("Burgher"),
-            cls("Malay"),
-            cls("SlChetty"),
-            cls("Bharatha"),
-            cls("OtherEth"),
+            cls("sinhalese"),
+            cls("sl_tamil"),
+            cls("ind_tamil"),
+            cls("sl_moor"),
+            cls("burgher"),
+            cls("malay"),
+            cls("sl_chetty"),
+            cls("bharatha"),
+            cls("other_eth"),
             # legacy
-            cls("IndianMuslim"),
-            cls("European"),
-            cls("BurgherAndEurasian"),
-            cls("LowCountrySinhalese"),
-            cls("UpCountryKandyanSinhalese"),
+            cls("indian_muslim"),
+            cls("european"),
+            cls("burgher_and_eurasian"),
+            cls("low_country_sinhalese"),
+            cls("up_country_kandyan_sinhalese"),
         )
 
     @classmethod
     def map_alias(cls, value):
+        from ds.thing.concept.CategoryConcept import CategoryConcept
+
         return {
-            "Sri Lanka Chetty": "SlChetty",
-            "Other": "OtherEth",
-            "Sri Lanka Moor/Muslim": "SlMoor",
-            "Sri Lanka Muslim": "SlMoor",
-            "Indian Tamil/Malaiyaga Thamilar": "IndTamil",
-            "Sri Lanka Tamil": "SlTamil",
-            "Indian Tamil": "IndTamil",
-        }.get(value, value)
+            "Sri Lanka Chetty": "sl_chetty",
+            "Other": "other_eth",
+            "Sri Lanka Moor/Muslim": "sl_moor",
+            "Sri Lanka Muslim": "sl_moor",
+            "Indian Tamil/Malaiyaga Thamilar": "ind_tamil",
+            "Sri Lanka Tamil": "sl_tamil",
+            "Indian Tamil": "ind_tamil",
+        }.get(value, CategoryConcept.map_alias(value))

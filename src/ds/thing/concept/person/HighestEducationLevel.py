@@ -5,10 +5,10 @@ class HighestEducationLevel(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            cls("Primary"),
-            cls("Secondary"),
-            cls("GceOrdinaryLevel"),
-            cls("GceAdvancedLevel"),
-            cls("DegreeAndAbove"),
-            cls("NoSchooling"),
+            cls("primary"),
+            cls("secondary"),
+            cls("gce_ordinary_level"),
+            cls("gce_advanced_level"),
+            cls("degree_and_above"),
+            cls("no_schooling"),
         ]

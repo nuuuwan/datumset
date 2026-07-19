@@ -5,6 +5,6 @@ class OccupationStatus(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            cls("Occupied"),
-            cls("Vacant"),
+            cls("occupied"),
+            cls("vacant"),
         ]

@@ -1,3 +1,4 @@
+import re
 from abc import abstractmethod
 from dataclasses import dataclass
 from functools import cache
@@ -21,8 +22,9 @@ class CategoryConcept(Concept):
 
     @classmethod
     @cache
-    def map_alias(cls, value):
-        return value
+    def map_alias(cls, value: str):
+        s = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", value)
+        return re.sub("([a-z0-9])([A-Z])", r"\1_\2", s).lower()
 
     @classmethod
     @cache

@@ -5,6 +5,6 @@ class WaterSupplyAvailability(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            cls("HouseholdsWithWaterSupplyThroughoutTheYear"),
-            cls("HouseholdsWithNoWaterSupplyForAtLeastOneOneMonth"),
+            cls("households_with_water_supply_throughout_the_year"),
+            cls("households_with_no_water_supply_for_at_least_one_one_month"),
         ]

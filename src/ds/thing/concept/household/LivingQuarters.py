@@ -5,7 +5,7 @@ class LivingQuarters(CategoryConcept):
     @classmethod
     def list(cls):
         return [
-            cls("HousingUnit"),
-            cls("CollectiveLivingQuarter"),
-            cls("NonHousingUnit"),
+            cls("housing_unit"),
+            cls("collective_living_quarter"),
+            cls("non_housing_unit"),
         ]
