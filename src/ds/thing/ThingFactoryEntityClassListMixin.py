@@ -64,6 +64,7 @@ from ds.thing.concept.household.ToiletFacilities import ToiletFacilities
 from ds.thing.concept.household.TypeOfUnit import TypeOfUnit
 from ds.thing.entity.Vote import Vote
 from ds.thing.concept.household.WallType import WallType
+from ds.thing.concept.household.WaterSupplyAvailability import WaterSupplyAvailability
 
 
 class ThingFactoryEntityClassListMixin:
@@ -104,7 +105,7 @@ class ThingFactoryEntityClassListMixin:
         AdministrativeEntity,
         Sector,
         # --------------------
-        # household (17)
+        # household (18)
         # --------------------
         CookingFuel,
         FloorType,
@@ -126,6 +127,7 @@ class ThingFactoryEntityClassListMixin:
         #
         TypeOfUnit,
         WallType,
+        WaterSupplyAvailability,
         # --------------------
         # person (23)
         # --------------------
