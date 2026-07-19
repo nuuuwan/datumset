@@ -15,15 +15,23 @@ class AgeGroup(Concept):
     def from_value(cls, value):
         if "total" in value.lower():
             return cls(0, 125)
-        tokens = value.split(" ")
+        tokens = value.split("_")
         num_tokens = [t for t in tokens if t.isnumeric()]
 
         if len(num_tokens) == 2:
             return cls(int(num_tokens[0]), int(num_tokens[1]))
         if len(num_tokens) == 1:
-            if "less" in value.lower() or "under" in value.lower():
+            if (
+                "less" in value.lower()
+                or "under" in value.lower()
+                or "below" in value.lower()
+            ):
                 return cls(0, int(num_tokens[0]))
-            if "more" in value.lower() or "over" in value.lower():
+            if (
+                "more" in value.lower()
+                or "over" in value.lower()
+                or "above" in value.lower()
+            ):
                 return cls(int(num_tokens[0]), 125)
 
         raise ValueError(f"Cannot parse AgeGroup from value: {value}")

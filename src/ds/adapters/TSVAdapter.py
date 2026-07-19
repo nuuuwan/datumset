@@ -12,9 +12,8 @@ class TSVAdapter:
     @classmethod
     def _build_col_map(cls, d_list, measurement_cls, skip_keys):
         m_name = measurement_cls.__name__
-        use_raw = getattr(measurement_cls, "RAW_COLUMNS", False)
         return {
-            k: (m_name, measurement_cls[k if use_raw else k])
+            k: (m_name, measurement_cls.from_value(k))
             for k in (d_list[0] if d_list else {})
             if k not in skip_keys
             and not k.startswith("total_")

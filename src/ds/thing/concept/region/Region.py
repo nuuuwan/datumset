@@ -36,3 +36,16 @@ class Region(CategoryConcept):
         WWW(url).download(File(data_file.path))
         data_list = data_file.read()
         return [cls(id=d["id"], name=d["name"]) for d in data_list]
+
+    @classmethod
+    @cache
+    def from_value(cls, value: str):
+
+        idx = cls.idx()
+        if value in idx:
+            return idx[value]
+
+        raise ValueError(
+            f"Invalid label: {value} for {cls.__name__}."
+            + f" Valid labels: {list(idx.keys())}"
+        )

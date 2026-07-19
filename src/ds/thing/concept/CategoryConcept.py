@@ -3,6 +3,8 @@ from abc import abstractmethod
 from dataclasses import dataclass
 from functools import cache
 
+from utils_future import String
+
 from ds.thing.concept.Concept import Concept
 
 
@@ -18,7 +20,7 @@ class CategoryConcept(Concept):
     @classmethod
     @cache
     def idx(cls):
-        return {m._value.lower(): m for m in cls.list()}
+        return {m._value: m for m in cls.list()}
 
     @classmethod
     @cache
@@ -29,6 +31,7 @@ class CategoryConcept(Concept):
     @classmethod
     @cache
     def from_value(cls, value: str):
+        value = String(value).snake
         value = value.lower()
         value = cls.map_alias(value)
 
