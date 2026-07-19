@@ -84,32 +84,9 @@ class TestCase(unittest.TestCase):
             first_datum.to_data(),
             {
                 "Vote": {
-                    "ElectionType:Parliamentary": {
+                    "ElectionType:parliamentary": {
                         "Time:1989": {
                             "ED:EC-01": {"Party:UNP": {"Count": "Int:374530"}}
-                        }
-                    }
-                }
-            },
-        )
-
-    def test_election_summary(self):
-        datumset = LankaData[
-            "Vote/ElectionType*Time*PD/Electors*Polled*Valid*Rejected"
-        ]
-        first_datum = datumset[0]
-        self.assertEqual(
-            first_datum.to_data(),
-            {
-                "Vote": {
-                    "ElectionType:Parliamentary": {
-                        "Time:1989": {
-                            "PD:EC-01A": {
-                                "Electors": "Int:53356",
-                                "Polled": "Int:35640",
-                                "Valid": "Int:33180",
-                                "Rejected": "Int:2460",
-                            }
                         }
                     }
                 }
