@@ -18,7 +18,7 @@ class CategoryConcept(Concept):
     @classmethod
     @cache
     def idx(cls):
-        return {m._value: m for m in cls.list()}
+        return {m._value.lower(): m for m in cls.list()}
 
     @classmethod
     @cache
@@ -29,6 +29,7 @@ class CategoryConcept(Concept):
     @classmethod
     @cache
     def from_value(cls, value: str):
+        value = value.lower()
         value = cls.map_alias(value)
 
         idx = cls.idx()

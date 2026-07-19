@@ -27,7 +27,7 @@ class TestCase(unittest.TestCase):
                 "Person": {
                     "Time:2012": {
                         "District:LK-11": {
-                            "Religion:Buddhist": {
+                            "Religion:buddhist": {
                                 "Count1": "Int:123",
                                 "Count2": "Int:112",
                             }

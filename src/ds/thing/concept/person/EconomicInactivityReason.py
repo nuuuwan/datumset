@@ -14,5 +14,7 @@ class EconomicInactivityReason(CategoryConcept):
             cls("does_not_want_or_interest_to_do_any_economic_activity"),
             # 6 - 7
             cls("other"),
-            cls("income_recipient_such_as_from_investment_rental_and_interest"),
+            cls(
+                "income_recipient_such_as_from_investment_rental_and_interest"
+            ),
         ]
