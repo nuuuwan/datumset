@@ -22,6 +22,7 @@ from ds.thing.concept.region.GND import GND
 from ds.thing.concept.person.Gender import Gender
 from ds.thing.concept.person.HighestEducationLevel import HighestEducationLevel
 from ds.thing.concept.person.HighestEducationLevel2 import HighestEducationLevel2
+from ds.thing.concept.person.HighestEducationLevel3 import HighestEducationLevel3
 from ds.thing.entity.House import House
 from ds.thing.concept.household.HouseholdOccupancy import HouseholdOccupancy
 from ds.thing.concept.household.HouseholdSize import HouseholdSize
@@ -124,7 +125,7 @@ class ThingFactoryEntityClassListMixin:
         #
         WallType,
         # --------------------
-        # person (22)
+        # person (23)
         # --------------------
         AgeGroup,
         DisabilityTypes,
@@ -138,18 +139,19 @@ class ThingFactoryEntityClassListMixin:
         HighestEducationLevel,
         HighestEducationLevel2,
         #
+        HighestEducationLevel3,
         IsEconomicallyActive,
         LanguageLiteracy,
         LiveBirths,
         MaritalStatus,
-        MigrationDirection,
         #
+        MigrationDirection,
         MigrationReason,
         MigrationStatus,
         NonCommunicableDisease,
         Religion,
-        ResidentRelativeToDistrict,
         #
+        ResidentRelativeToDistrict,
         Sex,
         SingleOrMultipleDisabilities,
         # --------------------
