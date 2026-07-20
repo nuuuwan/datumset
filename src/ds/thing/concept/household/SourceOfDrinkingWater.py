@@ -18,4 +18,7 @@ class SourceOfDrinkingWater(CategoryConcept):
             cls("rain_water"),
             cls("bottled_water"),
             cls("other"),
+            #
+            cls("pipe_borne_water"),
+            cls("ground_water"),
         ]
