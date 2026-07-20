@@ -22,4 +22,12 @@ class ToiletFacilities(CategoryConcept):
             "within_the_housing_unit_sharing_with_another_household",
             "within_the_housing_unit_exclusively_for_the_household",
             "water_seal_and_connected_to_a_piped_sewer_system",
+            #
+            "within_unit_exclusive",
+            "within_unit_shared",
+            "within_premises_exclusive",
+            "within_premises_shared",
+            "no_toilet_sharing",
+            "common_public",
+            "none",
         ]

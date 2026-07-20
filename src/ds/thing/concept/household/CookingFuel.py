@@ -11,4 +11,14 @@ class CookingFuel(CategoryConcept):
             "electricity",
             "saw_dust_or_paddy_husk",
             "other",
+            #
+            "bio_gas",
+            "not_relevant",
         ]
+
+    @classmethod
+    def map_alias(cls):
+        return {
+            "firewood": "fire_wood",
+            "sawdust_paddy_husk": "saw_dust_or_paddy_husk",
+        }

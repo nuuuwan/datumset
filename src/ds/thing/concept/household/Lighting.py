@@ -11,4 +11,15 @@ class Lighting(CategoryConcept):
             "solar_power",
             "bio_gas",
             "other",
+            #
+            "electricity_grid",
+            "solar_grid",
+            "solar_standalone",
+            "generator",
         ]
+
+    @classmethod
+    def map_alias(cls):
+        return {
+            "kerosene_lamp": "kerosene",
+        }
