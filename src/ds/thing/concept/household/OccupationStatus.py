@@ -3,8 +3,8 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class OccupationStatus(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
-            cls("occupied"),
-            cls("vacant"),
+            "occupied",
+            "vacant",
         ]

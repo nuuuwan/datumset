@@ -4,9 +4,9 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class MigrationDirection(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
             # 1 - 2
-            cls("in_migrants"),
-            cls("out_migrants"),
+            "in_migrants",
+            "out_migrants",
         ]

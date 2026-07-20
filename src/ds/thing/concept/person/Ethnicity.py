@@ -4,30 +4,29 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 class Ethnicity(CategoryConcept):
 
     @classmethod
-    def list(cls):
-        return (
-            cls("sinhala"),
-            cls("sri_lanka_tamil"),
-            cls("ind_and_malaiyaga_tamil"),
-            cls("sri_lanka_moor_or_muslim"),
-            cls("burgher"),
-            cls("malay"),
-            cls("sri_lanka_chetty"),
-            cls("bharatha"),
-            cls("other_eth"),
-            cls("veddahs"),
-            cls("other"),
+    def valid_values(cls):
+        return [
+            "sinhala",
+            "sri_lanka_tamil",
+            "ind_and_malaiyaga_tamil",
+            "sri_lanka_moor_or_muslim",
+            "burgher",
+            "malay",
+            "sri_lanka_chetty",
+            "bharatha",
+            "other_eth",
+            "veddahs",
+            "other",
             # legacy
-            cls("indian_muslim"),
-            cls("european"),
-            cls("burgher_and_eurasian"),
-            cls("low_country_sinhalese"),
-            cls("up_country_kandyan_sinhalese"),
-        )
+            "indian_muslim",
+            "european",
+            "burgher_and_eurasian",
+            "low_country_sinhalese",
+            "up_country_kandyan_sinhalese",
+        ]
 
     @classmethod
     def map_alias(cls):
-
         return {
             "veddas": "veddahs",
             "sinhalese": "sinhala",

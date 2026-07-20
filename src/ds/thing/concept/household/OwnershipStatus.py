@@ -3,14 +3,14 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class OwnershipStatus(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
-            cls("owned_by_a_household_member"),
-            cls("rent_or_lease_government_owned"),
-            cls("rent_or_lease_privately_owned"),
-            cls("occupied_free_of_rent"),
-            cls("encroached"),
-            cls("other"),
+            "owned_by_a_household_member",
+            "rent_or_lease_government_owned",
+            "rent_or_lease_privately_owned",
+            "occupied_free_of_rent",
+            "encroached",
+            "other",
             #
-            cls("rent_or_lease_free_of_rent"),
+            "rent_or_lease_free_of_rent",
         ]

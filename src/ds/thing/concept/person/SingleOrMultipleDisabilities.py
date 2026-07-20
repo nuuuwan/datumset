@@ -4,10 +4,10 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class SingleOrMultipleDisabilities(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
             # 1 - 3
-            cls("with_single_disability"),
-            cls("with_more_than_one_disability"),
-            cls("no_disability"),
+            "with_single_disability",
+            "with_more_than_one_disability",
+            "no_disability",
         ]

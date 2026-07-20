@@ -4,18 +4,18 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class LiveBirths(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
             # 1 - 5
-            cls("0"),
-            cls("1"),
-            cls("2"),
-            cls("3"),
-            cls("4"),
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
             # 6 - 8
-            cls("5"),
-            cls("6"),
-            cls("7_or_more"),
+            "5",
+            "6",
+            "7_or_more",
         ]
 
     @classmethod

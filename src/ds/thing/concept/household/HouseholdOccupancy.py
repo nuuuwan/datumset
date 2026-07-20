@@ -4,9 +4,9 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class HouseholdOccupancy(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
             # 1 - 2
-            cls("occupied"),
-            cls("permanently_closed_or_vacant"),
+            "occupied",
+            "permanently_closed_or_vacant",
         ]

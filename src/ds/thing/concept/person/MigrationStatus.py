@@ -4,10 +4,10 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class MigrationStatus(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
             # 1 - 3
-            cls("local"),
-            cls("foreign"),
-            cls("migrant"),
+            "local",
+            "foreign",
+            "migrant",
         ]

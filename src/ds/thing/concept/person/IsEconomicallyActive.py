@@ -3,11 +3,11 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class IsEconomicallyActive(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
-            cls("employed"),
-            cls("unemployed"),
-            cls("economically_not_active"),
-            cls("economically_active"),
-            cls("economically_inactive"),
+            "employed",
+            "unemployed",
+            "economically_not_active",
+            "economically_active",
+            "economically_inactive",
         ]

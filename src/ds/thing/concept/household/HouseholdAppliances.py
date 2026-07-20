@@ -20,7 +20,3 @@ class HouseholdAppliances(CategoryConcept):
             "three_wheeler",
             "other",
         ]
-
-    @classmethod
-    def list(cls):
-        return [cls(value) for value in cls.valid_values()]

@@ -22,6 +22,11 @@ class Region(CategoryConcept):
 
     @classmethod
     @cache
+    def valid_values(cls):
+        return [r.id for r in cls.list()]
+
+    @classmethod
+    @cache
     def list(cls):
         data_file = JSONFile(
             Directory.get_temp("datumset", "regions").path,

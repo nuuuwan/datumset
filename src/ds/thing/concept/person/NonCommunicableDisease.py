@@ -4,20 +4,20 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class NonCommunicableDisease(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
             # 1 - 5
-            cls("high_blood_pressure"),
-            cls("diabetes"),
-            cls("high_cholesterol"),
-            cls("heart_disease"),
-            cls("asthma"),
+            "high_blood_pressure",
+            "diabetes",
+            "high_cholesterol",
+            "heart_disease",
+            "asthma",
             # 6 - 10
-            cls("kidney_disease"),
-            cls("stroke_or_paralysis"),
-            cls("cancer"),
-            cls("epilepsy"),
-            cls("thalassemia"),
+            "kidney_disease",
+            "stroke_or_paralysis",
+            "cancer",
+            "epilepsy",
+            "thalassemia",
             # new
-            cls("stroke"),
+            "stroke",
         ]

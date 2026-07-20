@@ -3,9 +3,9 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class Sex(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
-            cls("male"),
-            cls("female"),
-            cls("both_sexes"),
+            "male",
+            "female",
+            "both_sexes",
         ]

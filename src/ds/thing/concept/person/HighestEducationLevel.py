@@ -3,19 +3,19 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class HighestEducationLevel(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
-            cls("primary"),
-            cls("secondary"),
-            cls("gce_ordinary_level"),
-            cls("gce_advanced_level"),
-            cls("degree_and_above"),
-            cls("no_schooling"),
+            "primary",
+            "secondary",
+            "gce_ordinary_level",
+            "gce_advanced_level",
+            "degree_and_above",
+            "no_schooling",
             #
-            cls("never_attended_school"),
-            cls("passed_grade_1_5"),
-            cls("passed_grade_6_8"),
-            cls("passed_grade_9_10"),
-            cls("g_c_e_o_or_l_or_equal"),
-            cls("g_c_e_a_or_l_or_equal"),
+            "never_attended_school",
+            "passed_grade_1_5",
+            "passed_grade_6_8",
+            "passed_grade_9_10",
+            "g_c_e_o_or_l_or_equal",
+            "g_c_e_a_or_l_or_equal",
         ]

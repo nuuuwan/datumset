@@ -1,4 +1,3 @@
-import re
 from abc import abstractmethod
 from dataclasses import dataclass
 from functools import cache
@@ -14,8 +13,12 @@ class CategoryConcept(Concept):
     @classmethod
     @cache
     @abstractmethod
-    def list(cls):
+    def valid_values(cls) -> list[str]:
         pass  # pragma: no cover
+
+    @classmethod
+    def list(cls):
+        return [cls(value) for value in cls.valid_values()]
 
     @classmethod
     @cache

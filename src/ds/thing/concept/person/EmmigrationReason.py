@@ -4,11 +4,11 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class EmmigrationReason(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
             # 1 - 4
-            cls("employment"),
-            cls("education"),
-            cls("accompanying_family_member_in_need"),
-            cls("other"),
+            "employment",
+            "education",
+            "accompanying_family_member_in_need",
+            "other",
         ]

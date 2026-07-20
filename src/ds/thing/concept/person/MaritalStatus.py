@@ -3,15 +3,15 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class MaritalStatus(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
-            cls("never_married"),
-            cls("married_registered"),
-            cls("married_customary"),
-            cls("married"),
-            cls("widowed"),
-            cls("divorced"),
-            cls("legally_separated"),
-            cls("separated_not_legally"),
-            cls("not_stated"),
+            "never_married",
+            "married_registered",
+            "married_customary",
+            "married",
+            "widowed",
+            "divorced",
+            "legally_separated",
+            "separated_not_legally",
+            "not_stated",
         ]

@@ -3,12 +3,12 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class HighestEducationLevel3(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
             # 1 - 5
-            cls("no_schooling"),
-            cls("passed_1_5_years"),
-            cls("passed_6_10_years"),
-            cls("gce_ol"),
-            cls("gce_al"),
+            "no_schooling",
+            "passed_1_5_years",
+            "passed_6_10_years",
+            "gce_ol",
+            "gce_al",
         ]

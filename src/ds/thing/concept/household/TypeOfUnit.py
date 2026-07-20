@@ -3,11 +3,11 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class TypeOfUnit(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
-            cls("permanent"),
-            cls("not_permanent"),
-            cls("semi_permanent"),
-            cls("improvised"),
-            cls("unclassified"),
+            "permanent",
+            "not_permanent",
+            "semi_permanent",
+            "improvised",
+            "unclassified",
         ]

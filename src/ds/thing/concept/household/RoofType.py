@@ -3,13 +3,13 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class RoofType(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
-            cls("tile"),
-            cls("asbestos"),
-            cls("concrete"),
-            cls("zink_aluminium_sheet"),
-            cls("metal_sheet"),
-            cls("cadjan_or_palmyrah_or_straw"),
-            cls("other"),
+            "tile",
+            "asbestos",
+            "concrete",
+            "zink_aluminium_sheet",
+            "metal_sheet",
+            "cadjan_or_palmyrah_or_straw",
+            "other",
         ]

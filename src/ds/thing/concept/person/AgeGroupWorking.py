@@ -4,10 +4,10 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class AgeGroupWorking(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
             # 1 - 3
-            cls("age_below_20"),
-            cls("age_20_64"),
-            cls("age_65_above"),
+            "age_below_20",
+            "age_20_64",
+            "age_65_above",
         ]

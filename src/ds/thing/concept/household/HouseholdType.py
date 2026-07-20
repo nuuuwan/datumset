@@ -4,11 +4,11 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 class HouseholdType(CategoryConcept):
     @classmethod
-    def list(cls):
+    def valid_values(cls):
         return [
             # 1 - 4
-            cls("one_person"),
-            cls("nuclear"),
-            cls("extended"),
-            cls("composite"),
+            "one_person",
+            "nuclear",
+            "extended",
+            "composite",
         ]
