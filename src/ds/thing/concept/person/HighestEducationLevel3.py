@@ -7,8 +7,8 @@ class HighestEducationLevel3(CategoryConcept):
         return [
             # 1 - 5
             cls("no_schooling"),
-            cls("passed15_years"),
-            cls("passed610_years"),
+            cls("passed1_5_years"),
+            cls("passed6_10_years"),
             cls("gce_ol"),
             cls("gce_al"),
         ]
