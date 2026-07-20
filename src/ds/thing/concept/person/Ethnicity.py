@@ -14,7 +14,6 @@ class Ethnicity(CategoryConcept):
             "malay",
             "sri_lanka_chetty",
             "bharatha",
-            "other_eth",
             "veddahs",
             "other",
             # legacy
@@ -33,4 +32,6 @@ class Ethnicity(CategoryConcept):
             "sl_tamil": "sri_lanka_tamil",
             "sl_moor": "sri_lanka_moor_or_muslim",
             "sl_chetty": "sri_lanka_chetty",
+            "ind_tamil": "ind_and_malaiyaga_tamil",
+            "other_eth": "other",
         }
