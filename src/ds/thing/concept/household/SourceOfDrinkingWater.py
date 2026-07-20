@@ -25,4 +25,14 @@ class SourceOfDrinkingWater(CategoryConcept):
             "within_housing_unit",
             "within_premises",
             "outside_premises",
+            #
+            "protected_well",
+            "semi_protected_well",
+            "spring_fountain",
+            "pipe_borne_nwsdb",
+            "pipe_borne_local_authority",
+            "pipe_borne_community",
+            "pipe_borne_private",
+            "tank_river_stream",
+            "filter_ro",
         ]

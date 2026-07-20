@@ -12,4 +12,7 @@ class FloorType(CategoryConcept):
             "sand",
             "concrete",
             "other",
+            #
+            "terrazzo_tile_granite_wood_finished",
+            "not_relevant",
         ]
