@@ -36,6 +36,8 @@ class StandardTableAdapter:
         for k, v in d["values"].items():
             if "total" in k.lower():
                 continue
+            if k.startswith("p_"):
+                k = k[2:]
             if col_dim_cls:
                 col_dim_instance = (
                     ThingFactory.from_kvpair(k)

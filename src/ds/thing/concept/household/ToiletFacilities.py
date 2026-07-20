@@ -11,4 +11,15 @@ class ToiletFacilities(CategoryConcept):
             cls("direct_pit"),
             cls("other"),
             cls("not_using_a_toilet"),
+            #
+            cls("not_using_a_toilet_use_jungle_beach_and_open_ground"),
+            cls("water_seal_and_connected_to_a_piped_sewer_system"),
+            cls("no_toilet_but_sharing_with_another_housing_unit_or_units"),
+            cls("water_seal_and_connected_to_a_piped_sewer_system"),
+            cls("common_or_public_toilet"),
+            cls("within_premises_sharing_with_another_household"),
+            cls("within_premises_exclusively_for_the_household"),
+            cls("within_the_housing_unit_sharing_with_another_household"),
+            cls("within_the_housing_unit_exclusively_for_the_household"),
+            cls("water_seal_and_connected_to_a_piped_sewer_system"),
         ]

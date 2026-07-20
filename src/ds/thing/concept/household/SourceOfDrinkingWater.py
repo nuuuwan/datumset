@@ -21,4 +21,8 @@ class SourceOfDrinkingWater(CategoryConcept):
             #
             cls("pipe_borne_water"),
             cls("ground_water"),
+            #
+            cls("within_housing_unit"),
+            cls("within_premises"),
+            cls("outside_premises"),
         ]

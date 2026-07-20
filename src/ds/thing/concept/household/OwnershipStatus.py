@@ -11,4 +11,6 @@ class OwnershipStatus(CategoryConcept):
             cls("occupied_free_of_rent"),
             cls("encroached"),
             cls("other"),
+            #
+            cls("rent_or_lease_free_of_rent"),
         ]

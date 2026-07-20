@@ -17,3 +17,9 @@ class HouseholdSize(CategoryConcept):
             cls("6"),
             cls("7_or_more"),
         ]
+
+    @classmethod
+    def map_alias(cls) -> dict:
+        return {
+            "7_or_over": "7_or_more",
+        }
