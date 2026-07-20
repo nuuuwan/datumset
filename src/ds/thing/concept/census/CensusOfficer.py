@@ -10,7 +10,8 @@ class CensusOfficer(CategoryConcept):
             cls("deputy_census_commissioners"),
             cls("assistant_census_commissioners"),
             cls(
-                "technical_staff_zonal_supervisors_and_district_statistical_branch_head"
+                "technical_staff_zonal_supervisors"
+                + "_and_district_statistical_branch_head"
             ),
             cls("technical_staff_divisional_census_officer"),
             cls("technical_staff_area_supervisors"),
