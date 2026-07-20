@@ -26,8 +26,12 @@ class Ethnicity(CategoryConcept):
         )
 
     @classmethod
-    def map_alias(cls, value):
+    def map_alias(cls):
 
         return {
             "veddas": "veddahs",
+            "sinhalese": "sinhala",
+            "sl_tamil": "sri_lanka_tamil",
+            "sl_moor": "sri_lanka_moor_or_muslim",
+            "sl_chetty": "sri_lanka_chetty",
         }
