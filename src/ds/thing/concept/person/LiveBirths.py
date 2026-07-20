@@ -17,3 +17,9 @@ class LiveBirths(CategoryConcept):
             cls("6"),
             cls("7_or_more"),
         ]
+
+    @classmethod
+    def map_alias(cls) -> dict:
+        return {
+            "7_plus": "7_or_more",
+        }

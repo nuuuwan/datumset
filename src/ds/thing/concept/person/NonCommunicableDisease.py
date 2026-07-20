@@ -18,4 +18,6 @@ class NonCommunicableDisease(CategoryConcept):
             cls("cancer"),
             cls("epilepsy"),
             cls("thalassemia"),
+            # new
+            cls("stroke"),
         ]

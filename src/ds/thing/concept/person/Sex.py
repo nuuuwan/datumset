@@ -7,4 +7,5 @@ class Sex(CategoryConcept):
         return [
             cls("male"),
             cls("female"),
+            cls("both_sexes"),
         ]

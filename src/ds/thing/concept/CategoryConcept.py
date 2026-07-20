@@ -24,16 +24,16 @@ class CategoryConcept(Concept):
 
     @classmethod
     @cache
-    def map_alias(cls, value: str):
-        s = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", value)
-        return re.sub("([a-z0-9])([A-Z])", r"\1_\2", s).lower()
+    def map_alias(cls):
+        return {}
 
     @classmethod
     @cache
     def from_value(cls, value: str):
+        value = value.replace("*", "")
         value = String(value).snake
         value = value.lower()
-        value = cls.map_alias(value)
+        value = cls.map_alias().get(value, value)
 
         idx = cls.idx()
         if value in idx:

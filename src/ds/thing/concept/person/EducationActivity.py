@@ -15,3 +15,10 @@ class EducationActivity(CategoryConcept):
             # 6 - 6
             cls("not_studying"),
         ]
+
+    @classmethod
+    def map_alias(cls):
+        return {
+            "pre_school": "preschool_education",
+            "undergraduate_or_postgraduate_education": "degree_or_postgraduate_education",
+        }
