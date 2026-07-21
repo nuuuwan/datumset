@@ -99,7 +99,17 @@ class Visual(ABC):
         ax.spines["left"].set_color(BORDER_COLOR)
         ax.spines["bottom"].set_color(BORDER_COLOR)
         ax.tick_params(colors=SUBTITLE_COLOR)
-        fig.subplots_adjust(top=0.87, bottom=0.15, left=0.1, right=0.95)
+        fig.text(
+            0.5,
+            0.02,
+            self.datumset[0].query.query_str,
+            ha="center",
+            va="bottom",
+            fontsize=7,
+            color="#aaaaaa",
+            zorder=6,
+        )
+        fig.subplots_adjust(top=0.87, bottom=0.08, left=0.1, right=0.95)
 
     def draw(self):
         with plt.rc_context({"font.family": FONT_FAMILY}):

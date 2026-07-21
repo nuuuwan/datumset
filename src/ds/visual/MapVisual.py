@@ -5,6 +5,7 @@ import urllib.request
 import geopandas
 
 from ds.visual.Visual import Visual
+from ds.visual.label_fit.LabelFit import LabelFit
 
 GEO_URL = (
     "https://raw.githubusercontent.com"
@@ -50,16 +51,38 @@ class MapVisual(Visual):
             urllib.request.urlretrieve(url, cache_path)
         return geopandas.read_file(cache_path)
 
+    def _add_region_labels(self, gdf, ax, fig):
+        fig.canvas.draw()
+        renderer = fig.canvas.get_renderer()
+        for _, row in gdf.iterrows():
+            label = row.get('name') or row['region_id']
+            cx, cy, rw, rh, angle_deg = LabelFit.best_label_fit(row.geometry)
+            fontsize = LabelFit.fit_fontsize(label, rw, rh, ax, renderer)
+            text_angle = angle_deg if rw >= rh else angle_deg + 90
+            while text_angle > 90:
+                text_angle -= 180
+            ax.annotate(
+                label,
+                xy=(cx, cy),
+                ha='center',
+                va='center',
+                fontsize=fontsize,
+                color='#333333',
+                rotation=text_angle,
+            )
+
     def _plot(self, fig, ax):
         region_values = self._get_region_values()
         gdf = self._load_gdf()
-        gdf = gdf.rename(columns={"id": "region_id"})
-        gdf["value"] = gdf["region_id"].map(region_values)
+        gdf = gdf.rename(columns={'id': 'region_id'})
+        gdf['value'] = gdf['region_id'].map(region_values)
         gdf.plot(
-            column="value",
+            column='value',
             ax=ax,
             legend=True,
-            cmap="YlOrRd",
-            missing_kwds={"color": "#f0f0f0"},
+            cmap='YlOrRd',
+            missing_kwds={'color': '#f0f0f0'},
         )
+        self._add_region_labels(gdf, ax, fig)
+        ax.set_axis_off()
         ax.set_axis_off()
