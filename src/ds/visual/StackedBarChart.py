@@ -3,7 +3,7 @@ from collections import defaultdict
 
 from ds.visual.Visual import Visual
 
-IMAGE_DIR = 'image'
+IMAGE_DIR = "image"
 
 
 class StackedBarChart(Visual):
@@ -33,15 +33,15 @@ class StackedBarChart(Visual):
 
     def _build_title(self):
         return (
-            f'{self.y_cell_key} by {self.x_dim_key}'
-            f', stacked by {self.stack_dim_key}'
+            f"{self.y_cell_key} by {self.x_dim_key}"
+            f", stacked by {self.stack_dim_key}"
         )
 
     def _image_path(self):
         os.makedirs(IMAGE_DIR, exist_ok=True)
         name = (
-            f'stacked_barchart'
-            f'_{self.x_dim_key}_{self.stack_dim_key}_{self.y_cell_key}.png'
+            f"stacked_barchart"
+            f"_{self.x_dim_key}_{self.stack_dim_key}_{self.y_cell_key}.png"
         )
         return os.path.join(IMAGE_DIR, name)
 
@@ -56,4 +56,4 @@ class StackedBarChart(Visual):
         ax.set_ylabel(self.y_cell_key)
         ax.legend(title=self.stack_dim_key)
         ax.set_xticks(range(len(x_labels)))
-        ax.set_xticklabels(x_labels, rotation=45, ha='right')
+        ax.set_xticklabels(x_labels, rotation=45, ha="right")
