@@ -32,35 +32,35 @@ class TestPieChart(unittest.TestCase):
 
     def setUp(self):
         self.datumset = _make_datumset()
-        self.chart = PieChart(self.datumset, 'District', 'Count')
+        self.chart = PieChart(self.datumset, "District", "Count")
 
     def test_init(self):
         self.assertIs(self.chart.datumset, self.datumset)
-        self.assertEqual(self.chart.x_dim_key, 'District')
-        self.assertEqual(self.chart.y_cell_key, 'Count')
+        self.assertEqual(self.chart.x_dim_key, "District")
+        self.assertEqual(self.chart.y_cell_key, "Count")
 
     def test_get_xy(self):
         x_labels, y_values = self.chart._get_xy()
-        self.assertEqual(x_labels, ['LK-11', 'LK-12'])
+        self.assertEqual(x_labels, ["LK-11", "LK-12"])
         self.assertEqual(y_values, [100.0, 200.0])
 
     def test_excluded_dim_keys(self):
-        self.assertIn('District', self.chart._excluded_dim_keys())
+        self.assertIn("District", self.chart._excluded_dim_keys())
 
     def test_build_title(self):
-        self.assertEqual(self.chart._build_title(), 'Count by District')
+        self.assertEqual(self.chart._build_title(), "Count by District")
 
     def test_build_subtitle(self):
         subtitle = self.chart._build_subtitle()
-        self.assertIn('Person', subtitle)
-        self.assertIn('Time', subtitle)
+        self.assertIn("Person", subtitle)
+        self.assertIn("Time", subtitle)
 
     def test_image_path(self):
         path = self.chart._image_path()
-        self.assertTrue(path.startswith('image' + os.sep))
-        self.assertIn('District', path)
-        self.assertIn('Count', path)
-        self.assertTrue(path.endswith('.png'))
+        self.assertTrue(path.startswith("image" + os.sep))
+        self.assertIn("District", path)
+        self.assertIn("Count", path)
+        self.assertTrue(path.endswith(".png"))
 
     def test_draw_saves_image(self):
         self.chart.draw()
@@ -73,5 +73,5 @@ class TestPieChart(unittest.TestCase):
         self.assertIsInstance(fig, matplotlib.figure.Figure)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
