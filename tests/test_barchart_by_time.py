@@ -30,25 +30,25 @@ def _make_datumset():
 class TestBarChartByTime(unittest.TestCase):
 
     def setUp(self):
-        self.chart = BarChart(_make_datumset(), 'Time', 'Count')
+        self.chart = BarChart(_make_datumset(), "Time", "Count")
 
     def test_get_xy(self):
         x_labels, y_values = self.chart._get_xy()
-        self.assertEqual(x_labels, ['2012', '2013', '2014'])
+        self.assertEqual(x_labels, ["2012", "2013", "2014"])
         self.assertEqual(y_values, [100.0, 150.0, 120.0])
 
     def test_title(self):
-        self.assertEqual(self.chart._build_title(), 'Count by Time')
+        self.assertEqual(self.chart._build_title(), "Count by Time")
 
     def test_subtitle_has_district(self):
         subtitle = self.chart._build_subtitle()
-        self.assertIn('District', subtitle)
-        self.assertIn('LK-11', subtitle)
+        self.assertIn("District", subtitle)
+        self.assertIn("LK-11", subtitle)
 
     def test_draw(self):
         fig = self.chart.draw()
         self.assertIsInstance(fig, matplotlib.figure.Figure)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

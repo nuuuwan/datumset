@@ -3,11 +3,11 @@ from abc import ABC, abstractmethod
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 
-STRIP_COLOR = '#e8e8e8'
-BORDER_COLOR = '#cccccc'
-TITLE_COLOR = '#333333'
-SUBTITLE_COLOR = '#555555'
-FONT_FAMILY = 'Inter'
+STRIP_COLOR = "#e8e8e8"
+BORDER_COLOR = "#cccccc"
+TITLE_COLOR = "#333333"
+SUBTITLE_COLOR = "#555555"
+FONT_FAMILY = "Inter"
 
 
 class Visual(ABC):
@@ -48,12 +48,12 @@ class Visual(ABC):
         datum = self.datumset[0]
         entity = datum.entity_class.__name__
         other = [
-            f'{k} {v.get_value()}'
+            f"{k} {v.get_value()}"
             for k, v in datum.dim_idx.items()
             if k not in self._excluded_dim_keys()
         ]
-        suffix = ' for ' + ' and '.join(other) if other else ''
-        return f'{entity} {self._build_title()}{suffix}'
+        suffix = " for " + " and ".join(other) if other else ""
+        return f"{entity} {self._build_title()}{suffix}"
 
     def _add_strip(self, fig):
         strip = mpatches.Rectangle(
@@ -72,10 +72,10 @@ class Visual(ABC):
             0.5,
             0.94,
             self._build_full_title(),
-            ha='center',
-            va='center',
+            ha="center",
+            va="center",
             fontsize=11,
-            fontweight='bold',
+            fontweight="bold",
             color=TITLE_COLOR,
             zorder=6,
         )
@@ -94,15 +94,15 @@ class Visual(ABC):
             clip_on=False,
         )
         fig.add_artist(border)
-        ax.spines['top'].set_visible(False)
-        ax.spines['right'].set_visible(False)
-        ax.spines['left'].set_color(BORDER_COLOR)
-        ax.spines['bottom'].set_color(BORDER_COLOR)
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+        ax.spines["left"].set_color(BORDER_COLOR)
+        ax.spines["bottom"].set_color(BORDER_COLOR)
         ax.tick_params(colors=SUBTITLE_COLOR)
         fig.subplots_adjust(top=0.87, bottom=0.15, left=0.1, right=0.95)
 
     def draw(self):
-        with plt.rc_context({'font.family': FONT_FAMILY}):
+        with plt.rc_context({"font.family": FONT_FAMILY}):
             fig, ax = plt.subplots(figsize=self.FIGSIZE, dpi=self.DPI)
             self._plot(fig, ax)
             self._apply_style(fig, ax)
