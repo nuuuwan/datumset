@@ -45,6 +45,7 @@ class AgeGroup(Concept):
     def from_value(cls, value):
         value = value.replace("-", "_")
         value = value.replace(" ", "_")
+        value = value.replace("To", "_")
 
         if cls._has_total_terms(value):
             return cls(cls.MIN_TIME, cls.MAX_TIME)
@@ -62,4 +63,7 @@ class AgeGroup(Concept):
             common_value = int(num_tokens[0])
             return cls(common_value, common_value)
 
-        return cls(int(num_tokens[0]), int(num_tokens[1]))
+        if len(num_tokens) >= 2:
+            return cls(int(num_tokens[0]), int(num_tokens[1]))
+
+        raise ValueError(f"Cannot parse AgeGroup from value: {value}")

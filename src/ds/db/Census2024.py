@@ -21,7 +21,9 @@ class Census2024:
     @classmethod
     @cache
     def metadata_list(cls):
-        WWW(cls.URL_LANKA_DATA_METADATA).download(cls.LANKA_DATA_METADATA_FILE)
+        WWW(cls.URL_LANKA_DATA_METADATA).download(
+            cls.LANKA_DATA_METADATA_FILE
+        )
         return cls.LANKA_DATA_METADATA_FILE.read()
 
     @classmethod
