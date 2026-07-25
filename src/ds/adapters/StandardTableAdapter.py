@@ -59,11 +59,11 @@ class StandardTableAdapter:
         row_value = d[row_dim_key]
         try:
             return row_dim_cls.from_value(row_value)
-        except ValueError as e:
+        except:
             try:
                 return row_dim_cls.from_value(row_value)
-            except ValueError as e2:
-                log.warning(f'Failed to create "{row_value}": {e}/{e2}')
+            except:
+                pass
         return None
 
     @classmethod
