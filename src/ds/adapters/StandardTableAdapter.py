@@ -11,7 +11,17 @@ log = Log("StandardTableAdapter")
 class StandardTableAdapter:
 
     @classmethod
-    def __get_datum_from(
+    def _get_col_dim_instance(cls, col_dim_cls, k):
+        if col_dim_cls:
+            return (
+                ThingFactory.from_kvpair(k)
+                if ":" in k
+                else col_dim_cls.from_value(k)
+            )
+        return None
+
+    @classmethod
+    def __get_datum_from_kv(
         cls,
         k,
         v,
@@ -27,12 +37,7 @@ class StandardTableAdapter:
             return None
         if k.startswith("p_"):
             k = k[2:]
-        if col_dim_cls:
-            col_dim_instance = (
-                ThingFactory.from_kvpair(k)
-                if ":" in k
-                else col_dim_cls.from_value(k)
-            )
+        col_dim_instance = cls._get_col_dim_instance(col_dim_cls, k)
         cell_instance = cell_cls.from_value(v)
 
         dim_idx = {}
@@ -82,7 +87,7 @@ class StandardTableAdapter:
 
         datum_list = []
         for k, v in d["values"].items():
-            datum = cls.__get_datum_from(
+            datum = cls.__get_datum_from_kv(
                 k,
                 v,
                 entity_cls,
