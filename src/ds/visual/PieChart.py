@@ -17,7 +17,9 @@ class PieChart(Visual):
         y_values = []
         for datum in self.datumset:
             x_labels.append(datum.dim_idx[self.x_dim_key].get_value())
-            y_values.append(float(datum.cell_idx[self.y_cell_key].get_value()))
+            y_values.append(
+                float(datum.cell_idx[self.y_cell_key].get_value())
+            )
         return x_labels, y_values
 
     def _excluded_dim_keys(self):

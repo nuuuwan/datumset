@@ -4,8 +4,8 @@ import urllib.request
 
 import geopandas
 
-from ds.visual.Visual import Visual
 from ds.visual.label_fit.LabelFit import LabelFit
+from ds.visual.Visual import Visual
 
 GEO_URL = (
     "https://raw.githubusercontent.com"
