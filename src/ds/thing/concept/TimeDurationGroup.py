@@ -1,3 +1,4 @@
+import re
 from dataclasses import dataclass
 
 from utils_future import Log
@@ -26,16 +27,17 @@ class TimeDurationGroup(Concept):
 
     @staticmethod
     def _num_part_(value: str) -> list[int]:
-        tokens = value.split("_")
-        num_tokens = [int(token) for token in tokens if token.isdigit()]
-        return num_tokens
+        cleaned = re.sub(r"[^0-9_]", "", value)
+        return [int(t) for t in cleaned.split("_") if t]
 
     # flake8: noqa: C901
     @classmethod
     def from_value(cls, value: str) -> "TimeDurationGroup":
         value = value.replace("To", "_")
         tokens = value.split("_")
-        num_tokens = [int(token) for token in tokens if token.isdigit()]
+        num_tokens = [
+            int(t) for t in re.sub(r"[^0-9_]", "", value).split("_") if t
+        ]
 
         for k in cls.MORE_WORDS:
             if k in value:
