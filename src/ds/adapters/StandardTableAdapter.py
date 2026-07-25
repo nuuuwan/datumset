@@ -11,6 +11,57 @@ log = Log("StandardTableAdapter")
 class StandardTableAdapter:
 
     @classmethod
+    def __get_datum_from(
+        cls,
+        k,
+        v,
+        entity_cls,
+        time,
+        row_dim_cls,
+        row_dim_instance,
+        col_dim_cls,
+        cell_label,
+        cell_cls,
+    ):
+        if "total" in k.lower():
+            return None
+        if k.startswith("p_"):
+            k = k[2:]
+        if col_dim_cls:
+            col_dim_instance = (
+                ThingFactory.from_kvpair(k)
+                if ":" in k
+                else col_dim_cls.from_value(k)
+            )
+        cell_instance = cell_cls.from_value(v)
+
+        dim_idx = {}
+        if time is not None:
+            dim_idx["Time"] = time
+
+        dim_idx[row_dim_cls.__name__] = row_dim_instance
+        if col_dim_cls:
+            dim_idx[col_dim_cls.__name__] = col_dim_instance
+
+        return Datum(
+            entity_cls,
+            dim_idx,
+            {cell_label: cell_instance},
+        )
+
+    @classmethod
+    def _get_row_dim_instance(cls, row_dim_cls, row_dim_key, d):
+        row_value = d[row_dim_key]
+        try:
+            return row_dim_cls.from_value(row_value)
+        except ValueError as e:
+            try:
+                return row_dim_cls.from_value(row_value)
+            except ValueError as e2:
+                log.warning(f'Failed to create "{row_value}": {e}/{e2}')
+        return None
+
+    @classmethod
     def _get_datum_list_from_d(
         cls,
         d,
@@ -22,44 +73,28 @@ class StandardTableAdapter:
         cell_label,
         cell_cls,
     ):
-        row_value = d[row_dim_key]
-        try:
-            row_dim_instance = row_dim_cls.from_value(row_value)
-        except ValueError as e:
-            try:
-                row_dim_instance = row_dim_cls.from_value(row_value)
-            except ValueError as e2:
-                log.warning(f'Failed to create "{row_value}": {e}/{e2}')
-                return []
+
+        row_dim_instance = cls._get_row_dim_instance(
+            row_dim_cls, row_dim_key, d
+        )
+        if not row_dim_instance:
+            return []
 
         datum_list = []
         for k, v in d["values"].items():
-            if "total" in k.lower():
-                continue
-            if k.startswith("p_"):
-                k = k[2:]
-            if col_dim_cls:
-                col_dim_instance = (
-                    ThingFactory.from_kvpair(k)
-                    if ":" in k
-                    else col_dim_cls.from_value(k)
-                )
-            cell_instance = cell_cls.from_value(v)
-
-            dim_idx = {}
-            if time is not None:
-                dim_idx["Time"] = time
-
-            dim_idx[row_dim_cls.__name__] = row_dim_instance
-            if col_dim_cls:
-                dim_idx[col_dim_cls.__name__] = col_dim_instance
-
-            datum = Datum(
+            datum = cls.__get_datum_from(
+                k,
+                v,
                 entity_cls,
-                dim_idx,
-                {cell_label: cell_instance},
+                time,
+                row_dim_cls,
+                row_dim_instance,
+                col_dim_cls,
+                cell_label,
+                cell_cls,
             )
-            datum_list.append(datum)
+            if datum is not None:
+                datum_list.append(datum)
         return datum_list
 
     @classmethod
