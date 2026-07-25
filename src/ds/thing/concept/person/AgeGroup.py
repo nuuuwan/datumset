@@ -40,6 +40,7 @@ class AgeGroup(Concept):
                 return True
         return False
 
+    # flake8: noqa: C901
     @classmethod
     def from_value(cls, value):
         value = value.replace("-", "_")
