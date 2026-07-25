@@ -58,4 +58,6 @@ class TimeDurationGroup(Concept):
 
         log.debug(f"{tokens=}")
         log.debug(f"{num_tokens=}")
-        raise ValueError(f"Cannot parse TimeDurationGroup from value: {value}")
+        raise ValueError(
+            f"Cannot parse TimeDurationGroup from value: {value}"
+        )

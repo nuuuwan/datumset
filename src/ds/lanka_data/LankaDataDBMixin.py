@@ -2,14 +2,18 @@ from functools import cache
 
 from ds.datum.Datum import Datum
 from ds.db.Census2012 import Census2012
+from ds.db.Census2024 import Census2024
 from ds.db.Elections import Elections
 
 
 class LankaDataDBMixin:
+
     @classmethod
     @cache
     def idx(cls) -> dict[str, list[Datum]]:
-        datumset_list = Census2012.list() + Elections.list()
+        datumset_list = (
+            Census2012.list() + Elections.list() + Census2024.list()
+        )
         idx = {}
         for datumset in datumset_list:
             for datum in datumset:
