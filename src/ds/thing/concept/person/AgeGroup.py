@@ -20,35 +20,45 @@ class AgeGroup(Concept):
         object.__setattr__(self, "max_val", max_val)
 
     @classmethod
+    def _has_total_terms(cls, value):
+        for k in cls.TOTAL_WORDS:
+            if k.lower() in value.lower():
+                return True
+        return False
+
+    @classmethod
+    def _has_more_terms(cls, value):
+        for k in cls.MORE_WORDS:
+            if k.lower() in value.lower():
+                return True
+        return False
+
+    @classmethod
+    def _has_less_terms(cls, value):
+        for k in cls.LESS_WORDS:
+            if k.lower() in value.lower():
+                return True
+        return False
+
+    @classmethod
     def from_value(cls, value):
         value = value.replace("-", "_")
         value = value.replace(" ", "_")
 
-        for k in cls.TOTAL_WORDS:
-            if k.lower() in value.lower():
-                min_value = cls.MIN_TIME
-                max_value = cls.MAX_TIME
-                return cls(min_value, max_value)
+        if cls._has_total_terms(value):
+            return cls(cls.MIN_TIME, cls.MAX_TIME)
 
         tokens = value.split("_")
         num_tokens = [int(token) for token in tokens if token.isdigit()]
 
-        for k in cls.MORE_WORDS:
-            if k.lower() in value.lower():
-                min_value = int(num_tokens[0])
-                max_value = cls.MAX_TIME
-                return cls(min_value, max_value)
+        if cls._has_more_terms(value):
+            return cls(int(num_tokens[0]), cls.MAX_TIME)
 
-        for k in cls.LESS_WORDS:
-            if k.lower() in value.lower():
-                min_value = cls.MIN_TIME
-                max_value = int(num_tokens[0])
-                return cls(min_value, max_value)
+        if cls._has_less_terms(value):
+            return cls(cls.MIN_TIME, int(num_tokens[0]))
 
         if len(num_tokens) == 1:
-            min_value = int(num_tokens[0])
-            return cls(min_value, min_value)
+            common_value = int(num_tokens[0])
+            return cls(common_value, common_value)
 
-        min_value = int(num_tokens[0])
-        max_value = int(num_tokens[1])
-        return cls(min_value, max_value)
+        return cls(int(num_tokens[0]), int(num_tokens[1]))
