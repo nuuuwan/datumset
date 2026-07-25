@@ -29,5 +29,6 @@ class HouseholdStructure(CategoryConcept):
         return {
             "single_house_single_floor": "single_house_single_storeyed",
             "single_house_double_floor": "single_house_two_storeyed",
-            "single_house_more_than_2_floors": "single_house_more_than_two_storeyed",
+            "single_house_more_than_2_floors": "single_house_more"
+            + "_than_two_storeyed",
         }
