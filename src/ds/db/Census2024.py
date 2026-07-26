@@ -22,39 +22,20 @@ class Census2024(AbstractDB):
     @classmethod
     @cache
     def metadata_idx(cls):
-        WWW(cls.URL_LANKA_DATA_METADATA).download(
-            cls.LANKA_DATA_METADATA_FILE
-        )
+        WWW(cls.URL_LANKA_DATA_METADATA).download(cls.LANKA_DATA_METADATA_FILE)
         return cls.LANKA_DATA_METADATA_FILE.read()
 
     @classmethod
-    @cache
-    def list(cls):
-        datumset_list = []
-        local_dir = Directory.get_temp("datumset", "census2024")
-
-        for metadata in cls.metadata_idx():
-            url = cls.URL_BASE + metadata + "/lanka_data.json"
-            dataset_dir = Directory(local_dir, metadata)
-            dataset_dir.make()
-            local_data_file = JSONFile(dataset_dir, "lanka_data.json")
-            WWW(url).download(local_data_file)
-            datumset = Datumset.from_data(local_data_file.read())
-            datumset_list.append(datumset)
-        return datumset_list
-
-    @classmethod
     def _get_local_data_file(cls, partial_path):
-        url = cls.URL_BASE + partial_path
         local_dir = Directory.get_temp("datumset", "census2024")
-        dataset_dir = Directory(local_dir, partial_path)
-        local_data_file = JSONFile(dataset_dir, "lanka_data.json")
+        local_data_file = JSONFile(local_dir, partial_path)
+        dataset_dir = local_data_file.get_parent_directory()
 
         if local_data_file.exists():
             return local_data_file
 
+        url = cls.URL_BASE + partial_path
         dataset_dir.make()
-        local_data_file = JSONFile(dataset_dir, "lanka_data.json")
         WWW(url).download(local_data_file)
         return local_data_file
 
