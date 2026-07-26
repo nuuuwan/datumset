@@ -1,5 +1,3 @@
-import os
-
 from ds.visual.Visual import Visual
 
 IMAGE_DIR = "image"
@@ -27,11 +25,6 @@ class BarChart(Visual):
 
     def _build_title(self):
         return f"{self.y_cell_key} by {self.x_dim_key}"
-
-    def _image_path(self):
-        os.makedirs(IMAGE_DIR, exist_ok=True)
-        name = f"barchart_{self.x_dim_key}_{self.y_cell_key}.png"
-        return os.path.join(IMAGE_DIR, name)
 
     def _plot(self, fig, ax):
         x_labels, y_values = self._get_xy()

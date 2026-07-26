@@ -1,4 +1,3 @@
-import os
 from collections import defaultdict
 
 from ds.visual.Visual import Visual
@@ -36,14 +35,6 @@ class StackedBarChart(Visual):
             f"{self.y_cell_key} by {self.x_dim_key}"
             f", stacked by {self.stack_dim_key}"
         )
-
-    def _image_path(self):
-        os.makedirs(IMAGE_DIR, exist_ok=True)
-        name = (
-            f"stacked_barchart"
-            f"_{self.x_dim_key}_{self.stack_dim_key}_{self.y_cell_key}.png"
-        )
-        return os.path.join(IMAGE_DIR, name)
 
     def _plot(self, fig, ax):
         x_labels, stack_labels, data = self._get_data()

@@ -37,11 +37,6 @@ class MapVisual(Visual):
     def _build_title(self):
         return f"{self.y_cell_key} by {self.region_dim_key}"
 
-    def _image_path(self):
-        os.makedirs(IMAGE_DIR, exist_ok=True)
-        name = f"map_{self.region_dim_key}_{self.y_cell_key}.png"
-        return os.path.join(IMAGE_DIR, name)
-
     def _load_gdf(self):
         region_type = self.region_dim_key.lower() + "s"
         url = f"{GEO_URL}/{region_type}.topojson"
@@ -55,7 +50,7 @@ class MapVisual(Visual):
         fig.canvas.draw()
         renderer = fig.canvas.get_renderer()
         for _, row in gdf.iterrows():
-            label = row.get('name') or row['region_id']
+            label = row.get("name") or row["region_id"]
             cx, cy, rw, rh, angle_deg = LabelFit.best_label_fit(row.geometry)
             fontsize = LabelFit.fit_fontsize(label, rw, rh, ax, renderer)
             text_angle = angle_deg if rw >= rh else angle_deg + 90
@@ -64,24 +59,24 @@ class MapVisual(Visual):
             ax.annotate(
                 label,
                 xy=(cx, cy),
-                ha='center',
-                va='center',
+                ha="center",
+                va="center",
                 fontsize=fontsize,
-                color='#333333',
+                color="#333333",
                 rotation=text_angle,
             )
 
     def _plot(self, fig, ax):
         region_values = self._get_region_values()
         gdf = self._load_gdf()
-        gdf = gdf.rename(columns={'id': 'region_id'})
-        gdf['value'] = gdf['region_id'].map(region_values)
+        gdf = gdf.rename(columns={"id": "region_id"})
+        gdf["value"] = gdf["region_id"].map(region_values)
         gdf.plot(
-            column='value',
+            column="value",
             ax=ax,
             legend=True,
-            cmap='YlOrRd',
-            missing_kwds={'color': '#f0f0f0'},
+            cmap="YlOrRd",
+            missing_kwds={"color": "#f0f0f0"},
         )
         self._add_region_labels(gdf, ax, fig)
         ax.set_axis_off()

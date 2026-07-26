@@ -1,13 +1,17 @@
 from abc import ABC, abstractmethod
+from functools import cached_property
 
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
+from utils_future import Directory, File, Log
 
 STRIP_COLOR = "#e8e8e8"
 BORDER_COLOR = "#cccccc"
 TITLE_COLOR = "#333333"
 SUBTITLE_COLOR = "#555555"
 FONT_FAMILY = "Inter"
+
+log = Log("Visual")
 
 
 class Visual(ABC):
@@ -18,6 +22,16 @@ class Visual(ABC):
     def __init__(self, datumset, *params):
         self.datumset = datumset
         self.params = params
+
+    @cached_property
+    def dir_visual(self) -> Directory:
+        dir_visual = Directory("images", self.datumset[0].query.query_str)
+        dir_visual.make()
+        return dir_visual
+
+    @cached_property
+    def image_file(self) -> File:
+        return File(self.dir_visual, self.__class__.__name__ + ".png")
 
     def _excluded_dim_keys(self):
         return set()
@@ -34,10 +48,6 @@ class Visual(ABC):
 
     @abstractmethod
     def _build_title(self):
-        pass
-
-    @abstractmethod
-    def _image_path(self):
         pass
 
     @abstractmethod
@@ -75,7 +85,6 @@ class Visual(ABC):
             ha="center",
             va="center",
             fontsize=11,
-            fontweight="bold",
             color=TITLE_COLOR,
             zorder=6,
         )
@@ -116,6 +125,7 @@ class Visual(ABC):
             fig, ax = plt.subplots(figsize=self.FIGSIZE, dpi=self.DPI)
             self._plot(fig, ax)
             self._apply_style(fig, ax)
-            fig.savefig(self._image_path())
+            fig.savefig(self.image_file.path)
+            log.debug(f"Wrote {self.image_file}")
         plt.close(fig)
         return fig
