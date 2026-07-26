@@ -1,19 +1,25 @@
 from functools import cache
 
 from ds.datumset.Datumset import Datumset
-from ds.lanka_data.LankaDataDBMixin import LankaDataDBMixin
+from ds.db.AbstractDB import AbstractDB
+from ds.db.Census2012 import Census2012
+
+# from ds.db.Census2024 import Census2024
+# from ds.db.Elections import Elections
 
 
-class LankaData(LankaDataDBMixin):
+class LankaData:
+
+    @classmethod
+    def get_db_class_List(cls) -> list[AbstractDB]:
+        return [Census2012]
 
     @classmethod
     @cache
     def __class_getitem__(cls, query_str):
-        idx = cls.idx()
-        datum_list = idx.get(query_str)
-        if datum_list is not None:
-            return Datumset(*datum_list)
-
-        raise ValueError(
-            f'No matching Datumset found for label: "{query_str}"'
-        )
+        datumset = Datumset.empty()
+        for db_class in cls.get_db_class_List():
+            datumset_for_db_class = db_class[query_str]
+            if datumset_for_db_class:
+                datumset += datumset_for_db_class
+        return datumset
