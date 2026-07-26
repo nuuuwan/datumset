@@ -16,7 +16,7 @@ class Visual(ABC):
     BORDER_COLOR = "#cccccc"
     TITLE_COLOR = "#333333"
     SUBTITLE_COLOR = "#555555"
-    FONT_FAMILY = "Monaco"
+    FONT_FAMILY = "Ubuntu"
 
     def __init__(self, datumset, *params):
         self.datumset = datumset
@@ -53,7 +53,7 @@ class Visual(ABC):
     def _plot(self, fig, ax):
         pass
 
-    def _build_full_title(self):
+    def _get_title_text(self):
         datum = self.datumset[0]
         entity = datum.entity_class.__name__
         other = [
@@ -64,36 +64,24 @@ class Visual(ABC):
         suffix = " for " + " and ".join(other) if other else ""
         return f"{entity} {self._build_title()}{suffix}"
 
-    def _add_strip(self, fig):
-        strip = mpatches.Rectangle(
-            (0.01, 0.90),
-            0.98,
-            0.08,
-            transform=fig.transFigure,
-            facecolor=self.STRIP_COLOR,
-            edgecolor=self.BORDER_COLOR,
-            linewidth=1,
-            zorder=5,
-            clip_on=False,
-        )
-        fig.add_artist(strip)
+    def _add_title(self, fig):
+        title = self._get_title_text()
         fig.text(
             0.5,
-            0.94,
-            self._build_full_title(),
+            0.95,
+            title,
             ha="center",
             va="center",
-            fontsize=11,
+            fontsize=12 * (100 / len(title)),
             color=self.TITLE_COLOR,
             zorder=6,
         )
 
-    def _apply_style(self, fig, ax):
-        self._add_strip(fig)
+    def _add_border(self, fig):
         border = mpatches.Rectangle(
-            (0.01, 0.01),
-            0.98,
-            0.97,
+            (0.0, 0.0),
+            1,
+            1,
             transform=fig.transFigure,
             fill=False,
             edgecolor=self.BORDER_COLOR,
@@ -102,22 +90,20 @@ class Visual(ABC):
             clip_on=False,
         )
         fig.add_artist(border)
+
+    def _apply_style(self, fig, ax):
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
         ax.spines["left"].set_color(self.BORDER_COLOR)
         ax.spines["bottom"].set_color(self.BORDER_COLOR)
         ax.tick_params(colors=self.SUBTITLE_COLOR)
-        fig.text(
-            0.5,
-            0.02,
-            self.datumset[0].query.query_str,
-            ha="center",
-            va="bottom",
-            fontsize=7,
-            color="#aaaaaa",
-            zorder=6,
+        SUBPLOT_PADDING = 0.15
+        fig.subplots_adjust(
+            top=1 - SUBPLOT_PADDING,
+            bottom=SUBPLOT_PADDING,
+            left=SUBPLOT_PADDING,
+            right=1 - SUBPLOT_PADDING,
         )
-        fig.subplots_adjust(top=0.87, bottom=0.08, left=0.1, right=0.95)
 
     def draw(self):
         rc = {
@@ -127,6 +113,8 @@ class Visual(ABC):
         with plt.rc_context(rc):
             fig, ax = plt.subplots(figsize=self.FIGSIZE, dpi=self.DPI)
             self._plot(fig, ax)
+            self._add_title(fig)
+            self._add_border(fig)
             self._apply_style(fig, ax)
             fig.savefig(self.image_file.path)
             log.debug(f"Wrote {self.image_file}")
