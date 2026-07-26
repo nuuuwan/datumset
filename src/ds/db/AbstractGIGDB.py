@@ -1,0 +1,2 @@
+class AbstractGIGDB:
+    pass
