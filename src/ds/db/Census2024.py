@@ -22,9 +22,7 @@ class Census2024(AbstractDB):
     @classmethod
     @cache
     def metadata_idx(cls):
-        WWW(cls.URL_LANKA_DATA_METADATA).download(
-            cls.LANKA_DATA_METADATA_FILE
-        )
+        WWW(cls.URL_LANKA_DATA_METADATA).download(cls.LANKA_DATA_METADATA_FILE)
         return cls.LANKA_DATA_METADATA_FILE.read()
 
     @classmethod
@@ -45,9 +43,11 @@ class Census2024(AbstractDB):
     @cache
     def __class_getitem__(cls, query_str):
         partial_paths_for_query = cls.metadata_idx().get(query_str, [])
-        datumset = Datumset.empty()
+        datum_list = []
         for partial_path in partial_paths_for_query:
             local_data_file = cls._get_local_data_file(partial_path)
             datumset_for_path = Datumset.from_data(local_data_file.read())
-            datumset += datumset_for_path
-        return datumset
+            for datum in datumset_for_path:
+                if datum.query.query_str == query_str:
+                    datum_list.append(datum)
+        return Datumset(*datum_list)
