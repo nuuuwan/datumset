@@ -16,7 +16,7 @@ class Visual(ABC):
     BORDER_COLOR = "#cccccc"
     TITLE_COLOR = "#333333"
     SUBTITLE_COLOR = "#555555"
-    FONT_FAMILY = "Lato"
+    FONT_FAMILY = "Monaco"
 
     def __init__(self, datumset, *params):
         self.datumset = datumset
@@ -120,7 +120,11 @@ class Visual(ABC):
         fig.subplots_adjust(top=0.87, bottom=0.08, left=0.1, right=0.95)
 
     def draw(self):
-        with plt.rc_context({"font.family": self.FONT_FAMILY}):
+        rc = {
+            "font.family": "sans-serif",
+            "font.sans-serif": [self.FONT_FAMILY],
+        }
+        with plt.rc_context(rc):
             fig, ax = plt.subplots(figsize=self.FIGSIZE, dpi=self.DPI)
             self._plot(fig, ax)
             self._apply_style(fig, ax)
