@@ -9,6 +9,7 @@ class TestCase(unittest.TestCase):
     def test_valid(self):
         for query_str in [
             "Person/Time*Country*Religion/Count",
+            "Vote/ElectionType*Time*Country*Party/Count",
         ]:
             ds1 = LankaData[query_str]
             ds2 = Datumset.from_data(ds1.to_data())
