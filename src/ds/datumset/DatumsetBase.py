@@ -28,6 +28,9 @@ class DatumsetBase:
             + f" 'Datumset' and '{type(other).__name__}'"
         )
 
+    def __len__(self):
+        return len(self._value)
+
     @classmethod
     def empty(cls):
         return cls()
