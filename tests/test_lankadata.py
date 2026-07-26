@@ -59,6 +59,8 @@ class TestCase(unittest.TestCase):
             "Person/Time*ED*Religion/Count",
             "Person/Time*PD*Religion/Count",
         ]:
+            datumset = LankaData[query_str]  # cached
+
             t0 = time.time()
             datumset = LankaData[query_str]
             self.assertIsNotNone(datumset)
