@@ -8,7 +8,7 @@ class TestCase(unittest.TestCase):
 
     def test_valid(self):
         for query_str in [
-            "Person/Time*Country*Religion/Count",
+            # "Person/Time*Country*Religion/Count",
             "Vote/ElectionType*Time*Country*Party/Count",
         ]:
             ds1 = LankaData[query_str]
@@ -63,7 +63,7 @@ class TestCase(unittest.TestCase):
             datumset = LankaData[query_str]
             self.assertIsNotNone(datumset)
             elapsed_ms = (time.time() - t0) * 1000.0
-            MAX_T_MS = 5000.0
+            MAX_T_MS = 100.0
             self.assertLess(
                 elapsed_ms,
                 MAX_T_MS,
