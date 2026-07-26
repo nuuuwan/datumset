@@ -1,11 +1,20 @@
+import glob
+import os
 from abc import ABC, abstractmethod
 from functools import cached_property
 
+import matplotlib.font_manager as fm
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 from utils_future import Directory, File, Log
 
 log = Log("Visual")
+
+_FONTS_DIR = os.path.join(
+    os.path.dirname(__file__), "..", "..", "..", "media", "fonts"
+)
+for _ttf in glob.glob(os.path.join(_FONTS_DIR, "**", "*.ttf")):
+    fm.fontManager.addfont(_ttf)
 
 
 class Visual(ABC):
@@ -16,7 +25,9 @@ class Visual(ABC):
     BORDER_COLOR = "#cccccc"
     TITLE_COLOR = "#333333"
     SUBTITLE_COLOR = "#555555"
-    FONT_FAMILY = "Ubuntu"
+    DIR_FONTS = os.path.join("media", "fonts", "Fira_Sans")
+    FONT_FAMILY = "Fira Sans"
+    FONT_SIZE = 16
 
     def __init__(self, datumset, *params):
         self.datumset = datumset
@@ -105,18 +116,25 @@ class Visual(ABC):
             right=1 - SUBPLOT_PADDING,
         )
 
+    def _set_font(self):
+        for file in os.listdir(self.DIR_FONTS):
+            if file.endswith(".ttf"):
+                fm.fontManager.addfont(os.path.join(self.DIR_FONTS, file))
+        available = [f.name for f in fm.fontManager.ttflist]
+        if self.FONT_FAMILY not in available:
+            raise ValueError(f"Font '{self.FONT_FAMILY}' not available")
+
+        plt.rcParams["font.family"] = self.FONT_FAMILY
+        plt.rcParams["font.size"] = self.FONT_SIZE
+
     def draw(self):
-        rc = {
-            "font.family": "sans-serif",
-            "font.sans-serif": [self.FONT_FAMILY],
-        }
-        with plt.rc_context(rc):
-            fig, ax = plt.subplots(figsize=self.FIGSIZE, dpi=self.DPI)
-            self._plot(fig, ax)
-            self._add_title(fig)
-            self._add_border(fig)
-            self._apply_style(fig, ax)
-            fig.savefig(self.image_file.path)
-            log.debug(f"Wrote {self.image_file}")
+        self._set_font()
+        fig, ax = plt.subplots(figsize=self.FIGSIZE, dpi=self.DPI)
+        self._plot(fig, ax)
+        self._add_title(fig)
+        self._add_border(fig)
+        self._apply_style(fig, ax)
+        fig.savefig(self.image_file.path)
+        log.debug(f"Wrote {self.image_file}")
         plt.close(fig)
         return fig
