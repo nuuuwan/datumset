@@ -18,10 +18,16 @@ IMAGE_DIR = "image"
 
 class MapVisual(Visual):
 
-    def __init__(self, datumset, region_dim_key, y_cell_key):
-        super().__init__(datumset, region_dim_key, y_cell_key)
-        self.region_dim_key = region_dim_key
-        self.y_cell_key = y_cell_key
+    def __init__(
+        self,
+        datumset,
+        region_dim_key=None,
+        y_cell_key=None,
+    ):
+        super().__init__(datumset)
+        query = datumset[0].query
+        self.region_dim_key = region_dim_key or query.dim_labels[1]
+        self.y_cell_key = y_cell_key or query.cell_labels[0]
 
     def _get_region_values(self):
         return {

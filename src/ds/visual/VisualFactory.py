@@ -8,7 +8,12 @@ class VisualFactory:
 
     @classmethod
     def visual_class_list(cls):
-        return [BarChart, MapVisual, PieChart, StackedBarChart]
+        return [
+            BarChart,
+            MapVisual,
+            PieChart,
+            StackedBarChart,
+        ]
 
     @classmethod
     def __class_getitem__(cls, visual_class_name):

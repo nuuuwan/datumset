@@ -1,25 +1,21 @@
 import unittest
 
-from ds import LankaData, Query, VisualFactory
+from ds import LankaData, VisualFactory
 
 
 class TestCase(unittest.TestCase):
     def test_method(self):
-        query_str_list = ["Person/Time*Country*Religion/Count"]
-        visual_class_names = ["BarChart"]
+        query_str_list = ["Person/Time*Province*Religion/Count"]
 
         for query_str in query_str_list:
-            for visual_class_name in visual_class_names:
+            for VisualClass in VisualFactory.visual_class_list():
                 with self.subTest(
-                    query_str=query_str, visual_class_name=visual_class_name
+                    query_str=query_str,
+                    visual_class_name=VisualClass.__name__,
                 ):
 
                     datumset = LankaData[query_str]
-                    VisualClass = VisualFactory[visual_class_name]
 
-                    query = Query(query_str)
-                    visual = VisualClass(
-                        datumset, query.dim_labels[0], query.cell_labels[0]
-                    )
+                    visual = VisualClass(datumset)
                     visual.draw()
                     self.assertTrue(visual.image_file.exists())

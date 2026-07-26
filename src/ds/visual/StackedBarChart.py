@@ -7,11 +7,18 @@ IMAGE_DIR = "image"
 
 class StackedBarChart(Visual):
 
-    def __init__(self, datumset, x_dim_key, stack_dim_key, y_cell_key):
+    def __init__(
+        self,
+        datumset,
+        x_dim_key=None,
+        stack_dim_key=None,
+        y_cell_key=None,
+    ):
         super().__init__(datumset, x_dim_key, stack_dim_key, y_cell_key)
-        self.x_dim_key = x_dim_key
-        self.stack_dim_key = stack_dim_key
-        self.y_cell_key = y_cell_key
+        query = datumset[0].query
+        self.x_dim_key = x_dim_key or query.dim_labels[1]
+        self.stack_dim_key = stack_dim_key or query.dim_labels[2]
+        self.y_cell_key = y_cell_key or query.cell_labels[0]
 
     def _get_data(self):
         x_labels, stack_labels = [], []
