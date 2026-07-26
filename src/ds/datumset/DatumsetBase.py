@@ -15,3 +15,15 @@ class DatumsetBase:
 
     def __getitem__(self, index):
         return self._value[index]
+
+    def __add__(self, other):
+        cls = self.__class__
+        if isinstance(other, cls):
+            return DatumsetBase(*(self._value + other._value))
+        if isinstance(other, Datum):
+            return DatumsetBase(*(self._value + [other]))
+
+        raise TypeError(
+            "Unsupported operand type(s) for +:"
+            + f" 'Datumset' and '{type(other).__name__}'"
+        )
