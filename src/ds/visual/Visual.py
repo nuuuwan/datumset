@@ -5,12 +5,6 @@ import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 from utils_future import Directory, File, Log
 
-STRIP_COLOR = "#e8e8e8"
-BORDER_COLOR = "#cccccc"
-TITLE_COLOR = "#333333"
-SUBTITLE_COLOR = "#555555"
-FONT_FAMILY = "Inter"
-
 log = Log("Visual")
 
 
@@ -18,6 +12,11 @@ class Visual(ABC):
 
     FIGSIZE = (9, 9)
     DPI = 100
+    STRIP_COLOR = "#e8e8e8"
+    BORDER_COLOR = "#cccccc"
+    TITLE_COLOR = "#333333"
+    SUBTITLE_COLOR = "#555555"
+    FONT_FAMILY = "Lato"
 
     def __init__(self, datumset, *params):
         self.datumset = datumset
@@ -71,8 +70,8 @@ class Visual(ABC):
             0.98,
             0.08,
             transform=fig.transFigure,
-            facecolor=STRIP_COLOR,
-            edgecolor=BORDER_COLOR,
+            facecolor=self.STRIP_COLOR,
+            edgecolor=self.BORDER_COLOR,
             linewidth=1,
             zorder=5,
             clip_on=False,
@@ -85,7 +84,7 @@ class Visual(ABC):
             ha="center",
             va="center",
             fontsize=11,
-            color=TITLE_COLOR,
+            color=self.TITLE_COLOR,
             zorder=6,
         )
 
@@ -97,7 +96,7 @@ class Visual(ABC):
             0.97,
             transform=fig.transFigure,
             fill=False,
-            edgecolor=BORDER_COLOR,
+            edgecolor=self.BORDER_COLOR,
             linewidth=2,
             zorder=5,
             clip_on=False,
@@ -105,9 +104,9 @@ class Visual(ABC):
         fig.add_artist(border)
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
-        ax.spines["left"].set_color(BORDER_COLOR)
-        ax.spines["bottom"].set_color(BORDER_COLOR)
-        ax.tick_params(colors=SUBTITLE_COLOR)
+        ax.spines["left"].set_color(self.BORDER_COLOR)
+        ax.spines["bottom"].set_color(self.BORDER_COLOR)
+        ax.tick_params(colors=self.SUBTITLE_COLOR)
         fig.text(
             0.5,
             0.02,
@@ -121,7 +120,7 @@ class Visual(ABC):
         fig.subplots_adjust(top=0.87, bottom=0.08, left=0.1, right=0.95)
 
     def draw(self):
-        with plt.rc_context({"font.family": FONT_FAMILY}):
+        with plt.rc_context({"font.family": self.FONT_FAMILY}):
             fig, ax = plt.subplots(figsize=self.FIGSIZE, dpi=self.DPI)
             self._plot(fig, ax)
             self._apply_style(fig, ax)
