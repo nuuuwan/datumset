@@ -5,13 +5,14 @@ from utils_future import JSONFile
 from ds.adapters.TSVAdapter import TSVAdapter
 from ds.datum.Datum import Datum
 from ds.datumset.Datumset import Datumset
+from ds.db.AbstractDB import AbstractDB
 from ds.thing.concept.atom.Int import Int
 from ds.thing.concept.region.RegionFactory import RegionFactory
 from ds.thing.concept.Time import Time
 from ds.thing.ThingFactory import ThingFactory
 
 
-class Elections:
+class Elections(AbstractDB):
     BASE_URL = (
         "https://raw.githubusercontent.com/nuuuwan/gig-data"
         "/refs/heads/master/gig2"

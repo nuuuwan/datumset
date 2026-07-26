@@ -4,11 +4,12 @@ from utils_future import JSONFile
 
 from ds.adapters.TSVAdapter import TSVAdapter
 from ds.datumset.Datumset import Datumset
+from ds.db.AbstractDB import AbstractDB
 from ds.thing.concept.Time import Time
 from ds.thing.ThingFactory import ThingFactory
 
 
-class Census2012:
+class Census2012(AbstractDB):
     TIME = Time("2012")
     SKIP_KEYS = {
         "entity_id",

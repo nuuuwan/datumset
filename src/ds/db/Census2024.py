@@ -3,11 +3,12 @@ from functools import cache
 from utils_future import WWW, Directory, JSONFile, Log
 
 from ds.datumset.Datumset import Datumset
+from ds.db.AbstractDB import AbstractDB
 
 log = Log("Census2024")
 
 
-class Census2024:
+class Census2024(AbstractDB):
     URL_BASE = (
         "https://raw.githubusercontent.com"
         + "/nuuuwan/lk_census_2024/refs/heads/main/"
@@ -21,9 +22,7 @@ class Census2024:
     @classmethod
     @cache
     def metadata_list(cls):
-        WWW(cls.URL_LANKA_DATA_METADATA).download(
-            cls.LANKA_DATA_METADATA_FILE
-        )
+        WWW(cls.URL_LANKA_DATA_METADATA).download(cls.LANKA_DATA_METADATA_FILE)
         return cls.LANKA_DATA_METADATA_FILE.read()
 
     @classmethod
@@ -39,7 +38,6 @@ class Census2024:
             WWW(url).download(local_data_file)
             datumset = Datumset.from_data(local_data_file.read())
             datumset_list.append(datumset)
-        log.debug(f"Loaded {len(datumset_list)} datumsets from Census2024")
         return datumset_list
 
 
