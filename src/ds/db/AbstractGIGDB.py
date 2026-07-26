@@ -52,7 +52,9 @@ class AbstractGIGDB(AbstractDB, ABC):
     @cache
     def __class_getitem__(cls, query_str):
         metadata_for_query = cls.get_metadata_for_query(query_str)
-        datumset_list = [cls.get_datumset(item) for item in metadata_for_query]
+        datumset_list = [
+            cls.get_datumset(item) for item in metadata_for_query
+        ]
         datum_list = []
         for datumset in datumset_list:
             for datum in datumset:

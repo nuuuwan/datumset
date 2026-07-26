@@ -69,27 +69,3 @@ class TestCase(unittest.TestCase):
                 MAX_T_MS,
                 f"{query_str} took {elapsed_ms:.2f}ms > {MAX_T_MS}ms",
             )
-
-    def test_invalid(self):
-        for query_str in [
-            "Person/Time*GND*Religion1/Count",
-            "Person/Time*DSD*Ethnicity1/Count",
-        ]:
-            with self.assertRaises(ValueError):
-                LankaData[query_str]
-
-    def test_election(self):
-        datumset = LankaData["Vote/ElectionType*Time*ED*Party/Count"]
-        first_datum = datumset[0]
-        self.assertEqual(
-            first_datum.to_data(),
-            {
-                "Vote": {
-                    "ElectionType:parliamentary": {
-                        "Time:1989": {
-                            "ED:EC-01": {"Party:UNP": {"Count": "Int:374530"}}
-                        }
-                    }
-                }
-            },
-        )

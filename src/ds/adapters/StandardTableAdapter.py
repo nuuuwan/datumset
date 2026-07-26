@@ -59,10 +59,10 @@ class StandardTableAdapter:
         row_value = d[row_dim_key]
         try:
             return row_dim_cls.from_value(row_value)
-        except:
+        except BaseException:
             try:
                 return row_dim_cls.from_value(row_value)
-            except:
+            except BaseException:
                 pass
         return None
 
