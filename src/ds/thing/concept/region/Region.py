@@ -20,6 +20,14 @@ class Region(CategoryConcept):
     def valid_values(cls):
         return [r.get_value() for r in cls.list()]
 
+    def get_ent(self):
+        idx = self.get_ent_idx_by_value()
+
+        if self.get_value() in idx:
+            return idx[self.get_value()]
+
+        raise ValueError(f"Could not find ent for {self}")
+
     @classmethod
     @cache
     def get_ents(cls):
@@ -43,6 +51,10 @@ class Region(CategoryConcept):
     @classmethod
     def get_ent_idx_by_id(cls):
         return {d["id"]: d for d in cls.get_ents()}
+
+    @classmethod
+    def get_ent_idx_by_value(cls):
+        return {d["name"]: d for d in cls.get_ents()}
 
     @classmethod
     @cache
