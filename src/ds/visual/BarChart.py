@@ -8,9 +8,7 @@ class BarChart(Visual):
         self.x_dim_key = self._resolve_dim_key(x_dim_key, 0)
         self.y_cell_key = self._resolve_cell_key(y_cell_key)
         self.display_datumsets = self._get_display_datumsets({self.x_dim_key})
-        self.x_values, self.x_color_idx = self._init_dim_colors(
-            self.x_dim_key
-        )
+        self.x_values, self.x_color_idx = self._init_dim_colors(self.x_dim_key)
 
     def _excluded_dim_keys(self):
         return {self.x_dim_key}
@@ -42,13 +40,16 @@ class BarChart(Visual):
             self.x_dim_key,
             self.y_cell_key,
         )
+        x_values = list(range(len(x_labels)))
         colors = [self.x_color_idx[x_label] for x_label in x_labels]
-        sub_ax.bar(range(len(x_labels)), y_values, color=colors)
+        sub_ax.bar(x_values, y_values, color=colors)
+        self._add_bar_totals(sub_ax, x_values, y_values, y_limit)
         self._style_value_axis_subfigure(
             sub_ax,
             self.y_cell_key,
             y_limit,
             sub_datumset,
+            x_labels,
         )
 
     def _plot(self, fig, ax):

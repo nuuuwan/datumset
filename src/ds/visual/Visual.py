@@ -32,6 +32,9 @@ class Visual(ABC):
     DIR_FONTS = os.path.join("media", "fonts", "Fira_Sans")
     FONT_FAMILY = "Fira Sans"
     FONT_SIZE = 8
+    MIN_STACK_LABEL_FONTSIZE = 6
+    MAX_STACK_LABEL_FONTSIZE = 20
+    STACK_LABEL_FONT_REDUCTION = 1
 
     def __init__(self, datumset, *params):
         self.datumset = datumset
@@ -125,6 +128,14 @@ class Visual(ABC):
             y_values.append(float(datum.cell_idx[cell_key].get_value()))
         return x_labels, y_values
 
+    def _format_visual_value(self, value):
+        if not isinstance(value, str):
+            return value
+        normalized = value.replace("_", " ")
+        if normalized.islower() and any(c.isalpha() for c in normalized):
+            return normalized.title()
+        return value
+
     def _get_default_color_idx(self, dim_values):
         cmap = plt.get_cmap("tab20")
         return {
@@ -185,7 +196,8 @@ class Visual(ABC):
                 datum.dim_idx[dim_key].get_value() == first_value
                 for datum in datumset
             ):
-                constant_parts.append(f"{dim_key}: {first_value}")
+                display_value = self._format_visual_value(first_value)
+                constant_parts.append(f"{dim_key}: {display_value}")
         if constant_parts:
             return "\n".join(constant_parts)
         return "All data"
@@ -206,11 +218,19 @@ class Visual(ABC):
         y_cell_key,
         y_limit,
         sub_datumset,
+        x_labels=None,
     ):
         sub_ax.set_ylabel(y_cell_key)
         sub_ax.set_ylim(0, y_limit)
         self._format_humanized_y_axis(sub_ax)
-        sub_ax.set_xticks([])
+        if x_labels:
+            display_x_labels = [
+                self._format_visual_value(x_label) for x_label in x_labels
+            ]
+            sub_ax.set_xticks(range(len(x_labels)))
+            sub_ax.set_xticklabels(display_x_labels, fontsize=6)
+        else:
+            sub_ax.set_xticks([])
         sub_ax.set_box_aspect(1)
         self._set_subfigure_title(sub_ax, sub_datumset)
 
@@ -222,7 +242,7 @@ class Visual(ABC):
         datum = self.datumset[0]
         entity = datum.entity_class.__name__
         other = [
-            f"{k}: {v.get_value()}"
+            f"{k}: {self._format_visual_value(v.get_value())}"
             for k, v in datum.dim_idx.items()
             if k not in self._excluded_dim_keys()
         ]
@@ -240,7 +260,7 @@ class Visual(ABC):
         datum = self.datumset[0]
         entity = datum.entity_class.__name__
         other = [
-            f"{k} {v.get_value()}"
+            f"{k} {self._format_visual_value(v.get_value())}"
             for k, v in datum.dim_idx.items()
             if k not in self._excluded_dim_keys()
         ]
@@ -339,9 +359,89 @@ class Visual(ABC):
         formatter = FuncFormatter(self._format_humanized_value)
         ax.yaxis.set_major_formatter(formatter)
 
+    def _format_percentage_value(self, value, total):
+        if total <= 0:
+            return "0%"
+        pct = value * 100.0 / total
+        if pct > 0.5:
+            return f"{pct:.0f}%"
+        return "<0.5%"
+
+    def _add_bar_totals(self, sub_ax, x_values, totals, y_limit):
+        offset = y_limit * 0.015
+        for x_value, total in zip(x_values, totals):
+            sub_ax.text(
+                x_value,
+                total + offset,
+                self._format_humanized_value(float(total), None),
+                ha="center",
+                va="bottom",
+                fontsize=7,
+                color=self.SUBTITLE_COLOR,
+            )
+
+    def _get_rect_size_px(self, sub_ax, rect):
+        x0 = rect.get_x()
+        y0 = rect.get_y()
+        x1 = x0 + rect.get_width()
+        y1 = y0 + rect.get_height()
+        px0, py0 = sub_ax.transData.transform((x0, y0))
+        px1, py1 = sub_ax.transData.transform((x1, y1))
+        return abs(px1 - px0), abs(py1 - py0)
+
+    def _get_best_rect_label_fontsize(self, sub_ax, rect, label):
+        fig = sub_ax.figure
+        fig.canvas.draw()
+        renderer = fig.canvas.get_renderer()
+        cx = rect.get_x() + rect.get_width() / 2.0
+        cy = rect.get_y() + rect.get_height() / 2.0
+        max_width_px, max_height_px = self._get_rect_size_px(sub_ax, rect)
+        probe = sub_ax.text(cx, cy, label, ha="center", va="center")
+        best_fontsize = 0
+        for fontsize in range(self.MAX_STACK_LABEL_FONTSIZE, 3, -1):
+            probe.set_fontsize(fontsize)
+            bbox = probe.get_window_extent(renderer=renderer)
+            if (
+                bbox.width <= max_width_px * 0.9
+                and bbox.height <= max_height_px * 0.9
+            ):
+                best_fontsize = fontsize
+                break
+        probe.remove()
+        return best_fontsize
+
+    def _add_fitted_label_in_rect(self, sub_ax, rect, label):
+        fontsize = self._get_best_rect_label_fontsize(sub_ax, rect, label)
+        fontsize -= self.STACK_LABEL_FONT_REDUCTION
+        if fontsize < self.MIN_STACK_LABEL_FONTSIZE:
+            return
+        cx = rect.get_x() + rect.get_width() / 2.0
+        cy = rect.get_y() + rect.get_height() / 2.0
+        sub_ax.text(
+            cx,
+            cy,
+            label,
+            ha="center",
+            va="center",
+            fontsize=fontsize,
+            color="white",
+        )
+
+    def _add_stacked_bar_percentages(self, sub_ax, bars, values, totals):
+        for i, rect in enumerate(bars):
+            value = values[i]
+            total = totals[i]
+            if value <= 0 or total <= 0:
+                continue
+            label = self._format_percentage_value(value, total)
+            self._add_fitted_label_in_rect(sub_ax, rect, label)
+
     def _add_color_legend(self, fig, value_color_idx, title):
         legend_handles = [
-            mpatches.Patch(color=color, label=value)
+            mpatches.Patch(
+                color=color,
+                label=self._format_visual_value(value),
+            )
             for value, color in value_color_idx.items()
         ]
         fig.legend(

@@ -81,3 +81,17 @@ class TestCase(unittest.TestCase):
         self.assertAlmostEqual(base_s, high_s, places=3)
         self.assertGreater(low_l, high_l)
         self.assertGreater(base_l, high_l)
+
+    def test_visual_title_case_category_values(self):
+        query_str = "Person/Time*Province=LK-1*Religion=roman_catholic/Count"
+        datumset = LankaData[query_str]
+        visual = PieChart(datumset, "Time", "Count")
+        subfigure_title = visual._get_subfigure_title(
+            visual.display_datumsets[0],
+            visual._excluded_dim_keys(),
+        )
+        self.assertIn("Roman Catholic", subfigure_title)
+        self.assertNotIn("roman_catholic", subfigure_title)
+        self.assertEqual("Buddhist", visual._format_visual_value("buddhist"))
+        self.assertEqual("Hindu", visual._format_visual_value("hindu"))
+        self.assertEqual("LK-1", visual._format_visual_value("LK-1"))
