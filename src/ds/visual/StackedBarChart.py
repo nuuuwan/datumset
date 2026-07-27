@@ -37,17 +37,11 @@ class StackedBarChart(Visual):
             data[s][x] = v
         return x_labels, stack_labels, data
 
-    def _get_sorted_stack_labels(self, stack_labels, data, x_labels):
-        stack_total_idx = {
-            stack_label: sum(
-                data[stack_label].get(x_label, 0.0) for x_label in x_labels
-            )
-            for stack_label in stack_labels
-        }
+    def _get_sorted_stack_labels_for_x(self, stack_labels, data, x_label):
         return sorted(
             stack_labels,
-            key=lambda stack_label: stack_total_idx[stack_label],
-            reverse=True,
+            key=lambda stack_label: data[stack_label].get(x_label, 0.0),
+            reverse=False,
         )
 
     def _get_totals(self, x_labels, data):
@@ -83,34 +77,53 @@ class StackedBarChart(Visual):
                 y_max = max(y_max, max(totals))
         return self._get_y_axis_limit(y_max)
 
-    def _plot_subfigure(self, sub_ax, sub_datumset, y_limit):
-        x_labels, stack_labels, data = self._get_data(sub_datumset)
-        x_values = list(range(len(x_labels)))
-        totals = self._get_totals(x_labels, data)
-        stack_labels = self._get_sorted_stack_labels(
+    def _plot_stack_for_x(
+        self,
+        sub_ax,
+        x_value,
+        x_label,
+        stack_labels,
+        data,
+        total,
+    ):
+        bottom = 0.0
+        sorted_stack_labels = self._get_sorted_stack_labels_for_x(
             stack_labels,
             data,
-            x_labels,
+            x_label,
         )
-        bottoms = [0.0] * len(x_labels)
-        for stack_label in stack_labels:
-            values = [
-                data[stack_label].get(x_label, 0.0) for x_label in x_labels
-            ]
+        for stack_label in sorted_stack_labels:
+            value = data[stack_label].get(x_label, 0.0)
+            if value <= 0:
+                continue
             color = self.stack_color_idx[stack_label]
             bars = sub_ax.bar(
-                x_values,
-                values,
-                bottom=bottoms,
+                [x_value],
+                [value],
+                bottom=[bottom],
                 color=color,
             )
             self._add_stacked_bar_percentages(
                 sub_ax,
                 bars,
-                values,
-                totals,
+                [value],
+                [total],
             )
-            bottoms = [b + v for b, v in zip(bottoms, values)]
+            bottom += value
+
+    def _plot_subfigure(self, sub_ax, sub_datumset, y_limit):
+        x_labels, stack_labels, data = self._get_data(sub_datumset)
+        x_values = list(range(len(x_labels)))
+        totals = self._get_totals(x_labels, data)
+        for x_value, x_label, total in zip(x_values, x_labels, totals):
+            self._plot_stack_for_x(
+                sub_ax,
+                x_value,
+                x_label,
+                stack_labels,
+                data,
+                total,
+            )
         self._add_bar_totals(sub_ax, x_values, totals, y_limit)
         self._style_value_axis_subfigure(
             sub_ax,
