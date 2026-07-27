@@ -140,6 +140,9 @@ class PieChart(Visual):
         if best_fontsize < self.MIN_PIE_LABEL_FONTSIZE:
             autotext.set_visible(False)
             return
+        autotext.set_color(
+            self._get_contrast_text_color(wedge.get_facecolor())
+        )
         autotext.set_fontsize(best_fontsize)
 
     def _fit_slice_labels(self, sub_ax, wedges, autotexts, radius):
@@ -229,7 +232,7 @@ class PieChart(Visual):
             radius=radius,
             startangle=90,
             counterclock=False,
-            textprops={"color": "white"},
+            textprops={"color": self.CONTRAST_DARK_TEXT_COLOR},
         )
         self._fit_slice_labels(sub_ax, wedges, autotexts, radius)
         self._set_square_subfigure_title(sub_ax, sub_datumset)

@@ -30,6 +30,11 @@ class TestCase(unittest.TestCase):
                 ("Province", "Religion", "Count"),
             ),
             (
+                "Person/Time=2012*District*Religion/Count",
+                "StackedBarChart",
+                ("District", "Religion", "Count"),
+            ),
+            (
                 "Person/Time=2012*Province*Religion=buddhist/Count",
                 "MapVisual",
                 ("Province", "Count"),
@@ -112,3 +117,16 @@ class TestCase(unittest.TestCase):
         visual = PieChart(datumset, "Religion", "Count")
         self.assertEqual(1.0, visual._get_pie_radius(50.0, 100.0, 1))
         self.assertAlmostEqual(0.5, visual._get_pie_radius(25.0, 100.0, 4))
+
+    def test_contrast_text_color(self):
+        query_str = "Person/Time=2012*Province=Western*Religion/Count"
+        datumset = LankaData[query_str]
+        visual = PieChart(datumset, "Religion", "Count")
+        self.assertEqual(
+            visual.CONTRAST_LIGHT_TEXT_COLOR,
+            visual._get_contrast_text_color("#111111"),
+        )
+        self.assertEqual(
+            visual.CONTRAST_DARK_TEXT_COLOR,
+            visual._get_contrast_text_color("#f3f3f3"),
+        )

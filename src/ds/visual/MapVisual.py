@@ -71,7 +71,16 @@ class MapVisual(Visual):
             urllib.request.urlretrieve(url, cache_path)
         return geopandas.read_file(cache_path)
 
-    def _add_region_labels(self, gdf, ax, fig):
+    def _get_region_label_color(self, value, vmin, vmax, cmap):
+        if value is None:
+            return self._get_contrast_text_color("#f0f0f0")
+        if vmax <= vmin:
+            color = cmap(0.5)
+        else:
+            color = cmap((value - vmin) / (vmax - vmin))
+        return self._get_contrast_text_color(color)
+
+    def _add_region_labels(self, gdf, ax, fig, vmin, vmax, cmap):
         fig.canvas.draw()
         renderer = fig.canvas.get_renderer()
         for _, row in gdf.iterrows():
@@ -84,13 +93,19 @@ class MapVisual(Visual):
             text_angle = angle_deg if rw >= rh else angle_deg + 90
             while text_angle > 90:
                 text_angle -= 180
+            text_color = self._get_region_label_color(
+                row.get("value"),
+                vmin,
+                vmax,
+                cmap,
+            )
             ax.annotate(
                 label,
                 xy=(cx, cy),
                 ha="center",
                 va="center",
                 fontsize=fontsize,
-                color="#333333",
+                color=text_color,
                 rotation=text_angle,
                 clip_on=True,
             )
@@ -164,7 +179,7 @@ class MapVisual(Visual):
             vmax=vmax,
             missing_kwds={"color": "#f0f0f0"},
         )
-        self._add_region_labels(gdf, sub_ax, fig)
+        self._add_region_labels(gdf, sub_ax, fig, vmin, vmax, cmap)
         sub_ax.set_axis_off()
         self._set_square_subfigure_title(sub_ax, sub_datumset)
 

@@ -4,6 +4,7 @@ import os
 from abc import ABC, abstractmethod
 from functools import cached_property
 
+import matplotlib.colors as mcolors
 import matplotlib.font_manager as fm
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
@@ -37,6 +38,9 @@ class Visual(ABC):
     STACK_LABEL_FONT_REDUCTION = 1
     STACK_LABEL_MIN_DIM_RATIO = 0.55
     STACK_LABEL_BBOX_MARGIN = 0.75
+    CONTRAST_LIGHT_TEXT_COLOR = "#ffffff"
+    CONTRAST_DARK_TEXT_COLOR = "#111111"
+    CONTRAST_LIGHTNESS_THRESHOLD = 0.5
 
     def __init__(self, datumset, *params):
         self.datumset = datumset
@@ -230,7 +234,14 @@ class Visual(ABC):
                 self._format_visual_value(x_label) for x_label in x_labels
             ]
             sub_ax.set_xticks(range(len(x_labels)))
-            sub_ax.set_xticklabels(display_x_labels, fontsize=6)
+            sub_ax.set_xticklabels(
+                display_x_labels,
+                fontsize=6,
+                rotation=90,
+                ha="center",
+                va="top",
+            )
+            sub_ax.tick_params(axis="x", pad=1)
         else:
             sub_ax.set_xticks([])
         sub_ax.set_box_aspect(1)
@@ -369,6 +380,26 @@ class Visual(ABC):
             return f"{pct:.0f}%"
         return "<0.5%"
 
+    def _to_linear_rgb_channel(self, channel_value):
+        if channel_value <= 0.04045:
+            return channel_value / 12.92
+        return ((channel_value + 0.055) / 1.055) ** 2.4
+
+    def _get_relative_luminance(self, color):
+        red, green, blue = mcolors.to_rgb(color)
+        red = self._to_linear_rgb_channel(red)
+        green = self._to_linear_rgb_channel(green)
+        blue = self._to_linear_rgb_channel(blue)
+        return 0.2126 * red + 0.7152 * green + 0.0722 * blue
+
+    def _get_contrast_text_color(self, background_color):
+        if background_color is None:
+            return self.CONTRAST_DARK_TEXT_COLOR
+        luminance = self._get_relative_luminance(background_color)
+        if luminance > self.CONTRAST_LIGHTNESS_THRESHOLD:
+            return self.CONTRAST_DARK_TEXT_COLOR
+        return self.CONTRAST_LIGHT_TEXT_COLOR
+
     def _add_bar_totals(self, sub_ax, x_values, totals, y_limit):
         offset = y_limit * 0.015
         for x_value, total in zip(x_values, totals):
@@ -415,8 +446,7 @@ class Visual(ABC):
             bbox = probe.get_window_extent(renderer=renderer)
             if (
                 bbox.width <= max_width_px * self.STACK_LABEL_BBOX_MARGIN
-                and bbox.height
-                <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
+                and bbox.height <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
             ):
                 best_fontsize = fontsize
                 break
@@ -437,7 +467,7 @@ class Visual(ABC):
             ha="center",
             va="center",
             fontsize=fontsize,
-            color="white",
+            color=self._get_contrast_text_color(rect.get_facecolor()),
         )
 
     def _add_stacked_bar_percentages(self, sub_ax, bars, values, totals):
