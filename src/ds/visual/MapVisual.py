@@ -22,6 +22,13 @@ IMAGE_DIR = "image"
 
 class MapVisual(Visual):
 
+    def _normalize_region_key(self, raw_value):
+        if raw_value is None:
+            return None
+        return (
+            str(raw_value).strip().lower().replace("-", "_").replace(" ", "_")
+        )
+
     def __init__(
         self,
         datumset,
@@ -37,9 +44,9 @@ class MapVisual(Visual):
 
     def _get_region_values(self):
         return {
-            datum.dim_idx[self.region_dim_key].get_value(): float(
-                datum.cell_idx[self.y_cell_key].get_value()
-            )
+            self._normalize_region_key(
+                datum.dim_idx[self.region_dim_key].get_value()
+            ): float(datum.cell_idx[self.y_cell_key].get_value())
             for datum in self.datumset
         }
 
@@ -108,11 +115,18 @@ class MapVisual(Visual):
 
     def _get_region_values_for(self, datumset):
         return {
-            datum.dim_idx[self.region_dim_key].get_value(): float(
-                datum.cell_idx[self.y_cell_key].get_value()
-            )
+            self._normalize_region_key(
+                datum.dim_idx[self.region_dim_key].get_value()
+            ): float(datum.cell_idx[self.y_cell_key].get_value())
             for datum in datumset
         }
+
+    def _lookup_region_value(self, row, region_values):
+        for raw_key in (row.get("region_id"), row.get("name")):
+            normalized_key = self._normalize_region_key(raw_key)
+            if normalized_key in region_values:
+                return region_values[normalized_key]
+        return None
 
     def _build_hsl_lightness_cmap(self, base_color):
         base_rgb = mcolors.to_rgb(base_color)
@@ -137,7 +151,10 @@ class MapVisual(Visual):
     def _plot_subfigure(self, fig, sub_ax, sub_datumset, vmin, vmax, cmap):
         region_values = self._get_region_values_for(sub_datumset)
         gdf = self._load_gdf().rename(columns={"id": "region_id"})
-        gdf["value"] = gdf["region_id"].map(region_values)
+        gdf["value"] = gdf.apply(
+            lambda row: self._lookup_region_value(row, region_values),
+            axis=1,
+        )
         gdf.plot(
             column="value",
             ax=sub_ax,
