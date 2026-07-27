@@ -9,6 +9,7 @@ class Query:
     DELIM_PART = "/"
     OPR_ADD = "+"
     OPR_MULT = "*"
+    OPR_EQ = "="
 
     @cached_property
     def parts(self):
@@ -35,12 +36,36 @@ class Query:
         return self.entity_part.split(self.OPR_ADD)
 
     @cached_property
-    def dim_labels(self):
+    def dim_specs(self):
         return self.dim_part.split(self.OPR_MULT)
+
+    @cached_property
+    def dim_labels(self):
+        return [
+            dim_spec.split(self.OPR_EQ, 1)[0] for dim_spec in self.dim_specs
+        ]
+
+    @cached_property
+    def dim_values_idx(self):
+        dim_values_idx = {}
+        for dim_spec in self.dim_specs:
+            if self.OPR_EQ not in dim_spec:
+                continue
+            dim_label, dim_value = dim_spec.split(self.OPR_EQ, 1)
+            dim_values_idx[dim_label] = dim_value
+        return dim_values_idx
 
     @cached_property
     def cell_labels(self):
         return self.cell_part.split(self.OPR_MULT)
+
+    @cached_property
+    def base_query_str(self):
+        return self.from_parts(
+            tuple(self.entity_class_names),
+            tuple(self.dim_labels),
+            tuple(self.cell_labels),
+        ).query_str
 
     # ---
     @classmethod

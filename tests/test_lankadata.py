@@ -71,3 +71,15 @@ class TestCase(unittest.TestCase):
                 MAX_T_MS,
                 f"{query_str} took {elapsed_ms:.2f}ms > {MAX_T_MS}ms",
             )
+
+    def test_dim_value_filter(self):
+        query_str = "Person/Time=2012*District*Religion=buddhist/Count"
+        datumset = LankaData[query_str]
+
+        self.assertGreater(len(datumset), 0)
+        for datum in datumset:
+            self.assertEqual(datum.dim_idx["Time"].get_value(), "2012")
+            self.assertEqual(
+                datum.dim_idx["Religion"].get_value(),
+                "buddhist",
+            )

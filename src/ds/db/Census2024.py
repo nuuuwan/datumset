@@ -4,6 +4,7 @@ from utils_future import WWW, Directory, JSONFile, Log
 
 from ds.datumset.Datumset import Datumset
 from ds.db.AbstractDB import AbstractDB
+from ds.query.Query import Query
 
 log = Log("Census2024")
 
@@ -44,12 +45,15 @@ class Census2024(AbstractDB):
     @classmethod
     @cache
     def __class_getitem__(cls, query_str):
-        partial_paths_for_query = cls.metadata_idx().get(query_str, [])
+        query = Query(query_str)
+        partial_paths_for_query = cls.metadata_idx().get(
+            query.base_query_str, []
+        )
         datum_list = []
         for partial_path in partial_paths_for_query:
             local_data_file = cls._get_local_data_file(partial_path)
             datumset_for_path = Datumset.from_data(local_data_file.read())
             for datum in datumset_for_path:
-                if datum.query.query_str == query_str:
+                if datum.is_match(query):
                     datum_list.append(datum)
         return Datumset(*datum_list)

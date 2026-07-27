@@ -51,6 +51,7 @@ class AbstractGIGDB(AbstractDB, ABC):
     @classmethod
     @cache
     def __class_getitem__(cls, query_str):
+        query = Query(query_str)
         metadata_for_query = cls.get_metadata_for_query(query_str)
         datumset_list = [
             cls.get_datumset(item) for item in metadata_for_query
@@ -58,6 +59,6 @@ class AbstractGIGDB(AbstractDB, ABC):
         datum_list = []
         for datumset in datumset_list:
             for datum in datumset:
-                if query_str == datum.query.query_str:
+                if datum.is_match(query):
                     datum_list.append(datum)
         return Datumset(*datum_list)

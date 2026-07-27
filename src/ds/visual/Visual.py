@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
 from utils_future import Directory, File, Log
 
+from ds.query.Query import Query
+
 log = Log("Visual")
 
 _FONTS_DIR = os.path.join(
@@ -35,9 +37,28 @@ class Visual(ABC):
         self.datumset = datumset
         self.params = params
 
+    def _get_query_str_for_path(self):
+        query = self.datumset[0].query
+        dim_specs = []
+        for dim_label in query.dim_labels:
+            dim_values = self._get_unique_dim_values(dim_label)
+            if len(dim_values) == 1:
+                dim_specs.append(f"{dim_label}={dim_values[0]}")
+                continue
+            dim_specs.append(dim_label)
+        dim_part = Query.OPR_MULT.join(dim_specs)
+        return Query.DELIM_PART.join(
+            [
+                query.entity_part,
+                dim_part,
+                query.cell_part,
+            ]
+        )
+
     @cached_property
     def dir_visual(self) -> Directory:
-        dir_visual = Directory("images", self.datumset[0].query.query_str)
+        query_str_for_path = self._get_query_str_for_path()
+        dir_visual = Directory("images", query_str_for_path)
         dir_visual.make()
         return dir_visual
 
@@ -172,19 +193,27 @@ class Visual(ABC):
 
     def _format_humanized_value(self, value, _pos):
         abs_value = abs(value)
-        display_value = value
-        suffix = ""
+        formatted_value = None
         if abs_value >= 1000000:
-            display_value = value / 1000000
-            suffix = "M"
+            formatted_value = self._format_humanized_scaled(
+                value / 1000000,
+                "M",
+            )
         elif abs_value >= 1000:
-            display_value = value / 1000
-            suffix = "K"
-        if suffix:
-            return f"{display_value:g}{suffix}"
-        if value.is_integer():
-            return str(int(value))
-        return f"{value:g}"
+            formatted_value = self._format_humanized_scaled(value / 1000, "K")
+        elif value.is_integer():
+            formatted_value = str(int(value))
+        else:
+            formatted_value = f"{value:g}"
+        return formatted_value
+
+    def _format_humanized_scaled(self, scaled_value, suffix):
+        abs_scaled_value = abs(scaled_value)
+        if abs_scaled_value >= 100:
+            display_value = int(scaled_value)
+            return f"{display_value}{suffix}"
+        display_value = int(scaled_value * 10) / 10
+        return f"{display_value:.1f}{suffix}"
 
     def _format_humanized_y_axis(self, ax):
         formatter = FuncFormatter(self._format_humanized_value)

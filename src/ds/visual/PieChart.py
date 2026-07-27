@@ -1,3 +1,5 @@
+import math
+
 from ds.visual.Visual import Visual
 
 
@@ -32,7 +34,9 @@ class PieChart(Visual):
         y_values = []
         for datum in datumset:
             x_labels.append(datum.dim_idx[self.x_dim_key].get_value())
-            y_values.append(float(datum.cell_idx[self.y_cell_key].get_value()))
+            y_values.append(
+                float(datum.cell_idx[self.y_cell_key].get_value())
+            )
         return x_labels, y_values
 
     def _excluded_dim_keys(self):
@@ -45,11 +49,69 @@ class PieChart(Visual):
         entity = self.datumset[0].entity_class.__name__
         return f"{entity} {self.y_cell_key} share by {self.x_dim_key}"
 
-    def _fit_slice_labels(self, wedges, autotexts):
+    def _get_data_to_px(self, sub_ax):
+        x0, _ = sub_ax.transData.transform((0, 0))
+        x1, _ = sub_ax.transData.transform((1, 0))
+        return abs(x1 - x0)
+
+    def _is_text_fitting(
+        self,
+        autotext,
+        fontsize,
+        max_width_px,
+        max_height_px,
+        renderer,
+    ):
+        autotext.set_fontsize(fontsize)
+        bbox = autotext.get_window_extent(renderer=renderer)
+        return bbox.width <= max_width_px and bbox.height <= max_height_px
+
+    def _get_best_fontsize(
+        self, autotext, max_width_px, max_height_px, renderer
+    ):
+        for fontsize in range(20, 3, -1):
+            if self._is_text_fitting(
+                autotext,
+                fontsize,
+                max_width_px,
+                max_height_px,
+                renderer,
+            ):
+                return fontsize
+        return 4
+
+    def _fit_slice_labels(self, sub_ax, wedges, autotexts):
+        fig = sub_ax.figure
+        fig.canvas.draw()
+        renderer = fig.canvas.get_renderer()
+        data_to_px = self._get_data_to_px(sub_ax)
+        label_radius = 0.6
+        radial_margin = 0.9
         for wedge, autotext in zip(wedges, autotexts):
-            theta = abs(wedge.theta2 - wedge.theta1)
-            fontsize = max(4, min(8, theta / 8))
-            autotext.set_fontsize(fontsize)
+            theta_rad = math.radians(abs(wedge.theta2 - wedge.theta1))
+            max_width_px = theta_rad * label_radius * data_to_px * 0.9
+            max_height_px = (1 - label_radius) * data_to_px * radial_margin
+            best_fontsize = self._get_best_fontsize(
+                autotext,
+                max_width_px,
+                max_height_px,
+                renderer,
+            )
+            autotext.set_fontsize(best_fontsize)
+
+    def _build_autopct(self, y_values):
+        total = sum(y_values)
+
+        def _autopct(pct):
+            value = total * pct / 100.0
+            value_text = self._format_humanized_value(value, None)
+            if pct > 0.5:
+                pct_text = f"{pct:.0f}%"
+            else:
+                pct_text = "<0.5%"
+            return f"{value_text} ({pct_text})"
+
+        return _autopct
 
     def _plot_subfigure(self, sub_ax, sub_datumset):
         x_labels, y_values = self._get_xy(sub_datumset)
@@ -57,11 +119,11 @@ class PieChart(Visual):
         wedges, _, autotexts = sub_ax.pie(
             y_values,
             colors=colors,
-            autopct="%1.1f%%",
+            autopct=self._build_autopct(y_values),
             pctdistance=0.6,
             textprops={"color": "white"},
         )
-        self._fit_slice_labels(wedges, autotexts)
+        self._fit_slice_labels(sub_ax, wedges, autotexts)
         sub_ax.set_box_aspect(1)
         sub_ax.set_title(
             self._get_subfigure_title(sub_datumset, {self.x_dim_key}),
