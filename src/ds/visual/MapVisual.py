@@ -5,6 +5,7 @@ import urllib.request
 import geopandas
 import matplotlib.cm as cm
 import matplotlib.colors as mcolors
+from matplotlib.ticker import FuncFormatter
 
 from ds.visual.label_fit.LabelFit import LabelFit
 from ds.visual.Visual import Visual
@@ -67,7 +68,10 @@ class MapVisual(Visual):
         for _, row in gdf.iterrows():
             label = row.get("name") or row["region_id"]
             cx, cy, rw, rh, angle_deg = LabelFit.best_label_fit(row.geometry)
+            if rw <= 0 or rh <= 0:
+                continue
             fontsize = LabelFit.fit_fontsize(label, rw, rh, ax, renderer)
+            fontsize = max(4, min(9, fontsize))
             text_angle = angle_deg if rw >= rh else angle_deg + 90
             while text_angle > 90:
                 text_angle -= 180
@@ -79,6 +83,7 @@ class MapVisual(Visual):
                 fontsize=fontsize,
                 color="#333333",
                 rotation=text_angle,
+                clip_on=True,
             )
 
     def _get_value_range(self):
@@ -142,6 +147,9 @@ class MapVisual(Visual):
             fraction=0.04,
             pad=0.04,
         )
+        formatter = FuncFormatter(self._format_humanized_value)
+        colorbar.ax.xaxis.set_major_formatter(formatter)
+        colorbar.update_ticks()
         colorbar.set_label(self.y_cell_key)
 
     def _plot(self, fig, ax):

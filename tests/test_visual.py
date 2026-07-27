@@ -8,6 +8,7 @@ class TestCase(unittest.TestCase):
         datumset = LankaData["Person/Time*Province*Religion/Count"]
         visual_params_idx = {
             "BarChart": ("Religion", "Count"),
+            "MapVisual": ("Province", "Count"),
             "PieChart": ("Religion", "Count"),
             "StackedBarChart": ("Province", "Religion", "Count"),
         }
