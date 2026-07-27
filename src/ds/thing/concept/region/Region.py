@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from functools import cache
 
-from utils_future import WWW, Directory, File, JSONFile, String
+from utils_future import WWW, Directory, File, JSONFile, Log, String
 
 from ds.thing.concept.CategoryConcept import CategoryConcept
+
+log = Log("Region")
 
 
 @dataclass(frozen=True)
@@ -21,8 +23,10 @@ class Region(CategoryConcept):
     @classmethod
     @cache
     def get_ents(cls):
+        dir_temp = Directory.get_temp("datumset", "regions")
+        dir_temp.make()
         data_file = JSONFile(
-            Directory.get_temp("datumset", "regions").path,
+            dir_temp,
             f"{cls.region_class_id()}s.json",
         )
         url = (
@@ -33,6 +37,7 @@ class Region(CategoryConcept):
         )
         WWW(url).download(File(data_file.path))
         data_list = data_file.read()
+        log.debug(f"Downloaded {len(data_list)} items from{url}")
         return data_list
 
     @classmethod
