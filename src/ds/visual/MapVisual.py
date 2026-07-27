@@ -28,9 +28,8 @@ class MapVisual(Visual):
         y_cell_key=None,
     ):
         super().__init__(datumset)
-        query = datumset[0].query
-        self.region_dim_key = region_dim_key or query.dim_labels[1]
-        self.y_cell_key = y_cell_key or query.cell_labels[0]
+        self.region_dim_key = self._resolve_dim_key(region_dim_key, 1)
+        self.y_cell_key = self._resolve_cell_key(y_cell_key)
         self.display_datumsets = self._get_display_datumsets(
             {self.region_dim_key}
         )
@@ -47,11 +46,13 @@ class MapVisual(Visual):
         return {self.region_dim_key}
 
     def _build_title(self):
-        return f"{self.y_cell_key} by {self.region_dim_key}"
+        return self._build_dim_title(self.y_cell_key, self.region_dim_key)
 
     def _get_title_text(self):
-        entity = self.datumset[0].entity_class.__name__
-        return f"{entity} {self.y_cell_key} by {self.region_dim_key}"
+        return self._build_entity_dim_title(
+            self.y_cell_key,
+            self.region_dim_key,
+        )
 
     def _load_gdf(self):
         region_type = self.region_dim_key.lower() + "s"
@@ -127,12 +128,7 @@ class MapVisual(Visual):
         )
         self._add_region_labels(gdf, sub_ax, fig)
         sub_ax.set_axis_off()
-        sub_ax.set_box_aspect(1)
-        sub_ax.set_title(
-            self._get_subfigure_title(sub_datumset, {self.region_dim_key}),
-            fontsize=7,
-            pad=3,
-        )
+        self._set_square_subfigure_title(sub_ax, sub_datumset)
 
     def _add_colorbar(self, fig, vmin, vmax):
         scalar_mappable = cm.ScalarMappable(
@@ -153,8 +149,11 @@ class MapVisual(Visual):
         colorbar.set_label(self.y_cell_key)
 
     def _plot(self, fig, ax):
-        n_datumsets = len(self.display_datumsets)
-        axes = self._get_square_axes(fig, ax, n_datumsets)
+        axes, n_datumsets = self._get_display_axes(
+            fig,
+            ax,
+            self.display_datumsets,
+        )
         vmin, vmax = self._get_value_range()
         for sub_ax, sub_datumset in zip(axes, self.display_datumsets):
             self._plot_subfigure(fig, sub_ax, sub_datumset, vmin, vmax)

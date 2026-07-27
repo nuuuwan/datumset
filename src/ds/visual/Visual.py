@@ -37,6 +37,33 @@ class Visual(ABC):
         self.datumset = datumset
         self.params = params
 
+    def _get_query(self):
+        return self.datumset[0].query
+
+    def _get_entity_name(self):
+        return self.datumset[0].entity_class.__name__
+
+    def _resolve_dim_key(self, dim_key, default_index):
+        if dim_key is not None:
+            return dim_key
+        return self._get_query().dim_labels[default_index]
+
+    def _resolve_cell_key(self, cell_key, default_index=0):
+        if cell_key is not None:
+            return cell_key
+        return self._get_query().cell_labels[default_index]
+
+    def _init_dim_colors(self, dim_key):
+        dim_values = self._get_unique_dim_values(dim_key)
+        color_idx = self._get_dim_color_idx(dim_key, dim_values)
+        return dim_values, color_idx
+
+    def _build_dim_title(self, y_cell_key, dim_key):
+        return f"{y_cell_key} by {dim_key}"
+
+    def _build_entity_dim_title(self, y_cell_key, dim_key, relation="by"):
+        return f"{self._get_entity_name()} {y_cell_key} {relation} {dim_key}"
+
     def _get_query_str_for_path(self):
         query = self.datumset[0].query
         dim_specs = []
@@ -90,6 +117,43 @@ class Visual(ABC):
                 values.append(value)
         return values
 
+    def _get_dim_cell_xy(self, datumset, dim_key, cell_key):
+        x_labels = []
+        y_values = []
+        for datum in datumset:
+            x_labels.append(datum.dim_idx[dim_key].get_value())
+            y_values.append(float(datum.cell_idx[cell_key].get_value()))
+        return x_labels, y_values
+
+    def _get_default_color_idx(self, dim_values):
+        cmap = plt.get_cmap("tab20")
+        return {
+            dim_value: cmap(i % cmap.N)
+            for i, dim_value in enumerate(dim_values)
+        }
+
+    def _get_dim_color_map(self, dim_key):
+        concept = self.datumset[0].dim_idx.get(dim_key)
+        color_map = None
+        if concept is not None:
+            concept_class = concept.__class__
+            get_color_map = getattr(concept_class, "get_color_map", None)
+            if get_color_map is not None:
+                maybe_color_map = get_color_map()
+                if isinstance(maybe_color_map, dict):
+                    color_map = maybe_color_map
+        return color_map
+
+    def _get_dim_color_idx(self, dim_key, dim_values):
+        default_color_idx = self._get_default_color_idx(dim_values)
+        color_map = self._get_dim_color_map(dim_key)
+        if not color_map:
+            return default_color_idx
+        return {
+            dim_value: color_map.get(dim_value, default_color_idx[dim_value])
+            for dim_value in dim_values
+        }
+
     def _get_subfigure_title(self, datumset, excluded_dim_keys):
         constant_parts = []
         first_datum = datumset[0]
@@ -105,6 +169,34 @@ class Visual(ABC):
         if constant_parts:
             return "\n".join(constant_parts)
         return "All data"
+
+    def _set_subfigure_title(self, sub_ax, sub_datumset):
+        sub_ax.set_title(
+            self._get_subfigure_title(
+                sub_datumset,
+                self._excluded_dim_keys(),
+            ),
+            fontsize=7,
+            pad=3,
+        )
+
+    def _style_value_axis_subfigure(
+        self,
+        sub_ax,
+        y_cell_key,
+        y_limit,
+        sub_datumset,
+    ):
+        sub_ax.set_ylabel(y_cell_key)
+        sub_ax.set_ylim(0, y_limit)
+        self._format_humanized_y_axis(sub_ax)
+        sub_ax.set_xticks([])
+        sub_ax.set_box_aspect(1)
+        self._set_subfigure_title(sub_ax, sub_datumset)
+
+    def _set_square_subfigure_title(self, sub_ax, sub_datumset):
+        sub_ax.set_box_aspect(1)
+        self._set_subfigure_title(sub_ax, sub_datumset)
 
     def _build_subtitle(self):
         datum = self.datumset[0]
@@ -187,9 +279,17 @@ class Visual(ABC):
         axes = fig.subplots(nrows=n_side, ncols=n_side)
         return axes.flatten()
 
+    def _get_display_axes(self, fig, ax, display_datumsets):
+        n_subfigures = len(display_datumsets)
+        axes = self._get_square_axes(fig, ax, n_subfigures)
+        return axes, n_subfigures
+
     def _hide_empty_axes(self, axes, n_subfigures):
         for empty_ax in axes[n_subfigures:]:
             empty_ax.set_visible(False)
+
+    def _get_y_axis_limit(self, max_value):
+        return 1.0 if max_value <= 0 else max_value * 1.1
 
     def _format_humanized_value(self, value, _pos):
         abs_value = abs(value)

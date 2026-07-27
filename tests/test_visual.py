@@ -1,6 +1,8 @@
 import unittest
 
 from ds import LankaData, VisualFactory
+from ds.thing.concept.person.Religion import Religion
+from ds.visual.PieChart import PieChart
 
 
 class TestCase(unittest.TestCase):
@@ -45,3 +47,15 @@ class TestCase(unittest.TestCase):
                 visual = visual_class(datumset, *params)
                 visual.draw()
                 self.assertTrue(visual.image_file.exists())
+
+    def test_concept_color_map(self):
+        query_str = "Person/Time=2012*Province=LK-2*Religion/Count"
+        datumset = LankaData[query_str]
+        visual = PieChart(datumset, "Religion", "Count")
+        expected_color_map = Religion.get_color_map()
+        n_matches = 0
+        for value, color in visual.x_color_idx.items():
+            if value in expected_color_map:
+                self.assertEqual(color, expected_color_map[value])
+                n_matches += 1
+        self.assertGreater(n_matches, 0)

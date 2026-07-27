@@ -12,42 +12,25 @@ class PieChart(Visual):
         y_cell_key=None,
     ):
         super().__init__(datumset)
-
-        query = datumset[0].query
-        self.x_dim_key = x_dim_key or query.dim_labels[2]
-        self.y_cell_key = y_cell_key or query.cell_labels[0]
+        self.x_dim_key = self._resolve_dim_key(x_dim_key, 2)
+        self.y_cell_key = self._resolve_cell_key(y_cell_key)
         self.display_datumsets = self._get_display_datumsets({self.x_dim_key})
-        self.x_values = self._get_unique_dim_values(self.x_dim_key)
-        cmap = self._get_cmap()
-        self.x_color_idx = {
-            x_value: cmap(i % cmap.N)
-            for i, x_value in enumerate(self.x_values)
-        }
-
-    def _get_cmap(self):
-        import matplotlib.pyplot as plt
-
-        return plt.get_cmap("tab20")
-
-    def _get_xy(self, datumset):
-        x_labels = []
-        y_values = []
-        for datum in datumset:
-            x_labels.append(datum.dim_idx[self.x_dim_key].get_value())
-            y_values.append(
-                float(datum.cell_idx[self.y_cell_key].get_value())
-            )
-        return x_labels, y_values
+        self.x_values, self.x_color_idx = self._init_dim_colors(
+            self.x_dim_key
+        )
 
     def _excluded_dim_keys(self):
         return {self.x_dim_key}
 
     def _build_title(self):
-        return f"{self.y_cell_key} by {self.x_dim_key}"
+        return self._build_dim_title(self.y_cell_key, self.x_dim_key)
 
     def _get_title_text(self):
-        entity = self.datumset[0].entity_class.__name__
-        return f"{entity} {self.y_cell_key} share by {self.x_dim_key}"
+        return self._build_entity_dim_title(
+            self.y_cell_key,
+            self.x_dim_key,
+            relation="share by",
+        )
 
     def _get_data_to_px(self, sub_ax):
         x0, _ = sub_ax.transData.transform((0, 0))
@@ -114,7 +97,11 @@ class PieChart(Visual):
         return _autopct
 
     def _plot_subfigure(self, sub_ax, sub_datumset):
-        x_labels, y_values = self._get_xy(sub_datumset)
+        x_labels, y_values = self._get_dim_cell_xy(
+            sub_datumset,
+            self.x_dim_key,
+            self.y_cell_key,
+        )
         colors = [self.x_color_idx[x_label] for x_label in x_labels]
         wedges, _, autotexts = sub_ax.pie(
             y_values,
@@ -124,16 +111,14 @@ class PieChart(Visual):
             textprops={"color": "white"},
         )
         self._fit_slice_labels(sub_ax, wedges, autotexts)
-        sub_ax.set_box_aspect(1)
-        sub_ax.set_title(
-            self._get_subfigure_title(sub_datumset, {self.x_dim_key}),
-            fontsize=7,
-            pad=3,
-        )
+        self._set_square_subfigure_title(sub_ax, sub_datumset)
 
     def _plot(self, fig, ax):
-        n_datumsets = len(self.display_datumsets)
-        axes = self._get_square_axes(fig, ax, n_datumsets)
+        axes, n_datumsets = self._get_display_axes(
+            fig,
+            ax,
+            self.display_datumsets,
+        )
         for sub_ax, sub_datumset in zip(axes, self.display_datumsets):
             self._plot_subfigure(sub_ax, sub_datumset)
         self._add_color_legend(fig, self.x_color_idx, self.x_dim_key)
