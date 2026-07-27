@@ -1,3 +1,4 @@
+import colorsys
 import os
 import tempfile
 import urllib.request
@@ -113,7 +114,27 @@ class MapVisual(Visual):
             for datum in datumset
         }
 
-    def _plot_subfigure(self, fig, sub_ax, sub_datumset, vmin, vmax):
+    def _build_hsl_lightness_cmap(self, base_color):
+        base_rgb = mcolors.to_rgb(base_color)
+        h, l, s = colorsys.rgb_to_hls(*base_rgb)
+        light_l = min(0.95, max(0.55, l * 1.2))
+        dark_l = max(0.12, min(0.45, l * 0.6))
+        if dark_l >= light_l:
+            dark_l = max(0.0, light_l - 0.25)
+        colors = []
+        for i in range(256):
+            ratio = i / 255
+            new_l = light_l + (dark_l - light_l) * ratio
+            colors.append(colorsys.hls_to_rgb(h, new_l, s))
+        return mcolors.ListedColormap(colors)
+
+    def _get_value_cmap(self):
+        base_color = self._get_single_fixed_dim_color({self.region_dim_key})
+        if base_color is None:
+            return "YlOrRd"
+        return self._build_hsl_lightness_cmap(base_color)
+
+    def _plot_subfigure(self, fig, sub_ax, sub_datumset, vmin, vmax, cmap):
         region_values = self._get_region_values_for(sub_datumset)
         gdf = self._load_gdf().rename(columns={"id": "region_id"})
         gdf["value"] = gdf["region_id"].map(region_values)
@@ -121,7 +142,7 @@ class MapVisual(Visual):
             column="value",
             ax=sub_ax,
             legend=False,
-            cmap="YlOrRd",
+            cmap=cmap,
             vmin=vmin,
             vmax=vmax,
             missing_kwds={"color": "#f0f0f0"},
@@ -130,10 +151,10 @@ class MapVisual(Visual):
         sub_ax.set_axis_off()
         self._set_square_subfigure_title(sub_ax, sub_datumset)
 
-    def _add_colorbar(self, fig, vmin, vmax):
+    def _add_colorbar(self, fig, vmin, vmax, cmap):
         scalar_mappable = cm.ScalarMappable(
             norm=mcolors.Normalize(vmin=vmin, vmax=vmax),
-            cmap="YlOrRd",
+            cmap=cmap,
         )
         scalar_mappable.set_array([])
         colorbar = fig.colorbar(
@@ -144,7 +165,9 @@ class MapVisual(Visual):
             pad=0.04,
         )
         formatter = FuncFormatter(self._format_humanized_value)
+        colorbar.formatter = formatter
         colorbar.ax.xaxis.set_major_formatter(formatter)
+        colorbar.ax.xaxis.offsetText.set_visible(False)
         colorbar.update_ticks()
         colorbar.set_label(self.y_cell_key)
 
@@ -155,7 +178,15 @@ class MapVisual(Visual):
             self.display_datumsets,
         )
         vmin, vmax = self._get_value_range()
+        cmap = self._get_value_cmap()
         for sub_ax, sub_datumset in zip(axes, self.display_datumsets):
-            self._plot_subfigure(fig, sub_ax, sub_datumset, vmin, vmax)
-        self._add_colorbar(fig, vmin, vmax)
+            self._plot_subfigure(
+                fig,
+                sub_ax,
+                sub_datumset,
+                vmin,
+                vmax,
+                cmap,
+            )
+        self._add_colorbar(fig, vmin, vmax, cmap)
         self._hide_empty_axes(axes, n_datumsets)

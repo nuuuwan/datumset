@@ -154,6 +154,26 @@ class Visual(ABC):
             for dim_value in dim_values
         }
 
+    def _get_fixed_dim_color(self, dim_key):
+        dim_values = self._get_unique_dim_values(dim_key)
+        if len(dim_values) != 1:
+            return None
+        color_map = self._get_dim_color_map(dim_key)
+        if not color_map:
+            return None
+        dim_value = dim_values[0]
+        return color_map.get(dim_value)
+
+    def _get_single_fixed_dim_color(self, excluded_dim_keys=None):
+        excluded_dim_keys = excluded_dim_keys or set()
+        for dim_key in self._get_dim_labels():
+            if dim_key in excluded_dim_keys:
+                continue
+            color = self._get_fixed_dim_color(dim_key)
+            if color is not None:
+                return color
+        return None
+
     def _get_subfigure_title(self, datumset, excluded_dim_keys):
         constant_parts = []
         first_datum = datumset[0]

@@ -1,7 +1,11 @@
+import colorsys
 import unittest
+
+import matplotlib.colors as mcolors
 
 from ds import LankaData, VisualFactory
 from ds.thing.concept.person.Religion import Religion
+from ds.visual.MapVisual import MapVisual
 from ds.visual.PieChart import PieChart
 
 
@@ -59,3 +63,21 @@ class TestCase(unittest.TestCase):
                 self.assertEqual(color, expected_color_map[value])
                 n_matches += 1
         self.assertGreater(n_matches, 0)
+
+    def test_map_concept_color_map_hsl(self):
+        query_str = "Person/Time=2012*Province*Religion=buddhist/Count"
+        datumset = LankaData[query_str]
+        visual = MapVisual(datumset, "Province", "Count")
+        cmap = visual._get_value_cmap()
+        base_color = Religion.get_color_map()["buddhist"]
+        base_h, base_l, base_s = colorsys.rgb_to_hls(
+            *mcolors.to_rgb(base_color)
+        )
+        low_h, low_l, low_s = colorsys.rgb_to_hls(*cmap(0.0)[:3])
+        high_h, high_l, high_s = colorsys.rgb_to_hls(*cmap(1.0)[:3])
+        self.assertAlmostEqual(base_h, low_h, places=3)
+        self.assertAlmostEqual(base_h, high_h, places=3)
+        self.assertAlmostEqual(base_s, low_s, places=3)
+        self.assertAlmostEqual(base_s, high_s, places=3)
+        self.assertGreater(low_l, high_l)
+        self.assertGreater(base_l, high_l)
