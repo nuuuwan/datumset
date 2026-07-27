@@ -2,6 +2,7 @@ from utils_future import Log
 
 from ds.datum.Datum import Datum
 from ds.datumset.Datumset import Datumset
+from ds.thing.concept.region.Region import Region
 from ds.thing.concept.Time import Time
 from ds.thing.ThingFactory import ThingFactory
 
@@ -57,12 +58,19 @@ class StandardTableAdapter:
     @classmethod
     def _get_row_dim_instance(cls, row_dim_cls, row_dim_key, d):
         row_value = d[row_dim_key]
+
+        try:
+            if row_dim_key == "region_id" and issubclass(row_dim_cls, Region):
+                return row_dim_cls.from_region_id(row_value)
+        except ValueError:
+            return None
+
         try:
             return row_dim_cls.from_value(row_value)
-        except BaseException:
+        except ValueError:
             try:
                 return row_dim_cls.from_value(row_value)
-            except BaseException:
+            except ValueError:
                 pass
         return None
 
