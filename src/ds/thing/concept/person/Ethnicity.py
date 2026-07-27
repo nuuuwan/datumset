@@ -38,3 +38,15 @@ class Ethnicity(CategoryConcept):
             "indian_malaiyaga_tamil": "ind_and_malaiyaga_tamil",
             "sri_lanka_moor_muslim": "sri_lanka_moor_or_muslim",
         }
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "sinhala": "#941E32",
+            "sri_lanka_tamil": "#DF7500",
+            "sri_lanka_moor_or_muslim": "#005F56",
+            #
+            "ind_and_malaiyaga_tamil": "#ff8888",
+            "burgher": "#8e44ad",
+            "malay": "#cccccc",
+        }
