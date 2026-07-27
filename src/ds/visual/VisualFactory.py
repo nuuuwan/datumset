@@ -1,7 +1,8 @@
 from ds.visual.BarChart import BarChart
-from ds.visual.MapVisual import MapVisual
-from ds.visual.PieChart import PieChart
-from ds.visual.StackedBarChart import StackedBarChart
+
+# from ds.visual.MapVisual import MapVisual
+# from ds.visual.PieChart import PieChart
+# from ds.visual.StackedBarChart import StackedBarChart
 
 
 class VisualFactory:
@@ -10,9 +11,9 @@ class VisualFactory:
     def visual_class_list(cls):
         return [
             BarChart,
-            MapVisual,
-            PieChart,
-            StackedBarChart,
+            # MapVisual,
+            # PieChart,
+            # StackedBarChart,
         ]
 
     @classmethod

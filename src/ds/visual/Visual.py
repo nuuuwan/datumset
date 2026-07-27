@@ -27,7 +27,7 @@ class Visual(ABC):
     SUBTITLE_COLOR = "#555555"
     DIR_FONTS = os.path.join("media", "fonts", "Fira_Sans")
     FONT_FAMILY = "Fira Sans"
-    FONT_SIZE = 16
+    FONT_SIZE = 8
 
     def __init__(self, datumset, *params):
         self.datumset = datumset
@@ -102,18 +102,21 @@ class Visual(ABC):
         )
         fig.add_artist(border)
 
-    def _apply_style(self, fig, ax):
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
-        ax.spines["left"].set_color(self.BORDER_COLOR)
-        ax.spines["bottom"].set_color(self.BORDER_COLOR)
-        ax.tick_params(colors=self.SUBTITLE_COLOR)
+    def _apply_style(self, fig, axes):
+        for ax in axes:
+            ax.spines["top"].set_visible(False)
+            ax.spines["right"].set_visible(False)
+            ax.spines["left"].set_color(self.BORDER_COLOR)
+            ax.spines["bottom"].set_color(self.BORDER_COLOR)
+            ax.tick_params(colors=self.SUBTITLE_COLOR)
         SUBPLOT_PADDING = 0.15
         fig.subplots_adjust(
             top=1 - SUBPLOT_PADDING,
             bottom=SUBPLOT_PADDING,
             left=SUBPLOT_PADDING,
             right=1 - SUBPLOT_PADDING,
+            hspace=1.0,
+            wspace=0.8,
         )
 
     def _set_font(self):
@@ -133,7 +136,7 @@ class Visual(ABC):
         self._plot(fig, ax)
         self._add_title(fig)
         self._add_border(fig)
-        self._apply_style(fig, ax)
+        self._apply_style(fig, fig.axes)
         fig.savefig(self.image_file.path)
         log.debug(f"Wrote {self.image_file}")
         plt.close(fig)

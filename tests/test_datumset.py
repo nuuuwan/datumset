@@ -42,7 +42,7 @@ TEST_DATUMSET = Datumset.from_data(
                 },
             },
         }
-    },
+    }
 )
 
 
