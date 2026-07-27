@@ -20,7 +20,7 @@ class TestCase(unittest.TestCase):
                 ("Time", "Count"),
             ),
             (
-                "Person/Time=2012*Province=Central*Religion/Count",
+                "Person/Time=2012*Province*Religion/Count",
                 "PieChart",
                 ("Religion", "Count"),
             ),
@@ -97,3 +97,18 @@ class TestCase(unittest.TestCase):
         self.assertEqual("Buddhist", visual._format_visual_value("buddhist"))
         self.assertEqual("Hindu", visual._format_visual_value("hindu"))
         self.assertEqual("Western", visual._format_visual_value("Western"))
+
+    def test_pie_percentage_only_labels(self):
+        query_str = "Person/Time=2012*Province=Western*Religion/Count"
+        datumset = LankaData[query_str]
+        visual = PieChart(datumset, "Religion", "Count")
+        autopct = visual._build_autopct()
+        self.assertEqual("10%", autopct(10.0))
+        self.assertEqual("<0.5%", autopct(0.4))
+
+    def test_pie_radius_scaling(self):
+        query_str = "Person/Time=2012*Province=Western*Religion/Count"
+        datumset = LankaData[query_str]
+        visual = PieChart(datumset, "Religion", "Count")
+        self.assertEqual(1.0, visual._get_pie_radius(50.0, 100.0, 1))
+        self.assertAlmostEqual(0.5, visual._get_pie_radius(25.0, 100.0, 4))

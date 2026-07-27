@@ -24,7 +24,7 @@ for _ttf in glob.glob(os.path.join(_FONTS_DIR, "**", "*.ttf")):
 class Visual(ABC):
 
     FIGSIZE = (9, 9)
-    DPI = 100
+    DPI = 300
     STRIP_COLOR = "#e8e8e8"
     BORDER_COLOR = "#cccccc"
     TITLE_COLOR = "#333333"
@@ -484,7 +484,7 @@ class Visual(ABC):
         self._add_title(fig)
         self._add_border(fig)
         self._apply_style(fig, fig.axes)
-        fig.savefig(self.image_file.path)
+        fig.savefig(self.image_file.path, dpi=self.DPI, bbox_inches="tight")
         log.debug(f"Wrote {self.image_file}")
         plt.close(fig)
         return fig
