@@ -50,6 +50,11 @@ class TestCase(unittest.TestCase):
                 "StackedBarChart",
                 ("DSD", "Religion", "Count"),
             ),
+            (
+                "Person/Time=2012*DSD<District=gampaha*Religion=islam/Count",
+                "MapVisual",
+                ("DSD", "Count"),
+            ),
         ]
 
     def test_method(self):
@@ -154,3 +159,18 @@ class TestCase(unittest.TestCase):
             "Count",
         )
         self.assertIn("District<Province=western", visual.image_file.path)
+
+    def test_map_visual_shows_only_regions_with_data(self):
+        query_str = (
+            "Person/Time=2012*DSD<District=colombo*Religion=islam/Count"
+        )
+        datumset = LankaData[query_str]
+        visual = MapVisual(datumset, "DSD", "Count")
+        sub_datumset = visual.display_datumsets[0]
+        gdf = visual._get_gdf_with_values(sub_datumset)
+        self.assertGreater(len(gdf), 0)
+        self.assertFalse(gdf["value"].isna().any())
+        self.assertEqual(
+            len(gdf),
+            len(visual._get_region_values_for(sub_datumset)),
+        )

@@ -22,6 +22,9 @@ IMAGE_DIR = "image"
 
 class MapVisual(Visual):
 
+    REGION_EDGE_COLOR = "#888888"
+    REGION_EDGE_LINEWIDTH = 0.3
+
     def _normalize_region_key(self, raw_value):
         if raw_value is None:
             return None
@@ -143,6 +146,15 @@ class MapVisual(Visual):
                 return region_values[normalized_key]
         return None
 
+    def _get_gdf_with_values(self, sub_datumset):
+        region_values = self._get_region_values_for(sub_datumset)
+        gdf = self._load_gdf().rename(columns={"id": "region_id"})
+        gdf["value"] = gdf.apply(
+            lambda row: self._lookup_region_value(row, region_values),
+            axis=1,
+        )
+        return gdf[gdf["value"].notna()].copy()
+
     def _build_hsl_lightness_cmap(self, base_color):
         base_rgb = mcolors.to_rgb(base_color)
         h, l, s = colorsys.rgb_to_hls(*base_rgb)
@@ -164,12 +176,11 @@ class MapVisual(Visual):
         return self._build_hsl_lightness_cmap(base_color)
 
     def _plot_subfigure(self, fig, sub_ax, sub_datumset, vmin, vmax, cmap):
-        region_values = self._get_region_values_for(sub_datumset)
-        gdf = self._load_gdf().rename(columns={"id": "region_id"})
-        gdf["value"] = gdf.apply(
-            lambda row: self._lookup_region_value(row, region_values),
-            axis=1,
-        )
+        gdf = self._get_gdf_with_values(sub_datumset)
+        if gdf.empty:
+            sub_ax.set_axis_off()
+            self._set_square_subfigure_title(sub_ax, sub_datumset)
+            return
         gdf.plot(
             column="value",
             ax=sub_ax,
@@ -177,7 +188,8 @@ class MapVisual(Visual):
             cmap=cmap,
             vmin=vmin,
             vmax=vmax,
-            missing_kwds={"color": "#f0f0f0"},
+            edgecolor=self.REGION_EDGE_COLOR,
+            linewidth=self.REGION_EDGE_LINEWIDTH,
         )
         self._add_region_labels(gdf, sub_ax, fig, vmin, vmax, cmap)
         sub_ax.set_axis_off()
