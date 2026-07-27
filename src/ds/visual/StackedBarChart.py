@@ -115,6 +115,8 @@ class StackedBarChart(Visual):
         x_labels, stack_labels, data = self._get_data(sub_datumset)
         x_values = list(range(len(x_labels)))
         totals = self._get_totals(x_labels, data)
+        sub_ax.set_xlim(-0.5, len(x_labels) - 0.5)
+        sub_ax.set_ylim(0, y_limit)
         for x_value, x_label, total in zip(x_values, x_labels, totals):
             self._plot_stack_for_x(
                 sub_ax,

@@ -32,9 +32,11 @@ class Visual(ABC):
     DIR_FONTS = os.path.join("media", "fonts", "Fira_Sans")
     FONT_FAMILY = "Fira Sans"
     FONT_SIZE = 8
-    MIN_STACK_LABEL_FONTSIZE = 6
+    MIN_STACK_LABEL_FONTSIZE = 8
     MAX_STACK_LABEL_FONTSIZE = 20
     STACK_LABEL_FONT_REDUCTION = 1
+    STACK_LABEL_MIN_DIM_RATIO = 0.55
+    STACK_LABEL_BBOX_MARGIN = 0.75
 
     def __init__(self, datumset, *params):
         self.datumset = datumset
@@ -389,6 +391,12 @@ class Visual(ABC):
         px1, py1 = sub_ax.transData.transform((x1, y1))
         return abs(px1 - px0), abs(py1 - py0)
 
+    def _get_rect_fontsize_cap(self, sub_ax, rect):
+        max_width_px, max_height_px = self._get_rect_size_px(sub_ax, rect)
+        min_dim_px = min(max_width_px, max_height_px)
+        px_to_pt = 72.0 / sub_ax.figure.dpi
+        return int(min_dim_px * px_to_pt * self.STACK_LABEL_MIN_DIM_RATIO)
+
     def _get_best_rect_label_fontsize(self, sub_ax, rect, label):
         fig = sub_ax.figure
         fig.canvas.draw()
@@ -396,14 +404,19 @@ class Visual(ABC):
         cx = rect.get_x() + rect.get_width() / 2.0
         cy = rect.get_y() + rect.get_height() / 2.0
         max_width_px, max_height_px = self._get_rect_size_px(sub_ax, rect)
+        fontsize_cap = self._get_rect_fontsize_cap(sub_ax, rect)
+        if fontsize_cap < self.MIN_STACK_LABEL_FONTSIZE:
+            return 0
         probe = sub_ax.text(cx, cy, label, ha="center", va="center")
         best_fontsize = 0
-        for fontsize in range(self.MAX_STACK_LABEL_FONTSIZE, 3, -1):
+        max_fontsize = min(self.MAX_STACK_LABEL_FONTSIZE, fontsize_cap)
+        for fontsize in range(max_fontsize, 3, -1):
             probe.set_fontsize(fontsize)
             bbox = probe.get_window_extent(renderer=renderer)
             if (
-                bbox.width <= max_width_px * 0.9
-                and bbox.height <= max_height_px * 0.9
+                bbox.width <= max_width_px * self.STACK_LABEL_BBOX_MARGIN
+                and bbox.height
+                <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
             ):
                 best_fontsize = fontsize
                 break
