@@ -1,4 +1,5 @@
 import glob
+import math
 import os
 from abc import ABC, abstractmethod
 from functools import cached_property
@@ -6,6 +7,7 @@ from functools import cached_property
 import matplotlib.font_manager as fm
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
 from utils_future import Directory, File, Log
 
 log = Log("Visual")
@@ -117,6 +119,52 @@ class Visual(ABC):
             right=1 - SUBPLOT_PADDING,
             hspace=1.0,
             wspace=0.8,
+        )
+
+    def _get_square_axes(self, fig, ax, n_subfigures):
+        if n_subfigures == 1:
+            return [ax]
+        fig.clear()
+        n_side = math.ceil(math.sqrt(n_subfigures))
+        axes = fig.subplots(nrows=n_side, ncols=n_side)
+        return axes.flatten()
+
+    def _hide_empty_axes(self, axes, n_subfigures):
+        for empty_ax in axes[n_subfigures:]:
+            empty_ax.set_visible(False)
+
+    def _format_humanized_value(self, value, _pos):
+        abs_value = abs(value)
+        display_value = value
+        suffix = ""
+        if abs_value >= 1000000:
+            display_value = value / 1000000
+            suffix = "M"
+        elif abs_value >= 1000:
+            display_value = value / 1000
+            suffix = "K"
+        if suffix:
+            return f"{display_value:g}{suffix}"
+        if value.is_integer():
+            return str(int(value))
+        return f"{value:g}"
+
+    def _format_humanized_y_axis(self, ax):
+        formatter = FuncFormatter(self._format_humanized_value)
+        ax.yaxis.set_major_formatter(formatter)
+
+    def _add_color_legend(self, fig, value_color_idx, title):
+        legend_handles = [
+            mpatches.Patch(color=color, label=value)
+            for value, color in value_color_idx.items()
+        ]
+        fig.legend(
+            handles=legend_handles,
+            title=title,
+            loc="lower center",
+            bbox_to_anchor=(0.5, 0.01),
+            ncol=min(4, len(legend_handles)),
+            frameon=False,
         )
 
     def _set_font(self):
