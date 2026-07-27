@@ -3,6 +3,8 @@ import tempfile
 import urllib.request
 
 import geopandas
+import matplotlib.cm as cm
+import matplotlib.colors as mcolors
 
 from ds.visual.label_fit.LabelFit import LabelFit
 from ds.visual.Visual import Visual
@@ -28,6 +30,9 @@ class MapVisual(Visual):
         query = datumset[0].query
         self.region_dim_key = region_dim_key or query.dim_labels[1]
         self.y_cell_key = y_cell_key or query.cell_labels[0]
+        self.display_datumsets = self._get_display_datumsets(
+            {self.region_dim_key}
+        )
 
     def _get_region_values(self):
         return {
@@ -42,6 +47,10 @@ class MapVisual(Visual):
 
     def _build_title(self):
         return f"{self.y_cell_key} by {self.region_dim_key}"
+
+    def _get_title_text(self):
+        entity = self.datumset[0].entity_class.__name__
+        return f"{entity} {self.y_cell_key} by {self.region_dim_key}"
 
     def _load_gdf(self):
         region_type = self.region_dim_key.lower() + "s"
@@ -72,18 +81,74 @@ class MapVisual(Visual):
                 rotation=text_angle,
             )
 
-    def _plot(self, fig, ax):
-        region_values = self._get_region_values()
-        gdf = self._load_gdf()
-        gdf = gdf.rename(columns={"id": "region_id"})
+    def _get_value_range(self):
+        min_value = None
+        max_value = None
+        for sub_datumset in self.display_datumsets:
+            values = self._get_region_values_for(sub_datumset).values()
+            for value in values:
+                min_value = (
+                    value if min_value is None else min(min_value, value)
+                )
+                max_value = (
+                    value if max_value is None else max(max_value, value)
+                )
+        if min_value is None or max_value is None:
+            return 0.0, 1.0
+        if min_value == max_value:
+            return min_value, min_value + 1.0
+        return min_value, max_value
+
+    def _get_region_values_for(self, datumset):
+        return {
+            datum.dim_idx[self.region_dim_key].get_value(): float(
+                datum.cell_idx[self.y_cell_key].get_value()
+            )
+            for datum in datumset
+        }
+
+    def _plot_subfigure(self, fig, sub_ax, sub_datumset, vmin, vmax):
+        region_values = self._get_region_values_for(sub_datumset)
+        gdf = self._load_gdf().rename(columns={"id": "region_id"})
         gdf["value"] = gdf["region_id"].map(region_values)
         gdf.plot(
             column="value",
-            ax=ax,
-            legend=True,
+            ax=sub_ax,
+            legend=False,
             cmap="YlOrRd",
+            vmin=vmin,
+            vmax=vmax,
             missing_kwds={"color": "#f0f0f0"},
         )
-        self._add_region_labels(gdf, ax, fig)
-        ax.set_axis_off()
-        ax.set_axis_off()
+        self._add_region_labels(gdf, sub_ax, fig)
+        sub_ax.set_axis_off()
+        sub_ax.set_box_aspect(1)
+        sub_ax.set_title(
+            self._get_subfigure_title(sub_datumset, {self.region_dim_key}),
+            fontsize=7,
+            pad=3,
+        )
+
+    def _add_colorbar(self, fig, vmin, vmax):
+        scalar_mappable = cm.ScalarMappable(
+            norm=mcolors.Normalize(vmin=vmin, vmax=vmax),
+            cmap="YlOrRd",
+        )
+        scalar_mappable.set_array([])
+        colorbar = fig.colorbar(
+            scalar_mappable,
+            ax=fig.axes,
+            orientation="horizontal",
+            fraction=0.04,
+            pad=0.04,
+        )
+        colorbar.set_label(self.y_cell_key)
+
+    def _plot(self, fig, ax):
+        n_datumsets = len(self.display_datumsets)
+        axes = self._get_square_axes(fig, ax, n_datumsets)
+        vmin, vmax = self._get_value_range()
+        for sub_ax, sub_datumset in zip(axes, self.display_datumsets):
+            self._plot_subfigure(fig, sub_ax, sub_datumset, vmin, vmax)
+        self._add_colorbar(fig, vmin, vmax)
+        self._hide_empty_axes(axes, n_datumsets)

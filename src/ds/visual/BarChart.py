@@ -10,15 +10,8 @@ class BarChart(Visual):
         query = datumset[0].query
         self.x_dim_key = x_dim_key or query.dim_labels[0]
         self.y_cell_key = y_cell_key or query.cell_labels[0]
-        split_dims = [
-            dim for dim in query.dim_labels if dim != self.x_dim_key
-        ]
-        self.display_datumsets = datumset.split(*split_dims)
-        self.x_values = []
-        for datum in datumset:
-            x_value = datum.dim_idx[self.x_dim_key].get_value()
-            if x_value not in self.x_values:
-                self.x_values.append(x_value)
+        self.display_datumsets = self._get_display_datumsets({self.x_dim_key})
+        self.x_values = self._get_unique_dim_values(self.x_dim_key)
         cmap = plt.get_cmap("tab20")
         self.x_color_idx = {
             x_value: cmap(i % cmap.N)
@@ -45,22 +38,6 @@ class BarChart(Visual):
         entity = self.datumset[0].entity_class.__name__
         return f"{entity} {self.y_cell_key} by {self.x_dim_key}"
 
-    def _get_subfigure_title(self, datumset):
-        constant_parts = []
-        first_datum = datumset[0]
-        for dim_key in first_datum.query.dim_labels:
-            if dim_key == self.x_dim_key:
-                continue
-            first_value = first_datum.dim_idx[dim_key].get_value()
-            if all(
-                datum.dim_idx[dim_key].get_value() == first_value
-                for datum in datumset
-            ):
-                constant_parts.append(f"{dim_key}: {first_value}")
-        if constant_parts:
-            return "\n".join(constant_parts)
-        return "All data"
-
     def _get_y_limit(self):
         y_max = 0.0
         for sub_datumset in self.display_datumsets:
@@ -79,7 +56,9 @@ class BarChart(Visual):
         sub_ax.set_xticks([])
         sub_ax.set_box_aspect(1)
         sub_ax.set_title(
-            self._get_subfigure_title(sub_datumset), fontsize=7, pad=3
+            self._get_subfigure_title(sub_datumset, {self.x_dim_key}),
+            fontsize=7,
+            pad=3,
         )
 
     def _plot(self, fig, ax):

@@ -48,6 +48,43 @@ class Visual(ABC):
     def _excluded_dim_keys(self):
         return set()
 
+    def _get_dim_labels(self):
+        return self.datumset[0].query.dim_labels
+
+    def _get_display_datumsets(self, excluded_dim_keys):
+        split_dims = [
+            dim_key
+            for dim_key in self._get_dim_labels()
+            if dim_key not in excluded_dim_keys
+        ]
+        if not split_dims:
+            return [self.datumset]
+        return self.datumset.split(*split_dims)
+
+    def _get_unique_dim_values(self, dim_key):
+        values = []
+        for datum in self.datumset:
+            value = datum.dim_idx[dim_key].get_value()
+            if value not in values:
+                values.append(value)
+        return values
+
+    def _get_subfigure_title(self, datumset, excluded_dim_keys):
+        constant_parts = []
+        first_datum = datumset[0]
+        for dim_key in first_datum.query.dim_labels:
+            if dim_key in excluded_dim_keys:
+                continue
+            first_value = first_datum.dim_idx[dim_key].get_value()
+            if all(
+                datum.dim_idx[dim_key].get_value() == first_value
+                for datum in datumset
+            ):
+                constant_parts.append(f"{dim_key}: {first_value}")
+        if constant_parts:
+            return "\n".join(constant_parts)
+        return "All data"
+
     def _build_subtitle(self):
         datum = self.datumset[0]
         entity = datum.entity_class.__name__
