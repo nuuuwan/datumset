@@ -74,6 +74,9 @@ class Visual(ABC):
         return f"{self._get_entity_name()} {y_cell_key} {relation} {dim_key}"
 
     def _get_query_str_for_path(self):
+        source_query_str = getattr(self.datumset, "_query_str", None)
+        if source_query_str and Query.OPR_LT in source_query_str:
+            return source_query_str
         query = self.datumset[0].query
         dim_specs = []
         for dim_label in query.dim_labels:
@@ -446,7 +449,8 @@ class Visual(ABC):
             bbox = probe.get_window_extent(renderer=renderer)
             if (
                 bbox.width <= max_width_px * self.STACK_LABEL_BBOX_MARGIN
-                and bbox.height <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
+                and bbox.height
+                <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
             ):
                 best_fontsize = fontsize
                 break

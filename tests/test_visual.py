@@ -7,6 +7,7 @@ from ds import LankaData, VisualFactory
 from ds.thing.concept.person.Religion import Religion
 from ds.visual.MapVisual import MapVisual
 from ds.visual.PieChart import PieChart
+from ds.visual.StackedBarChart import StackedBarChart
 
 
 class TestCase(unittest.TestCase):
@@ -38,6 +39,16 @@ class TestCase(unittest.TestCase):
                 "Person/Time=2012*Province*Religion=buddhist/Count",
                 "MapVisual",
                 ("Province", "Count"),
+            ),
+            (
+                "Person/Time=2012*District<Province=western*Religion/Count",
+                "StackedBarChart",
+                ("District", "Religion", "Count"),
+            ),
+            (
+                "Person/Time=2012*DSD<District=colombo*Religion/Count",
+                "StackedBarChart",
+                ("DSD", "Religion", "Count"),
             ),
         ]
 
@@ -130,3 +141,16 @@ class TestCase(unittest.TestCase):
             visual.CONTRAST_DARK_TEXT_COLOR,
             visual._get_contrast_text_color("#f3f3f3"),
         )
+
+    def test_child_region_query_format_in_image_path(self):
+        query_str = (
+            "Person/Time=2012*District<Province=western*Religion/Count"
+        )
+        datumset = LankaData[query_str]
+        visual = StackedBarChart(
+            datumset,
+            "District",
+            "Religion",
+            "Count",
+        )
+        self.assertIn("District<Province=western", visual.image_file.path)

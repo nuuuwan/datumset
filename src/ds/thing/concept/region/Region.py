@@ -54,7 +54,7 @@ class Region(CategoryConcept):
 
     @classmethod
     def get_ent_idx_by_value(cls):
-        return {d["name"]: d for d in cls.get_ents()}
+        return {String(d["name"]).snake: d for d in cls.get_ents()}
 
     @classmethod
     @cache

@@ -10,6 +10,17 @@ class Query:
     OPR_ADD = "+"
     OPR_MULT = "*"
     OPR_EQ = "="
+    OPR_LT = "<"
+
+    def _is_child_region_spec(self, dim_spec):
+        return self.OPR_LT in dim_spec and self.OPR_EQ in dim_spec
+
+    def _get_dim_label(self, dim_spec):
+        if self.OPR_LT in dim_spec:
+            dim_spec = dim_spec.split(self.OPR_LT, 1)[0]
+        if self.OPR_EQ in dim_spec:
+            return dim_spec.split(self.OPR_EQ, 1)[0]
+        return dim_spec
 
     @cached_property
     def parts(self):
@@ -41,14 +52,14 @@ class Query:
 
     @cached_property
     def dim_labels(self):
-        return [
-            dim_spec.split(self.OPR_EQ, 1)[0] for dim_spec in self.dim_specs
-        ]
+        return [self._get_dim_label(dim_spec) for dim_spec in self.dim_specs]
 
     @cached_property
     def dim_values_idx(self):
         dim_values_idx = {}
         for dim_spec in self.dim_specs:
+            if self._is_child_region_spec(dim_spec):
+                continue
             if self.OPR_EQ not in dim_spec:
                 continue
             dim_label, dim_value = dim_spec.split(self.OPR_EQ, 1)

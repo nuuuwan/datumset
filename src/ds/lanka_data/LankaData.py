@@ -29,4 +29,5 @@ class LankaData:
                 + f' for query "{query_str}"'
             )
             datumset += datumset_for_db_class
+        object.__setattr__(datumset, "_query_str", query_str)
         return datumset

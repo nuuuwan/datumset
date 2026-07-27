@@ -61,4 +61,6 @@ class AbstractGIGDB(AbstractDB, ABC):
             for datum in datumset:
                 if datum.is_match(query):
                     datum_list.append(datum)
-        return Datumset(*datum_list)
+        datumset = Datumset(*datum_list)
+        object.__setattr__(datumset, "_query_str", query_str)
+        return datumset

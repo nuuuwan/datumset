@@ -94,3 +94,17 @@ class TestCase(unittest.TestCase):
                 )
             )
         )
+
+    def test_match_child_region_dim_spec(self):
+        datum = self._build_datum()
+
+        self.assertTrue(
+            datum.is_match_dim_idx(
+                "Time=2012*District<Province=western*Religion=buddhist"
+            )
+        )
+        self.assertFalse(
+            datum.is_match_dim_idx(
+                "Time=2012*District<Province=southern*Religion=buddhist"
+            )
+        )
