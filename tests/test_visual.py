@@ -15,12 +15,12 @@ class TestCase(unittest.TestCase):
     def _get_scenarios():
         return [
             (
-                "Person/Time*Province=LK-1*Religion=hindu/Count",
+                "Person/Time*Province=Western*Religion=hindu/Count",
                 "BarChart",
                 ("Time", "Count"),
             ),
             (
-                "Person/Time=2012*Province=LK-2*Religion/Count",
+                "Person/Time=2012*Province=Central*Religion/Count",
                 "PieChart",
                 ("Religion", "Count"),
             ),
@@ -53,7 +53,7 @@ class TestCase(unittest.TestCase):
                 self.assertTrue(visual.image_file.exists())
 
     def test_concept_color_map(self):
-        query_str = "Person/Time=2012*Province=LK-2*Religion/Count"
+        query_str = "Person/Time=2012*Province=Central*Religion/Count"
         datumset = LankaData[query_str]
         visual = PieChart(datumset, "Religion", "Count")
         expected_color_map = Religion.get_color_map()
@@ -83,7 +83,9 @@ class TestCase(unittest.TestCase):
         self.assertGreater(base_l, high_l)
 
     def test_visual_title_case_category_values(self):
-        query_str = "Person/Time*Province=LK-1*Religion=roman_catholic/Count"
+        query_str = (
+            "Person/Time*Province=Western*Religion=roman_catholic/Count"
+        )
         datumset = LankaData[query_str]
         visual = PieChart(datumset, "Time", "Count")
         subfigure_title = visual._get_subfigure_title(
@@ -94,4 +96,4 @@ class TestCase(unittest.TestCase):
         self.assertNotIn("roman_catholic", subfigure_title)
         self.assertEqual("Buddhist", visual._format_visual_value("buddhist"))
         self.assertEqual("Hindu", visual._format_visual_value("hindu"))
-        self.assertEqual("LK-1", visual._format_visual_value("LK-1"))
+        self.assertEqual("Western", visual._format_visual_value("Western"))

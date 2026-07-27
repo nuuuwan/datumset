@@ -22,7 +22,7 @@ class TestCase(unittest.TestCase):
             region_cls = RegionFactory.from_region_id("EC-01AA")
             self.assertIsNone(region_cls)
         with self.assertRaises(ValueError):
-            region_cls = RegionFactory.from_region_id("LK-123456789012345")
+            region_cls = RegionFactory.from_region_id("Western23456789012345")
             self.assertIsNone(region_cls)
         with self.assertRaises(ValueError):
             region_cls = RegionFactory.from_region_id("XXXXXX")
