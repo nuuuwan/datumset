@@ -31,6 +31,7 @@ class Census2024(AbstractDB):
     @classmethod
     def _get_local_data_file(cls, partial_path):
         local_dir = Directory.get_temp("datumset", "census2024")
+        local_dir.make()
         local_data_file = JSONFile(local_dir, partial_path)
         dataset_dir = local_data_file.get_parent_directory()
 

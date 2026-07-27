@@ -52,10 +52,9 @@ class TSVAdapter:
     @classmethod
     def read(cls, url) -> list:
         file_name = url.split("/")[-1]
-        tsv_file = TSVFile(
-            Directory.get_temp("datumset", cls.TEMP_DIR).path,
-            file_name,
-        )
+        dir_temp = Directory.get_temp("datumset", cls.TEMP_DIR)
+        dir_temp.make()
+        tsv_file = TSVFile(dir_temp, file_name)
         WWW(url).download(tsv_file)
         return tsv_file.read()
 
