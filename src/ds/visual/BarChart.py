@@ -8,7 +8,9 @@ class BarChart(Visual):
         self.x_dim_key = self._resolve_dim_key(x_dim_key, 0)
         self.y_cell_key = self._resolve_cell_key(y_cell_key)
         self.display_datumsets = self._get_display_datumsets({self.x_dim_key})
-        self.x_values, self.x_color_idx = self._init_dim_colors(self.x_dim_key)
+        self.x_values, self.x_color_idx = self._init_dim_colors(
+            self.x_dim_key
+        )
 
     def _excluded_dim_keys(self):
         return {self.x_dim_key}

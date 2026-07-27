@@ -27,7 +27,7 @@ class TSVAdapter:
         region_id = d["entity_id"]
         try:
             region_cls = RegionFactory.from_region_id(region_id)
-            region_instance = region_cls[region_id]
+            region_instance = region_cls.from_region_id(region_id)
         except ValueError:
             return None
         r_name = region_cls.__name__

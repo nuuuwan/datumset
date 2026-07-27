@@ -67,11 +67,9 @@ from ds.thing.concept.region.District import District
 from ds.thing.concept.region.DSD import DSD
 from ds.thing.concept.region.ED import ED
 from ds.thing.concept.region.GND import GND
-from ds.thing.concept.region.LG import LG
 from ds.thing.concept.region.PD import PD
 from ds.thing.concept.region.Province import Province
 from ds.thing.concept.Time import Time
-from ds.thing.concept.time.TimeGroup0510More import TimeGroup0510More
 from ds.thing.concept.TimeDurationGroup import TimeDurationGroup
 from ds.thing.entity.Census import Census
 from ds.thing.entity.House import House
@@ -183,11 +181,6 @@ class ThingFactoryEntityClassListMixin:
         ED,
         GND,
         #
-        LG,
         PD,
         Province,
-        # --------------------
-        # time (1)
-        # --------------------
-        TimeGroup0510More,
     ]

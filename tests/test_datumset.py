@@ -6,7 +6,7 @@ TEST_DATUMSET = Datumset.from_data(
     {
         "Person": {
             "Time:2012": {
-                "District:LK-11": {
+                "District:colombo": {
                     "Religion:buddhist": {
                         "Count": "Int:123",
                     },
@@ -14,7 +14,7 @@ TEST_DATUMSET = Datumset.from_data(
                         "Count": "Int:456",
                     },
                 },
-                "District:LK-12": {
+                "District:gampaha": {
                     "Religion:buddhist": {
                         "Count": "Int:1231",
                     },
@@ -24,7 +24,7 @@ TEST_DATUMSET = Datumset.from_data(
                 },
             },
             "Time:2024": {
-                "District:LK-11": {
+                "District:colombo": {
                     "Religion:buddhist": {
                         "Count": "Int:1230",
                     },
@@ -32,7 +32,7 @@ TEST_DATUMSET = Datumset.from_data(
                         "Count": "Int:4560",
                     },
                 },
-                "District:LK-12": {
+                "District:gampaha": {
                     "Religion:buddhist": {
                         "Count": "Int:12310",
                     },
@@ -59,7 +59,7 @@ class TestCase(unittest.TestCase):
             {
                 "Person": {
                     "Time:2012": {
-                        "District:LK-11": {
+                        "District:colombo": {
                             "Religion:buddhist": {
                                 "Count": "Int:123",
                             },
@@ -67,7 +67,7 @@ class TestCase(unittest.TestCase):
                                 "Count": "Int:456",
                             },
                         },
-                        "District:LK-12": {
+                        "District:gampaha": {
                             "Religion:buddhist": {
                                 "Count": "Int:1231",
                             },
@@ -84,7 +84,7 @@ class TestCase(unittest.TestCase):
             {
                 "Person": {
                     "Time:2024": {
-                        "District:LK-11": {
+                        "District:colombo": {
                             "Religion:buddhist": {
                                 "Count": "Int:1230",
                             },
@@ -92,7 +92,7 @@ class TestCase(unittest.TestCase):
                                 "Count": "Int:4560",
                             },
                         },
-                        "District:LK-12": {
+                        "District:gampaha": {
                             "Religion:buddhist": {
                                 "Count": "Int:12310",
                             },

@@ -1,20 +1,13 @@
 from dataclasses import dataclass
 from functools import cache
 
-from utils_future import WWW, Directory, File, JSONFile
+from utils_future import WWW, Directory, File, JSONFile, String
 
 from ds.thing.concept.CategoryConcept import CategoryConcept
 
 
 @dataclass(frozen=True)
 class Region(CategoryConcept):
-    id: str
-    name: str
-
-    def __init__(self, id: str, name: str):
-        object.__setattr__(self, "_value", id)
-        object.__setattr__(self, "id", id)
-        object.__setattr__(self, "name", name)
 
     @classmethod
     def region_class_id(cls):
@@ -23,11 +16,11 @@ class Region(CategoryConcept):
     @classmethod
     @cache
     def valid_values(cls):
-        return [r.id for r in cls.list()]
+        return [r.get_value() for r in cls.list()]
 
     @classmethod
     @cache
-    def list(cls):
+    def get_ents(cls):
         data_file = JSONFile(
             Directory.get_temp("datumset", "regions").path,
             f"{cls.region_class_id()}s.json",
@@ -40,12 +33,21 @@ class Region(CategoryConcept):
         )
         WWW(url).download(File(data_file.path))
         data_list = data_file.read()
-        return [cls(id=d["id"], name=d["name"]) for d in data_list]
+        return data_list
+
+    @classmethod
+    def get_ent_idx_by_id(cls):
+        return {d["id"]: d for d in cls.get_ents()}
+
+    @classmethod
+    @cache
+    def list(cls):
+        data_list = cls.get_ents()
+        return [cls(String(d["name"]).snake) for d in data_list]
 
     @classmethod
     @cache
     def from_value(cls, value: str):
-
         idx = cls.idx()
         if value in idx:
             return idx[value]
@@ -53,4 +55,15 @@ class Region(CategoryConcept):
         raise ValueError(
             f"Invalid label: {value} for {cls.__name__}."
             + f" Valid labels: {list(idx.keys())}"
+        )
+
+    @classmethod
+    @cache
+    def from_region_id(cls, region_id: str):
+        idx = cls.get_ent_idx_by_id()
+        if region_id in idx:
+            return cls(String(idx[region_id]["name"]).snake)
+        raise ValueError(
+            f"Invalid region_id: {region_id} for {cls.__name__}."
+            + f" Valid region_ids: {list(idx.keys())}"
         )

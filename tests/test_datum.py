@@ -12,7 +12,7 @@ class TestCase(unittest.TestCase):
             entity_class=ThingFactory["Person"],
             dim_idx=dict(
                 Time=ThingFactory["Time"]("2012"),
-                District=ThingFactory["District"]["LK-11"],
+                District=ThingFactory["District"]["colombo"],
                 Religion=ThingFactory["Religion"]["Buddhist"],
             ),
             cell_idx=dict(
@@ -30,7 +30,7 @@ class TestCase(unittest.TestCase):
             {
                 "Person": {
                     "Time:2012": {
-                        "District:LK-11": {
+                        "District:colombo": {
                             "Religion:buddhist": {
                                 "Count1": "Int:123",
                                 "Count2": "Int:112",
