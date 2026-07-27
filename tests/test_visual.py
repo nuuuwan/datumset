@@ -46,14 +46,14 @@ class TestCase(unittest.TestCase):
                 ("District", "Religion", "Count"),
             ),
             (
-                "Person/Time=2012*DSD<District=colombo*Religion/Count",
-                "StackedBarChart",
-                ("DSD", "Religion", "Count"),
+                "Person/Time=2012*PD<District=colombo*Religion=islam/Count",
+                "MapVisual",
+                ("PD", "Count"),
             ),
             (
-                "Person/Time=2012*DSD<District=gampaha*Religion=islam/Count",
-                "MapVisual",
-                ("DSD", "Count"),
+                "Person/Time=2012*DSD<District=gampaha*Religion/Count",
+                "StackedBarChart",
+                ("DSD", "Religion", "Count"),
             ),
         ]
 

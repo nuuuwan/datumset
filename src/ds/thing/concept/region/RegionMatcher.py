@@ -11,9 +11,11 @@ class RegionMatcher:
 
         matching_child_values = []
         parent_id = parent_ent["id"]
+        parent_id_key = String(parent_region.__class__.__name__).snake + "_id"
+
         for child_region_ent in child_region_ents:
-            child_id = child_region_ent["id"]
-            if parent_id in child_id:
+            child_parent_id = child_region_ent[parent_id_key]
+            if child_parent_id == parent_id:
                 matching_child_values.append(
                     String(child_region_ent["name"]).snake
                 )
