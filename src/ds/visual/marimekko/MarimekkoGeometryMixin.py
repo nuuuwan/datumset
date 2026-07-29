@@ -6,8 +6,6 @@ class MarimekkoGeometryMixin:
     def _get_available_width(self, n_bars):
         gaps = self.BAR_GAP * max(n_bars - 1, 0)
         available = 1.0 - gaps
-        if available <= 0:
-            return 1.0, 0.0
         return available, self.BAR_GAP
 
     def _get_bar_geometry(self, totals):
@@ -22,6 +20,4 @@ class MarimekkoGeometryMixin:
         return geometry
 
     def _get_segment_height(self, value, total):
-        if total <= 0:
-            return 0.0
         return self.BAR_HEIGHT * value / total
