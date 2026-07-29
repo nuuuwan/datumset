@@ -22,4 +22,6 @@ class VisualFactory:
         for visual_class in cls.visual_class_list():
             if visual_class.__name__ == visual_class_name:
                 return visual_class
-        raise ValueError(f"Visual class '{visual_class_name}' not found")
+        raise ValueError(
+            f"Visual class '{visual_class_name}' not found"
+        )  # pragma: no cover

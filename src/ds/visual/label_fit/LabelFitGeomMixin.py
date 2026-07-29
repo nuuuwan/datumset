@@ -9,7 +9,7 @@ class LabelFitGeomMixin:
         if isinstance(geom, Polygon):
             return geom
         polys = [
-            g for g in getattr(geom, 'geoms', []) if isinstance(g, Polygon)
+            g for g in getattr(geom, "geoms", []) if isinstance(g, Polygon)
         ]
         return max(polys, key=lambda g: g.area) if polys else geom
 
@@ -23,9 +23,7 @@ class LabelFitGeomMixin:
                 y = miny + (maxy - miny) * (j + 0.5) / n_cells
                 if poly.contains(Point(x, y)):
                     pts.append((x, y))
-        if not pts:
-            rp = poly.representative_point()
-            return [(rp.x, rp.y)]
+
         return pts
 
     @staticmethod
