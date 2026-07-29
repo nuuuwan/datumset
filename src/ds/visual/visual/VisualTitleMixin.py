@@ -18,9 +18,7 @@ class VisualTitleMixin:
             ):
                 display_value = self._format_visual_value(first_value)
                 parts.append(f"{dim_key}={display_value}")
-        if parts:
-            return " & ".join(parts)
-        return "All data"
+        return " & ".join(parts)
 
     def _set_subfigure_title(self, sub_ax, sub_datumset):
         if len(self.display_datumsets) <= 1:
