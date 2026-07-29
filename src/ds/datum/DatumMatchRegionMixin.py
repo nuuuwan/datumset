@@ -15,9 +15,7 @@ class DatumMatchRegionMixin:
     @staticmethod
     @cache
     def _get_child_region_values(child_dim_label, parent_spec):
-        parent_dim_label, parent_dim_value = parent_spec.split(
-            Query.OPR_EQ, 1
-        )
+        parent_dim_label, parent_dim_value = parent_spec.split(Query.OPR_EQ, 1)
         child_region_class = RegionFactory[child_dim_label]
         parent_region_class = RegionFactory[parent_dim_label]
         parent_region = parent_region_class[parent_dim_value]
@@ -37,8 +35,7 @@ class DatumMatchRegionMixin:
     def _parse_dim_value(dim_value: str):
         if Query.OPR_OR in dim_value:
             return tuple(
-                value.lower()
-                for value in dim_value.split(Query.OPR_OR)
+                value.lower() for value in dim_value.split(Query.OPR_OR)
             )
         return dim_value
 

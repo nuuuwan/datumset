@@ -1,18 +1,7 @@
-from ds.visual.hex_map.HexMap import HexMap
-from ds.visual.square_map.SquareMapBoundaryMixin import (
-    SquareMapBoundaryMixin,
-)
-from ds.visual.square_map.SquareMapDrawMixin import SquareMapDrawMixin
-from ds.visual.square_map.SquareMapGridMixin import SquareMapGridMixin
-from ds.visual.square_map.SquareMapLabelMixin import SquareMapLabelMixin
+from ds.visual.shape_map.AbstractShapeMap import AbstractShapeMap
+from ds.visual.square_map.SquareShapeMixin import SquareShapeMixin
 
 
-class SquareMap(
-    SquareMapGridMixin,
-    SquareMapDrawMixin,
-    SquareMapBoundaryMixin,
-    SquareMapLabelMixin,
-    HexMap,
-):
+class SquareMap(SquareShapeMixin, AbstractShapeMap):
 
     TILE_NOUN = "square"

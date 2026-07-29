@@ -1,21 +1,7 @@
-from ds.visual.hex_map.HexMapAssignMixin import HexMapAssignMixin
-from ds.visual.hex_map.HexMapBoundaryMixin import HexMapBoundaryMixin
-from ds.visual.hex_map.HexMapCountMixin import HexMapCountMixin
-from ds.visual.hex_map.HexMapDrawMixin import HexMapDrawMixin
-from ds.visual.hex_map.HexMapGridMixin import HexMapGridMixin
-from ds.visual.hex_map.HexMapLabelMixin import HexMapLabelMixin
-from ds.visual.hex_map.HexMapScaleMixin import HexMapScaleMixin
-from ds.visual.map_visual.MapVisual import MapVisual
+from ds.visual.hex_map.HexShapeMixin import HexShapeMixin
+from ds.visual.shape_map.AbstractShapeMap import AbstractShapeMap
 
 
-class HexMap(
-    HexMapCountMixin,
-    HexMapGridMixin,
-    HexMapAssignMixin,
-    HexMapDrawMixin,
-    HexMapBoundaryMixin,
-    HexMapLabelMixin,
-    HexMapScaleMixin,
-    MapVisual,
-):
-    pass
+class HexMap(HexShapeMixin, AbstractShapeMap):
+
+    TILE_NOUN = "hexagon"

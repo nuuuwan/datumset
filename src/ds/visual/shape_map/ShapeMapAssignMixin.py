@@ -1,7 +1,7 @@
 from scipy.optimize import linear_sum_assignment
 
 
-class HexMapAssignMixin:
+class ShapeMapAssignMixin:
 
     @staticmethod
     def _build_slots(region_to_centroid, counts):
@@ -23,8 +23,8 @@ class HexMapAssignMixin:
         slots = self._build_slots(region_to_centroid, counts)
         cost = self._cost_matrix(slots, centers)
         rows, cols = linear_sum_assignment(cost)
-        hexes = []
+        shapes = []
         for i, j in zip(rows, cols):
             x, y = centers[j]
-            hexes.append((slots[i][0], x, y))
-        return hexes
+            shapes.append((slots[i][0], x, y))
+        return shapes
