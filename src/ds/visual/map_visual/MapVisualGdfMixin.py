@@ -22,8 +22,7 @@ class MapVisualGdfMixin:
         rank_by_value = {v: i for i, v in enumerate(sorted_values)}
         max_rank = max(1, len(sorted_values) - 1)
         return [
-            mcolors.to_hex(cmap(rank_by_value[v] / max_rank))
-            for v in values
+            mcolors.to_hex(cmap(rank_by_value[v] / max_rank)) for v in values
         ]
 
     def _get_value_gdf(self, sub_datumset, ctx):
