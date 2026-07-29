@@ -1,6 +1,6 @@
 from functools import cache
 
-from ds.thing.ThingFactoryEntityClassListMixin import \
+from ds.thing.entity_class_list.ThingFactoryEntityClassListMixin import \
     ThingFactoryEntityClassListMixin
 
 

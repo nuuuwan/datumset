@@ -1,7 +1,7 @@
 from ds.visual.marimekko.MarimekkoAxisMixin import MarimekkoAxisMixin
 from ds.visual.marimekko.MarimekkoGeometryMixin import MarimekkoGeometryMixin
 from ds.visual.marimekko.MarimekkoPlotMixin import MarimekkoPlotMixin
-from ds.visual.StackedBarChart import StackedBarChart
+from ds.visual.stacked_bar_chart.StackedBarChart import StackedBarChart
 
 
 class MarimekkoChart(

@@ -1,8 +1,8 @@
 from ds.visual.BarChart import BarChart
-from ds.visual.MapVisual import MapVisual
+from ds.visual.map_visual.MapVisual import MapVisual
 from ds.visual.marimekko.MarimekkoChart import MarimekkoChart
-from ds.visual.PieChart import PieChart
-from ds.visual.StackedBarChart import StackedBarChart
+from ds.visual.pie_chart.PieChart import PieChart
+from ds.visual.stacked_bar_chart.StackedBarChart import StackedBarChart
 
 
 class VisualFactory:
