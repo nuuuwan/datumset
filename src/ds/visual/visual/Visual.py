@@ -66,6 +66,7 @@ class Visual(
         self._add_subtitle(fig)
         self._add_border(fig)
         self._apply_style(fig, fig.axes)
+        self._add_watermark(fig)
         fig.savefig(self.image_file.path, dpi=self.DPI)
         log.debug(f"Wrote {self.image_file}")
         plt.close(fig)

@@ -13,6 +13,21 @@ class VisualLayoutMixin:
     DIR_FONTS = os.path.join("media", "fonts", "Fira_Sans")
     FONT_FAMILY = "Fira Sans"
     FONT_SIZE = 8
+    WATERMARK_TEXT = "@nuuuwan"
+    WATERMARK_COLOR = "#999999"
+
+    def _add_watermark(self, fig):
+        fig.text(
+            0.99,
+            0.01,
+            self.WATERMARK_TEXT,
+            ha="right",
+            va="bottom",
+            fontsize=10,
+            color=self.WATERMARK_COLOR,
+            alpha=0.6,
+            zorder=10,
+        )
 
     def _add_border(self, fig):
         border = mpatches.Rectangle(

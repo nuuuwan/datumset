@@ -30,7 +30,7 @@ class MapVisualPlotMixin:
             self._add_color_legend(
                 fig,
                 self._sort_color_idx_by_count(ctx["color_idx"], counts),
-                self.region_color_dim_key,
+                None,
                 counts,
             )
             return
