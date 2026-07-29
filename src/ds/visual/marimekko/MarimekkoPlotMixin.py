@@ -37,8 +37,6 @@ class MarimekkoPlotMixin:
         )
         for stack_label in sorted_stack_labels:
             value = data[stack_label].get(x_label, 0.0)
-            if value <= 0:
-                continue
             bottom += self._plot_segment(
                 sub_ax,
                 geometry,
@@ -50,8 +48,6 @@ class MarimekkoPlotMixin:
 
     def _add_segment_labels(self, sub_ax):
         for rect, value in self._segment_labels:
-            if value <= 0:
-                continue
             label = self._format_humanized_value(float(value), None)
             self._add_fitted_label_in_rect(sub_ax, rect, label)
 
@@ -61,8 +57,6 @@ class MarimekkoPlotMixin:
         geometries = self._get_bar_geometry(totals)
         self._segment_labels = []
         for geometry, x_label, total in zip(geometries, x_labels, totals):
-            if total <= 0 or geometry[1] <= 0:
-                continue
             self._plot_bar(
                 sub_ax,
                 geometry,
