@@ -36,14 +36,13 @@ class VisualLayoutMixin:
             ax.spines["bottom"].set_color(self.BORDER_COLOR)
             ax.tick_params(axis="y", colors=self.SUBTITLE_COLOR)
             ax.tick_params(axis="x", color=self.SUBTITLE_COLOR)
-        SUBPLOT_PADDING = 0.025
+        SUBPLOT_PADDING_X = 0.05
+        SUBPLOT_PADDING_Y = 0.15
         fig.subplots_adjust(
-            top=1 - SUBPLOT_PADDING,
-            bottom=SUBPLOT_PADDING,
-            left=SUBPLOT_PADDING,
-            right=1 - SUBPLOT_PADDING,
-            hspace=1.0,
-            wspace=0.8,
+            top=1 - SUBPLOT_PADDING_Y,
+            bottom=SUBPLOT_PADDING_Y,
+            left=SUBPLOT_PADDING_X,
+            right=1 - SUBPLOT_PADDING_X,
         )
 
     def _get_grid_axes(self, fig, ax, n_subfigures):

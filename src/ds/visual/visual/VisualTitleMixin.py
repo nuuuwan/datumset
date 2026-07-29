@@ -2,7 +2,7 @@ class VisualTitleMixin:
 
     TITLE_COLOR = "#333333"
     SUBFIGURE_TITLE_FONTSIZE = 14
-    SUBFIGURE_TITLE_PAD = 42
+    SUBFIGURE_TITLE_PAD = 0
 
     def _get_subfigure_title(self, datumset, excluded_dim_keys):
         constant_parts = []
