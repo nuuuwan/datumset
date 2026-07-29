@@ -10,7 +10,7 @@ import matplotlib.font_manager as fm
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
-from utils_future import Directory, File, Log
+from utils_future import Directory, File, Int, Log
 
 from ds.query.Query import Query
 from ds.thing.concept.region.Region import Region
@@ -426,20 +426,7 @@ class Visual(ABC):
         return 1.0 if max_value <= 0 else max_value * 1.1
 
     def _format_humanized_value(self, value, _pos):
-        abs_value = abs(value)
-        formatted_value = None
-        if abs_value >= 1000000:
-            formatted_value = self._format_humanized_scaled(
-                value / 1000000,
-                "M",
-            )
-        elif abs_value >= 1000:
-            formatted_value = self._format_humanized_scaled(value / 1000, "K")
-        elif value.is_integer():
-            formatted_value = str(int(value))
-        else:
-            formatted_value = f"{value:g}"
-        return formatted_value
+        return Int(value).humanize
 
     def _format_humanized_scaled(self, scaled_value, suffix):
         abs_scaled_value = abs(scaled_value)
@@ -527,7 +514,8 @@ class Visual(ABC):
             bbox = probe.get_window_extent(renderer=renderer)
             if (
                 bbox.width <= max_width_px * self.STACK_LABEL_BBOX_MARGIN
-                and bbox.height <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
+                and bbox.height
+                <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
             ):
                 best_fontsize = fontsize
                 break
