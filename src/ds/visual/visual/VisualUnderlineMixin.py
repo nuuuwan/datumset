@@ -7,9 +7,6 @@ class VisualUnderlineMixin:
     X_LABEL_UNDERLINE_LW = 3
     X_LABEL_UNDERLINE_GAP = 0.015
 
-    def _get_x_label_colors(self, sub_datumset, x_labels):
-        return None
-
     def _get_underline_y(self, sub_ax):
         renderer = self._get_renderer(sub_ax.figure)
         labels = sub_ax.get_xticklabels()
