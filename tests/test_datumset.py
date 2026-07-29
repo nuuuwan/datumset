@@ -47,6 +47,7 @@ TEST_DATUMSET = Datumset.from_data(
 
 
 class TestCase(unittest.TestCase):
+    # flake8: noqa: E501
     def test_split(self):
         datumset = TEST_DATUMSET
 
