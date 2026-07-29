@@ -19,7 +19,10 @@ class MapVisualPlotMixin:
     def _add_map_legend(self, fig, ctx):
         if ctx["mode"] == "category":
             self._add_color_legend(
-                fig, ctx["color_idx"], self.region_color_dim_key
+                fig,
+                ctx["color_idx"],
+                self.region_color_dim_key,
+                self._get_category_region_counts(),
             )
             return
         self._add_colorbar(fig, ctx)

@@ -64,6 +64,14 @@ class MapVisualGeoMixin:
                 return winners[normalized_key]
         return None
 
+    def _get_category_region_counts(self):
+        counts = defaultdict(int)
+        for sub_datumset in self.display_datumsets:
+            winners = self._get_region_winner_category(sub_datumset)
+            for category in winners.values():
+                counts[category] += 1
+        return counts
+
     def _get_sorted_values(self):
         values = set()
         for sub_datumset in self.display_datumsets:
