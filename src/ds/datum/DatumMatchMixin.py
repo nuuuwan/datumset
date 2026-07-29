@@ -11,15 +11,15 @@ log = Log("DatumMatchMixin")
 
 class DatumMatchMixin:
 
+    @staticmethod
     @cache
-    def _is_child_region_spec(self, dim_spec: str) -> bool:
+    def _is_child_region_spec(dim_spec: str) -> bool:
         return Query.OPR_LT in dim_spec and Query.OPR_EQ in dim_spec
 
+    @staticmethod
     @cache
-    def _get_child_region_values(self, child_dim_label, parent_spec):
-        parent_dim_label, parent_dim_value = parent_spec.split(
-            Query.OPR_EQ, 1
-        )
+    def _get_child_region_values(child_dim_label, parent_spec):
+        parent_dim_label, parent_dim_value = parent_spec.split(Query.OPR_EQ, 1)
         child_region_class = RegionFactory[child_dim_label]
         parent_region_class = RegionFactory[parent_dim_label]
         parent_region = parent_region_class[parent_dim_value]
@@ -41,21 +41,22 @@ class DatumMatchMixin:
             return dim_value in required_value
         return dim_value == str(required_value).lower()
 
+    @staticmethod
     @cache
     def _parse_dim_part(
-        self, concept_part: str
+        concept_part: str,
     ) -> tuple[list[str], dict[str, str | tuple[str, ...]]]:
         labels_required = []
         values_required = {}
         for dim_spec in concept_part.split(Query.OPR_MULT):
-            if self._is_child_region_spec(dim_spec):
+            if DatumMatchMixin._is_child_region_spec(dim_spec):
                 child_dim_label, parent_spec = dim_spec.split(
                     Query.OPR_LT,
                     1,
                 )
                 labels_required.append(child_dim_label)
                 values_required[child_dim_label] = (
-                    self._get_child_region_values(
+                    DatumMatchMixin._get_child_region_values(
                         child_dim_label,
                         parent_spec,
                     )
