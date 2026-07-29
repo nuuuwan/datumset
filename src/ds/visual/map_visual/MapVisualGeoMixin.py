@@ -64,16 +64,8 @@ class MapVisualGeoMixin:
                 return winners[normalized_key]
         return None
 
-    def _get_value_range(self):
-        min_value = None
-        max_value = None
+    def _get_sorted_values(self):
+        values = set()
         for sub_datumset in self.display_datumsets:
-            values = self._get_region_values_for(sub_datumset).values()
-            for value in values:
-                min_value = (
-                    value if min_value is None else min(min_value, value)
-                )
-                max_value = (
-                    value if max_value is None else max(max_value, value)
-                )
-        return min_value, max_value
+            values.update(self._get_region_percentages(sub_datumset).values())
+        return sorted(values)

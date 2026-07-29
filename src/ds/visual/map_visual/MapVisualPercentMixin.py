@@ -1,0 +1,43 @@
+from collections import defaultdict
+
+from ds.lanka_data.LankaData import LankaData
+from ds.thing.concept.Time import Time
+
+
+class MapVisualPercentMixin:
+
+    def _total_dim_spec(self, dim_spec, dim_label):
+        if dim_label == self.region_dim_key:
+            return dim_spec
+        if isinstance(self._get_dim_concept(dim_label), Time):
+            return dim_spec
+        return dim_label
+
+    def _get_total_query_str(self):
+        query = self.datumset[0].query
+        specs = [
+            self._total_dim_spec(dim_spec, dim_label)
+            for dim_spec, dim_label in zip(query.dim_specs, query.dim_labels)
+        ]
+        return "/".join([query.entity_part, "*".join(specs), query.cell_part])
+
+    def _get_region_totals(self):
+        total_datumset = LankaData[self._get_total_query_str()]
+        totals = defaultdict(float)
+        for datum in total_datumset:
+            region = self._normalize_region_key(
+                datum.dim_idx[self.region_dim_key].get_value()
+            )
+            totals[region] += float(
+                datum.cell_idx[self.y_cell_key].get_value()
+            )
+        return totals
+
+    def _get_region_percentages(self, sub_datumset):
+        values = self._get_region_values_for(sub_datumset)
+        totals = self._get_region_totals()
+        return {
+            region: value / totals[region]
+            for region, value in values.items()
+            if totals.get(region)
+        }

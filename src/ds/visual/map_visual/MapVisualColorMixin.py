@@ -31,10 +31,8 @@ class MapVisualColorMixin:
                 "mode": "category",
                 "color_idx": self._get_category_color_idx(),
             }
-        vmin, vmax = self._get_value_range()
         return {
             "mode": "value",
-            "vmin": vmin,
-            "vmax": vmax,
             "cmap": self._get_value_cmap(),
+            "values": self._get_sorted_values(),
         }

@@ -1,6 +1,6 @@
 import matplotlib.cm as cm
 import matplotlib.colors as mcolors
-from matplotlib.ticker import FuncFormatter
+from utils_future import Percent
 
 
 class MapVisualPlotMixin:
@@ -23,12 +23,26 @@ class MapVisualPlotMixin:
                 fig, ctx["color_idx"], self.region_color_dim_key
             )
             return
-        self._add_colorbar(fig, ctx["vmin"], ctx["vmax"], ctx["cmap"])
+        self._add_colorbar(fig, ctx)
 
-    def _add_colorbar(self, fig, vmin, vmax, cmap):
+    def _set_rank_ticks(self, colorbar, values, max_rank):
+        n_ticks = min(5, len(values))
+        if n_ticks < 2:
+            return
+        positions = [
+            round(i * max_rank / (n_ticks - 1)) for i in range(n_ticks)
+        ]
+        colorbar.set_ticks(positions)
+        colorbar.set_ticklabels(
+            [Percent(values[p]).humanize for p in positions]
+        )
+
+    def _add_colorbar(self, fig, ctx):
+        values = ctx["values"]
+        max_rank = max(1, len(values) - 1)
         scalar_mappable = cm.ScalarMappable(
-            norm=mcolors.Normalize(vmin=vmin, vmax=vmax),
-            cmap=cmap,
+            norm=mcolors.Normalize(vmin=0, vmax=max_rank),
+            cmap=ctx["cmap"],
         )
         scalar_mappable.set_array([])
         colorbar = fig.colorbar(
@@ -38,12 +52,8 @@ class MapVisualPlotMixin:
             fraction=0.04,
             pad=0.04,
         )
-        formatter = FuncFormatter(self._format_humanized_value)
-        colorbar.formatter = formatter
-        colorbar.ax.xaxis.set_major_formatter(formatter)
-        colorbar.ax.xaxis.offsetText.set_visible(False)
-        colorbar.update_ticks()
-        colorbar.set_label(self.y_cell_key)
+        self._set_rank_ticks(colorbar, values, max_rank)
+        colorbar.set_label("Percent")
 
     def _plot(self, fig, ax):
         axes, n_datumsets = self._get_display_axes(
