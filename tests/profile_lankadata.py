@@ -7,7 +7,7 @@ if __name__ == "__main__":
     profiler = cProfile.Profile()
     profiler.enable()
 
-    visual_query_str = "Vote/ElectionType=Presidential*Time=2024*PD<ED=colombo*Party/Count/MarimekkoChart"
+    visual_query_str = "Vote/ElectionType=Parliamentary*Time=2024*PD<ED=colombo*Party/Count/MarimekkoChart"
     VisualLankaData[visual_query_str].open("code")
 
     profiler.disable()

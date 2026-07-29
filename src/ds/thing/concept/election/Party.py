@@ -16,15 +16,15 @@ class Party(Concept):
     def get_color_map(cls):
         return {
             # SLFP family (blue)
-            "SLFP": "#222288",
-            "PA": "#222288",
-            "UPFA": "#222288",
+            "SLFP": "#00058f",
+            "PA": "#00058f",
+            "UPFA": "#00058f",
             # UNP family (green)
-            "UNP": "#008800",
-            "NDF": "#008800",
-            "SJB": "#008800",
+            "UNP": "#00b10c",
+            "NDF": "#00b10c",
+            "SJB": "#01605c",
             # SLPP / Rajapaksa (dark red)
-            "SLPP": "#880000",
+            "SLPP": "#9e1420",
             "OPPP": "#880000",
             # SLMP (purple)
             "SLMP": "#880088",
@@ -42,8 +42,8 @@ class Party(Concept):
             "SB": "#0088ff",
             # Left / JVP-NPP (red)
             "JVP": "#ff0000",
-            "NMPP": "#ff0000",
-            "NPP": "#ff0000",
+            "NMPP": "#95045b",
+            "NPP": "#95045b",
             "NPPT": "#ff0000",
             "MEP": "#ff0000",
             "USA": "#ff0000",
