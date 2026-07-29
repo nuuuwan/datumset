@@ -1,14 +1,6 @@
-import colorsys
 import unittest
 
-import matplotlib.colors as mcolors
-
 from ds import LankaData, VisualFactory
-from ds.thing.concept.person.Religion import Religion
-from ds.visual.MapVisual import MapVisual
-from ds.visual.marimekko.MarimekkoChart import MarimekkoChart
-from ds.visual.PieChart import PieChart
-from ds.visual.StackedBarChart import StackedBarChart
 
 
 class TestCase(unittest.TestCase):
@@ -46,6 +38,10 @@ class TestCase(unittest.TestCase):
             ),
             (
                 "Person/Time=2024*DSD<District=gampaha*Religion/Count",
+                "StackedBarChart",
+            ),
+            (
+                "Vote/ElectionType=Presidential*Time=2024*Province*Party/Count",
                 "StackedBarChart",
             ),
         ]
