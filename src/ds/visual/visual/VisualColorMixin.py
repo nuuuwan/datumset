@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 
 class VisualColorMixin:
 
+    OTHER_CATEGORY_COLOR = "#999999"
+
     def _get_default_color_idx(self, dim_values):
         cmap = plt.get_cmap("tab20")
         return {

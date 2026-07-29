@@ -48,30 +48,6 @@ class Visual(
 
     FIGSIZE = (9, 9)
     DPI = 300
-    STRIP_COLOR = "#e8e8e8"
-    BORDER_COLOR = "#cccccc"
-    TITLE_COLOR = "#333333"
-    SUBTITLE_COLOR = "#555555"
-    DIR_FONTS = os.path.join("media", "fonts", "Fira_Sans")
-    FONT_FAMILY = "Fira Sans"
-    FONT_SIZE = 8
-    MIN_STACK_LABEL_FONTSIZE = 8
-    MAX_STACK_LABEL_FONTSIZE = 20
-    STACK_LABEL_FONT_REDUCTION = 1
-    STACK_LABEL_MIN_DIM_RATIO = 0.55
-    STACK_LABEL_BBOX_MARGIN = 0.75
-    CONTRAST_LIGHT_TEXT_COLOR = "#ffffff"
-    CONTRAST_DARK_TEXT_COLOR = "#111111"
-    CONTRAST_LIGHTNESS_THRESHOLD = 0.5
-    OTHER_CATEGORY = "_other"
-    SMALL_CATEGORY_THRESHOLD = 0.01
-    OTHER_CATEGORY_COLOR = "#999999"
-    OTHER_CATEGORY_LABEL = "Other (with <1%)"
-    X_TICK_FONTSIZE = 9
-    X_TICK_CHAR_WIDTH_RATIO = 0.62
-    X_LABEL_UNDERLINE_HALF = 0.4
-    X_LABEL_UNDERLINE_LW = 3
-    X_LABEL_UNDERLINE_GAP = 0.015
 
     def __init__(self, datumset):
         self.datumset = datumset

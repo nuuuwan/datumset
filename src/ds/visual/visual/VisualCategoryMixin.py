@@ -4,6 +4,9 @@ from functools import cached_property
 
 class VisualCategoryMixin:
 
+    OTHER_CATEGORY = "_other"
+    SMALL_CATEGORY_THRESHOLD = 0.01
+
     def _compute_small_categories(self):
         dim_key = self._get_category_dim_key()
         assert dim_key is not None, "Category dimension key is not defined."

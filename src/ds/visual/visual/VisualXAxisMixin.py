@@ -3,6 +3,9 @@ from utils_future import String
 
 class VisualXAxisMixin:
 
+    X_TICK_FONTSIZE = 9
+    X_TICK_CHAR_WIDTH_RATIO = 0.62
+
     def _get_renderer(self, fig):
         if self._renderer is None:
             fig.canvas.draw()

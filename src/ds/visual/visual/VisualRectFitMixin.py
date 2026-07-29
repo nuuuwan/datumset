@@ -1,5 +1,10 @@
 class VisualRectFitMixin:
 
+    MIN_STACK_LABEL_FONTSIZE = 8
+    MAX_STACK_LABEL_FONTSIZE = 20
+    STACK_LABEL_MIN_DIM_RATIO = 0.55
+    STACK_LABEL_BBOX_MARGIN = 0.75
+
     def _get_rect_size_px(self, sub_ax, rect):
         x0 = rect.get_x()
         y0 = rect.get_y()

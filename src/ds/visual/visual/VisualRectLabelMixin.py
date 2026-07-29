@@ -3,6 +3,8 @@ from utils_future import Percent
 
 class VisualRectLabelMixin:
 
+    STACK_LABEL_FONT_REDUCTION = 1
+
     def _add_bar_totals(self, sub_ax, x_values, totals, y_limit):
         offset = y_limit * 0.015
         for x_value, total in zip(x_values, totals):

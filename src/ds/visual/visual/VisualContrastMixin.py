@@ -3,6 +3,10 @@ import matplotlib.colors as mcolors
 
 class VisualContrastMixin:
 
+    CONTRAST_LIGHT_TEXT_COLOR = "#ffffff"
+    CONTRAST_DARK_TEXT_COLOR = "#111111"
+    CONTRAST_LIGHTNESS_THRESHOLD = 0.5
+
     def _to_linear_rgb_channel(self, channel_value):
         if channel_value <= 0.04045:
             return channel_value / 12.92

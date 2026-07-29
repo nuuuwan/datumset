@@ -8,6 +8,12 @@ import matplotlib.pyplot as plt
 
 class VisualLayoutMixin:
 
+    BORDER_COLOR = "#cccccc"
+    SUBTITLE_COLOR = "#555555"
+    DIR_FONTS = os.path.join("media", "fonts", "Fira_Sans")
+    FONT_FAMILY = "Fira Sans"
+    FONT_SIZE = 8
+
     def _add_border(self, fig):
         border = mpatches.Rectangle(
             (0.0, 0.0),

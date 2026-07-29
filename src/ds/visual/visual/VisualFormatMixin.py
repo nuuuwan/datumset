@@ -4,6 +4,8 @@ from utils_future import Int
 
 class VisualFormatMixin:
 
+    OTHER_CATEGORY_LABEL = "Other (with <1%)"
+
     def _format_visual_value(self, value):
         if value == self.OTHER_CATEGORY:
             return self.OTHER_CATEGORY_LABEL

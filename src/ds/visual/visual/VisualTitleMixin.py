@@ -1,5 +1,7 @@
 class VisualTitleMixin:
 
+    TITLE_COLOR = "#333333"
+
     def _get_subfigure_title(self, datumset, excluded_dim_keys):
         constant_parts = []
         first_datum = datumset[0]

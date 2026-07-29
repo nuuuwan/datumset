@@ -3,6 +3,10 @@ from matplotlib.transforms import blended_transform_factory
 
 class VisualUnderlineMixin:
 
+    X_LABEL_UNDERLINE_HALF = 0.4
+    X_LABEL_UNDERLINE_LW = 3
+    X_LABEL_UNDERLINE_GAP = 0.015
+
     def _get_x_label_colors(self, sub_datumset, x_labels):
         return None
 
