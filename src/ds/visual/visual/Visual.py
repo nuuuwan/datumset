@@ -47,7 +47,7 @@ class Visual(
 ):
 
     FIGSIZE = (9, 9)
-    DPI = 300
+    DPI = 100
 
     def __init__(self, datumset):
         self.datumset = datumset

@@ -46,17 +46,22 @@ class VisualLayoutMixin:
             wspace=0.8,
         )
 
-    def _get_square_axes(self, fig, ax, n_subfigures):
+    def _get_grid_axes(self, fig, ax, n_subfigures):
         if n_subfigures == 1:
             return [ax]
         fig.clear()
-        n_side = math.ceil(math.sqrt(n_subfigures))
-        axes = fig.subplots(nrows=n_side, ncols=n_side)
+        n_cols = math.ceil(math.sqrt(n_subfigures))
+        n_rows = math.ceil(n_subfigures / n_cols)
+        fig.set_size_inches(
+            self.FIGSIZE[0] * n_cols,
+            self.FIGSIZE[1] * n_rows,
+        )
+        axes = fig.subplots(nrows=n_rows, ncols=n_cols)
         return axes.flatten()
 
     def _get_display_axes(self, fig, ax, display_datumsets):
         n_subfigures = len(display_datumsets)
-        axes = self._get_square_axes(fig, ax, n_subfigures)
+        axes = self._get_grid_axes(fig, ax, n_subfigures)
         return axes, n_subfigures
 
     def _hide_empty_axes(self, axes, n_subfigures):
