@@ -11,3 +11,70 @@ class Party(Concept):
     @classmethod
     def from_value(cls, value):
         return cls(value)
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            # SLFP family (blue)
+            "SLFP": "#222288",
+            "PA": "#222288",
+            "UPFA": "#222288",
+            # UNP family (green)
+            "UNP": "#008800",
+            "NDF": "#008800",
+            "SJB": "#008800",
+            # SLPP / Rajapaksa (dark red)
+            "SLPP": "#880000",
+            "OPPP": "#880000",
+            # SLMP (purple)
+            "SLMP": "#880088",
+            # Muslim & minority parties (dark green)
+            "ACMC": "#004400",
+            "MNA": "#004400",
+            "NC": "#004400",
+            "SLMC": "#004400",
+            "NUA": "#004400",
+            # Independent groups (light grey)
+            "IG": "#e0e0e0",
+            "IG2": "#e0e0e0",
+            "IG3": "#e0e0e0",
+            "DUNF": "#8800ff",
+            "SB": "#0088ff",
+            # Left / JVP-NPP (red)
+            "JVP": "#ff0000",
+            "NMPP": "#ff0000",
+            "NPP": "#ff0000",
+            "NPPT": "#ff0000",
+            "MEP": "#ff0000",
+            "USA": "#ff0000",
+            "SLPF": "#ff0000",
+            "DNA": "#ff0000",
+            "JJB": "#ff0000",
+            "LSSP": "#ff0000",
+            "CP": "#ff0000",
+            "NSSP": "#ff0000",
+            "FSP": "#ff0000",
+            "SEP": "#ff0000",
+            # Tamil / Eastern militant-origin parties (orange-red)
+            "ELMSP": "#ff2200",
+            "EPDP": "#ff2200",
+            "TMVP": "#ff2200",
+            "EROS": "#ff2200",
+            # Up-country Tamil (orange)
+            "CWC": "#ff4400",
+            "UPF": "#ff4400",
+            # Buddhist nationalist (amber)
+            "SU": "#ffcc00",
+            "JHU": "#ffcc00",
+            # Tamil nationalist (yellow)
+            "AITC": "#ffdd00",
+            "ITAK": "#ffdd00",
+            "TULF": "#ffdd00",
+            "ACTC": "#ffdd00",
+            "TMK": "#ffdd00",
+            "TMTK": "#ffdd00",
+            "IND9": "#ffdd00",
+            "ELJP": "#ffffff",
+            "INDI": "#ffffff",
+            "IND16": "#ff8822",
+        }
