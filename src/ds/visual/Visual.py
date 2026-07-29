@@ -12,6 +12,7 @@ from matplotlib.ticker import FuncFormatter
 from utils_future import Directory, File, Log
 
 from ds.query.Query import Query
+from ds.thing.concept.region.Region import Region
 
 log = Log("Visual")
 
@@ -42,9 +43,12 @@ class Visual(ABC):
     CONTRAST_DARK_TEXT_COLOR = "#111111"
     CONTRAST_LIGHTNESS_THRESHOLD = 0.5
 
-    def __init__(self, datumset, *params):
+    def __init__(self, datumset):
         self.datumset = datumset
-        self.params = params
+        self.params = self._get_params()
+
+    def _get_params(self):
+        return ()
 
     def _get_query(self):
         return self.datumset[0].query
@@ -52,15 +56,46 @@ class Visual(ABC):
     def _get_entity_name(self):
         return self.datumset[0].entity_class.__name__
 
-    def _resolve_dim_key(self, dim_key, default_index):
-        if dim_key is not None:
-            return dim_key
-        return self._get_query().dim_labels[default_index]
+    def _get_dim_concept(self, dim_key):
+        return self.datumset[0].dim_idx.get(dim_key)
 
-    def _resolve_cell_key(self, cell_key, default_index=0):
-        if cell_key is not None:
-            return cell_key
-        return self._get_query().cell_labels[default_index]
+    def _is_region_dim(self, dim_key):
+        return isinstance(self._get_dim_concept(dim_key), Region)
+
+    def _get_region_dim_key(self):
+        for dim_key in self._get_dim_labels():
+            if self._is_region_dim(dim_key):
+                return dim_key
+        return self._get_dim_labels()[0]
+
+    def _get_y_cell_key(self):
+        cell_labels = self._get_query().cell_labels
+        for cell_label in cell_labels:
+            if cell_label == "Count":
+                return cell_label
+        return cell_labels[0]
+
+    def _get_varying_dim_keys(self, excluded_dim_keys=None):
+        excluded_dim_keys = excluded_dim_keys or set()
+        varying = []
+        for dim_key in self._get_dim_labels():
+            if dim_key in excluded_dim_keys:
+                continue
+            if len(self._get_unique_dim_values(dim_key)) > 1:
+                varying.append(dim_key)
+        return varying
+
+    def _get_first_varying_dim_key(self, excluded_dim_keys=None):
+        varying = self._get_varying_dim_keys(excluded_dim_keys)
+        if varying:
+            return varying[0]
+        return self._get_dim_labels()[0]
+
+    def _get_first_varying_non_region_dim_key(self):
+        for dim_key in self._get_varying_dim_keys():
+            if not self._is_region_dim(dim_key):
+                return dim_key
+        return self._get_first_varying_dim_key()
 
     def _init_dim_colors(self, dim_key):
         dim_values = self._get_unique_dim_values(dim_key)

@@ -35,15 +35,15 @@ class MapVisual(Visual):
     def __init__(
         self,
         datumset,
-        region_dim_key=None,
-        y_cell_key=None,
     ):
         super().__init__(datumset)
-        self.region_dim_key = self._resolve_dim_key(region_dim_key, 1)
-        self.y_cell_key = self._resolve_cell_key(y_cell_key)
+        self.region_dim_key, self.y_cell_key = self.params
         self.display_datumsets = self._get_display_datumsets(
             {self.region_dim_key}
         )
+
+    def _get_params(self):
+        return self._get_region_dim_key(), self._get_y_cell_key()
 
     def _get_region_values(self):
         return {

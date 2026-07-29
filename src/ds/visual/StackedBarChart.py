@@ -8,20 +8,29 @@ class StackedBarChart(Visual):
     def __init__(
         self,
         datumset,
-        x_dim_key=None,
-        stack_dim_key=None,
-        y_cell_key=None,
     ):
-        super().__init__(datumset, x_dim_key, stack_dim_key, y_cell_key)
-        self.x_dim_key = self._resolve_dim_key(x_dim_key, 1)
-        self.stack_dim_key = self._resolve_dim_key(stack_dim_key, 2)
-        self.y_cell_key = self._resolve_cell_key(y_cell_key)
+        super().__init__(datumset)
+        self.x_dim_key, self.stack_dim_key, self.y_cell_key = self.params
         self.display_datumsets = self._get_display_datumsets(
             {self.x_dim_key, self.stack_dim_key}
         )
         self.stack_values, self.stack_color_idx = self._init_dim_colors(
             self.stack_dim_key
         )
+
+    def _get_params(self):
+        x_dim_key = self._get_first_varying_dim_key()
+        stack_dim_key = self._get_stack_dim_key(x_dim_key)
+        return x_dim_key, stack_dim_key, self._get_y_cell_key()
+
+    def _get_stack_dim_key(self, x_dim_key):
+        varying = self._get_varying_dim_keys({x_dim_key})
+        if varying:
+            return varying[0]
+        for dim_key in self._get_dim_labels():
+            if dim_key != x_dim_key:
+                return dim_key
+        return x_dim_key
 
     def _get_data(self, datumset):
         x_labels, stack_labels = [], []

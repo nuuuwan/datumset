@@ -18,42 +18,34 @@ class TestCase(unittest.TestCase):
             (
                 "Person/Time*Province=Western*Religion=hindu/Count",
                 "BarChart",
-                ("Time", "Count"),
             ),
             (
                 "Person/Time=2012*Province*Religion/Count",
                 "PieChart",
-                ("Religion", "Count"),
             ),
             (
                 "Person/Time=2012*Province*Religion/Count",
                 "StackedBarChart",
-                ("Province", "Religion", "Count"),
             ),
             (
                 "Person/Time=2012*District*Religion/Count",
                 "StackedBarChart",
-                ("District", "Religion", "Count"),
             ),
             (
                 "Person/Time=2012*Province*Religion=buddhist/Count",
                 "MapVisual",
-                ("Province", "Count"),
             ),
             (
                 "Person/Time=2012*District<Province=western*Religion/Count",
                 "StackedBarChart",
-                ("District", "Religion", "Count"),
             ),
             (
                 "Person/Time=2012*PD<District=colombo*Religion=islam/Count",
                 "MapVisual",
-                ("PD", "Count"),
             ),
             (
                 "Person/Time=2012*DSD<District=gampaha*Religion/Count",
                 "StackedBarChart",
-                ("DSD", "Religion", "Count"),
             ),
         ]
 
@@ -62,21 +54,21 @@ class TestCase(unittest.TestCase):
             visual_class.__name__: visual_class
             for visual_class in VisualFactory.visual_class_list()
         }
-        for query_str, visual_class_name, params in self._get_scenarios():
+        for query_str, visual_class_name in self._get_scenarios():
             datumset = LankaData[query_str]
             visual_class = visual_class_idx[visual_class_name]
             with self.subTest(
                 query_str=query_str,
                 visual_class=visual_class_name,
             ):
-                visual = visual_class(datumset, *params)
+                visual = visual_class(datumset)
                 visual.draw()
                 self.assertTrue(visual.image_file.exists())
 
     def test_concept_color_map(self):
         query_str = "Person/Time=2012*Province=Central*Religion/Count"
         datumset = LankaData[query_str]
-        visual = PieChart(datumset, "Religion", "Count")
+        visual = PieChart(datumset)
         expected_color_map = Religion.get_color_map()
         n_matches = 0
         for value, color in visual.x_color_idx.items():
@@ -88,7 +80,7 @@ class TestCase(unittest.TestCase):
     def test_map_concept_color_map_hsl(self):
         query_str = "Person/Time=2012*Province*Religion=buddhist/Count"
         datumset = LankaData[query_str]
-        visual = MapVisual(datumset, "Province", "Count")
+        visual = MapVisual(datumset)
         cmap = visual._get_value_cmap()
         base_color = Religion.get_color_map()["buddhist"]
         base_h, base_l, base_s = colorsys.rgb_to_hls(
@@ -108,7 +100,7 @@ class TestCase(unittest.TestCase):
             "Person/Time*Province=Western*Religion=roman_catholic/Count"
         )
         datumset = LankaData[query_str]
-        visual = PieChart(datumset, "Time", "Count")
+        visual = PieChart(datumset)
         subfigure_title = visual._get_subfigure_title(
             visual.display_datumsets[0],
             visual._excluded_dim_keys(),
@@ -122,7 +114,7 @@ class TestCase(unittest.TestCase):
     def test_pie_percentage_only_labels(self):
         query_str = "Person/Time=2012*Province=Western*Religion/Count"
         datumset = LankaData[query_str]
-        visual = PieChart(datumset, "Religion", "Count")
+        visual = PieChart(datumset)
         autopct = visual._build_autopct()
         self.assertEqual("10%", autopct(10.0))
         self.assertEqual("<0.5%", autopct(0.4))
@@ -130,14 +122,14 @@ class TestCase(unittest.TestCase):
     def test_pie_radius_scaling(self):
         query_str = "Person/Time=2012*Province=Western*Religion/Count"
         datumset = LankaData[query_str]
-        visual = PieChart(datumset, "Religion", "Count")
+        visual = PieChart(datumset)
         self.assertEqual(1.0, visual._get_pie_radius(50.0, 100.0, 1))
         self.assertAlmostEqual(0.5, visual._get_pie_radius(25.0, 100.0, 4))
 
     def test_contrast_text_color(self):
         query_str = "Person/Time=2012*Province=Western*Religion/Count"
         datumset = LankaData[query_str]
-        visual = PieChart(datumset, "Religion", "Count")
+        visual = PieChart(datumset)
         self.assertEqual(
             visual.CONTRAST_LIGHT_TEXT_COLOR,
             visual._get_contrast_text_color("#111111"),
@@ -154,9 +146,6 @@ class TestCase(unittest.TestCase):
         datumset = LankaData[query_str]
         visual = StackedBarChart(
             datumset,
-            "District",
-            "Religion",
-            "Count",
         )
         self.assertIn("District<Province=western", visual.image_file.path)
 
@@ -165,7 +154,7 @@ class TestCase(unittest.TestCase):
             "Person/Time=2012*DSD<District=colombo*Religion=islam/Count"
         )
         datumset = LankaData[query_str]
-        visual = MapVisual(datumset, "DSD", "Count")
+        visual = MapVisual(datumset)
         sub_datumset = visual.display_datumsets[0]
         gdf = visual._get_gdf_with_values(sub_datumset)
         self.assertGreater(len(gdf), 0)
