@@ -8,8 +8,6 @@ class MapVisualLabelMixin:
         for _, row in gdf.iterrows():
             label = row.get("name") or row["region_id"]
             cx, cy, rw, rh, angle_deg = LabelFit.best_label_fit(row.geometry)
-            if rw <= 0 or rh <= 0:
-                continue
             fontsize = LabelFit.fit_fontsize(label, rw, rh, ax, renderer)
             fontsize = max(4, min(9, fontsize))
             text_angle = angle_deg if rw >= rh else angle_deg + 90
