@@ -26,31 +26,6 @@ class Elections(AbstractGIGDB):
     TURNOUT_COLS = ["electors", "polled", "valid", "rejected"]
 
     @classmethod
-    def _build_turnout_datum(cls, d, entity_cls, time_concept, extra_dims):
-        region_id = d["entity_id"]
-        try:
-            region_cls = RegionFactory.from_region_id(region_id)
-            region_instance = region_cls[region_id]
-        except ValueError:
-            return None
-        r_name = region_cls.__name__
-        return Datum(
-            entity_cls,
-            {
-                **extra_dims,
-                "Time": time_concept,
-                r_name: region_instance,
-            },
-            {
-                k: Int(
-                    int(float(d.get(k, "0").strip().replace(",", "") or "0"))
-                )
-                for k in cls.TURNOUT_COLS
-                if k in d
-            },
-        )
-
-    @classmethod
     def get_datumset(cls, item) -> Datumset:
         year_id = item["year_id"]
         measurement_id = item["measurement_id"]
@@ -73,11 +48,8 @@ class Elections(AbstractGIGDB):
             time_concept,
             extra_dims,
         )
-        turnout = [
-            cls._build_turnout_datum(d, entity_cls, time_concept, extra_dims)
-            for d in d_list
-        ]
-        return Datumset(*list(party) + [t for t in turnout if t])
+
+        return Datumset(*list(party))
 
     @classmethod
     @cache
