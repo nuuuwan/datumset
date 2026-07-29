@@ -23,7 +23,9 @@ class Elections(AbstractGIGDB):
     }
 
     @classmethod
-    def is_metadata_item_matching_query(cls, item, query: Query):
+    def is_metadata_item_matching_query(  # noqa: C901,CFQ004
+        cls, item, query: Query
+    ):
         parent_check = (
             item["entity_class_name"] in query.entity_class_names
             and item["measurement_class_name"] in query.dim_labels

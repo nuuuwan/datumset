@@ -13,7 +13,7 @@ class Party(Concept):
         return cls(value)
 
     @classmethod
-    def get_color_map(cls):
+    def get_color_map(cls):  # noqa: CFQ001
         return {
             # SLFP family (blue)
             "SLFP": "#00058f",
