@@ -12,6 +12,7 @@ log = Log("Region")
 class Region(CategoryConcept):
 
     @classmethod
+    @cache
     def region_class_id(cls):
         return cls.__name__.lower()
 
@@ -20,6 +21,7 @@ class Region(CategoryConcept):
     def valid_values(cls):
         return [r.get_value() for r in cls.list()]
 
+    @cache
     def get_ent(self):
         idx = self.get_ent_idx_by_value()
 
@@ -49,10 +51,12 @@ class Region(CategoryConcept):
         return data_list
 
     @classmethod
+    @cache
     def get_ent_idx_by_id(cls):
         return {d["id"]: d for d in cls.get_ents()}
 
     @classmethod
+    @cache
     def get_ent_idx_by_value(cls):
         return {String(d["name"]).snake: d for d in cls.get_ents()}
 
