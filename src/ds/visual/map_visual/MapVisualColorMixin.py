@@ -6,12 +6,7 @@ import matplotlib.colors as mcolors
 class MapVisualColorMixin:
 
     def _get_region_label_color(self, value, vmin, vmax, cmap):
-        if value is None:
-            return self._get_contrast_text_color("#f0f0f0")
-        if vmax <= vmin:
-            color = cmap(0.5)
-        else:
-            color = cmap((value - vmin) / (vmax - vmin))
+        color = cmap((value - vmin) / (vmax - vmin))
         return self._get_contrast_text_color(color)
 
     def _build_hsl_lightness_cmap(self, base_color):
