@@ -430,15 +430,20 @@ class Visual(ABC):
         return " | ".join([entity] + other)
 
     @abstractmethod
-    def _build_title(self):
-        pass
-
-    @abstractmethod
     def _plot(self, fig, ax):
         pass
 
     def _get_title_text(self):
-        return f"{self._get_entity_name()} {self._build_title()}"
+        query = self.datumset[0].query
+        title = " ".join(
+            [
+                query.entity_part,
+                query.cell_labels[0],
+                "by",
+                " x ".join(query.dim_labels),
+            ]
+        )
+        return title
 
     def _add_title(self, fig):
         title = self._get_title_text()

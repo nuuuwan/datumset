@@ -56,9 +56,6 @@ class MapVisual(Visual):
     def _excluded_dim_keys(self):
         return {self.region_dim_key}
 
-    def _build_title(self):
-        return self._build_dim_title(self.y_cell_key, self.region_dim_key)
-
     def _load_gdf(self):
         region_type = self.region_dim_key.lower() + "s"
         url = f"{GEO_URL}/{region_type}.topojson"

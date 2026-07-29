@@ -35,13 +35,6 @@ class PieChart(Visual):
     def _excluded_dim_keys(self):
         return {self.x_dim_key}
 
-    def _build_title(self):
-        return self._build_dim_title(
-            self.y_cell_key,
-            self.x_dim_key,
-            relation="share by",
-        )
-
     def _get_data_to_px(self, sub_ax):
         x0, _ = sub_ax.transData.transform((0, 0))
         x1, _ = sub_ax.transData.transform((1, 0))
