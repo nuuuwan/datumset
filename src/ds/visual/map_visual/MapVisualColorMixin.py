@@ -4,7 +4,7 @@ import matplotlib.colors as mcolors
 
 
 class MapVisualColorMixin:
-    MIN_LIGHT, MAX_LIGHT = 0.2, 1.0
+    MIN_LIGHT, MAX_LIGHT = 0.2, 0.95
     NEUTRAL_COLOR = "#888888"
 
     def _build_hsl_lightness_cmap(self, base_color):
