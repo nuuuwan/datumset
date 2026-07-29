@@ -17,11 +17,13 @@ class MapVisualGdfMixin:
         )
         return gdf
 
-    def _get_rank_colors(self, values, ctx):
-        ranks = values.rank(method="dense").astype(int) - 1
-        max_rank = max(1, int(ranks.max()))
+    def _get_rank_colors(self, values, ctx, cmap):
+        sorted_values = ctx["values"]
+        rank_by_value = {v: i for i, v in enumerate(sorted_values)}
+        max_rank = max(1, len(sorted_values) - 1)
         return [
-            mcolors.to_hex(ctx["cmap"](rank / max_rank)) for rank in ranks
+            mcolors.to_hex(cmap(rank_by_value[v] / max_rank))
+            for v in values
         ]
 
     def _get_value_gdf(self, sub_datumset, ctx):
@@ -32,7 +34,8 @@ class MapVisualGdfMixin:
             axis=1,
         )
         gdf = gdf[gdf["value"].notna()].copy()
-        gdf["color"] = self._get_rank_colors(gdf["value"], ctx)
+        cmap = self._get_subfigure_cmap(sub_datumset)
+        gdf["color"] = self._get_rank_colors(gdf["value"], ctx, cmap)
         return gdf
 
     def _get_colored_gdf(self, sub_datumset, ctx):

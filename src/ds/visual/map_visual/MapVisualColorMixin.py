@@ -4,21 +4,35 @@ import matplotlib.colors as mcolors
 
 
 class MapVisualColorMixin:
+    MIN_LIGHT, MAX_LIGHT = 0.2, 1.0
+    NEUTRAL_COLOR = "#888888"
 
     def _build_hsl_lightness_cmap(self, base_color):
-        base_rgb = mcolors.to_rgb(base_color)
-        h, l, s = colorsys.rgb_to_hls(*base_rgb)
-        light_l = min(0.95, max(0.55, l * 1.2))
-        dark_l = max(0.12, min(0.45, l * 0.6))
+        h, _, s = colorsys.rgb_to_hls(*mcolors.to_rgb(base_color))
         colors = []
         for i in range(256):
             ratio = i / 255
-            new_l = light_l + (dark_l - light_l) * ratio
+            new_l = self.MAX_LIGHT + (self.MIN_LIGHT - self.MAX_LIGHT) * ratio
             colors.append(colorsys.hls_to_rgb(h, new_l, s))
         return mcolors.ListedColormap(colors)
 
-    def _get_value_cmap(self):
-        base_color = self._get_single_fixed_dim_color({self.region_dim_key})
+    def _get_neutral_cmap(self):
+        return self._build_hsl_lightness_cmap(self.NEUTRAL_COLOR)
+
+    def _get_subfigure_base_color(self, sub_datumset):
+        datum = sub_datumset[0]
+        for dim_key in self._get_dim_labels():
+            if dim_key == self.region_dim_key:
+                continue
+            color_map = self._get_dim_color_map(dim_key)
+            if color_map:
+                color = color_map.get(datum.dim_idx[dim_key].get_value())
+                if color is not None:
+                    return color
+        return self.NEUTRAL_COLOR
+
+    def _get_subfigure_cmap(self, sub_datumset):
+        base_color = self._get_subfigure_base_color(sub_datumset)
         return self._build_hsl_lightness_cmap(base_color)
 
     def _get_category_color_idx(self):
@@ -33,6 +47,6 @@ class MapVisualColorMixin:
             }
         return {
             "mode": "value",
-            "cmap": self._get_value_cmap(),
+            "cmap": self._get_neutral_cmap(),
             "values": self._get_sorted_values(),
         }
