@@ -6,11 +6,19 @@ class VisualCategoryMixin:
 
     OTHER_CATEGORY = "_other"
     SMALL_CATEGORY_THRESHOLD = 0.01
+    MIN_CATEGORY_COUNT = 7
 
     def _compute_small_categories(self):
         dim_key = self._get_category_dim_key()
         assert dim_key is not None, "Category dimension key is not defined."
+
         cell_key = self._get_y_cell_key()
+        category_list = [
+            datum.dim_idx[dim_key].get_value() for datum in self.datumset
+        ]
+        if len(category_list) <= self.MIN_CATEGORY_COUNT:
+            return set()
+
         totals = defaultdict(float)
         for datum in self.datumset:
             category = datum.dim_idx[dim_key].get_value()
@@ -18,8 +26,8 @@ class VisualCategoryMixin:
         grand_total = sum(totals.values()) or 1.0
         return {
             category
-            for category, total in totals.items()
-            if total / grand_total < self.SMALL_CATEGORY_THRESHOLD
+            for category, category_total in totals.items()
+            if category_total / grand_total < self.SMALL_CATEGORY_THRESHOLD
         }
 
     @cached_property
