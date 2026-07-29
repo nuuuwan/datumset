@@ -10,7 +10,7 @@ import matplotlib.font_manager as fm
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
-from utils_future import Directory, File, Int, Log
+from utils_future import Directory, File, Int, Log, String
 
 from ds.query.Query import Query
 from ds.thing.concept.region.Region import Region
@@ -47,6 +47,8 @@ class Visual(ABC):
     SMALL_CATEGORY_THRESHOLD = 0.01
     OTHER_CATEGORY_COLOR = "#999999"
     OTHER_CATEGORY_LABEL = "Other (with <1%)"
+    X_TICK_FONTSIZE = 6
+    X_TICK_CHAR_WIDTH_RATIO = 0.62
 
     def __init__(self, datumset):
         self.datumset = datumset
@@ -386,6 +388,44 @@ class Visual(ABC):
             pad=3,
         )
 
+    def _get_axis_width_px(self, sub_ax):
+        fig = sub_ax.figure
+        fig.canvas.draw()
+        return sub_ax.get_window_extent().width
+
+    def _get_px_per_char(self, sub_ax):
+        return (
+            self.X_TICK_FONTSIZE
+            * sub_ax.figure.dpi
+            / 72.0
+            * self.X_TICK_CHAR_WIDTH_RATIO
+        )
+
+    def _shorten_x_label(self, sub_ax, label, slot_px):
+        char_limit = max(1, int(slot_px / self._get_px_per_char(sub_ax)))
+        display = self._format_visual_value(label)
+        return String(str(display)).shorten(char_limit)
+
+    def _get_uniform_x_labels(self, sub_ax, x_labels):
+        if not x_labels:
+            return []
+        slot_px = self._get_axis_width_px(sub_ax) / len(x_labels)
+        return [
+            self._shorten_x_label(sub_ax, x_label, slot_px)
+            for x_label in x_labels
+        ]
+
+    def _set_x_tick_labels(self, sub_ax, ticks, display_labels):
+        sub_ax.set_xticks(list(ticks))
+        sub_ax.set_xticklabels(
+            display_labels,
+            fontsize=self.X_TICK_FONTSIZE,
+            rotation=0,
+            ha="center",
+            va="top",
+        )
+        sub_ax.tick_params(axis="x", pad=1)
+
     def _style_value_axis_subfigure(
         self,
         sub_ax,
@@ -397,22 +437,16 @@ class Visual(ABC):
         sub_ax.set_ylabel(y_cell_key)
         sub_ax.set_ylim(0, y_limit)
         self._format_humanized_y_axis(sub_ax)
+        sub_ax.set_box_aspect(1)
         if x_labels:
-            display_x_labels = [
-                self._format_visual_value(x_label) for x_label in x_labels
-            ]
-            sub_ax.set_xticks(range(len(x_labels)))
-            sub_ax.set_xticklabels(
+            display_x_labels = self._get_uniform_x_labels(sub_ax, x_labels)
+            self._set_x_tick_labels(
+                sub_ax,
+                range(len(x_labels)),
                 display_x_labels,
-                fontsize=6,
-                rotation=90,
-                ha="center",
-                va="top",
             )
-            sub_ax.tick_params(axis="x", pad=1)
         else:
             sub_ax.set_xticks([])
-        sub_ax.set_box_aspect(1)
         self._set_subfigure_title(sub_ax, sub_datumset)
 
     def _set_square_subfigure_title(self, sub_ax, sub_datumset):

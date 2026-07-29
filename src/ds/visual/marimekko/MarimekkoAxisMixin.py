@@ -16,18 +16,12 @@ class MarimekkoAxisMixin:
 
     def _set_marimekko_xaxis(self, sub_ax, geometries, x_labels):
         centers = self._get_bar_centers(geometries)
+        axis_width_px = self._get_axis_width_px(sub_ax)
         display_labels = [
-            self._format_visual_value(x_label) for x_label in x_labels
+            self._shorten_x_label(sub_ax, x_label, width * axis_width_px)
+            for (_, width), x_label in zip(geometries, x_labels)
         ]
-        sub_ax.set_xticks(centers)
-        sub_ax.set_xticklabels(
-            display_labels,
-            fontsize=6,
-            rotation=90,
-            ha="center",
-            va="top",
-        )
-        sub_ax.tick_params(axis="x", pad=1)
+        self._set_x_tick_labels(sub_ax, centers, display_labels)
 
     def _add_bar_total_labels(self, sub_ax, geometries, totals):
         offset = self.BAR_HEIGHT * 0.015
@@ -53,8 +47,8 @@ class MarimekkoAxisMixin:
         sub_datumset,
     ):
         sub_ax.set_xlim(0, 1)
+        sub_ax.set_box_aspect(1)
         self._set_marimekko_yaxis(sub_ax)
         self._set_marimekko_xaxis(sub_ax, geometries, x_labels)
         self._add_bar_total_labels(sub_ax, geometries, totals)
-        sub_ax.set_box_aspect(1)
         self._set_subfigure_title(sub_ax, sub_datumset)
