@@ -1,6 +1,8 @@
 class VisualTitleMixin:
 
     TITLE_COLOR = "#333333"
+    SUBFIGURE_TITLE_FONTSIZE = 14
+    SUBFIGURE_TITLE_PAD = 42
 
     def _get_subfigure_title(self, datumset, excluded_dim_keys):
         constant_parts = []
@@ -20,13 +22,15 @@ class VisualTitleMixin:
         return "All data"
 
     def _set_subfigure_title(self, sub_ax, sub_datumset):
+        if len(self.display_datumsets) <= 1:
+            return
         sub_ax.set_title(
             self._get_subfigure_title(
                 sub_datumset,
                 self._excluded_dim_keys(),
             ),
-            fontsize=7,
-            pad=3,
+            fontsize=self.SUBFIGURE_TITLE_FONTSIZE,
+            pad=self.SUBFIGURE_TITLE_PAD,
         )
 
     def _set_square_subfigure_title(self, sub_ax, sub_datumset):

@@ -22,15 +22,19 @@ class PieChartSliceMixin:
         return max(0.3, scale)
 
     def _set_subfigure_title_with_total(self, sub_ax, sub_datumset, y_values):
-        base_title = self._get_subfigure_title(
-            sub_datumset,
-            self._excluded_dim_keys(),
-        )
         total_text = self._get_total_value_text(y_values)
+        if len(self.display_datumsets) <= 1:
+            title = total_text
+        else:
+            base_title = self._get_subfigure_title(
+                sub_datumset,
+                self._excluded_dim_keys(),
+            )
+            title = f"{base_title}\n{total_text}"
         sub_ax.set_title(
-            f"{base_title}\n{total_text}",
-            fontsize=7,
-            pad=3,
+            title,
+            fontsize=self.SUBFIGURE_TITLE_FONTSIZE,
+            pad=self.SUBFIGURE_TITLE_PAD,
         )
 
     def _get_sub_datumset_total(self, sub_datumset):
