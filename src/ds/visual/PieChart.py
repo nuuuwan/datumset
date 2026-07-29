@@ -33,10 +33,7 @@ class PieChart(Visual):
         return {self.x_dim_key}
 
     def _build_title(self):
-        return self._build_dim_title(self.y_cell_key, self.x_dim_key)
-
-    def _get_title_text(self):
-        return self._build_entity_dim_title(
+        return self._build_dim_title(
             self.y_cell_key,
             self.x_dim_key,
             relation="share by",

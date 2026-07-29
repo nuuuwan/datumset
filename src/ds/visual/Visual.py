@@ -102,11 +102,8 @@ class Visual(ABC):
         color_idx = self._get_dim_color_idx(dim_key, dim_values)
         return dim_values, color_idx
 
-    def _build_dim_title(self, y_cell_key, dim_key):
-        return f"{y_cell_key} by {dim_key}"
-
-    def _build_entity_dim_title(self, y_cell_key, dim_key, relation="by"):
-        return f"{self._get_entity_name()} {y_cell_key} {relation} {dim_key}"
+    def _build_dim_title(self, y_cell_key, dim_key, relation="by"):
+        return f"{y_cell_key} {relation} {dim_key}"
 
     def _get_query_str_for_path(self):
         source_query_str = getattr(self.datumset, "_query_str", None)
@@ -308,15 +305,7 @@ class Visual(ABC):
         pass
 
     def _get_title_text(self):
-        datum = self.datumset[0]
-        entity = datum.entity_class.__name__
-        other = [
-            f"{k} {self._format_visual_value(v.get_value())}"
-            for k, v in datum.dim_idx.items()
-            if k not in self._excluded_dim_keys()
-        ]
-        suffix = " for " + " and ".join(other) if other else ""
-        return f"{entity} {self._build_title()}{suffix}"
+        return f"{self._get_entity_name()} {self._build_title()}"
 
     def _add_title(self, fig):
         title = self._get_title_text()
