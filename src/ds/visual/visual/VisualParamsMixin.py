@@ -13,7 +13,7 @@ class VisualParamsMixin:
         for dim_key in self._get_dim_labels():
             if self._is_region_dim(dim_key):
                 return dim_key
-        return self._get_dim_labels()[0]
+        raise ValueError("No region dimension key found in datumset.")
 
     def _get_y_cell_key(self):
         return "Count"
