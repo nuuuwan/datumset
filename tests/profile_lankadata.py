@@ -16,4 +16,4 @@ if __name__ == "__main__":
 
     p = pstats.Stats(profile_path)
 
-    p.sort_stats("cumtime").print_stats(10)
+    p.sort_stats("tottime").print_stats(10)
