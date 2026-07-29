@@ -1,5 +1,6 @@
 from ds.visual.BarChart import BarChart
 from ds.visual.hex_map.HexMap import HexMap
+from ds.visual.hex_map.UnitHexMap import UnitHexMap
 from ds.visual.map_visual.Cartogram import Cartogram
 from ds.visual.map_visual.MapVisual import MapVisual
 from ds.visual.marimekko.MarimekkoChart import MarimekkoChart
@@ -16,6 +17,7 @@ class VisualFactory:
             MapVisual,
             Cartogram,
             HexMap,
+            UnitHexMap,
             MarimekkoChart,
             PieChart,
             StackedBarChart,
