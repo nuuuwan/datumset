@@ -76,7 +76,6 @@ class Visual(
     def __init__(self, datumset):
         self.datumset = datumset
         self._renderer = None
-        self.params = self._get_params()
 
     @abstractmethod
     def _plot(self, fig, ax):

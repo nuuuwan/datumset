@@ -3,9 +3,6 @@ from ds.thing.concept.region.Region import Region
 
 class VisualParamsMixin:
 
-    def _get_params(self):
-        return ()
-
     def _get_query(self):
         return self.datumset[0].query
 
