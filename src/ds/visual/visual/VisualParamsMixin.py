@@ -16,6 +16,8 @@ class VisualParamsMixin:
         raise ValueError("No region dimension key found in datumset.")
 
     def _get_y_cell_key(self):
+        # TODO: At the moment, everything is "Count",
+        # but this should change.
         return "Count"
 
     def _get_varying_dim_keys(self, excluded_dim_keys=None):
