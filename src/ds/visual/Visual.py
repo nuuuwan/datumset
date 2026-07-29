@@ -57,6 +57,7 @@ class Visual(ABC):
 
     def __init__(self, datumset):
         self.datumset = datumset
+        self._renderer = None
         self.params = self._get_params()
 
     def _get_params(self):
@@ -393,10 +394,15 @@ class Visual(ABC):
             pad=3,
         )
 
+    def _get_renderer(self, fig):
+        if self._renderer is None:
+            fig.canvas.draw()
+            self._renderer = fig.canvas.get_renderer()
+        return self._renderer
+
     def _get_axis_width_px(self, sub_ax):
-        fig = sub_ax.figure
-        fig.canvas.draw()
-        return sub_ax.get_window_extent().width
+        renderer = self._get_renderer(sub_ax.figure)
+        return sub_ax.get_window_extent(renderer).width
 
     def _get_px_per_char(self, sub_ax):
         return (
@@ -431,14 +437,13 @@ class Visual(ABC):
         return colorsys.hsv_to_rgb(h, s2, v2)
 
     def _get_underline_y(self, sub_ax):
-        renderer = sub_ax.figure.canvas.get_renderer()
+        renderer = self._get_renderer(sub_ax.figure)
         labels = sub_ax.get_xticklabels()
         y0_px = min(label.get_window_extent(renderer).y0 for label in labels)
         y_frac = sub_ax.transAxes.inverted().transform((0, y0_px))[1]
         return y_frac - self.X_LABEL_UNDERLINE_GAP
 
     def _underline_x_labels(self, sub_ax, positions, colors, half_widths):
-        sub_ax.figure.canvas.draw()
         y = self._get_underline_y(sub_ax)
         trans = blended_transform_factory(
             sub_ax.transData,
@@ -708,16 +713,32 @@ class Visual(ABC):
         width_px, height_px = self._get_rect_size_px(sub_ax, rect)
         return 90 if height_px > width_px else 0
 
+    def _scale_fontsize_to_fit(
+        self,
+        max_fontsize,
+        bbox,
+        max_width_px,
+        max_height_px,
+    ):
+        margin = self.STACK_LABEL_BBOX_MARGIN
+        w_ratio = (
+            max_width_px * margin / bbox.width if bbox.width > 0 else 1.0
+        )
+        h_ratio = (
+            max_height_px * margin / bbox.height if bbox.height > 0 else 1.0
+        )
+        scale = min(1.0, w_ratio, h_ratio)
+        return int(max_fontsize * scale)
+
     def _get_best_rect_label_fontsize(self, sub_ax, rect, label, rotation):
-        fig = sub_ax.figure
-        fig.canvas.draw()
-        renderer = fig.canvas.get_renderer()
+        renderer = self._get_renderer(sub_ax.figure)
         cx = rect.get_x() + rect.get_width() / 2.0
         cy = rect.get_y() + rect.get_height() / 2.0
         max_width_px, max_height_px = self._get_rect_size_px(sub_ax, rect)
         fontsize_cap = self._get_rect_fontsize_cap(sub_ax, rect)
         if fontsize_cap < self.MIN_STACK_LABEL_FONTSIZE:
             return 0
+        max_fontsize = min(self.MAX_STACK_LABEL_FONTSIZE, fontsize_cap)
         probe = sub_ax.text(
             cx,
             cy,
@@ -725,20 +746,16 @@ class Visual(ABC):
             ha="center",
             va="center",
             rotation=rotation,
+            fontsize=max_fontsize,
         )
-        best_fontsize = 0
-        max_fontsize = min(self.MAX_STACK_LABEL_FONTSIZE, fontsize_cap)
-        for fontsize in range(max_fontsize, 3, -1):
-            probe.set_fontsize(fontsize)
-            bbox = probe.get_window_extent(renderer=renderer)
-            if (
-                bbox.width <= max_width_px * self.STACK_LABEL_BBOX_MARGIN
-                and bbox.height <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
-            ):
-                best_fontsize = fontsize
-                break
+        bbox = probe.get_window_extent(renderer=renderer)
         probe.remove()
-        return best_fontsize
+        return self._scale_fontsize_to_fit(
+            max_fontsize,
+            bbox,
+            max_width_px,
+            max_height_px,
+        )
 
     def _add_fitted_label_in_rect(self, sub_ax, rect, label):
         rotation = self._get_rect_label_rotation(sub_ax, rect)
@@ -811,6 +828,7 @@ class Visual(ABC):
 
     def draw(self):
         self._set_font()
+        self._renderer = None
         fig, ax = plt.subplots(figsize=self.FIGSIZE, dpi=self.DPI)
         self._plot(fig, ax)
         self._add_title(fig)

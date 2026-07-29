@@ -75,8 +75,7 @@ class MapVisual(Visual):
         return self._get_contrast_text_color(color)
 
     def _add_region_labels(self, gdf, ax, fig, vmin, vmax, cmap):
-        fig.canvas.draw()
-        renderer = fig.canvas.get_renderer()
+        renderer = self._get_renderer(fig)
         for _, row in gdf.iterrows():
             label = row.get("name") or row["region_id"]
             cx, cy, rw, rh, angle_deg = LabelFit.best_label_fit(row.geometry)

@@ -142,9 +142,7 @@ class PieChart(Visual):
         autotext.set_fontsize(best_fontsize)
 
     def _fit_slice_labels(self, sub_ax, wedges, autotexts, radius):
-        fig = sub_ax.figure
-        fig.canvas.draw()
-        renderer = fig.canvas.get_renderer()
+        renderer = self._get_renderer(sub_ax.figure)
         data_to_px = self._get_data_to_px(sub_ax)
         for wedge, autotext in zip(wedges, autotexts):
             self._fit_single_slice_label(
