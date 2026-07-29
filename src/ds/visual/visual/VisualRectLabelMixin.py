@@ -1,3 +1,6 @@
+from utils_future import Percent
+
+
 class VisualRectLabelMixin:
 
     def _add_bar_totals(self, sub_ax, x_values, totals, y_limit):
@@ -43,5 +46,5 @@ class VisualRectLabelMixin:
             total = totals[i]
             if value <= 0 or total <= 0:
                 continue
-            label = self._format_percentage_value(value, total)
+            label = Percent(value / total).humanize
             self._add_fitted_label_in_rect(sub_ax, rect, label)
