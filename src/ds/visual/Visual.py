@@ -435,26 +435,53 @@ class Visual(ABC):
 
     def _get_title_text(self):
         query = self.datumset[0].query
-        title = " ".join(
-            [
-                query.entity_part,
-                query.cell_labels[0],
-                "by",
-                " x ".join(query.dim_labels),
-            ]
-        )
+
+        title = f"{query.entity_part} {query.cell_labels[0]}"
+
+        by_part = []
+        for dim_key in self.datumset.get_non_singleton_dims():
+            by_part.append(dim_key)
+        title += " by " + " & ".join(by_part)
+
         title = title.replace("Person Count", "Population")
+
         return title
 
+    def _get_subtitle_text(self):
+        where_part = []
+        for dim_key in self.datumset.get_singleton_dims():
+            dim_value = self.datumset[0].dim_idx[dim_key].get_value()
+            display_value = self._format_visual_value(dim_value)
+            where_part.append(f"{dim_key}={display_value}")
+        subtitle = " & ".join(where_part)
+        return subtitle
+
     def _add_title(self, fig):
-        title = self._get_title_text()
+        text = self._get_title_text()
+        if not text:
+            return
         fig.text(
             0.5,
             0.95,
-            title,
+            text,
             ha="center",
             va="center",
-            fontsize=12 * (100 / len(title)),
+            fontsize=12 * min((100 / len(text)), 2),
+            color=self.TITLE_COLOR,
+            zorder=6,
+        )
+
+    def _add_subtitle(self, fig):
+        text = self._get_subtitle_text()
+        if not text:
+            return
+        fig.text(
+            0.5,
+            0.91,
+            text,
+            ha="center",
+            va="center",
+            fontsize=6 * min((100 / len(text)), 2),
             color=self.TITLE_COLOR,
             zorder=6,
         )
@@ -684,6 +711,7 @@ class Visual(ABC):
         fig, ax = plt.subplots(figsize=self.FIGSIZE, dpi=self.DPI)
         self._plot(fig, ax)
         self._add_title(fig)
+        self._add_subtitle(fig)
         self._add_border(fig)
         self._apply_style(fig, fig.axes)
         fig.savefig(self.image_file.path, dpi=self.DPI, bbox_inches="tight")
