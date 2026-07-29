@@ -60,7 +60,7 @@ class VisualTitleMixin:
             text,
             ha="center",
             va="center",
-            fontsize=12 * min((100 / len(text)), 2),
+            fontsize=12 * min((100 / (len(text) + 1)), 2),
             color=self.TITLE_COLOR,
             zorder=6,
         )
@@ -73,7 +73,7 @@ class VisualTitleMixin:
             text,
             ha="center",
             va="center",
-            fontsize=6 * min((100 / len(text)), 2),
+            fontsize=6 * min((100 / (len(text) + 1)), 2),
             color=self.TITLE_COLOR,
             zorder=6,
         )
