@@ -21,7 +21,27 @@ class Elections(AbstractGIGDB):
         "polled",
         "electors",
     }
-    TURNOUT_COLS = ["electors", "polled", "valid", "rejected"]
+
+    @classmethod
+    def is_metadata_item_matching_query(cls, item, query: Query):
+        parent_check = (
+            item["entity_class_name"] in query.entity_class_names
+            and item["measurement_class_name"] in query.dim_labels
+        )
+        if not parent_check:
+            return False
+
+        query_time = query.dim_values_idx.get("Time")
+        if query_time is not None:
+            if item["year_id"] != query_time:
+                return False
+
+        election_type = query.dim_values_idx.get("ElectionType")
+        if election_type is not None:
+            if item["election_type_name"] != election_type:
+                return False
+
+        return True
 
     @classmethod
     def get_datumset(cls, item) -> Datumset:
