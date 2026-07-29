@@ -23,6 +23,3 @@ class MapVisual(
         self.display_datumsets = self._get_display_datumsets(
             {self.region_dim_key}
         )
-
-    def _excluded_dim_keys(self):
-        return {self.region_dim_key}
