@@ -1,26 +1,14 @@
 import cProfile
 import pstats
 
-from ds import LankaData
+from ds import VisualLankaData
 
 if __name__ == "__main__":
     profiler = cProfile.Profile()
     profiler.enable()
 
-    for query_str in [
-        "Person/Time*Country*Religion/Count",
-        "Person/Time*Province*Religion/Count",
-        "Person/Time*District*Religion/Count",
-        # "Person/Time*GND*Religion/Count",
-        "Person/Time*ED*Religion/Count",
-        "Person/Time*PD*Religion/Count",
-        "Person/Time*LG*Religion/Count",
-        #
-        "Person/Time*District*Ethnicity/Count",
-        "Person/Time*District*HighestEducationLevel/Count",
-        "Person/Time*District*IsEconomicallyActive/Count",
-    ]:
-        LankaData[query_str]
+    visual_query_str = "Vote/ElectionType=Presidential*Time=2024*PD<ED=colombo*Party/Count/MarimekkoChart"
+    VisualLankaData[visual_query_str].open("code")
 
     profiler.disable()
     profile_path = "tests/profile_lankadata.prof"
