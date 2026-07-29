@@ -25,7 +25,7 @@ class MapVisualGeoMixin:
         os.makedirs(GEO_CACHE_DIR, exist_ok=True)
         cache_path = os.path.join(GEO_CACHE_DIR, f"{region_type}.topojson")
         if not os.path.exists(cache_path):
-            urllib.request.urlretrieve(url, cache_path)
+            urllib.request.urlretrieve(url, cache_path)  # pragma: no cover
         return geopandas.read_file(cache_path)
 
     def _get_region_values_for(self, datumset):
