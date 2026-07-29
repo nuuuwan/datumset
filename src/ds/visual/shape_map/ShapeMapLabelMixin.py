@@ -1,9 +1,27 @@
 from collections import defaultdict
 
+from utils_future import String
+
 from ds.visual.label_fit.LabelFit import LabelFit
 
 
 class ShapeMapLabelMixin:
+
+    LABEL_REF_FONTSIZE = 8
+
+    def _get_char_budget(self, rect_w, ax, renderer):
+        axes_bb = ax.get_window_extent(renderer=renderer)
+        xlim = ax.get_xlim()
+        span = max(xlim[1] - xlim[0], 1e-9)
+        rect_px = axes_bb.width * rect_w / span
+        sample = ax.text(0, 0, "n" * 10, fontsize=self.LABEL_REF_FONTSIZE)
+        char_px = sample.get_window_extent(renderer=renderer).width / 10
+        sample.remove()
+        return int(rect_px / max(char_px, 1e-9))
+
+    def _shorten_to_fit(self, label, rect_w, ax, renderer):
+        budget = self._get_char_budget(rect_w, ax, renderer)
+        return String(label).shorten(max(budget, 1))
 
     def _get_region_names(self, gdf):
         return {
@@ -23,7 +41,7 @@ class ShapeMapLabelMixin:
 
     def _add_shape_label(self, ax, renderer, radius, label, points, color):
         cx, cy, rect_w, rect_h, angle = self._best_label_fit(points, radius)
-        label = self._fit_label_text(label, rect_w, rect_h, ax, renderer)
+        label = self._shorten_to_fit(label, rect_w, ax, renderer)
         fontsize = LabelFit.fit_fontsize(label, rect_w, rect_h, ax, renderer)
         ax.annotate(
             label,
