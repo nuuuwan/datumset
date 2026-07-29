@@ -8,6 +8,8 @@ class TestCase(unittest.TestCase):
     @staticmethod
     def _get_scenarios():
         return [
+            "Person/Time*Province*Religion/Count/BarChart",
+            "Person/Time*Province=Western*Religion/Count/BarChart",
             "Person/Time*Province=Western*Religion=hindu/Count/BarChart",
             "Person/Time=2024*Province*Religion/Count/PieChart",
             "Person/Time=2024*Province*Religion/Count/StackedBarChart",
