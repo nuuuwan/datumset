@@ -15,13 +15,18 @@ class HexMapScaleMixin:
             if region_id in weights and count:
                 self._hex_values.append(weights[region_id] / count)
 
+    def _get_hex_unit(self):
+        entity = self.datumset[0].query.entity_class_names[0]
+        return entity.lower() + "s"
+
     def _get_hex_scale_text(self, value_min, value_max):
         fmt = self._format_humanized_value
+        unit = self._get_hex_unit()
         if value_max - value_min < 1:
-            return f"1 hexagon = {fmt(value_min, None)}"
+            return f"1 hexagon = {fmt(value_min, None)} {unit}"
         return (
             f"1 hexagon = {fmt(value_min, None)}"
-            + f" to {fmt(value_max, None)}"
+            + f" to {fmt(value_max, None)} {unit}"
         )
 
     def _add_hex_scale_note(self, fig):
