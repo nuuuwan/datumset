@@ -1,3 +1,4 @@
+from ds.query.Query import Query
 from ds.visual.map_visual.MapVisualColorMixin import MapVisualColorMixin
 from ds.visual.map_visual.MapVisualGdfMixin import MapVisualGdfMixin
 from ds.visual.map_visual.MapVisualGeoMixin import MapVisualGeoMixin
@@ -19,6 +20,7 @@ class MapVisual(
 
     REGION_EDGE_COLOR = "#888888"
     REGION_EDGE_LINEWIDTH = 0.3
+    CELL_TOP = "Top"
 
     def __init__(self, datumset):
         super().__init__(datumset)
@@ -29,11 +31,16 @@ class MapVisual(
             self._excluded_split_dim_keys()
         )
 
+    def _is_top(self):
+        query_str = getattr(self.datumset, "_query_str", None)
+        if query_str is None:
+            return False
+        return Query(query_str).cell_part == self.CELL_TOP
+
     def _get_region_color_dim_key(self):
-        for dim_key in self._get_varying_dim_keys():
-            if dim_key != self.region_dim_key:
-                return dim_key
-        return None
+        if not self._is_top():
+            return None
+        return self._get_dim_labels()[-1]
 
     def _excluded_split_dim_keys(self):
         keys = {self.region_dim_key}

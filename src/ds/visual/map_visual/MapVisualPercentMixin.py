@@ -21,10 +21,18 @@ class MapVisualPercentMixin:
         ]
         return "/".join([query.entity_part, "*".join(specs), query.cell_part])
 
+    def _get_datum_dim_key(self, datum):
+        return tuple(
+            sorted((k, v.get_value()) for k, v in datum.dim_idx.items())
+        )
+
     def _get_region_totals(self):
         total_datumset = LankaData[self._get_total_query_str()]
-        totals = defaultdict(float)
+        seen = {}
         for datum in total_datumset:
+            seen[self._get_datum_dim_key(datum)] = datum
+        totals = defaultdict(float)
+        for datum in seen.values():
             region = self._normalize_region_key(
                 datum.dim_idx[self.region_dim_key].get_value()
             )

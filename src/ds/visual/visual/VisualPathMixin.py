@@ -7,6 +7,12 @@ from ds.query.Query import Query
 
 class VisualPathMixin:
 
+    def _get_path_cell_part(self):
+        source_query_str = getattr(self.datumset, "_query_str", None)
+        if source_query_str:
+            return Query(source_query_str).cell_part
+        return self.datumset[0].query.cell_part
+
     def _get_query_str_for_path(self):
         source_query_str = getattr(self.datumset, "_query_str", None)
         if source_query_str and Query.OPR_LT in source_query_str:
@@ -24,7 +30,7 @@ class VisualPathMixin:
             [
                 query.entity_part,
                 dim_part,
-                query.cell_part,
+                self._get_path_cell_part(),
             ]
         )
 
