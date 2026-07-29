@@ -22,7 +22,7 @@ class Party(Concept):
             # UNP family (green)
             "UNP": "#00b10c",
             "NDF": "#00b10c",
-            "SJB": "#448800",
+            "SJB": "#f7aa1c",
             # SLPP / Rajapaksa (dark red)
             "SLPP": "#9e1420",
             "OPPP": "#880000",
