@@ -34,8 +34,6 @@ class MarimekkoAxisMixin:
     def _add_bar_total_labels(self, sub_ax, geometries, totals):
         offset = self.BAR_HEIGHT * 0.015
         for (left, width), total in zip(geometries, totals):
-            if width <= 0 or total <= 0:
-                continue
             sub_ax.text(
                 left + width / 2.0,
                 self.BAR_HEIGHT + offset,
