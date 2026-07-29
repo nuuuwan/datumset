@@ -45,6 +45,7 @@ class VisualParamsMixin:
             for dim_key in self._get_dim_labels()
             if dim_key not in excluded_dim_keys
         ]
+        print(f"{split_dims=}")
         if not split_dims:
             return [self.datumset]
         return self.datumset.split(*split_dims)
