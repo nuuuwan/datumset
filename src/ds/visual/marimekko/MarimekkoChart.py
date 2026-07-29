@@ -11,12 +11,6 @@ class MarimekkoChart(
     StackedBarChart,
 ):
 
-    def _get_title_text(self):
-        return (
-            f"{self._get_entity_name()} {self.y_cell_key} by "
-            f"{self.x_dim_key}, marimekko by {self.stack_dim_key}"
-        )
-
     def _plot(self, fig, ax):
         axes, n_datumsets = self._get_display_axes(
             fig,
