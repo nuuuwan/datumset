@@ -6,8 +6,7 @@ class VisualCategoryMixin:
 
     def _compute_small_categories(self):
         dim_key = self._get_category_dim_key()
-        if dim_key is None:
-            return set()
+        assert dim_key is not None, "Category dimension key is not defined."
         cell_key = self._get_y_cell_key()
         totals = defaultdict(float)
         for datum in self.datumset:
