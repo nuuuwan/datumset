@@ -36,7 +36,7 @@ class VisualLayoutMixin:
             ax.spines["bottom"].set_color(self.BORDER_COLOR)
             ax.tick_params(axis="y", colors=self.SUBTITLE_COLOR)
             ax.tick_params(axis="x", color=self.SUBTITLE_COLOR)
-        SUBPLOT_PADDING = 0.15
+        SUBPLOT_PADDING = 0.025
         fig.subplots_adjust(
             top=1 - SUBPLOT_PADDING,
             bottom=SUBPLOT_PADDING,
