@@ -1,7 +1,7 @@
 class ShapeMapDrawMixin:
 
     SHAPE_EDGE_COLOR = "#ffffff"
-    SHAPE_EDGE_WIDTH = 0.01
+    SHAPE_EDGE_WIDTH = 0.2
 
     def _get_region_centroids(self, gdf):
         return {
