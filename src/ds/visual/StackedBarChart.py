@@ -14,7 +14,7 @@ class StackedBarChart(Visual):
         self.display_datumsets = self._get_display_datumsets(
             {self.x_dim_key, self.stack_dim_key}
         )
-        self.stack_values, self.stack_color_idx = self._init_dim_colors(
+        self.stack_values, self.stack_color_idx = self._init_category_colors(
             self.stack_dim_key
         )
 
@@ -22,6 +22,9 @@ class StackedBarChart(Visual):
         x_dim_key = self._get_first_varying_dim_key()
         stack_dim_key = self._get_stack_dim_key(x_dim_key)
         return x_dim_key, stack_dim_key, self._get_y_cell_key()
+
+    def _get_category_dim_key(self):
+        return self.stack_dim_key
 
     def _get_stack_dim_key(self, x_dim_key):
         varying = self._get_varying_dim_keys({x_dim_key})
@@ -37,13 +40,15 @@ class StackedBarChart(Visual):
         data = defaultdict(dict)
         for datum in datumset:
             x = datum.dim_idx[self.x_dim_key].get_value()
-            s = datum.dim_idx[self.stack_dim_key].get_value()
+            s = self._remap_category(
+                datum.dim_idx[self.stack_dim_key].get_value()
+            )
             v = float(datum.cell_idx[self.y_cell_key].get_value())
             if x not in x_labels:
                 x_labels.append(x)
             if s not in stack_labels:
                 stack_labels.append(s)
-            data[s][x] = v
+            data[s][x] = data[s].get(x, 0.0) + v
         x_labels = self._apply_x_order(x_labels, self._get_x_order())
         return x_labels, stack_labels, data
 

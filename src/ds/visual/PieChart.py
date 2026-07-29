@@ -19,7 +19,7 @@ class PieChart(Visual):
         super().__init__(datumset)
         self.x_dim_key, self.y_cell_key = self.params
         self.display_datumsets = self._get_display_datumsets({self.x_dim_key})
-        self.x_values, self.x_color_idx = self._init_dim_colors(
+        self.x_values, self.x_color_idx = self._init_category_colors(
             self.x_dim_key
         )
 
@@ -28,6 +28,9 @@ class PieChart(Visual):
             self._get_first_varying_non_region_dim_key(),
             self._get_y_cell_key(),
         )
+
+    def _get_category_dim_key(self):
+        return self.x_dim_key
 
     def _excluded_dim_keys(self):
         return {self.x_dim_key}
@@ -215,7 +218,7 @@ class PieChart(Visual):
         max_total,
         n_datumsets,
     ):
-        x_labels, y_values = self._get_dim_cell_xy(
+        x_labels, y_values = self._get_category_cell_xy(
             sub_datumset,
             self.x_dim_key,
             self.y_cell_key,

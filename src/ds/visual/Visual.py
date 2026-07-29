@@ -43,6 +43,10 @@ class Visual(ABC):
     CONTRAST_LIGHT_TEXT_COLOR = "#ffffff"
     CONTRAST_DARK_TEXT_COLOR = "#111111"
     CONTRAST_LIGHTNESS_THRESHOLD = 0.5
+    OTHER_CATEGORY = "_other"
+    SMALL_CATEGORY_THRESHOLD = 0.01
+    OTHER_CATEGORY_COLOR = "#999999"
+    OTHER_CATEGORY_LABEL = "Other (with <1%)"
 
     def __init__(self, datumset):
         self.datumset = datumset
@@ -100,6 +104,47 @@ class Visual(ABC):
 
     def _init_dim_colors(self, dim_key):
         dim_values = self._get_unique_dim_values(dim_key)
+        color_idx = self._get_dim_color_idx(dim_key, dim_values)
+        return dim_values, color_idx
+
+    def _get_category_dim_key(self):
+        return None
+
+    def _compute_small_categories(self):
+        dim_key = self._get_category_dim_key()
+        if dim_key is None:
+            return set()
+        cell_key = self._get_y_cell_key()
+        totals = defaultdict(float)
+        for datum in self.datumset:
+            category = datum.dim_idx[dim_key].get_value()
+            totals[category] += float(datum.cell_idx[cell_key].get_value())
+        grand_total = sum(totals.values()) or 1.0
+        return {
+            category
+            for category, total in totals.items()
+            if total / grand_total < self.SMALL_CATEGORY_THRESHOLD
+        }
+
+    @cached_property
+    def _small_categories(self):
+        return self._compute_small_categories()
+
+    def _remap_category(self, value):
+        if value in self._small_categories:
+            return self.OTHER_CATEGORY
+        return value
+
+    def _get_category_values(self, dim_key):
+        values = []
+        for datum in self.datumset:
+            value = self._remap_category(datum.dim_idx[dim_key].get_value())
+            if value not in values:
+                values.append(value)
+        return values
+
+    def _init_category_colors(self, dim_key):
+        dim_values = self._get_category_values(dim_key)
         color_idx = self._get_dim_color_idx(dim_key, dim_values)
         return dim_values, color_idx
 
@@ -174,8 +219,35 @@ class Visual(ABC):
         rank = {x_label: i for i, x_label in enumerate(order)}
         return sorted(x_labels, key=lambda x: rank.get(x, len(order)))
 
-    def _get_sorted_dim_cell_xy(self, datumset, dim_key, cell_key, order):
-        x_labels, y_values = self._get_dim_cell_xy(
+    def _get_category_cell_xy(self, datumset, dim_key, cell_key):
+        totals = {}
+        order = []
+        for datum in datumset:
+            x = self._remap_category(datum.dim_idx[dim_key].get_value())
+            v = float(datum.cell_idx[cell_key].get_value())
+            if x not in totals:
+                totals[x] = 0.0
+                order.append(x)
+            totals[x] += v
+        return order, [totals[x] for x in order]
+
+    def _get_category_value_order(self, dim_key, cell_key):
+        order, y_values = self._get_category_cell_xy(
+            self.datumset,
+            dim_key,
+            cell_key,
+        )
+        value_by_x = dict(zip(order, y_values))
+        return sorted(order, key=lambda x: value_by_x[x], reverse=True)
+
+    def _get_ordered_category_cell_xy(
+        self,
+        datumset,
+        dim_key,
+        cell_key,
+        order,
+    ):
+        x_labels, y_values = self._get_category_cell_xy(
             datumset,
             dim_key,
             cell_key,
@@ -183,13 +255,6 @@ class Visual(ABC):
         value_by_x = dict(zip(x_labels, y_values))
         sorted_x = self._apply_x_order(x_labels, order)
         return sorted_x, [value_by_x[x] for x in sorted_x]
-
-    def _get_x_value_order(self, x_dim_key, cell_key):
-        totals = defaultdict(float)
-        for datum in self.datumset:
-            x = datum.dim_idx[x_dim_key].get_value()
-            totals[x] += float(datum.cell_idx[cell_key].get_value())
-        return sorted(totals, key=lambda x: totals[x], reverse=True)
 
     def _collect_x_stack_totals(self, x_dim_key, cell_key, stack_dim_key):
         per_x_stack = defaultdict(lambda: defaultdict(float))
@@ -224,9 +289,14 @@ class Visual(ABC):
         return sorted(per_x_stack, key=share, reverse=True)
 
     def _format_visual_value(self, value):
+        if value == self.OTHER_CATEGORY:
+            return self.OTHER_CATEGORY_LABEL
         if not isinstance(value, str):
             return value
-        normalized = value.replace("_", " ")
+        return self._titleize_value(value)
+
+    def _titleize_value(self, value):
+        normalized = value.replace("_", " ").strip()
         if normalized.islower() and any(c.isalpha() for c in normalized):
             return normalized.title()
         return value
@@ -250,13 +320,22 @@ class Visual(ABC):
                     color_map = maybe_color_map
         return color_map
 
+    def _get_category_color(self, dim_value, color_map, default_color_idx):
+        if dim_value == self.OTHER_CATEGORY:
+            return self.OTHER_CATEGORY_COLOR
+        if color_map:
+            return color_map.get(dim_value, default_color_idx[dim_value])
+        return default_color_idx[dim_value]
+
     def _get_dim_color_idx(self, dim_key, dim_values):
         default_color_idx = self._get_default_color_idx(dim_values)
         color_map = self._get_dim_color_map(dim_key)
-        if not color_map:
-            return default_color_idx
         return {
-            dim_value: color_map.get(dim_value, default_color_idx[dim_value])
+            dim_value: self._get_category_color(
+                dim_value,
+                color_map,
+                default_color_idx,
+            )
             for dim_value in dim_values
         }
 
@@ -525,8 +604,7 @@ class Visual(ABC):
             bbox = probe.get_window_extent(renderer=renderer)
             if (
                 bbox.width <= max_width_px * self.STACK_LABEL_BBOX_MARGIN
-                and bbox.height
-                <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
+                and bbox.height <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
             ):
                 best_fontsize = fontsize
                 break

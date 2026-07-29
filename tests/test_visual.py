@@ -44,6 +44,10 @@ class TestCase(unittest.TestCase):
                 "Vote/ElectionType=Presidential*Time=2024*Province*Party/Count",
                 "StackedBarChart",
             ),
+            (
+                "Vote/ElectionType=Presidential*Time=2024*Province*Party/Count",
+                "MarimekkoChart",
+            ),
         ]
 
     def test_basic(self):
