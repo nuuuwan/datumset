@@ -18,17 +18,17 @@ class DatumMatchRegionMixin:
         parent_dim_label, parent_dim_value = parent_spec.split(Query.OPR_EQ, 1)
         child_region_class = RegionFactory[child_dim_label]
         parent_region_class = RegionFactory[parent_dim_label]
-        parent_region = parent_region_class[parent_dim_value]
-        child_regions = RegionMatcher.get_child_regions(
-            parent_region,
-            child_region_class,
-        )
-        return tuple(
-            sorted(
+        values = set()
+        for parent_value in parent_dim_value.split(Query.OPR_OR):
+            child_regions = RegionMatcher.get_child_regions(
+                parent_region_class[parent_value],
+                child_region_class,
+            )
+            values.update(
                 child_region.get_value().lower()
                 for child_region in child_regions
             )
-        )
+        return tuple(sorted(values))
 
     @staticmethod
     @cache
