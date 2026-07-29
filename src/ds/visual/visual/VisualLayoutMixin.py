@@ -45,12 +45,23 @@ class VisualLayoutMixin:
             right=1 - SUBPLOT_PADDING_X,
         )
 
+    def _get_split_dim_counts(self):
+        split_dims = getattr(self, "split_dims", [])
+        return [len(self._get_unique_dim_values(d)) for d in split_dims]
+
+    def _get_grid_shape(self, n_subfigures):
+        counts = self._get_split_dim_counts()
+        if len(counts) == 2 and math.prod(counts) == n_subfigures:
+            return counts[0], counts[1]
+        n_cols = math.ceil(math.sqrt(n_subfigures))
+        n_rows = math.ceil(n_subfigures / n_cols)
+        return n_rows, n_cols
+
     def _get_grid_axes(self, fig, ax, n_subfigures):
         if n_subfigures == 1:
             return [ax]
         fig.clear()
-        n_cols = math.ceil(math.sqrt(n_subfigures))
-        n_rows = math.ceil(n_subfigures / n_cols)
+        n_rows, n_cols = self._get_grid_shape(n_subfigures)
         fig.set_size_inches(
             self.FIGSIZE[0] * n_cols,
             self.FIGSIZE[1] * n_rows,

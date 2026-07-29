@@ -34,10 +34,20 @@ class VisualParamsMixin:
             for dim_key in self._get_varying_dim_keys()
             if dim_key not in excluded_dim_keys
         ]
-        print(f"{split_dims=}")
+        self.split_dims = split_dims
         if not split_dims:
             return [self.datumset]
-        return self.datumset.split(*split_dims)
+        datumsets = self.datumset.split(*split_dims)
+        return self._sort_display_datumsets(datumsets, split_dims)
+
+    def _sort_display_datumsets(self, datumsets, split_dims):
+        def sort_key(datumset):
+            return tuple(
+                datumset[0].dim_idx[dim_key].get_value()
+                for dim_key in split_dims
+            )
+
+        return sorted(datumsets, key=sort_key)
 
     def _get_unique_dim_values(self, dim_key):
         values = []
