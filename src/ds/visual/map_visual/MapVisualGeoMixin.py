@@ -15,14 +15,9 @@ GEO_CACHE_DIR = os.path.join(tempfile.gettempdir(), "datumset_geo")
 class MapVisualGeoMixin:
 
     def _normalize_region_key(self, raw_value):
-        if raw_value is None:
-            return None
         return (
             str(raw_value).strip().lower().replace("-", "_").replace(" ", "_")
         )
-
-    def _get_region_values(self):
-        return self._get_region_values_for(self.datumset)
 
     def _load_gdf(self):
         region_type = self.region_dim_key.lower() + "s"
