@@ -16,13 +16,22 @@ class MapVisualPlotMixin:
         sub_ax.set_axis_off()
         self._set_square_subfigure_title(sub_ax, sub_datumset)
 
+    def _sort_color_idx_by_count(self, color_idx, counts):
+        order = sorted(
+            color_idx,
+            key=lambda value: counts.get(value, 0),
+            reverse=True,
+        )
+        return {value: color_idx[value] for value in order}
+
     def _add_map_legend(self, fig, ctx):
         if ctx["mode"] == "category":
+            counts = self._get_category_region_counts()
             self._add_color_legend(
                 fig,
-                ctx["color_idx"],
+                self._sort_color_idx_by_count(ctx["color_idx"], counts),
                 self.region_color_dim_key,
-                self._get_category_region_counts(),
+                counts,
             )
             return
         self._add_colorbar(fig, ctx)
