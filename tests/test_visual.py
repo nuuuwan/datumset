@@ -49,7 +49,7 @@ class TestCase(unittest.TestCase):
             ),
         ]
 
-    def test_method(self):
+    def test_basic(self):
         visual_class_idx = {
             visual_class.__name__: visual_class
             for visual_class in VisualFactory.visual_class_list()
@@ -140,9 +140,7 @@ class TestCase(unittest.TestCase):
         )
 
     def test_child_region_query_format_in_image_path(self):
-        query_str = (
-            "Person/Time=2012*District<Province=western*Religion/Count"
-        )
+        query_str = "Person/Time=2012*District<Province=western*Religion/Count"
         datumset = LankaData[query_str]
         visual = StackedBarChart(
             datumset,
