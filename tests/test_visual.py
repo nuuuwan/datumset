@@ -6,6 +6,7 @@ import matplotlib.colors as mcolors
 from ds import LankaData, VisualFactory
 from ds.thing.concept.person.Religion import Religion
 from ds.visual.MapVisual import MapVisual
+from ds.visual.marimekko.MarimekkoChart import MarimekkoChart
 from ds.visual.PieChart import PieChart
 from ds.visual.StackedBarChart import StackedBarChart
 
@@ -50,6 +51,29 @@ class TestCase(unittest.TestCase):
         ]
 
     def test_basic(self):
+        query_str = "Person/Time=2012*Province*Religion/Count"
+        datumset = LankaData[query_str]
+        visual = MarimekkoChart(datumset)
+        totals = [100.0, 300.0]
+        geometry = visual._get_bar_geometry(totals)
+        (left0, width0), (left1, width1) = geometry
+        self.assertEqual(0.0, left0)
+        self.assertAlmostEqual(3.0, width1 / width0)
+        self.assertAlmostEqual(left1, width0 + visual.BAR_GAP)
+        total_span = left1 + width1
+        self.assertAlmostEqual(1.0, total_span)
+        self.assertAlmostEqual(
+            0.25,
+            visual._get_segment_height(25.0, 100.0),
+        )
+        self.assertAlmostEqual(
+            0.0,
+            visual._get_segment_height(25.0, 0.0),
+        )
+        visual.draw()
+        self.assertTrue(visual.image_file.exists())
+
+    def test_method(self):
         visual_class_idx = {
             visual_class.__name__: visual_class
             for visual_class in VisualFactory.visual_class_list()
