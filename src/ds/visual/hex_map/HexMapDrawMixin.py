@@ -4,7 +4,7 @@ from matplotlib.patches import RegularPolygon
 class HexMapDrawMixin:
 
     HEX_EDGE_COLOR = "#ffffff"
-    HEX_EDGE_WIDTH = 0.1
+    HEX_EDGE_WIDTH = 0.3
 
     def _get_region_centroids(self, gdf):
         return {
@@ -58,6 +58,6 @@ class HexMapDrawMixin:
         radius, hexes = self._get_hex_layout(gdf)
         self._draw_hexes(sub_ax, radius, hexes, region_color)
         self._draw_boundaries(sub_ax, radius, hexes)
-        self._add_hex_labels(sub_ax, hexes, gdf)
+        self._add_hex_labels(fig, sub_ax, radius, hexes, gdf)
         sub_ax.set_axis_off()
         self._set_square_subfigure_title(sub_ax, sub_datumset)

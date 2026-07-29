@@ -1,9 +1,10 @@
 from collections import defaultdict
 
+from ds.visual.hex_map.HexTextFit import HexTextFit
+from ds.visual.label_fit.LabelFit import LabelFit
+
 
 class HexMapLabelMixin:
-
-    HEX_LABEL_FONTSIZE = 7
 
     def _get_region_names(self, gdf):
         return {
@@ -21,22 +22,31 @@ class HexMapLabelMixin:
             groups[region_id].append((x, y))
         return groups
 
-    def _add_hex_label(self, ax, region_id, points, names, colors):
-        cx = sum(point[0] for point in points) / len(points)
-        cy = sum(point[1] for point in points) / len(points)
+    def _add_hex_label(self, ax, renderer, radius, label, points, color):
+        cx, cy, rect_w, rect_h, angle = HexTextFit.best_label_fit(
+            points, radius
+        )
+        fontsize = LabelFit.fit_fontsize(label, rect_w, rect_h, ax, renderer)
         ax.annotate(
-            names.get(region_id, region_id),
-            (cx, cy),
+            label,
+            xy=(cx, cy),
             ha="center",
             va="center",
-            fontsize=self.HEX_LABEL_FONTSIZE,
-            color=self._get_contrast_text_color(
-                colors.get(region_id, "#cccccc")
-            ),
+            fontsize=fontsize,
+            rotation=angle,
+            color=self._get_contrast_text_color(color),
         )
 
-    def _add_hex_labels(self, ax, hexes, gdf):
+    def _add_hex_labels(self, fig, ax, radius, hexes, gdf):
+        renderer = self._get_renderer(fig)
         names = self._get_region_names(gdf)
         colors = self._get_region_colors(gdf)
         for region_id, points in self._get_hex_groups(hexes).items():
-            self._add_hex_label(ax, region_id, points, names, colors)
+            self._add_hex_label(
+                ax,
+                renderer,
+                radius,
+                names.get(region_id, region_id),
+                points,
+                colors.get(region_id, "#cccccc"),
+            )
