@@ -9,7 +9,7 @@ import matplotlib.colors as mcolors
 from matplotlib.ticker import FuncFormatter
 
 from ds.visual.label_fit.LabelFit import LabelFit
-from ds.visual.Visual import Visual
+from ds.visual.visual.Visual import Visual
 
 GEO_URL = (
     "https://raw.githubusercontent.com"

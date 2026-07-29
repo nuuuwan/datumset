@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-from ds.visual.Visual import Visual
+from ds.visual.visual.Visual import Visual
 
 
 class StackedBarChart(Visual):

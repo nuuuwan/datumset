@@ -19,11 +19,11 @@ class TestCase(unittest.TestCase):
             + "/MapVisual",
             "Person/Time=2024*DSD<District=gampaha*Religion/Count"
             + "/StackedBarChart",
-            "Vote/ElectionType=Presidential*Time=2024*Province*Party/Count"
+            "Vote/ElectionType=presidential*Time=2024*Province*Party/Count"
             + "/StackedBarChart",
-            "Vote/ElectionType=Presidential*Time=2024*Province*Party/Count"
+            "Vote/ElectionType=presidential*Time=2024*Province*Party/Count"
             + "/MarimekkoChart",
-            "Vote/ElectionType=Presidential*Time=2019*Province*Party/Count"
+            "Vote/ElectionType=presidential*Time=2019*Province*Party/Count"
             + "/MarimekkoChart",
         ]
 
