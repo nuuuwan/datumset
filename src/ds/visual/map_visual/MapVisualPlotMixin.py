@@ -7,10 +7,6 @@ class MapVisualPlotMixin:
 
     def _plot_subfigure(self, fig, sub_ax, sub_datumset, vmin, vmax, cmap):
         gdf = self._get_gdf_with_values(sub_datumset)
-        if gdf.empty:
-            sub_ax.set_axis_off()
-            self._set_square_subfigure_title(sub_ax, sub_datumset)
-            return
         gdf.plot(
             column="value",
             ax=sub_ax,
