@@ -2,6 +2,7 @@ import glob
 import math
 import os
 from abc import ABC, abstractmethod
+from collections import defaultdict
 from functools import cached_property
 
 import matplotlib.colors as mcolors
@@ -168,6 +169,59 @@ class Visual(ABC):
             x_labels.append(datum.dim_idx[dim_key].get_value())
             y_values.append(float(datum.cell_idx[cell_key].get_value()))
         return x_labels, y_values
+
+    def _apply_x_order(self, x_labels, order):
+        rank = {x_label: i for i, x_label in enumerate(order)}
+        return sorted(x_labels, key=lambda x: rank.get(x, len(order)))
+
+    def _get_sorted_dim_cell_xy(self, datumset, dim_key, cell_key, order):
+        x_labels, y_values = self._get_dim_cell_xy(
+            datumset,
+            dim_key,
+            cell_key,
+        )
+        value_by_x = dict(zip(x_labels, y_values))
+        sorted_x = self._apply_x_order(x_labels, order)
+        return sorted_x, [value_by_x[x] for x in sorted_x]
+
+    def _get_x_value_order(self, x_dim_key, cell_key):
+        totals = defaultdict(float)
+        for datum in self.datumset:
+            x = datum.dim_idx[x_dim_key].get_value()
+            totals[x] += float(datum.cell_idx[cell_key].get_value())
+        return sorted(totals, key=lambda x: totals[x], reverse=True)
+
+    def _collect_x_stack_totals(self, x_dim_key, cell_key, stack_dim_key):
+        per_x_stack = defaultdict(lambda: defaultdict(float))
+        cat_totals = defaultdict(float)
+        for datum in self.datumset:
+            x = datum.dim_idx[x_dim_key].get_value()
+            s = datum.dim_idx[stack_dim_key].get_value()
+            v = float(datum.cell_idx[cell_key].get_value())
+            per_x_stack[x][s] += v
+            cat_totals[s] += v
+        return per_x_stack, cat_totals
+
+    def _get_x_dominant_share_order(
+        self,
+        x_dim_key,
+        cell_key,
+        stack_dim_key,
+    ):
+        per_x_stack, cat_totals = self._collect_x_stack_totals(
+            x_dim_key,
+            cell_key,
+            stack_dim_key,
+        )
+        dominant = max(cat_totals, key=cat_totals.get)
+
+        def share(x):
+            total = sum(per_x_stack[x].values())
+            if total <= 0:
+                return 0.0
+            return per_x_stack[x][dominant] / total
+
+        return sorted(per_x_stack, key=share, reverse=True)
 
     def _format_visual_value(self, value):
         if not isinstance(value, str):
@@ -473,8 +527,7 @@ class Visual(ABC):
             bbox = probe.get_window_extent(renderer=renderer)
             if (
                 bbox.width <= max_width_px * self.STACK_LABEL_BBOX_MARGIN
-                and bbox.height
-                <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
+                and bbox.height <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
             ):
                 best_fontsize = fontsize
                 break

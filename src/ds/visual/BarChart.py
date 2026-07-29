@@ -7,9 +7,7 @@ class BarChart(Visual):
         super().__init__(datumset)
         self.x_dim_key, self.y_cell_key = self.params
         self.display_datumsets = self._get_display_datumsets({self.x_dim_key})
-        self.x_values, self.x_color_idx = self._init_dim_colors(
-            self.x_dim_key
-        )
+        self.x_values, self.x_color_idx = self._init_dim_colors(self.x_dim_key)
 
     def _get_params(self):
         return self._get_first_varying_dim_key(), self._get_y_cell_key()
@@ -33,10 +31,12 @@ class BarChart(Visual):
         return self._get_y_axis_limit(y_max)
 
     def _plot_subfigure(self, sub_ax, sub_datumset, y_limit):
-        x_labels, y_values = self._get_dim_cell_xy(
+        order = self._get_x_value_order(self.x_dim_key, self.y_cell_key)
+        x_labels, y_values = self._get_sorted_dim_cell_xy(
             sub_datumset,
             self.x_dim_key,
             self.y_cell_key,
+            order,
         )
         x_values = list(range(len(x_labels)))
         colors = [self.x_color_idx[x_label] for x_label in x_labels]

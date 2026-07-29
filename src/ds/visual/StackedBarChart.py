@@ -44,7 +44,15 @@ class StackedBarChart(Visual):
             if s not in stack_labels:
                 stack_labels.append(s)
             data[s][x] = v
+        x_labels = self._apply_x_order(x_labels, self._get_x_order())
         return x_labels, stack_labels, data
+
+    def _get_x_order(self):
+        return self._get_x_dominant_share_order(
+            self.x_dim_key,
+            self.y_cell_key,
+            self.stack_dim_key,
+        )
 
     def _get_sorted_stack_labels_for_x(self, stack_labels, data, x_label):
         return sorted(
