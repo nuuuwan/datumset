@@ -4,9 +4,9 @@ from collections import defaultdict
 class StackedBarChartDataMixin:
 
     def _get_stack_dim_key(self, x_dim_key):
-        varying = self._get_varying_dim_keys({x_dim_key})
+        varying = self._get_varying_dim_keys()
         if varying:
-            return varying[0]
+            return varying[1]
         for dim_key in self._get_dim_labels():
             if dim_key != x_dim_key:
                 return dim_key

@@ -20,27 +20,21 @@ class VisualParamsMixin:
         # but this should change.
         return "Count"
 
-    def _get_varying_dim_keys(self, excluded_dim_keys=None):
-        excluded_dim_keys = excluded_dim_keys or set()
-        varying = []
-        for dim_key in self._get_dim_labels():
-            if dim_key in excluded_dim_keys:
-                continue
-            if len(self._get_unique_dim_values(dim_key)) > 1:
-                varying.append(dim_key)
-        return varying
+    def _get_varying_dim_keys(self) -> list[str]:
+        return self.datumset.get_non_singleton_dims()
 
-    def _get_first_varying_dim_key(self, excluded_dim_keys=None):
-        varying = self._get_varying_dim_keys(excluded_dim_keys)
-        if varying:
-            return varying[0]
-        return self._get_dim_labels()[0]
+    def _get_first_varying_dim_key(self):
+        non_single_dim_keys = self.datumset.get_non_singleton_dims()
+        return non_single_dim_keys[0]
 
     def _get_first_varying_non_region_dim_key(self):
-        for dim_key in self._get_varying_dim_keys():
-            if not self._is_region_dim(dim_key):
-                return dim_key
-        return self._get_first_varying_dim_key()
+        non_single_dim_keys = self.datumset.get_non_singleton_dims()
+        non_region_non_single_dim_keys = [
+            dim_key
+            for dim_key in non_single_dim_keys
+            if not self._is_region_dim(dim_key)
+        ]
+        return non_region_non_single_dim_keys[0]
 
     def _get_dim_labels(self):
         return self.datumset[0].query.dim_labels
