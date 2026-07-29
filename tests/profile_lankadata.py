@@ -11,7 +11,7 @@ if __name__ == "__main__":
     VisualLankaData[visual_query_str].open("code")
 
     profiler.disable()
-    profile_path = "tests/profile_lankadata.prof"
+    profile_path = "tests/_profile_lankadata.prof"
     profiler.dump_stats(profile_path)
 
     p = pstats.Stats(profile_path)
