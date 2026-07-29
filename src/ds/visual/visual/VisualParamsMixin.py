@@ -29,7 +29,7 @@ class VisualParamsMixin:
     def _get_display_datumsets(self, excluded_dim_keys):
         split_dims = [
             dim_key
-            for dim_key in self._get_dim_labels()
+            for dim_key in self._get_varying_dim_keys()
             if dim_key not in excluded_dim_keys
         ]
         print(f"{split_dims=}")
