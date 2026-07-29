@@ -4,9 +4,6 @@ from utils_future import Int
 
 class VisualFormatMixin:
 
-    def _build_dim_title(self, y_cell_key, dim_key, relation="by"):
-        return f"{y_cell_key} {relation} {dim_key}"
-
     def _format_visual_value(self, value):
         if value == self.OTHER_CATEGORY:
             return self.OTHER_CATEGORY_LABEL
@@ -26,11 +23,3 @@ class VisualFormatMixin:
     def _format_humanized_y_axis(self, ax):
         formatter = FuncFormatter(self._format_humanized_value)
         ax.yaxis.set_major_formatter(formatter)
-
-    def _format_percentage_value(self, value, total):
-        if total <= 0:
-            return "0%"
-        pct = value * 100.0 / total
-        if pct > 0.5:
-            return f"{pct:.0f}%"
-        return "<0.5%"
