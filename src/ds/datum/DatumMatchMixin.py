@@ -19,7 +19,9 @@ class DatumMatchMixin:
     @staticmethod
     @cache
     def _get_child_region_values(child_dim_label, parent_spec):
-        parent_dim_label, parent_dim_value = parent_spec.split(Query.OPR_EQ, 1)
+        parent_dim_label, parent_dim_value = parent_spec.split(
+            Query.OPR_EQ, 1
+        )
         child_region_class = RegionFactory[child_dim_label]
         parent_region_class = RegionFactory[parent_dim_label]
         parent_region = parent_region_class[parent_dim_value]
@@ -34,7 +36,6 @@ class DatumMatchMixin:
             )
         )
 
-    @cache
     def _is_match_required_value(self, dim_label, required_value):
         dim_value = str(self.dim_idx[dim_label].get_value()).lower()
         if isinstance(required_value, tuple):
@@ -70,7 +71,6 @@ class DatumMatchMixin:
             labels_required.append(dim_spec)
         return labels_required, values_required
 
-    @cache
     def is_match_entity(self, entity_part: str) -> bool:
         entity_class_names = entity_part.split(Query.OPR_ADD)
         for entity_class_name in entity_class_names:
@@ -78,7 +78,6 @@ class DatumMatchMixin:
                 return entity_class_name
         return False
 
-    @cache
     def is_match_dim_idx(self, concept_part: str) -> bool:
         dim_labels = list(self.dim_idx.keys())
         labels_required, values_required = self._parse_dim_part(concept_part)
@@ -89,7 +88,6 @@ class DatumMatchMixin:
                 return False
         return True
 
-    @cache
     def is_match_cell_idx(self, cell_part: str) -> bool:
         cell_labels = list(self.cell_idx.keys())
         labels_required = cell_part.split(Query.OPR_MULT)
@@ -97,7 +95,6 @@ class DatumMatchMixin:
             return False
         return True
 
-    @cache
     def is_match(self, query: Query) -> bool:
         return (
             self.is_match_entity(query.entity_part)

@@ -3,11 +3,9 @@ from functools import cache
 from utils_future import JSONFile, Log
 
 from ds.adapters.TSVAdapter import TSVAdapter
-from ds.datum.Datum import Datum
 from ds.datumset.Datumset import Datumset
 from ds.db.AbstractGIGDB import AbstractGIGDB
-from ds.thing.concept.atom.Int import Int
-from ds.thing.concept.region.RegionFactory import RegionFactory
+from ds.query.Query import Query
 from ds.thing.concept.Time import Time
 from ds.thing.ThingFactory import ThingFactory
 

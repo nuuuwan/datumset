@@ -18,14 +18,19 @@ class DatumBase:
         object.__setattr__(self, "entity_class", entity_class)
         object.__setattr__(self, "dim_idx", dim_idx)
         object.__setattr__(self, "cell_idx", cell_idx)
-
-        self.__hash_value = hash(
-            (
-                self.entity_class.__name__,
-                tuple(self.dim_idx.items()),
-                tuple(self.cell_idx.items()),
-            )
-        )
+        object.__setattr__(self, "_hash_value", None)
 
     def __hash__(self):
-        return self.__hash_value
+        if self._hash_value is None:
+            object.__setattr__(
+                self,
+                "_hash_value",
+                hash(
+                    (
+                        self.entity_class.__name__,
+                        tuple(self.dim_idx.items()),
+                        tuple(self.cell_idx.items()),
+                    )
+                ),
+            )
+        return self._hash_value
