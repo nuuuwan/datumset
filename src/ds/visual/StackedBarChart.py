@@ -71,12 +71,6 @@ class StackedBarChart(Visual):
             f", stacked by {self.stack_dim_key}"
         )
 
-    def _get_title_text(self):
-        return (
-            f"{self._get_entity_name()} {self.y_cell_key} by {self.x_dim_key}, "
-            f"stacked by {self.stack_dim_key}"
-        )
-
     def _get_y_limit(self):
         y_max = 0.0
         for sub_datumset in self.display_datumsets:
