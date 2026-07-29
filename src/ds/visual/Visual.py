@@ -525,8 +525,6 @@ class Visual(ABC):
     def _add_fitted_label_in_rect(self, sub_ax, rect, label):
         fontsize = self._get_best_rect_label_fontsize(sub_ax, rect, label)
         fontsize -= self.STACK_LABEL_FONT_REDUCTION
-        if fontsize < self.MIN_STACK_LABEL_FONTSIZE:
-            return
         cx = rect.get_x() + rect.get_width() / 2.0
         cy = rect.get_y() + rect.get_height() / 2.0
         sub_ax.text(
