@@ -26,7 +26,7 @@ class PieChartSliceMixin:
         if len(self.display_datumsets) <= 1:
             title = total_text
         else:
-            base_title = self._get_subfigure_title(
+            base_title = self._get_subfigure_title_text(
                 sub_datumset,
                 self._excluded_dim_keys(),
             )
