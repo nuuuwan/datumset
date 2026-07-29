@@ -33,16 +33,6 @@ class VisualTitleMixin:
         sub_ax.set_box_aspect(1)
         self._set_subfigure_title(sub_ax, sub_datumset)
 
-    def _build_subtitle(self):
-        datum = self.datumset[0]
-        entity = datum.entity_class.__name__
-        other = [
-            f"{k}: {self._format_visual_value(v.get_value())}"
-            for k, v in datum.dim_idx.items()
-            if k not in self._excluded_dim_keys()
-        ]
-        return " | ".join([entity] + other)
-
     def _get_title_text(self):
         query = self.datumset[0].query
         title = f"{query.entity_part} {query.cell_labels[0]}"
@@ -64,8 +54,6 @@ class VisualTitleMixin:
 
     def _add_title(self, fig):
         text = self._get_title_text()
-        if not text:
-            return
         fig.text(
             0.5,
             0.95,
@@ -79,8 +67,6 @@ class VisualTitleMixin:
 
     def _add_subtitle(self, fig):
         text = self._get_subtitle_text()
-        if not text:
-            return
         fig.text(
             0.5,
             0.91,
