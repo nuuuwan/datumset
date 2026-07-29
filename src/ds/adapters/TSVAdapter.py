@@ -56,7 +56,9 @@ class TSVAdapter:
         dir_temp.make()
         tsv_file = TSVFile(dir_temp, file_name)
         WWW(url).download(tsv_file)
-        return tsv_file.read()
+        d_list = tsv_file.read()
+        d_list = [d for d in d_list if len(d["entity_id"]) != 10]
+        return d_list
 
     @classmethod
     def build_datumset(

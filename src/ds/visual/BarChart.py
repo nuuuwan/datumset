@@ -17,6 +17,9 @@ class BarChart(Visual):
     def _get_category_dim_key(self):
         return self.x_dim_key
 
+    def _get_x_label_colors(self, sub_datumset, x_labels):
+        return [self.x_color_idx[x_label] for x_label in x_labels]
+
     def _excluded_dim_keys(self):
         return {self.x_dim_key}
 

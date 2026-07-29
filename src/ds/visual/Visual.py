@@ -10,6 +10,7 @@ import matplotlib.font_manager as fm
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
+from matplotlib.transforms import blended_transform_factory
 from utils_future import Directory, File, Int, Log, String
 
 from ds.query.Query import Query
@@ -49,6 +50,9 @@ class Visual(ABC):
     OTHER_CATEGORY_LABEL = "Other (with <1%)"
     X_TICK_FONTSIZE = 9
     X_TICK_CHAR_WIDTH_RATIO = 0.62
+    X_LABEL_UNDERLINE_HALF = 0.4
+    X_LABEL_UNDERLINE_LW = 3
+    X_LABEL_UNDERLINE_GAP = 0.015
 
     def __init__(self, datumset):
         self.datumset = datumset
@@ -415,8 +419,47 @@ class Visual(ABC):
             for x_label in x_labels
         ]
 
-    def _set_x_tick_labels(self, sub_ax, ticks, display_labels):
-        sub_ax.set_xticks(list(ticks))
+    def _get_x_label_colors(self, sub_datumset, x_labels):
+        return None
+
+    def _get_underline_y(self, sub_ax):
+        renderer = sub_ax.figure.canvas.get_renderer()
+        labels = sub_ax.get_xticklabels()
+        y0_px = min(
+            label.get_window_extent(renderer).y0 for label in labels
+        )
+        y_frac = sub_ax.transAxes.inverted().transform((0, y0_px))[1]
+        return y_frac - self.X_LABEL_UNDERLINE_GAP
+
+    def _underline_x_labels(self, sub_ax, positions, colors, half_widths):
+        sub_ax.figure.canvas.draw()
+        y = self._get_underline_y(sub_ax)
+        trans = blended_transform_factory(
+            sub_ax.transData,
+            sub_ax.transAxes,
+        )
+        for x, color, half in zip(positions, colors, half_widths):
+            sub_ax.plot(
+                [x - half, x + half],
+                [y, y],
+                transform=trans,
+                color=color,
+                linewidth=self.X_LABEL_UNDERLINE_LW,
+                solid_capstyle="round",
+                clip_on=False,
+                zorder=5,
+            )
+
+    def _set_x_tick_labels(
+        self,
+        sub_ax,
+        ticks,
+        display_labels,
+        label_colors=None,
+        label_half_widths=None,
+    ):
+        ticks = list(ticks)
+        sub_ax.set_xticks(ticks)
         sub_ax.set_xticklabels(
             display_labels,
             fontsize=self.X_TICK_FONTSIZE,
@@ -424,7 +467,18 @@ class Visual(ABC):
             ha="center",
             va="top",
         )
-        sub_ax.tick_params(axis="x", pad=1, length=0)
+        sub_ax.tick_params(axis="x", pad=6, length=0)
+        if label_colors:
+            if label_half_widths is None:
+                label_half_widths = [
+                    self.X_LABEL_UNDERLINE_HALF for _ in ticks
+                ]
+            self._underline_x_labels(
+                sub_ax,
+                ticks,
+                label_colors,
+                label_half_widths,
+            )
 
     def _style_value_axis_subfigure(
         self,
@@ -444,6 +498,7 @@ class Visual(ABC):
                 sub_ax,
                 range(len(x_labels)),
                 display_x_labels,
+                self._get_x_label_colors(sub_datumset, x_labels),
             )
         else:
             sub_ax.set_xticks([])
@@ -540,7 +595,8 @@ class Visual(ABC):
             ax.spines["right"].set_visible(False)
             ax.spines["left"].set_color(self.BORDER_COLOR)
             ax.spines["bottom"].set_color(self.BORDER_COLOR)
-            ax.tick_params(colors=self.SUBTITLE_COLOR)
+            ax.tick_params(axis="y", colors=self.SUBTITLE_COLOR)
+            ax.tick_params(axis="x", color=self.SUBTITLE_COLOR)
         SUBPLOT_PADDING = 0.15
         fig.subplots_adjust(
             top=1 - SUBPLOT_PADDING,
@@ -671,7 +727,8 @@ class Visual(ABC):
             bbox = probe.get_window_extent(renderer=renderer)
             if (
                 bbox.width <= max_width_px * self.STACK_LABEL_BBOX_MARGIN
-                and bbox.height <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
+                and bbox.height
+                <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
             ):
                 best_fontsize = fontsize
                 break

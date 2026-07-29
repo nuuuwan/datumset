@@ -26,6 +26,15 @@ class StackedBarChart(Visual):
     def _get_category_dim_key(self):
         return self.stack_dim_key
 
+    def _get_x_label_colors(self, sub_datumset, x_labels):
+        _, stack_labels, data = self._get_data(sub_datumset)
+        return [
+            self.stack_color_idx[
+                max(stack_labels, key=lambda s: data[s].get(x_label, 0.0))
+            ]
+            for x_label in x_labels
+        ]
+
     def _get_stack_dim_key(self, x_dim_key):
         varying = self._get_varying_dim_keys({x_dim_key})
         if varying:
