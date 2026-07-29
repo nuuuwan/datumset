@@ -26,7 +26,7 @@ class MarimekkoPlotMixin:
         return sorted(
             stack_labels,
             key=lambda stack_label: sum(data[stack_label].values()),
-            reverse=True,
+            reverse=False,
         )
 
     def _plot_bar(self, sub_ax, geometry, x_label, stack_labels, data, total):
