@@ -18,7 +18,20 @@ class BarChart(Visual):
         return self.x_dim_key
 
     def _get_x_label_colors(self, sub_datumset, x_labels):
-        return [self.x_color_idx[x_label] for x_label in x_labels]
+        labels, values = self._get_category_cell_xy(
+            sub_datumset,
+            self.x_dim_key,
+            self.y_cell_key,
+        )
+        value_by_x = dict(zip(labels, values))
+        max_value = max(values) if values else 1.0
+        return [
+            self._get_share_shaded_color(
+                self.x_color_idx[x_label],
+                value_by_x.get(x_label, 0.0) / max_value,
+            )
+            for x_label in x_labels
+        ]
 
     def _excluded_dim_keys(self):
         return {self.x_dim_key}

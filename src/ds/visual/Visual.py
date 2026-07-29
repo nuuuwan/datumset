@@ -1,4 +1,5 @@
 import glob
+import colorsys
 import math
 import os
 from abc import ABC, abstractmethod
@@ -422,6 +423,13 @@ class Visual(ABC):
     def _get_x_label_colors(self, sub_datumset, x_labels):
         return None
 
+    def _get_share_shaded_color(self, base_color, pct):
+        h, s, v = colorsys.rgb_to_hsv(*mcolors.to_rgb(base_color))
+        pct = max(0.0, min(1.0, pct))
+        s2 = s * pct
+        v2 = v + (1.0 - v) * (1.0 - pct)
+        return colorsys.hsv_to_rgb(h, s2, v2)
+
     def _get_underline_y(self, sub_ax):
         renderer = sub_ax.figure.canvas.get_renderer()
         labels = sub_ax.get_xticklabels()
@@ -725,7 +733,8 @@ class Visual(ABC):
             bbox = probe.get_window_extent(renderer=renderer)
             if (
                 bbox.width <= max_width_px * self.STACK_LABEL_BBOX_MARGIN
-                and bbox.height <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
+                and bbox.height
+                <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
             ):
                 best_fontsize = fontsize
                 break
