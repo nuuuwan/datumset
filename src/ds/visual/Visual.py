@@ -496,7 +496,11 @@ class Visual(ABC):
         px_to_pt = 72.0 / sub_ax.figure.dpi
         return int(min_dim_px * px_to_pt * self.STACK_LABEL_MIN_DIM_RATIO)
 
-    def _get_best_rect_label_fontsize(self, sub_ax, rect, label):
+    def _get_rect_label_rotation(self, sub_ax, rect):
+        width_px, height_px = self._get_rect_size_px(sub_ax, rect)
+        return 90 if height_px > width_px else 0
+
+    def _get_best_rect_label_fontsize(self, sub_ax, rect, label, rotation):
         fig = sub_ax.figure
         fig.canvas.draw()
         renderer = fig.canvas.get_renderer()
@@ -506,7 +510,14 @@ class Visual(ABC):
         fontsize_cap = self._get_rect_fontsize_cap(sub_ax, rect)
         if fontsize_cap < self.MIN_STACK_LABEL_FONTSIZE:
             return 0
-        probe = sub_ax.text(cx, cy, label, ha="center", va="center")
+        probe = sub_ax.text(
+            cx,
+            cy,
+            label,
+            ha="center",
+            va="center",
+            rotation=rotation,
+        )
         best_fontsize = 0
         max_fontsize = min(self.MAX_STACK_LABEL_FONTSIZE, fontsize_cap)
         for fontsize in range(max_fontsize, 3, -1):
@@ -514,8 +525,7 @@ class Visual(ABC):
             bbox = probe.get_window_extent(renderer=renderer)
             if (
                 bbox.width <= max_width_px * self.STACK_LABEL_BBOX_MARGIN
-                and bbox.height
-                <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
+                and bbox.height <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
             ):
                 best_fontsize = fontsize
                 break
@@ -523,8 +533,16 @@ class Visual(ABC):
         return best_fontsize
 
     def _add_fitted_label_in_rect(self, sub_ax, rect, label):
-        fontsize = self._get_best_rect_label_fontsize(sub_ax, rect, label)
+        rotation = self._get_rect_label_rotation(sub_ax, rect)
+        fontsize = self._get_best_rect_label_fontsize(
+            sub_ax,
+            rect,
+            label,
+            rotation,
+        )
         fontsize -= self.STACK_LABEL_FONT_REDUCTION
+        if fontsize < self.MIN_STACK_LABEL_FONTSIZE:
+            return
         cx = rect.get_x() + rect.get_width() / 2.0
         cy = rect.get_y() + rect.get_height() / 2.0
         sub_ax.text(
@@ -533,6 +551,7 @@ class Visual(ABC):
             label,
             ha="center",
             va="center",
+            rotation=rotation,
             fontsize=fontsize,
             color=self._get_contrast_text_color(rect.get_facecolor()),
         )
