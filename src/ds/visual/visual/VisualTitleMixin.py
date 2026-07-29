@@ -4,24 +4,12 @@ class VisualTitleMixin:
     SUBFIGURE_TITLE_FONTSIZE = 14
     SUBFIGURE_TITLE_PAD = 0
 
-    def _get_varying_dim_keys(self):
-        subsets = self.display_datumsets
-        keys = set()
-        for dim_key in subsets[0][0].query.dim_labels:
-            values = {sub[0].dim_idx[dim_key].get_value() for sub in subsets}
-            if len(values) > 1:
-                keys.add(dim_key)
-        return keys
-
     def _get_subfigure_title_text(self, datumset, excluded_dim_keys):
         varying_dim_keys = self._get_varying_dim_keys()
         parts = []
         first_datum = datumset[0]
         for dim_key in first_datum.query.dim_labels:
-            if (
-                dim_key in excluded_dim_keys
-                or dim_key not in varying_dim_keys
-            ):
+            if dim_key in excluded_dim_keys or dim_key not in varying_dim_keys:
                 continue
             first_value = first_datum.dim_idx[dim_key].get_value()
             if all(
