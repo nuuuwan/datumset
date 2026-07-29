@@ -4,6 +4,8 @@ import math
 class HexTextFit:
 
     ANGLES_DEG = (0.0, 60.0, -60.0)
+    STEP_FACTOR = math.sqrt(3)
+    LINE_SPACING_FACTOR = 1.5
     ADJACENCY_TOLERANCE = 0.5
 
     @staticmethod
@@ -41,8 +43,8 @@ class HexTextFit:
 
     @classmethod
     def _best_run(cls, points, radius):
-        step = math.sqrt(3) * radius
-        line_spacing = 1.5 * radius
+        step = cls.STEP_FACTOR * radius
+        line_spacing = cls.LINE_SPACING_FACTOR * radius
         best = None
         for angle_deg in cls.ANGLES_DEG:
             u, v = cls._axes(angle_deg)
@@ -61,4 +63,10 @@ class HexTextFit:
     def best_label_fit(cls, points, radius):
         (count, angle_deg, run), step = cls._best_run(points, radius)
         cx, cy = cls._run_center(run)
-        return cx, cy, count * step, 1.5 * radius, angle_deg
+        return (
+            cx,
+            cy,
+            count * step,
+            cls.LINE_SPACING_FACTOR * radius,
+            angle_deg,
+        )

@@ -22,10 +22,12 @@ class HexMapLabelMixin:
             groups[region_id].append((x, y))
         return groups
 
+    def _best_label_fit(self, points, radius):
+        return HexTextFit.best_label_fit(points, radius)
+
     def _add_hex_label(self, ax, renderer, radius, label, points, color):
-        cx, cy, rect_w, rect_h, angle = HexTextFit.best_label_fit(
-            points, radius
-        )
+        cx, cy, rect_w, rect_h, angle = self._best_label_fit(points, radius)
+        label = self._fit_label_text(label, rect_w, rect_h, ax, renderer)
         fontsize = LabelFit.fit_fontsize(label, rect_w, rect_h, ax, renderer)
         ax.annotate(
             label,

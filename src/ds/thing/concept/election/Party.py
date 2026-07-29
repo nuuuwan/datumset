@@ -57,10 +57,10 @@ class Party(Concept):
             "FSP": "#ff0000",
             "SEP": "#ff0000",
             # Tamil / Eastern militant-origin parties (orange-red)
-            "ELMSP": "#ff2200",
-            "EPDP": "#ff2200",
-            "TMVP": "#ff2200",
-            "EROS": "#ff2200",
+            "ELMSP": "#ff6200",
+            "EPDP": "#ff6200",
+            "TMVP": "#ff6200",
+            "EROS": "#ff6200",
             # Up-country Tamil (orange)
             "CWC": "#ff4400",
             "UPF": "#ff4400",

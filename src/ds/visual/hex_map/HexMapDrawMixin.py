@@ -4,7 +4,7 @@ from matplotlib.patches import RegularPolygon
 class HexMapDrawMixin:
 
     HEX_EDGE_COLOR = "#ffffff"
-    HEX_EDGE_WIDTH = 0.3
+    HEX_EDGE_WIDTH = 0.2
 
     def _get_region_centroids(self, gdf):
         return {

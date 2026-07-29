@@ -5,6 +5,7 @@ class HexMapScaleMixin:
 
     HEX_SCALE_FONTSIZE = 9
     HEX_SCALE_COLOR = "#555555"
+    TILE_NOUN = "hexagon"
 
     def _record_hex_values(self, gdf, hexes):
         weights = self._get_region_id_to_weight(gdf)
@@ -22,10 +23,11 @@ class HexMapScaleMixin:
     def _get_hex_scale_text(self, value_min, value_max):
         fmt = self._format_humanized_value
         unit = self._get_hex_unit()
+        noun = self.TILE_NOUN
         if value_max - value_min < 1:
-            return f"1 hexagon = {fmt(value_min, None)} {unit}"
+            return f"1 {noun} = {fmt(value_min, None)} {unit}"
         return (
-            f"1 hexagon = {fmt(value_min, None)}"
+            f"1 {noun} = {fmt(value_min, None)}"
             + f" to {fmt(value_max, None)} {unit}"
         )
 

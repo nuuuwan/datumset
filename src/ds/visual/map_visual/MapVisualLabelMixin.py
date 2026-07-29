@@ -1,7 +1,17 @@
+from utils_future import String
+
 from ds.visual.label_fit.LabelFit import LabelFit
 
 
 class MapVisualLabelMixin:
+
+    LABEL_MIN_FONTSIZE = 6
+
+    def _fit_label_text(self, label, rw, rh, ax, renderer):
+        fontsize = LabelFit.fit_fontsize(label, rw, rh, ax, renderer)
+        if fontsize >= self.LABEL_MIN_FONTSIZE:
+            return label
+        return String(label).shorten(3)
 
     def _get_label_angle(self, angle_deg, rw, rh):
         text_angle = angle_deg if rw >= rh else angle_deg + 90
@@ -12,6 +22,7 @@ class MapVisualLabelMixin:
     def _add_region_label(self, ax, renderer, row):
         label = row.get("name") or row["region_id"]
         cx, cy, rw, rh, angle_deg = LabelFit.best_label_fit(row.geometry)
+        label = self._fit_label_text(label, rw, rh, ax, renderer)
         fontsize = LabelFit.fit_fontsize(label, rw, rh, ax, renderer)
         fontsize = max(4, min(9, fontsize))
         ax.annotate(
