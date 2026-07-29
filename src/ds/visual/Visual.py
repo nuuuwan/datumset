@@ -1,5 +1,5 @@
-import glob
 import colorsys
+import glob
 import math
 import os
 from abc import ABC, abstractmethod
@@ -774,11 +774,19 @@ class Visual(ABC):
             label = self._format_percentage_value(value, total)
             self._add_fitted_label_in_rect(sub_ax, rect, label)
 
-    def _add_color_legend(self, fig, value_color_idx, title):
+    def _get_legend_label(self, value, value_counts):
+        label = self._format_visual_value(value)
+        if value_counts is None:
+            return label
+        return f"{label} ({value_counts.get(value, 0)})"
+
+    def _add_color_legend(
+        self, fig, value_color_idx, title, value_counts=None
+    ):
         legend_handles = [
             mpatches.Patch(
                 color=color,
-                label=self._format_visual_value(value),
+                label=self._get_legend_label(value, value_counts),
             )
             for value, color in value_color_idx.items()
         ]

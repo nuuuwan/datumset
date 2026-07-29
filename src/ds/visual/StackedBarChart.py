@@ -41,6 +41,27 @@ class StackedBarChart(Visual):
         base = self.stack_color_idx[dominant]
         return self._get_share_shaded_color(base, pct)
 
+    def _get_column_key(self, datum):
+        return tuple(
+            (k, c.get_value())
+            for k, c in datum.dim_idx.items()
+            if k != self.stack_dim_key
+        )
+
+    def _get_category_win_counts(self):
+        groups = defaultdict(lambda: defaultdict(float))
+        for datum in self.datumset:
+            key = self._get_column_key(datum)
+            s = self._remap_category(
+                datum.dim_idx[self.stack_dim_key].get_value()
+            )
+            v = float(datum.cell_idx[self.y_cell_key].get_value())
+            groups[key][s] += v
+        counts = defaultdict(int)
+        for stacks in groups.values():
+            counts[max(stacks, key=stacks.get)] += 1
+        return counts
+
     def _get_stack_dim_key(self, x_dim_key):
         varying = self._get_varying_dim_keys({x_dim_key})
         if varying:
@@ -169,5 +190,10 @@ class StackedBarChart(Visual):
         y_limit = self._get_y_limit()
         for sub_ax, sub_datumset in zip(axes, self.display_datumsets):
             self._plot_subfigure(sub_ax, sub_datumset, y_limit)
-        self._add_color_legend(fig, self.stack_color_idx, self.stack_dim_key)
+        self._add_color_legend(
+            fig,
+            self.stack_color_idx,
+            self.stack_dim_key,
+            self._get_category_win_counts(),
+        )
         self._hide_empty_axes(axes, n_datumsets)
