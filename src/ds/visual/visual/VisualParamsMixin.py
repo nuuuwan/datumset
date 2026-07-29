@@ -6,9 +6,6 @@ class VisualParamsMixin:
     def _get_query(self):
         return self.datumset[0].query
 
-    def _get_entity_name(self):
-        return self.datumset[0].entity_class.__name__
-
     def _get_dim_concept(self, dim_key):
         return self.datumset[0].dim_idx.get(dim_key)
 
@@ -49,9 +46,6 @@ class VisualParamsMixin:
             if not self._is_region_dim(dim_key):
                 return dim_key
         return self._get_first_varying_dim_key()
-
-    def _excluded_dim_keys(self):
-        return set()
 
     def _get_dim_labels(self):
         return self.datumset[0].query.dim_labels

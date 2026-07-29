@@ -23,14 +23,6 @@ class VisualFormatMixin:
     def _format_humanized_value(self, value, _pos):
         return Int(value).humanize
 
-    def _format_humanized_scaled(self, scaled_value, suffix):
-        abs_scaled_value = abs(scaled_value)
-        if abs_scaled_value >= 100:
-            display_value = int(scaled_value)
-            return f"{display_value}{suffix}"
-        display_value = int(scaled_value * 10) / 10
-        return f"{display_value:.1f}{suffix}"
-
     def _format_humanized_y_axis(self, ax):
         formatter = FuncFormatter(self._format_humanized_value)
         ax.yaxis.set_major_formatter(formatter)
