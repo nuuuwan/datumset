@@ -1,3 +1,6 @@
+from utils_future import Percent
+
+
 class PieChartPlotMixin:
 
     def _plot_subfigure(
@@ -19,7 +22,7 @@ class PieChartPlotMixin:
         wedges, _, autotexts = sub_ax.pie(
             y_values,
             colors=colors,
-            autopct=self._build_autopct(),
+            autopct=lambda value: Percent(value / 100.0).humanize,
             pctdistance=self.PIE_LABEL_RADIUS_FACTOR,
             radius=radius,
             startangle=90,

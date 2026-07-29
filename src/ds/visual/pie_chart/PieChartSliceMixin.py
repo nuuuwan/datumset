@@ -3,14 +3,6 @@ import math
 
 class PieChartSliceMixin:
 
-    def _build_autopct(self):
-        def _autopct(pct):
-            if pct > 0.5:
-                return f"{pct:.0f}%"
-            return "<0.5%"
-
-        return _autopct
-
     def _get_total_value_text(self, y_values):
         total = sum(y_values)
         return self._format_humanized_value(total, None)
