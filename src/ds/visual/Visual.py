@@ -443,6 +443,7 @@ class Visual(ABC):
                 " x ".join(query.dim_labels),
             ]
         )
+        title = title.replace("Person Count", "Population")
         return title
 
     def _add_title(self, fig):
