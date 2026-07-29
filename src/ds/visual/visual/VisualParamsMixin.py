@@ -23,19 +23,6 @@ class VisualParamsMixin:
     def _get_varying_dim_keys(self) -> list[str]:
         return self.datumset.get_non_singleton_dims()
 
-    def _get_first_varying_dim_key(self):
-        non_single_dim_keys = self.datumset.get_non_singleton_dims()
-        return non_single_dim_keys[0]
-
-    def _get_first_varying_non_region_dim_key(self):
-        non_single_dim_keys = self.datumset.get_non_singleton_dims()
-        non_region_non_single_dim_keys = [
-            dim_key
-            for dim_key in non_single_dim_keys
-            if not self._is_region_dim(dim_key)
-        ]
-        return non_region_non_single_dim_keys[0]
-
     def _get_dim_labels(self):
         return self.datumset[0].query.dim_labels
 
