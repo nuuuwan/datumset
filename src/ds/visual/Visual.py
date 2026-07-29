@@ -402,7 +402,7 @@ class Visual(ABC):
         )
 
     def _shorten_x_label(self, sub_ax, label, slot_px):
-        char_limit = max(1, int(slot_px / self._get_px_per_char(sub_ax)))
+        char_limit = max(2, int(slot_px / self._get_px_per_char(sub_ax)))
         display = self._format_visual_value(label)
         return String(str(display)).shorten(char_limit)
 
@@ -671,8 +671,7 @@ class Visual(ABC):
             bbox = probe.get_window_extent(renderer=renderer)
             if (
                 bbox.width <= max_width_px * self.STACK_LABEL_BBOX_MARGIN
-                and bbox.height
-                <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
+                and bbox.height <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
             ):
                 best_fontsize = fontsize
                 break
