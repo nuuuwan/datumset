@@ -1,13 +1,8 @@
-from abc import abstractmethod
 from collections import defaultdict
 from functools import cached_property
 
 
 class VisualCategoryMixin:
-
-    @abstractmethod
-    def _get_category_dim_key(self):
-        pass
 
     def _compute_small_categories(self):
         dim_key = self._get_category_dim_key()
