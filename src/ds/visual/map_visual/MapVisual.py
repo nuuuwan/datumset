@@ -19,7 +19,7 @@ class MapVisual(
 ):
 
     REGION_EDGE_COLOR = "#888888"
-    REGION_EDGE_LINEWIDTH = 0.3
+    REGION_EDGE_LINEWIDTH = 0.1
     CELL_TOP = "Top"
 
     def __init__(self, datumset):
