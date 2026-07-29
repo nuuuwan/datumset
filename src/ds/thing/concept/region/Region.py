@@ -47,7 +47,7 @@ class Region(CategoryConcept):
         )
         WWW(url).download(File(data_file.path))
         data_list = data_file.read()
-        log.debug(f"Downloaded {len(data_list)} items from{url}")
+        log.debug(f"Downloaded {len(data_list)} items from {url}")
         return data_list
 
     @classmethod

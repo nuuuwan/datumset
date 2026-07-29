@@ -1,3 +1,5 @@
+from functools import cache
+
 from utils_future import String
 
 
@@ -5,6 +7,7 @@ class RegionMatcher:
     # DSD<District:colombo
 
     @classmethod
+    @cache
     def get_child_regions(cls, parent_region, child_region_class):
         parent_ent = parent_region.get_ent()
         child_region_ents = child_region_class.get_ents()
