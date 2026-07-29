@@ -5,21 +5,25 @@ from matplotlib.ticker import FuncFormatter
 
 class MapVisualPlotMixin:
 
-    def _plot_subfigure(self, fig, sub_ax, sub_datumset, vmin, vmax, cmap):
-        gdf = self._get_gdf_with_values(sub_datumset)
+    def _plot_subfigure(self, fig, sub_ax, sub_datumset, ctx):
+        gdf = self._get_colored_gdf(sub_datumset, ctx)
         gdf.plot(
-            column="value",
+            color=list(gdf["color"]),
             ax=sub_ax,
-            legend=False,
-            cmap=cmap,
-            vmin=vmin,
-            vmax=vmax,
             edgecolor=self.REGION_EDGE_COLOR,
             linewidth=self.REGION_EDGE_LINEWIDTH,
         )
-        self._add_region_labels(gdf, sub_ax, fig, vmin, vmax, cmap)
+        self._add_region_labels(gdf, sub_ax, fig)
         sub_ax.set_axis_off()
         self._set_square_subfigure_title(sub_ax, sub_datumset)
+
+    def _add_map_legend(self, fig, ctx):
+        if ctx["mode"] == "category":
+            self._add_color_legend(
+                fig, ctx["color_idx"], self.region_color_dim_key
+            )
+            return
+        self._add_colorbar(fig, ctx["vmin"], ctx["vmax"], ctx["cmap"])
 
     def _add_colorbar(self, fig, vmin, vmax, cmap):
         scalar_mappable = cm.ScalarMappable(
@@ -47,16 +51,8 @@ class MapVisualPlotMixin:
             ax,
             self.display_datumsets,
         )
-        vmin, vmax = self._get_value_range()
-        cmap = self._get_value_cmap()
+        ctx = self._get_color_context()
         for sub_ax, sub_datumset in zip(axes, self.display_datumsets):
-            self._plot_subfigure(
-                fig,
-                sub_ax,
-                sub_datumset,
-                vmin,
-                vmax,
-                cmap,
-            )
-        self._add_colorbar(fig, vmin, vmax, cmap)
+            self._plot_subfigure(fig, sub_ax, sub_datumset, ctx)
+        self._add_map_legend(fig, ctx)
         self._hide_empty_axes(axes, n_datumsets)

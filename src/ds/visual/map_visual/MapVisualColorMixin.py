@@ -5,10 +5,6 @@ import matplotlib.colors as mcolors
 
 class MapVisualColorMixin:
 
-    def _get_region_label_color(self, value, vmin, vmax, cmap):
-        color = cmap((value - vmin) / (vmax - vmin))
-        return self._get_contrast_text_color(color)
-
     def _build_hsl_lightness_cmap(self, base_color):
         base_rgb = mcolors.to_rgb(base_color)
         h, l, s = colorsys.rgb_to_hls(*base_rgb)
@@ -24,3 +20,21 @@ class MapVisualColorMixin:
     def _get_value_cmap(self):
         base_color = self._get_single_fixed_dim_color({self.region_dim_key})
         return self._build_hsl_lightness_cmap(base_color)
+
+    def _get_category_color_idx(self):
+        categories = self._get_unique_dim_values(self.region_color_dim_key)
+        return self._get_dim_color_idx(self.region_color_dim_key, categories)
+
+    def _get_color_context(self):
+        if self.region_color_dim_key is not None:
+            return {
+                "mode": "category",
+                "color_idx": self._get_category_color_idx(),
+            }
+        vmin, vmax = self._get_value_range()
+        return {
+            "mode": "value",
+            "vmin": vmin,
+            "vmax": vmax,
+            "cmap": self._get_value_cmap(),
+        }

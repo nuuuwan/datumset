@@ -1,6 +1,7 @@
 import os
 import tempfile
 import urllib.request
+from collections import defaultdict
 
 import geopandas
 
@@ -43,14 +44,25 @@ class MapVisualGeoMixin:
                 return region_values[normalized_key]
         return None
 
-    def _get_gdf_with_values(self, sub_datumset):
-        region_values = self._get_region_values_for(sub_datumset)
-        gdf = self._load_gdf().rename(columns={"id": "region_id"})
-        gdf["value"] = gdf.apply(
-            lambda row: self._lookup_region_value(row, region_values),
-            axis=1,
-        )
-        return gdf[gdf["value"].notna()].copy()
+    def _get_region_winner_category(self, sub_datumset):
+        totals = defaultdict(lambda: defaultdict(float))
+        for datum in sub_datumset:
+            region = self._normalize_region_key(
+                datum.dim_idx[self.region_dim_key].get_value()
+            )
+            category = datum.dim_idx[self.region_color_dim_key].get_value()
+            value = float(datum.cell_idx[self.y_cell_key].get_value())
+            totals[region][category] += value
+        return {
+            region: max(cats, key=cats.get) for region, cats in totals.items()
+        }
+
+    def _lookup_region_category(self, row, winners):
+        for raw_key in (row.get("region_id"), row.get("name")):
+            normalized_key = self._normalize_region_key(raw_key)
+            if normalized_key in winners:
+                return winners[normalized_key]
+        return None
 
     def _get_value_range(self):
         min_value = None
