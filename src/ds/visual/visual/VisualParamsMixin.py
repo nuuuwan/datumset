@@ -19,11 +19,7 @@ class VisualParamsMixin:
         return self._get_dim_labels()[0]
 
     def _get_y_cell_key(self):
-        cell_labels = self._get_query().cell_labels
-        for cell_label in cell_labels:
-            if cell_label == "Count":
-                return cell_label
-        return cell_labels[0]
+        return "Count"
 
     def _get_varying_dim_keys(self, excluded_dim_keys=None):
         excluded_dim_keys = excluded_dim_keys or set()
