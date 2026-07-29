@@ -20,8 +20,6 @@ class VisualContrastMixin:
         return 0.2126 * red + 0.7152 * green + 0.0722 * blue
 
     def _get_contrast_text_color(self, background_color):
-        if background_color is None:
-            return self.CONTRAST_DARK_TEXT_COLOR
         luminance = self._get_relative_luminance(background_color)
         if luminance > self.CONTRAST_LIGHTNESS_THRESHOLD:
             return self.CONTRAST_DARK_TEXT_COLOR

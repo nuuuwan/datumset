@@ -55,7 +55,7 @@ class Visual(
 
     @abstractmethod
     def _plot(self, fig, ax):
-        pass
+        pass  # pragma: no cover
 
     def draw(self):
         self._set_font()

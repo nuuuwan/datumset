@@ -1,9 +1,12 @@
-from ds.visual.stacked_bar_chart.StackedBarChartColorMixin import \
-    StackedBarChartColorMixin
-from ds.visual.stacked_bar_chart.StackedBarChartDataMixin import \
-    StackedBarChartDataMixin
-from ds.visual.stacked_bar_chart.StackedBarChartPlotMixin import \
-    StackedBarChartPlotMixin
+from ds.visual.stacked_bar_chart.StackedBarChartColorMixin import (
+    StackedBarChartColorMixin,
+)
+from ds.visual.stacked_bar_chart.StackedBarChartDataMixin import (
+    StackedBarChartDataMixin,
+)
+from ds.visual.stacked_bar_chart.StackedBarChartPlotMixin import (
+    StackedBarChartPlotMixin,
+)
 from ds.visual.visual.Visual import Visual
 
 
@@ -28,6 +31,3 @@ class StackedBarChart(
 
     def _get_category_dim_key(self):
         return self.stack_dim_key
-
-    def _excluded_dim_keys(self):
-        return {self.x_dim_key, self.stack_dim_key}

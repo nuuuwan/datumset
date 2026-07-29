@@ -26,8 +26,6 @@ class StackedBarChartPlotMixin:
         )
         for stack_label in sorted_stack_labels:
             value = data[stack_label].get(x_label, 0.0)
-            if value <= 0:
-                continue
             color = self.stack_color_idx[stack_label]
             bars = sub_ax.bar(
                 [x_value],

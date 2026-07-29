@@ -51,8 +51,3 @@ class VisualCategoryMixin:
         dim_values = self._get_category_values(dim_key)
         color_idx = self._get_dim_color_idx(dim_key, dim_values)
         return dim_values, color_idx
-
-    def _init_dim_colors(self, dim_key):
-        dim_values = self._get_unique_dim_values(dim_key)
-        color_idx = self._get_dim_color_idx(dim_key, dim_values)
-        return dim_values, color_idx

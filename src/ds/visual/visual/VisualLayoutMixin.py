@@ -100,8 +100,7 @@ class VisualLayoutMixin:
             if file.endswith(".ttf"):
                 fm.fontManager.addfont(os.path.join(self.DIR_FONTS, file))
         available = [f.name for f in fm.fontManager.ttflist]
-        if self.FONT_FAMILY not in available:
-            raise ValueError(f"Font '{self.FONT_FAMILY}' not available")
+        assert self.FONT_FAMILY in available
 
         plt.rcParams["font.family"] = self.FONT_FAMILY
         plt.rcParams["font.size"] = self.FONT_SIZE

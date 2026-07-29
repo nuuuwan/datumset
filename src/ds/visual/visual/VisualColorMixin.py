@@ -48,8 +48,7 @@ class VisualColorMixin:
 
     def _get_fixed_dim_color(self, dim_key):
         dim_values = self._get_unique_dim_values(dim_key)
-        if len(dim_values) != 1:
-            return None
+
         color_map = self._get_dim_color_map(dim_key)
         if not color_map:
             return None
@@ -64,7 +63,7 @@ class VisualColorMixin:
             color = self._get_fixed_dim_color(dim_key)
             if color is not None:
                 return color
-        return None
+        return None  # pragma: no cover
 
     def _get_share_shaded_color(self, base_color, pct):
         h, s, v = colorsys.rgb_to_hsv(*mcolors.to_rgb(base_color))

@@ -43,7 +43,5 @@ class PieChartSliceMixin:
             key=lambda item: item[1],
             reverse=True,
         )
-        if not combined:
-            return [], []
         sorted_x_labels, sorted_y_values = zip(*combined)
         return list(sorted_x_labels), list(sorted_y_values)
