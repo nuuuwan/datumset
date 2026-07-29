@@ -6,18 +6,18 @@ from ds.thing.concept.Time import Time
 
 class MapVisualPercentMixin:
 
-    def _total_dim_spec(self, dim_spec, dim_label):
+    def _total_dim_spec(self, dim_label):
         if dim_label == self.region_dim_key:
-            return dim_spec
+            return dim_label
         if isinstance(self._get_dim_concept(dim_label), Time):
-            return dim_spec
+            value = self.datumset[0].dim_idx[dim_label].get_value()
+            return f"{dim_label}={value}"
         return dim_label
 
     def _get_total_query_str(self):
         query = self.datumset[0].query
         specs = [
-            self._total_dim_spec(dim_spec, dim_label)
-            for dim_spec, dim_label in zip(query.dim_specs, query.dim_labels)
+            self._total_dim_spec(dim_label) for dim_label in query.dim_labels
         ]
         return "/".join([query.entity_part, "*".join(specs), query.cell_part])
 

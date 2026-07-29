@@ -1,6 +1,5 @@
 import matplotlib.cm as cm
 import matplotlib.colors as mcolors
-from utils_future import Percent
 
 
 class MapVisualPlotMixin:
@@ -25,6 +24,13 @@ class MapVisualPlotMixin:
             return
         self._add_colorbar(fig, ctx)
 
+    def _humanize_pct(self, fraction):
+        pct = fraction * 100.0
+        for threshold, decimals in ((10, 0), (1, 1), (0.1, 2)):
+            if pct >= threshold:
+                return f"{pct:.{decimals}f}%"
+        return f"{pct:.3f}%"
+
     def _set_rank_ticks(self, colorbar, values, max_rank):
         n_ticks = min(5, len(values))
         if n_ticks < 2:
@@ -34,7 +40,7 @@ class MapVisualPlotMixin:
         ]
         colorbar.set_ticks(positions)
         colorbar.set_ticklabels(
-            [Percent(values[p]).humanize for p in positions]
+            [self._humanize_pct(values[p]) for p in positions]
         )
 
     def _add_colorbar(self, fig, ctx):
@@ -53,7 +59,7 @@ class MapVisualPlotMixin:
             pad=0.04,
         )
         self._set_rank_ticks(colorbar, values, max_rank)
-        colorbar.set_label("Percent")
+        colorbar.set_label("%")
 
     def _plot(self, fig, ax):
         axes, n_datumsets = self._get_display_axes(

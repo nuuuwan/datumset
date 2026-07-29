@@ -34,6 +34,8 @@ class TestCase(unittest.TestCase):
             "Person/Time=2024*Province*Religion=buddhist/Count/MapVisual",
             "Person/Time=2024*PD<District=colombo*Religion=islam/Count"
             + "/MapVisual",
+            "Vote/ElectionType=presidential*Time=2024*Province*Party/Count"
+            + "/MapVisual",
         ]
 
     def test_basic(self):
