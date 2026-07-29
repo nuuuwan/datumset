@@ -1,0 +1,33 @@
+import unittest
+
+from ds import VisualLankaData
+
+
+class TestCase(unittest.TestCase):
+
+    @staticmethod
+    def _get_scenarios():
+        return [
+            "Person/Time*Province=Western*Religion=hindu/Count/BarChart",
+            "Person/Time=2024*Province*Religion/Count/PieChart",
+            "Person/Time=2024*Province*Religion/Count/StackedBarChart",
+            "Person/Time=2024*District*Religion/Count/StackedBarChart",
+            "Person/Time=2024*Province*Religion=buddhist/Count/MapVisual",
+            "Person/Time=2024*District<Province=western*Religion/Count"
+            + "/StackedBarChart",
+            "Person/Time=2024*PD<District=colombo*Religion=islam/Count"
+            + "/MapVisual",
+            "Person/Time=2024*DSD<District=gampaha*Religion/Count"
+            + "/StackedBarChart",
+            "Vote/ElectionType=Presidential*Time=2024*Province*Party/Count"
+            + "/StackedBarChart",
+            "Vote/ElectionType=Presidential*Time=2024*Province*Party/Count"
+            + "/MarimekkoChart",
+            "Vote/ElectionType=Presidential*Time=2019*Province*Party/Count"
+            + "/MarimekkoChart",
+        ]
+
+    def test_basic(self):
+        for visual_query_str in self._get_scenarios():
+            image_file = VisualLankaData[visual_query_str]
+            self.assertTrue(image_file.exists())
