@@ -1,4 +1,5 @@
 from ds.visual.BarChart import BarChart
+from ds.visual.dorling.Dorling import Dorling
 from ds.visual.hex_map.HexMap import HexMap
 from ds.visual.hex_map.UnitHexMap import UnitHexMap
 from ds.visual.map_visual.Cartogram import Cartogram
@@ -18,6 +19,7 @@ class VisualFactory:
             BarChart,
             MapVisual,
             Cartogram,
+            Dorling,
             HexMap,
             UnitHexMap,
             SquareMap,

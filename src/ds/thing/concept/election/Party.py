@@ -61,6 +61,7 @@ class Party(Concept):
             "EPDP": "#ff6200",
             "TMVP": "#ff6200",
             "EROS": "#ff6200",
+            "INDI": "#ff6200",
             # Up-country Tamil (orange)
             "CWC": "#ff4400",
             "UPF": "#ff4400",
@@ -75,6 +76,5 @@ class Party(Concept):
             "TMK": "#ffdd00",
             "TMTK": "#ffdd00",
             "IND9": "#ffdd00",
-            "ELJP": "#ffffff",
-            "INDI": "#ffffff",
+            "ELJP": "#ffdd00",
         }
