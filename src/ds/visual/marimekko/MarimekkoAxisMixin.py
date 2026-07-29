@@ -14,7 +14,9 @@ class MarimekkoAxisMixin:
             FuncFormatter(lambda value, _: Percent(value).humanize)
         )
 
-    def _set_marimekko_xaxis(self, sub_ax, geometries, x_labels, sub_datumset):
+    def _set_marimekko_xaxis(
+        self, sub_ax, geometries, x_labels, sub_datumset
+    ):
         centers = self._get_bar_centers(geometries)
         axis_width_px = self._get_axis_width_px(sub_ax)
         display_labels = [

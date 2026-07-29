@@ -2,9 +2,7 @@ from ds.visual.map_visual.MapVisualColorMixin import MapVisualColorMixin
 from ds.visual.map_visual.MapVisualGdfMixin import MapVisualGdfMixin
 from ds.visual.map_visual.MapVisualGeoMixin import MapVisualGeoMixin
 from ds.visual.map_visual.MapVisualLabelMixin import MapVisualLabelMixin
-from ds.visual.map_visual.MapVisualPercentMixin import (
-    MapVisualPercentMixin,
-)
+from ds.visual.map_visual.MapVisualPercentMixin import MapVisualPercentMixin
 from ds.visual.map_visual.MapVisualPlotMixin import MapVisualPlotMixin
 from ds.visual.visual.Visual import Visual
 
