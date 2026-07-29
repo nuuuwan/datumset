@@ -19,7 +19,6 @@ class MarimekkoPlotMixin:
             width=width,
             color=color,
         )
-        self._register_hover(sub_ax, bars[0], stack_label, value)
         self._segment_labels.append((bars[0], value))
         return height
 
@@ -60,7 +59,6 @@ class MarimekkoPlotMixin:
         x_labels, stack_labels, data = self._get_data(sub_datumset)
         totals = self._get_totals(x_labels, data)
         geometries = self._get_bar_geometry(totals)
-        self._add_hover_annotation(sub_ax)
         self._segment_labels = []
         for geometry, x_label, total in zip(geometries, x_labels, totals):
             if total <= 0 or geometry[1] <= 0:
