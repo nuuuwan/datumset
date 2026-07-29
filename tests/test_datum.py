@@ -1,46 +1,27 @@
+import json
+import os
 import unittest
 
 from ds.datum.Datum import Datum
 from ds.query.Query import Query
-from ds.thing.ThingFactory import ThingFactory
+
+DIR_DATA = os.path.join(os.path.dirname(__file__), "data")
 
 
 class TestCase(unittest.TestCase):
 
+    def _get_data(self):
+        path = os.path.join(DIR_DATA, "test_datum.json")
+        with open(path) as fin:
+            return json.load(fin)
+
     def _build_datum(self):
-        return Datum(
-            entity_class=ThingFactory["Person"],
-            dim_idx=dict(
-                Time=ThingFactory["Time"]("2012"),
-                District=ThingFactory["District"]["colombo"],
-                Religion=ThingFactory["Religion"]["Buddhist"],
-            ),
-            cell_idx=dict(
-                Count1=ThingFactory["Int"](123),
-                Count2=ThingFactory["Int"](112),
-            ),
-        )
+        return Datum.from_data(self._get_data())
 
     def test_serialize(self):
         datum = self._build_datum()
-
         data = datum.to_data()
-        self.assertEqual(
-            data,
-            {
-                "Person": {
-                    "Time:2012": {
-                        "District:colombo": {
-                            "Religion:buddhist": {
-                                "Count1": "Int:123",
-                                "Count2": "Int:112",
-                            }
-                        }
-                    }
-                }
-            },
-        )
-
+        self.assertEqual(data, self._get_data())
         datum2 = Datum.from_data(data)
         self.assertEqual(datum, datum2)
 

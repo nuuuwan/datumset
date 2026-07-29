@@ -1,22 +1,12 @@
+from ds.adapters.standard_table_adapter.StandardTableAdapterRowMixin import \
+    StandardTableAdapterRowMixin
 from ds.datum.Datum import Datum
-from ds.thing.concept.region.Region import Region
-from ds.thing.ThingFactory import ThingFactory
 
 
-class StandardTableAdapterDatumMixin:
+class StandardTableAdapterDatumMixin(StandardTableAdapterRowMixin):
 
     @classmethod
-    def _get_col_dim_instance(cls, col_dim_cls, k):
-        if col_dim_cls:
-            return (
-                ThingFactory.from_kvpair(k)
-                if ":" in k
-                else col_dim_cls.from_value(k)
-            )
-        return None
-
-    @classmethod
-    def __get_datum_from_kv(
+    def _get_datum_from_kv(
         cls,
         k,
         v,
@@ -50,27 +40,6 @@ class StandardTableAdapterDatumMixin:
         )
 
     @classmethod
-    def _safe_from_region_id(cls, row_dim_cls, row_value):
-        try:
-            return row_dim_cls.from_region_id(row_value)
-        except ValueError:
-            return None
-
-    @classmethod
-    def _safe_from_value(cls, row_dim_cls, row_value):
-        try:
-            return row_dim_cls.from_value(row_value)
-        except ValueError:
-            return None
-
-    @classmethod
-    def _get_row_dim_instance(cls, row_dim_cls, row_dim_key, d):
-        row_value = d[row_dim_key]
-        if row_dim_key == "region_id" and issubclass(row_dim_cls, Region):
-            return cls._safe_from_region_id(row_dim_cls, row_value)
-        return cls._safe_from_value(row_dim_cls, row_value)
-
-    @classmethod
     def _get_datum_list_from_d(
         cls,
         d,
@@ -82,7 +51,6 @@ class StandardTableAdapterDatumMixin:
         cell_label,
         cell_cls,
     ):
-
         row_dim_instance = cls._get_row_dim_instance(
             row_dim_cls, row_dim_key, d
         )
@@ -91,7 +59,7 @@ class StandardTableAdapterDatumMixin:
 
         datum_list = []
         for k, v in d["values"].items():
-            datum = cls.__get_datum_from_kv(
+            datum = cls._get_datum_from_kv(
                 k,
                 v,
                 entity_cls,

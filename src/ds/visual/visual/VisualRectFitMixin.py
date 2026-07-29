@@ -32,7 +32,9 @@ class VisualRectFitMixin:
         max_height_px,
     ):
         margin = self.STACK_LABEL_BBOX_MARGIN
-        w_ratio = max_width_px * margin / bbox.width if bbox.width > 0 else 1.0
+        w_ratio = (
+            max_width_px * margin / bbox.width if bbox.width > 0 else 1.0
+        )
         h_ratio = (
             max_height_px * margin / bbox.height if bbox.height > 0 else 1.0
         )

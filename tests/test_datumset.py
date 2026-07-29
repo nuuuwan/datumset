@@ -1,107 +1,25 @@
+import json
+import os
 import unittest
 
 from ds import Datumset
 
-TEST_DATUMSET = Datumset.from_data(
-    {
-        "Person": {
-            "Time:2012": {
-                "District:colombo": {
-                    "Religion:buddhist": {
-                        "Count": "Int:123",
-                    },
-                    "Religion:hindu": {
-                        "Count": "Int:456",
-                    },
-                },
-                "District:gampaha": {
-                    "Religion:buddhist": {
-                        "Count": "Int:1231",
-                    },
-                    "Religion:hindu": {
-                        "Count": "Int:4561",
-                    },
-                },
-            },
-            "Time:2024": {
-                "District:colombo": {
-                    "Religion:buddhist": {
-                        "Count": "Int:1230",
-                    },
-                    "Religion:hindu": {
-                        "Count": "Int:4560",
-                    },
-                },
-                "District:gampaha": {
-                    "Religion:buddhist": {
-                        "Count": "Int:12310",
-                    },
-                    "Religion:hindu": {
-                        "Count": "Int:45610",
-                    },
-                },
-            },
-        }
-    }
-)
+DIR_DATA = os.path.join(os.path.dirname(__file__), "data")
 
 
 class TestCase(unittest.TestCase):
-    # flake8: noqa: E501
+
+    def _get_data(self):
+        path = os.path.join(DIR_DATA, "test_datumset.json")
+        with open(path) as fin:
+            return json.load(fin)
+
     def test_split(self):
-        datumset = TEST_DATUMSET
+        data = self._get_data()
+        datumset = Datumset.from_data(data["input"])
 
         split_datumsets = datumset.split("Time")
 
         self.assertEqual(len(split_datumsets), 2)
-
-        self.assertEqual(
-            split_datumsets[0].to_data(),
-            {
-                "Person": {
-                    "Time:2012": {
-                        "District:colombo": {
-                            "Religion:buddhist": {
-                                "Count": "Int:123",
-                            },
-                            "Religion:hindu": {
-                                "Count": "Int:456",
-                            },
-                        },
-                        "District:gampaha": {
-                            "Religion:buddhist": {
-                                "Count": "Int:1231",
-                            },
-                            "Religion:hindu": {
-                                "Count": "Int:4561",
-                            },
-                        },
-                    },
-                }
-            },
-        )
-        self.assertEqual(
-            split_datumsets[1].to_data(),
-            {
-                "Person": {
-                    "Time:2024": {
-                        "District:colombo": {
-                            "Religion:buddhist": {
-                                "Count": "Int:1230",
-                            },
-                            "Religion:hindu": {
-                                "Count": "Int:4560",
-                            },
-                        },
-                        "District:gampaha": {
-                            "Religion:buddhist": {
-                                "Count": "Int:12310",
-                            },
-                            "Religion:hindu": {
-                                "Count": "Int:45610",
-                            },
-                        },
-                    },
-                }
-            },
-        )
+        self.assertEqual(split_datumsets[0].to_data(), data["split"][0])
+        self.assertEqual(split_datumsets[1].to_data(), data["split"][1])

@@ -30,20 +30,20 @@ class DatumsetSplitMixin:
                 dim_to_values[dim_key].add(dim_value)
         return dim_to_values
 
-    def get_singleton_dims(self) -> set[str]:
+    def get_singleton_dims(self) -> list[str]:
         dim_to_values = self.get_dim_to_values()
-        singleton_dims = set()
+        singleton_dims = []
         for dim_key, values in dim_to_values.items():
             if len(values) == 1:
-                singleton_dims.add(dim_key)
+                singleton_dims.append(dim_key)
         return singleton_dims
 
-    def get_non_singleton_dims(self) -> set[str]:
+    def get_non_singleton_dims(self) -> list[str]:
         dim_to_values = self.get_dim_to_values()
-        non_singleton_dims = set()
+        non_singleton_dims = []
         for dim_key, values in dim_to_values.items():
             if len(values) > 1:
-                non_singleton_dims.add(dim_key)
+                non_singleton_dims.append(dim_key)
         return non_singleton_dims
 
 

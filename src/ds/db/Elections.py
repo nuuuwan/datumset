@@ -2,7 +2,7 @@ from functools import cache
 
 from utils_future import JSONFile, Log
 
-from ds.adapters.TSVAdapter import TSVAdapter
+from ds.adapters.tsv_adapter.TSVAdapter import TSVAdapter
 from ds.datumset.Datumset import Datumset
 from ds.db.AbstractGIGDB import AbstractGIGDB
 from ds.query.Query import Query
