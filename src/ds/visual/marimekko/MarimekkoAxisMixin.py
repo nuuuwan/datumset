@@ -14,9 +14,7 @@ class MarimekkoAxisMixin:
         sub_ax.set_ylim(0, self.BAR_HEIGHT)
         sub_ax.yaxis.set_major_formatter(FuncFormatter(self._format_share))
 
-    def _set_marimekko_xaxis(
-        self, sub_ax, geometries, x_labels, sub_datumset
-    ):
+    def _set_marimekko_xaxis(self, sub_ax, geometries, x_labels, sub_datumset):
         centers = self._get_bar_centers(geometries)
         axis_width_px = self._get_axis_width_px(sub_ax)
         display_labels = [

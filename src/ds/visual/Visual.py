@@ -425,9 +425,7 @@ class Visual(ABC):
     def _get_underline_y(self, sub_ax):
         renderer = sub_ax.figure.canvas.get_renderer()
         labels = sub_ax.get_xticklabels()
-        y0_px = min(
-            label.get_window_extent(renderer).y0 for label in labels
-        )
+        y0_px = min(label.get_window_extent(renderer).y0 for label in labels)
         y_frac = sub_ax.transAxes.inverted().transform((0, y0_px))[1]
         return y_frac - self.X_LABEL_UNDERLINE_GAP
 
@@ -727,8 +725,7 @@ class Visual(ABC):
             bbox = probe.get_window_extent(renderer=renderer)
             if (
                 bbox.width <= max_width_px * self.STACK_LABEL_BBOX_MARGIN
-                and bbox.height
-                <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
+                and bbox.height <= max_height_px * self.STACK_LABEL_BBOX_MARGIN
             ):
                 best_fontsize = fontsize
                 break
