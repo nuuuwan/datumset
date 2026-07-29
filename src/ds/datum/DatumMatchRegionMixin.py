@@ -34,6 +34,16 @@ class DatumMatchRegionMixin:
 
     @staticmethod
     @cache
+    def _parse_dim_value(dim_value: str):
+        if Query.OPR_OR in dim_value:
+            return tuple(
+                value.lower()
+                for value in dim_value.split(Query.OPR_OR)
+            )
+        return dim_value
+
+    @staticmethod
+    @cache
     def _parse_dim_part(
         concept_part: str,
     ) -> tuple[list[str], dict[str, str | tuple[str, ...]]]:
@@ -56,7 +66,9 @@ class DatumMatchRegionMixin:
             if Query.OPR_EQ in dim_spec:
                 dim_label, dim_value = dim_spec.split(Query.OPR_EQ, 1)
                 labels_required.append(dim_label)
-                values_required[dim_label] = dim_value
+                values_required[dim_label] = (
+                    DatumMatchRegionMixin._parse_dim_value(dim_value)
+                )
                 continue
             labels_required.append(dim_spec)
         return labels_required, values_required

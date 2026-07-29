@@ -11,6 +11,7 @@ class Query:
     OPR_MULT = "*"
     OPR_EQ = "="
     OPR_LT = "<"
+    OPR_OR = ","
 
     def _is_child_region_spec(self, dim_spec):
         return self.OPR_LT in dim_spec and self.OPR_EQ in dim_spec
