@@ -4,6 +4,7 @@ from ds.visual.hex_map.HexMapCountMixin import HexMapCountMixin
 from ds.visual.hex_map.HexMapDrawMixin import HexMapDrawMixin
 from ds.visual.hex_map.HexMapGridMixin import HexMapGridMixin
 from ds.visual.hex_map.HexMapLabelMixin import HexMapLabelMixin
+from ds.visual.hex_map.HexMapScaleMixin import HexMapScaleMixin
 from ds.visual.map_visual.MapVisual import MapVisual
 
 
@@ -14,6 +15,7 @@ class HexMap(
     HexMapDrawMixin,
     HexMapBoundaryMixin,
     HexMapLabelMixin,
+    HexMapScaleMixin,
     MapVisual,
 ):
     pass

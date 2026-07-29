@@ -59,5 +59,6 @@ class HexMapDrawMixin:
         self._draw_hexes(sub_ax, radius, hexes, region_color)
         self._draw_boundaries(sub_ax, radius, hexes)
         self._add_hex_labels(fig, sub_ax, radius, hexes, gdf)
+        self._record_hex_values(gdf, hexes)
         sub_ax.set_axis_off()
         self._set_square_subfigure_title(sub_ax, sub_datumset)
