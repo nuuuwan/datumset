@@ -64,8 +64,4 @@ class MapVisualGeoMixin:
                 max_value = (
                     value if max_value is None else max(max_value, value)
                 )
-        if min_value is None or max_value is None:
-            return 0.0, 1.0
-        if min_value == max_value:
-            return min_value, min_value + 1.0
         return min_value, max_value
