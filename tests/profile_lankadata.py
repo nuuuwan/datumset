@@ -4,7 +4,12 @@ import sys
 
 from ds import VisualLankaData
 
-DEFAULT_VISUAL_QUERY_STR = "Vote/ElectionType=Presidential*Time=2015*PD<ED=colombo*Party/Count/MarimekkoChart"
+DEFAULT_VISUAL_QUERY_STR = (
+    "Vote"
+    + "/ElectionType=Presidential*Time=2015*PD<ED=colombo*Party"
+    + "/Count"
+    + "/MarimekkoChart"
+)
 
 if __name__ == "__main__":
     profiler = cProfile.Profile()
