@@ -47,7 +47,7 @@ class Visual(ABC):
     SMALL_CATEGORY_THRESHOLD = 0.01
     OTHER_CATEGORY_COLOR = "#999999"
     OTHER_CATEGORY_LABEL = "Other (with <1%)"
-    X_TICK_FONTSIZE = 6
+    X_TICK_FONTSIZE = 9
     X_TICK_CHAR_WIDTH_RATIO = 0.62
 
     def __init__(self, datumset):
@@ -424,7 +424,7 @@ class Visual(ABC):
             ha="center",
             va="top",
         )
-        sub_ax.tick_params(axis="x", pad=1)
+        sub_ax.tick_params(axis="x", pad=1, length=0)
 
     def _style_value_axis_subfigure(
         self,
