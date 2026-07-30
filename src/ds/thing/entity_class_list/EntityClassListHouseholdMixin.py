@@ -13,13 +13,11 @@ from ds.thing.concept.household.OneRoomOrMore import OneRoomOrMore
 from ds.thing.concept.household.OwnershipStatus import OwnershipStatus
 from ds.thing.concept.household.RoofType import RoofType
 from ds.thing.concept.household.SolidWasteDisposal import SolidWasteDisposal
-from ds.thing.concept.household.SourceOfDrinkingWater import \
-    SourceOfDrinkingWater
+from ds.thing.concept.household.SourceOfDrinkingWater import SourceOfDrinkingWater
 from ds.thing.concept.household.ToiletFacilities import ToiletFacilities
 from ds.thing.concept.household.TypeOfUnit import TypeOfUnit
 from ds.thing.concept.household.WallType import WallType
-from ds.thing.concept.household.WaterSupplyAvailability import \
-    WaterSupplyAvailability
+from ds.thing.concept.household.WaterSupplyAvailability import WaterSupplyAvailability
 
 
 class EntityClassListHouseholdMixin:
