@@ -31,47 +31,47 @@ class TestCase(unittest.TestCase):
         self.assertTrue(datum.is_match_entity("Person"))
         self.assertFalse(datum.is_match_entity("House"))
 
-        self.assertTrue(datum.is_match_dim_idx("Time_District_Religion"))
-        self.assertFalse(datum.is_match_dim_idx("Time_District"))
+        self.assertTrue(datum.is_match_dim_idx("Time+District+Religion"))
+        self.assertFalse(datum.is_match_dim_idx("Time+District"))
         self.assertTrue(
-            datum.is_match_dim_idx("Time=2012_District_Religion=buddhist")
+            datum.is_match_dim_idx("Time=2012+District+Religion=buddhist")
         )
         self.assertFalse(
-            datum.is_match_dim_idx("Time=2024_District_Religion=buddhist")
+            datum.is_match_dim_idx("Time=2024+District+Religion=buddhist")
         )
 
-        self.assertTrue(datum.is_match_cell_idx("Count1_Count2"))
+        self.assertTrue(datum.is_match_cell_idx("Count1+Count2"))
         self.assertFalse(datum.is_match_cell_idx("Count1"))
 
         self.assertTrue(
             datum.is_match(
-                Query("Person/Time_District_Religion/Count1_Count2")
+                Query("Person/Time+District+Religion/Count1+Count2")
             )
         )
         self.assertFalse(
-            datum.is_match(Query("Person/Time_District_Religion/Count1"))
+            datum.is_match(Query("Person/Time+District+Religion/Count1"))
         )
 
     def test_match_dim_values(self):
         datum = self._build_datum()
 
         self.assertTrue(
-            datum.is_match_dim_idx("Time=2012_District_Religion=buddhist")
+            datum.is_match_dim_idx("Time=2012+District+Religion=buddhist")
         )
         self.assertFalse(
-            datum.is_match_dim_idx("Time=2024_District_Religion=buddhist")
+            datum.is_match_dim_idx("Time=2024+District+Religion=buddhist")
         )
         self.assertTrue(
             datum.is_match(
                 Query(
-                    "Person/Time=2012_District_Religion=buddhist/Count1_Count2"
+                    "Person/Time=2012+District+Religion=buddhist/Count1+Count2"
                 )
             )
         )
         self.assertFalse(
             datum.is_match(
                 Query(
-                    "Person/Time=2024_District_Religion=buddhist/Count1_Count2"
+                    "Person/Time=2024+District+Religion=buddhist/Count1+Count2"
                 )
             )
         )
@@ -81,11 +81,11 @@ class TestCase(unittest.TestCase):
 
         self.assertTrue(
             datum.is_match_dim_idx(
-                "Time=2012_District<Province=western_Religion=buddhist"
+                "Time=2012+District<Province=western+Religion=buddhist"
             )
         )
         self.assertFalse(
             datum.is_match_dim_idx(
-                "Time=2012_District<Province=southern_Religion=buddhist"
+                "Time=2012+District<Province=southern+Religion=buddhist"
             )
         )

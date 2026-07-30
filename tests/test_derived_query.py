@@ -17,8 +17,8 @@ class TestCase(unittest.TestCase):
         return expected
 
     def test_top(self):
-        top_datumset = LankaData["Person/Time_Province_Religion/Top"]
-        base_datumset = LankaData["Person/Time_Province_Religion/Count"]
+        top_datumset = LankaData["Person/Time+Province+Religion/Top"]
+        base_datumset = LankaData["Person/Time+Province+Religion/Count"]
 
         group_dims = ["Time", "Province"]
         expected = self._get_expected_top(
