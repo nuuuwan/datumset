@@ -7,9 +7,7 @@ from ds.db.AbstractDB import AbstractDB
 from ds.db.Census2012 import Census2012
 from ds.db.Census2024 import Census2024
 from ds.db.Elections import Elections
-from ds.lanka_data.LankaDataDerivedQueryMixin import (
-    LankaDataDerivedQueryMixin,
-)
+from ds.lanka_data.LankaDataDerivedQueryMixin import LankaDataDerivedQueryMixin
 
 log = Log("LankaData")
 

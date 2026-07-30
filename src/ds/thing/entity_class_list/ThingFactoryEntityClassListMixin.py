@@ -1,13 +1,23 @@
-from ds.thing.entity_class_list.EntityClassListAtomMixin import EntityClassListAtomMixin
-from ds.thing.entity_class_list.EntityClassListCensusMixin import EntityClassListCensusMixin
-from ds.thing.entity_class_list.EntityClassListConceptMixin import EntityClassListConceptMixin
-from ds.thing.entity_class_list.EntityClassListElectionMixin import EntityClassListElectionMixin
-from ds.thing.entity_class_list.EntityClassListEntityMixin import EntityClassListEntityMixin
-from ds.thing.entity_class_list.EntityClassListGovernmentMixin import EntityClassListGovernmentMixin
-from ds.thing.entity_class_list.EntityClassListHouseholdMixin import EntityClassListHouseholdMixin
-from ds.thing.entity_class_list.EntityClassListPersonMixin import EntityClassListPersonMixin
-from ds.thing.entity_class_list.EntityClassListRegionMixin import EntityClassListRegionMixin
-from ds.thing.entity_class_list.EntityClassListTimeMixin import EntityClassListTimeMixin
+from ds.thing.entity_class_list.EntityClassListAtomMixin import \
+    EntityClassListAtomMixin
+from ds.thing.entity_class_list.EntityClassListCensusMixin import \
+    EntityClassListCensusMixin
+from ds.thing.entity_class_list.EntityClassListConceptMixin import \
+    EntityClassListConceptMixin
+from ds.thing.entity_class_list.EntityClassListElectionMixin import \
+    EntityClassListElectionMixin
+from ds.thing.entity_class_list.EntityClassListEntityMixin import \
+    EntityClassListEntityMixin
+from ds.thing.entity_class_list.EntityClassListGovernmentMixin import \
+    EntityClassListGovernmentMixin
+from ds.thing.entity_class_list.EntityClassListHouseholdMixin import \
+    EntityClassListHouseholdMixin
+from ds.thing.entity_class_list.EntityClassListPersonMixin import \
+    EntityClassListPersonMixin
+from ds.thing.entity_class_list.EntityClassListRegionMixin import \
+    EntityClassListRegionMixin
+from ds.thing.entity_class_list.EntityClassListTimeMixin import \
+    EntityClassListTimeMixin
 
 
 class ThingFactoryEntityClassListMixin:

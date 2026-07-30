@@ -1,4 +1,5 @@
-from ds.thing.concept.government.AdministrativeEntity import AdministrativeEntity
+from ds.thing.concept.government.AdministrativeEntity import \
+    AdministrativeEntity
 from ds.thing.concept.government.Sector import Sector
 
 

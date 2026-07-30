@@ -1,12 +1,9 @@
-from ds.visual.stacked_bar_chart.StackedBarChartColorMixin import (
-    StackedBarChartColorMixin,
-)
-from ds.visual.stacked_bar_chart.StackedBarChartDataMixin import (
-    StackedBarChartDataMixin,
-)
-from ds.visual.stacked_bar_chart.StackedBarChartPlotMixin import (
-    StackedBarChartPlotMixin,
-)
+from ds.visual.stacked_bar_chart.StackedBarChartColorMixin import \
+    StackedBarChartColorMixin
+from ds.visual.stacked_bar_chart.StackedBarChartDataMixin import \
+    StackedBarChartDataMixin
+from ds.visual.stacked_bar_chart.StackedBarChartPlotMixin import \
+    StackedBarChartPlotMixin
 from ds.visual.visual.AxisFigsizeMixin import AxisFigsizeMixin
 from ds.visual.visual.Visual import Visual
 
