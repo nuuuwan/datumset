@@ -33,5 +33,6 @@
   "Vote/ElectionType=presidential*Time=2024*Province*Party/Top/HexMap",
   "Person/Time*AgeGroup*EducationActivity/Count",
   "Person/Time*EmploymentStatus*NonCommunicableDisease/Count/MarimekkoChart",
-  "Person/Time*Ethnicity=veddahs*NonCommunicableDisease/Count/BarChart"
+  "Person/Time*Ethnicity=veddahs*NonCommunicableDisease/Count/BarChart",
+  "Person/Time*HighestEducationLevel*DisabilityTypes/Count"
 ]
