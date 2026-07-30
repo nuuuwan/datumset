@@ -96,7 +96,7 @@ class SourceOfDrinkingWater(CategoryConcept, SourceOfDrinkingWaterMixin):
 
     @classmethod
     def map_alias(cls):
-        return SourceOfDrinkingWaterMixin.map_alias(cls)
+        return SourceOfDrinkingWaterMixin.map_alias()
 
     @classmethod
     def get_color_map(cls):
