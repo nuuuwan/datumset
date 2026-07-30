@@ -24,5 +24,8 @@
   "Vote/ElectionType=presidential*Time=2024*Province*Party/Count/HexMap",
   "Vote/ElectionType=presidential*Time=2024*Province*Party/Count/MarimekkoChart",
   "Vote/ElectionType=presidential*Time=2024*Province*Party/Count/StackedBarChart",
-  "Vote/ElectionType=presidential*Time=2024*Province*Party/Top/HexMap"
+  "Vote/ElectionType=presidential*Time=2024*Province*Party/Top/HexMap",
+  "House/Time=2024*DSD<District=galle*HouseholdStructure/Count/StackedBarChart",
+  "House/Time=2024*DSD<District=batticaloa*Lighting=kerosene/Count",
+  "House/Time*Province*RoofType/Top/UnitHexMap"
 ]
