@@ -7,4 +7,6 @@ if __name__ == "__main__":
         print("Usage: python -m ds <visual_query_str>")
         sys.exit(1)
     visual_query_str = sys.argv[1]
-    VisualLankaData[visual_query_str].open("code")
+    result = VisualLankaData[visual_query_str]
+    if result:
+        result.open("code")
