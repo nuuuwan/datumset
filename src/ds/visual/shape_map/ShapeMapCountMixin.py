@@ -35,8 +35,9 @@ class ShapeMapCountMixin:
                 return value
         return min(weights) * 2 * self.SHAPE_ERROR
 
-    def get_counts(self, region_to_weight):
-        value_per_shape = self._value_per_shape(region_to_weight)
+    def get_counts(self, region_to_weight, value_per_shape=None):
+        if value_per_shape is None:
+            value_per_shape = self._value_per_shape(region_to_weight)
         if value_per_shape is None:
             return {region_id: 1 for region_id in region_to_weight}
         return {

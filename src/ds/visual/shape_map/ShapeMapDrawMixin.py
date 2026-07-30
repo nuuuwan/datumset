@@ -12,10 +12,10 @@ class ShapeMapDrawMixin:
             for _, row in gdf.iterrows()
         }
 
-    def _get_shape_layout(self, gdf):
+    def _get_shape_layout(self, gdf, sub_datumset):
         centroids = self._get_region_centroids(gdf)
-        weights = self._get_region_id_to_weight(gdf)
-        counts = self.get_counts(weights)
+        weights = self._get_region_id_to_weight(gdf, sub_datumset)
+        counts = self.get_counts(weights, self._shared_value_per_shape)
         centers, radius = self.build_grid(
             tuple(gdf.total_bounds), sum(counts.values())
         )
@@ -39,10 +39,10 @@ class ShapeMapDrawMixin:
     def _plot_subfigure(self, fig, sub_ax, sub_datumset, ctx):
         gdf = self._get_colored_gdf(sub_datumset, ctx)
         region_color = dict(zip(gdf["region_id"], gdf["color"]))
-        radius, shapes = self._get_shape_layout(gdf)
+        radius, shapes = self._get_shape_layout(gdf, sub_datumset)
         self._draw_shapes(sub_ax, radius, shapes, region_color)
         self._draw_boundaries(sub_ax, radius, shapes)
         self._add_shape_labels(fig, sub_ax, radius, shapes, gdf)
-        self._record_shape_values(gdf, shapes)
+        self._record_shape_values(gdf, shapes, sub_datumset)
         sub_ax.set_axis_off()
         self._set_square_subfigure_title(sub_ax, sub_datumset)

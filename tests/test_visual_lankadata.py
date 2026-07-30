@@ -24,18 +24,25 @@ class TestCase(unittest.TestCase):
             + "/StackedBarChart",
             "Vote/ElectionType=presidential*Time=2024*Province*Party/Count"
             + "/StackedBarChart",
+            "District/Time*District=colombo*AdministrativeEntity/Count"
+            + "/StackedBarChart",
             # MarimekkoChart
             "Vote/ElectionType=presidential*Time=2024*Province*Party/Count"
             + "/MarimekkoChart",
-            "Vote/ElectionType=presidential*Time=2019*Province*Party/Count"
-            + "/MarimekkoChart",
+            "Person/Time*District*CensusOfficer/Count/MarimekkoChart",
             # MapVisual
             "Person/Time=2024*Province*Religion/Count/MapVisual",
-            "Person/Time=2024*Province*Religion=buddhist/Count/MapVisual",
+            # Cartogram
             "Person/Time=2024*PD<District=colombo*Religion=islam/Count"
-            + "/MapVisual",
+            + "/Cartogram",
+            # Dorling
+            "Person/Time=2024*Province*Religion=buddhist/Count/Dorling",
+            # HexMap
             "Vote/ElectionType=presidential*Time=2024*Province*Party/Count"
-            + "/MapVisual",
+            + "/HexMap",
+            # UnitHexMap
+            # SquareMap
+            # UnitSquareMap
         ]
 
     def test_basic(self):

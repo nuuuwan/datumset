@@ -7,8 +7,8 @@ class ShapeMapScaleMixin:
     SHAPE_SCALE_COLOR = "#555555"
     TILE_NOUN = "shape"
 
-    def _record_shape_values(self, gdf, shapes):
-        weights = self._get_region_id_to_weight(gdf)
+    def _record_shape_values(self, gdf, shapes, sub_datumset=None):
+        weights = self._get_region_id_to_weight(gdf, sub_datumset)
         counts = defaultdict(int)
         for region_id, _, _ in shapes:
             counts[region_id] += 1
@@ -47,7 +47,15 @@ class ShapeMapScaleMixin:
             color=self.SHAPE_SCALE_COLOR,
         )
 
+    def _get_shared_value_per_shape(self):
+        all_weights = []
+        for sub_datumset in self.display_datumsets:
+            totals = self._get_region_totals(sub_datumset)
+            all_weights.extend(w for w in totals.values() if w > 0)
+        return self._value_per_shape(dict(enumerate(all_weights)))
+
     def _plot(self, fig, ax):
         self._shape_values = []
+        self._shared_value_per_shape = self._get_shared_value_per_shape()
         super()._plot(fig, ax)
         self._add_shape_scale_note(fig)
