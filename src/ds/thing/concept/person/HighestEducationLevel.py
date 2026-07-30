@@ -18,4 +18,7 @@ class HighestEducationLevel(CategoryConcept):
             "passed_grade_9_10",
             "g_c_e_o_or_l_or_equal",
             "g_c_e_a_or_l_or_equal",
+            #
+            "g_c_e_o_or_l_or_equivalent",
+            "g_c_e_a_or_l_or_equivalent",
         ]

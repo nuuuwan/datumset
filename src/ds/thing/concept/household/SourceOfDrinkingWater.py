@@ -35,4 +35,12 @@ class SourceOfDrinkingWater(CategoryConcept):
             "pipe_borne_private",
             "tank_river_stream",
             "filter_ro",
+            "spring_or_fountain",
+            "pipe_borne_water_national_water_supply_and_drainage_board",
+            "pipe_borne_water_local_authority",
+            "pipe_borne_water_community_based_organization",
+            "pipe_borne_water_private_water_supply_project",
+            "tank_or_river_or_streams",
+            "rainwater",
+            "filter_water_r_o_plant",
         ]

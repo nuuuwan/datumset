@@ -15,4 +15,8 @@ class EmploymentStatus(CategoryConcept):
             "contributing_to_family_enterprise_unpaid_family_worker",
             #
             "contributing_to_family_enterprise",
+            "own_account_worker",
+            "government_or_semi_government_paid_employee",
+            "private_sector_paid_employee",
+            "employer",
         ]

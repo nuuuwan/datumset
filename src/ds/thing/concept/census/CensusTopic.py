@@ -20,7 +20,7 @@ class CensusTopic(CategoryConcept):
             "religion",
             # 11 - 15
             "citizenship",
-            "n_i_c_no_",
+            "n_i_c_no",
             "status_of_clergy_or_priest",
             "educational_characteristics",
             "ability_to_speak_sinhala_and_tamil",
