@@ -100,7 +100,10 @@ class VisualLayoutMixin:
         label = self._format_visual_value(value)
         if value_counts is None:
             return label
-        return f"{label} ({value_counts.get(value, 0)})"
+        count = value_counts.get(value, 0)
+        if count == 0:
+            return label
+        return f"{label} ({count})"
 
     def _add_color_legend(
         self, fig, value_color_idx, title, value_counts=None
