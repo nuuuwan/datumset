@@ -21,6 +21,11 @@ class StackedBarChartDataMixin:
         return x_labels, stack_labels, data
 
     def _get_x_order(self):
+        ordered_values = self._get_ordered_category_valid_values(
+            self.x_dim_key
+        )
+        if ordered_values is not None:
+            return ordered_values
         return self._get_x_dominant_share_order(
             self.x_dim_key,
             self.y_cell_key,

@@ -1,3 +1,4 @@
+from ds.thing.concept.CategoryConcept import CategoryConcept
 from ds.thing.concept.region.Region import Region
 from ds.thing.concept.Time import Time
 
@@ -6,6 +7,15 @@ class VisualParamsMixin:
 
     def _get_dim_concept(self, dim_key):
         return self.datumset[0].dim_idx.get(dim_key)
+
+    def _get_ordered_category_valid_values(self, dim_key):
+        concept = self._get_dim_concept(dim_key)
+        if not isinstance(concept, CategoryConcept):
+            return None
+        concept_cls = type(concept)
+        if not concept_cls.is_ordered():
+            return None
+        return concept_cls.valid_values()
 
     def _is_region_dim(self, dim_key):
         return isinstance(self._get_dim_concept(dim_key), Region)
