@@ -1,3 +1,4 @@
+import os
 import re
 import unittest
 
@@ -5,12 +6,16 @@ from utils_future import JSONFile
 
 from ds import VisualLankaData
 
+DATA_PATH = os.path.join(
+    os.path.dirname(__file__), "test_visual_lankadata.data.json"
+)
+
 
 class TestCase(unittest.TestCase):
 
     @staticmethod
     def get_scenarios():
-        return JSONFile("tests", "test_visual_lankadata.data.json").read()
+        return JSONFile(DATA_PATH).read()
 
     @staticmethod
     def build_test(visual_query_str):
