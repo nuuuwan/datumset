@@ -13,4 +13,6 @@ class EmploymentStatus(CategoryConcept):
             "employer_have_employees",
             "own_account_worker_don't_have_employees",
             "contributing_to_family_enterprise_unpaid_family_worker",
+            #
+            "contributing_to_family_enterprise",
         ]
