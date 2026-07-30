@@ -23,3 +23,18 @@ class Lighting(CategoryConcept):
         return {
             "kerosene_lamp": "kerosene",
         }
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "electricity_national_electricity_network": "#D05D38",
+            "electricity_rural_hydro_electricity_projects": "#3840D0",
+            "kerosene": "#6CD038",
+            "solar_power": "#D03899",
+            "bio_gas": "#38C5D0",
+            "other": "#cccccc",
+            "electricity_grid": "#D0AF38",
+            "solar_grid": "#8238D0",
+            "solar_standalone": "#38D056",
+            "generator": "#D03847",
+        }

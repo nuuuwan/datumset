@@ -18,3 +18,17 @@ class MigrationReason(CategoryConcept):
             "a_disaster_a_displaced_happened_in_the_prior_place",
             "other",
         ]
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "marriage": "#D05D38",
+            "employment_searching_for_job": "#3840D0",
+            "education": "#6CD038",
+            "accompanied_a_family_member": "#D03899",
+            "returning_for_permanent_residence": "#38C5D0",
+            "development_projects": "#D0AF38",
+            "resettled_after_displacement": "#8238D0",
+            "a_disaster_a_displaced_happened_in_the_prior_place": "#38D056",
+            "other": "#cccccc",
+        }

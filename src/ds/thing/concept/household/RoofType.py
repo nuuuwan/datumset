@@ -21,3 +21,16 @@ class RoofType(CategoryConcept):
         return {
             "cadjan_or_palmyrah_or_straw": "cadjan_palmyrah_straw",
         }
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "tile": "#D05D38",
+            "asbestos": "#3840D0",
+            "concrete": "#6CD038",
+            "zink_aluminium_sheet": "#D03899",
+            "metal_sheet": "#38C5D0",
+            "cadjan_palmyrah_straw": "#D0AF38",
+            "other": "#cccccc",
+            "not_relevant": "#cccccc",
+        }

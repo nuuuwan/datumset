@@ -23,3 +23,16 @@ class LiveBirths(CategoryConcept):
         return {
             "7_plus": "7_or_more",
         }
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "0": "#D05D38",
+            "1": "#3840D0",
+            "2": "#6CD038",
+            "3": "#D03899",
+            "4": "#38C5D0",
+            "5": "#D0AF38",
+            "6": "#8238D0",
+            "7_or_more": "#38D056",
+        }

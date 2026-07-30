@@ -9,3 +9,11 @@ class ElectionType(CategoryConcept):
             "presidential",
             "local_government",
         ]
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "parliamentary": "#D05D38",
+            "presidential": "#3840D0",
+            "local_government": "#6CD038",
+        }

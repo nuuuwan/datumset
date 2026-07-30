@@ -8,3 +8,10 @@ class OccupationStatus(CategoryConcept):
             "occupied",
             "vacant",
         ]
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "occupied": "#D05D38",
+            "vacant": "#3840D0",
+        }

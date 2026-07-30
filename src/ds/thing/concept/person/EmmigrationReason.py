@@ -12,3 +12,12 @@ class EmmigrationReason(CategoryConcept):
             "accompanying_family_member_in_need",
             "other",
         ]
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "employment": "#D05D38",
+            "education": "#3840D0",
+            "accompanying_family_member_in_need": "#6CD038",
+            "other": "#cccccc",
+        }

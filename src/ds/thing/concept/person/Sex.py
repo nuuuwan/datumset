@@ -9,3 +9,11 @@ class Sex(CategoryConcept):
             "female",
             "both_sexes",
         ]
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "male": "#D05D38",
+            "female": "#3840D0",
+            "both_sexes": "#6CD038",
+        }

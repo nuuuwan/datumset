@@ -12,3 +12,12 @@ class HouseholdType(CategoryConcept):
             "extended",
             "composite",
         ]
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "one_person": "#D05D38",
+            "nuclear": "#3840D0",
+            "extended": "#6CD038",
+            "composite": "#D03899",
+        }

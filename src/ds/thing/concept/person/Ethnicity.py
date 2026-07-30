@@ -52,4 +52,15 @@ class Ethnicity(CategoryConcept):
             "ind_and_malaiyaga_tamil": "#ff8888",
             "burgher": "#8e44ad",
             "malay": "#cccccc",
+            #
+            "sri_lanka_chetty": "#e67e22",
+            "bharatha": "#16a085",
+            "veddahs": "#795548",
+            "other": "#999999",
+            # legacy
+            "indian_muslim": "#00897b",
+            "european": "#6c5ce7",
+            "burgher_and_eurasian": "#9b59b6",
+            "low_country_sinhalese": "#c0392b",
+            "up_country_kandyan_sinhalese": "#e74c3c",
         }

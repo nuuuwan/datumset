@@ -29,3 +29,21 @@ class WallType(CategoryConcept):
             "mud": "warichchi_mud",
             "cadjan_or_palmyrah": "cadjan_palmyrah",
         }
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "bricks": "#D05D38",
+            "cement_block_or_stone": "#3840D0",
+            "cabook": "#6CD038",
+            "pressed_soil_bricks": "#D03899",
+            "warichchi_mud": "#38C5D0",
+            "cadjan_palmyrah": "#D0AF38",
+            "plank_or_metal_sheet": "#8238D0",
+            "other": "#cccccc",
+            "cement_block": "#38D056",
+            "granite_cube_stones": "#D03847",
+            "planks_metal_sheets_asbestos": "#3873D0",
+            "zink_aluminium_sheets": "#9FD038",
+            "not_relevant": "#cccccc",
+        }
