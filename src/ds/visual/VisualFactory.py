@@ -2,9 +2,9 @@ from ds.visual.BarChart import BarChart
 from ds.visual.dorling.Dorling import Dorling
 from ds.visual.hex_map.HexMap import HexMap
 from ds.visual.hex_map.UnitHexMap import UnitHexMap
-from ds.visual.map_visual.Cartogram import Cartogram
-from ds.visual.map_visual.MapVisual import MapVisual
-from ds.visual.marimekko.MarimekkoChart import MarimekkoChart
+from ds.visual.map.Cartogram import Cartogram
+from ds.visual.map.Map import Map
+from ds.visual.mekko.MekkoChart import MekkoChart
 from ds.visual.pie_chart.PieChart import PieChart
 from ds.visual.square_map.SquareMap import SquareMap
 from ds.visual.square_map.UnitSquareMap import UnitSquareMap
@@ -17,14 +17,14 @@ class VisualFactory:
     def visual_class_list(cls):
         return [
             BarChart,
-            MapVisual,
+            Map,
             Cartogram,
             Dorling,
             HexMap,
             UnitHexMap,
             SquareMap,
             UnitSquareMap,
-            MarimekkoChart,
+            MekkoChart,
             PieChart,
             StackedBarChart,
         ]

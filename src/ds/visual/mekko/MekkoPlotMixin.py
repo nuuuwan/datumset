@@ -1,4 +1,4 @@
-class MarimekkoPlotMixin:
+class MekkoPlotMixin:
 
     def _plot_segment(
         self,
@@ -65,7 +65,7 @@ class MarimekkoPlotMixin:
                 data,
                 total,
             )
-        self._style_marimekko_subfigure(
+        self._style_mekko_subfigure(
             sub_ax,
             geometries,
             x_labels,

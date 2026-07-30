@@ -4,7 +4,7 @@ from ds.lanka_data.LankaData import LankaData
 from ds.thing.concept.Time import Time
 
 
-class MapVisualPercentMixin:
+class MapPercentMixin:
 
     def _total_dim_spec(self, dim_label, ref_datum):
         if dim_label == self.region_dim_key:

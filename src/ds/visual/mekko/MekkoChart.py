@@ -1,13 +1,13 @@
-from ds.visual.marimekko.MarimekkoAxisMixin import MarimekkoAxisMixin
-from ds.visual.marimekko.MarimekkoGeometryMixin import MarimekkoGeometryMixin
-from ds.visual.marimekko.MarimekkoPlotMixin import MarimekkoPlotMixin
+from ds.visual.mekko.MekkoAxisMixin import MekkoAxisMixin
+from ds.visual.mekko.MekkoGeometryMixin import MekkoGeometryMixin
+from ds.visual.mekko.MekkoPlotMixin import MekkoPlotMixin
 from ds.visual.stacked_bar_chart.StackedBarChart import StackedBarChart
 
 
-class MarimekkoChart(
-    MarimekkoAxisMixin,
-    MarimekkoPlotMixin,
-    MarimekkoGeometryMixin,
+class MekkoChart(
+    MekkoAxisMixin,
+    MekkoPlotMixin,
+    MekkoGeometryMixin,
     StackedBarChart,
 ):
 

@@ -1,9 +1,9 @@
 from utils_future.dcn.DCNUtils import DCNUtils
 
-from ds.visual.map_visual.MapVisual import MapVisual
+from ds.visual.map.Map import Map
 
 
-class Cartogram(MapVisual):
+class Cartogram(Map):
 
     def _get_colored_gdf(self, sub_datumset, ctx):
         gdf = super()._get_colored_gdf(sub_datumset, ctx)

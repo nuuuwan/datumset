@@ -8,7 +8,7 @@ DEFAULT_VISUAL_QUERY_STR = (
     "Vote"
     + "/ElectionType=Presidential*Time=2015*PD<ED=colombo*Party"
     + "/Count"
-    + "/MarimekkoChart"
+    + "/MekkoChart"
 )
 
 if __name__ == "__main__":

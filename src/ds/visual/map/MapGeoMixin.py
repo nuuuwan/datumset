@@ -14,7 +14,7 @@ GEO_URL = (
 GEO_CACHE_DIR = os.path.join(tempfile.gettempdir(), "datumset_geo")
 
 
-class MapVisualGeoMixin:
+class MapGeoMixin:
 
     def _normalize_region_key(self, raw_value):
         return String(raw_value).snake

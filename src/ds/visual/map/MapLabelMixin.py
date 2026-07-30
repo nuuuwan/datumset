@@ -3,7 +3,7 @@ from utils_future import String
 from ds.visual.label_fit.LabelFit import LabelFit
 
 
-class MapVisualLabelMixin:
+class MapLabelMixin:
 
     LABEL_FONTSIZE = 10
 
