@@ -34,7 +34,8 @@ class VisualXAxisMixin:
             return []
         if not self._can_shorten_dim(self.x_dim_key):
             return [
-                str(self._format_visual_value(x_label)) for x_label in x_labels
+                str(self._format_visual_value(x_label))
+                for x_label in x_labels
             ]
         slot_px = self._get_axis_width_px(sub_ax) / len(x_labels)
         return [
