@@ -12,6 +12,7 @@ class TestCase(unittest.TestCase):
             "Person/Time*Province*Religion/Count/BarChart",
             "Person/Time*Province=Western*Religion/Count/BarChart",
             "Person/Time*Province=Western*Religion=hindu/Count/BarChart",
+            "Person/Sector*Time/Count/BarChart",
             # PieChart
             "Person/Time=2024*Province*Religion/Count/PieChart",
             "Person/Time=2024*Province=northern*Religion/Count/PieChart",
