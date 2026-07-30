@@ -1,417 +1,417 @@
 {
-  "House/Time*Country*CookingFuel/Count": [
+  "House/Time_Country_CookingFuel/Count": [
     "data/House-CookingFuel/lanka_data.json"
   ],
-  "House/Time*Province*CookingFuel/Count": [
+  "House/Time_Province_CookingFuel/Count": [
     "data/House-CookingFuel/lanka_data.json"
   ],
-  "House/Time*District*CookingFuel/Count": [
+  "House/Time_District_CookingFuel/Count": [
     "data/House-CookingFuel/lanka_data.json"
   ],
-  "House/Time*DSD*CookingFuel/Count": [
+  "House/Time_DSD_CookingFuel/Count": [
     "data/House-CookingFuel/lanka_data.json"
   ],
-  "House/Time*ED*CookingFuel/Count": [
+  "House/Time_ED_CookingFuel/Count": [
     "data/House-CookingFuel/lanka_data.json"
   ],
-  "House/Time*PD*CookingFuel/Count": [
+  "House/Time_PD_CookingFuel/Count": [
     "data/House-CookingFuel/lanka_data.json"
   ],
-  "House/Time*Country*HouseholdStructure/Count": [
+  "House/Time_Country_HouseholdStructure/Count": [
     "data/House-HouseholdStructure/lanka_data.json"
   ],
-  "House/Time*Province*HouseholdStructure/Count": [
+  "House/Time_Province_HouseholdStructure/Count": [
     "data/House-HouseholdStructure/lanka_data.json"
   ],
-  "House/Time*District*HouseholdStructure/Count": [
+  "House/Time_District_HouseholdStructure/Count": [
     "data/House-HouseholdStructure/lanka_data.json"
   ],
-  "House/Time*DSD*HouseholdStructure/Count": [
+  "House/Time_DSD_HouseholdStructure/Count": [
     "data/House-HouseholdStructure/lanka_data.json"
   ],
-  "House/Time*ED*HouseholdStructure/Count": [
+  "House/Time_ED_HouseholdStructure/Count": [
     "data/House-HouseholdStructure/lanka_data.json"
   ],
-  "House/Time*PD*HouseholdStructure/Count": [
+  "House/Time_PD_HouseholdStructure/Count": [
     "data/House-HouseholdStructure/lanka_data.json"
   ],
-  "House/Time*Country*Lighting/Count": [
+  "House/Time_Country_Lighting/Count": [
     "data/House-Lighting/lanka_data.json"
   ],
-  "House/Time*Province*Lighting/Count": [
+  "House/Time_Province_Lighting/Count": [
     "data/House-Lighting/lanka_data.json"
   ],
-  "House/Time*District*Lighting/Count": [
+  "House/Time_District_Lighting/Count": [
     "data/House-Lighting/lanka_data.json"
   ],
-  "House/Time*DSD*Lighting/Count": [
+  "House/Time_DSD_Lighting/Count": [
     "data/House-Lighting/lanka_data.json"
   ],
-  "House/Time*ED*Lighting/Count": [
+  "House/Time_ED_Lighting/Count": [
     "data/House-Lighting/lanka_data.json"
   ],
-  "House/Time*PD*Lighting/Count": [
+  "House/Time_PD_Lighting/Count": [
     "data/House-Lighting/lanka_data.json"
   ],
-  "Person/Time*Country*AgeGroup/Count": [
+  "Person/Time_Country_AgeGroup/Count": [
     "data/Person-AgeGroup/lanka_data.json"
   ],
-  "Person/Time*Province*AgeGroup/Count": [
+  "Person/Time_Province_AgeGroup/Count": [
     "data/Person-AgeGroup/lanka_data.json"
   ],
-  "Person/Time*District*AgeGroup/Count": [
+  "Person/Time_District_AgeGroup/Count": [
     "data/Person-AgeGroup/lanka_data.json"
   ],
-  "Person/Time*DSD*AgeGroup/Count": [
+  "Person/Time_DSD_AgeGroup/Count": [
     "data/Person-AgeGroup/lanka_data.json"
   ],
-  "Person/Time*ED*AgeGroup/Count": [
+  "Person/Time_ED_AgeGroup/Count": [
     "data/Person-AgeGroup/lanka_data.json"
   ],
-  "Person/Time*PD*AgeGroup/Count": [
+  "Person/Time_PD_AgeGroup/Count": [
     "data/Person-AgeGroup/lanka_data.json"
   ],
-  "House/Time*Country*SourceOfDrinkingWater/Count": [
+  "House/Time_Country_SourceOfDrinkingWater/Count": [
     "data/House-SourceOfDrinkingWater/lanka_data.json"
   ],
-  "House/Time*Province*SourceOfDrinkingWater/Count": [
+  "House/Time_Province_SourceOfDrinkingWater/Count": [
     "data/House-SourceOfDrinkingWater/lanka_data.json"
   ],
-  "House/Time*District*SourceOfDrinkingWater/Count": [
+  "House/Time_District_SourceOfDrinkingWater/Count": [
     "data/House-SourceOfDrinkingWater/lanka_data.json"
   ],
-  "House/Time*DSD*SourceOfDrinkingWater/Count": [
+  "House/Time_DSD_SourceOfDrinkingWater/Count": [
     "data/House-SourceOfDrinkingWater/lanka_data.json"
   ],
-  "House/Time*ED*SourceOfDrinkingWater/Count": [
+  "House/Time_ED_SourceOfDrinkingWater/Count": [
     "data/House-SourceOfDrinkingWater/lanka_data.json"
   ],
-  "House/Time*PD*SourceOfDrinkingWater/Count": [
+  "House/Time_PD_SourceOfDrinkingWater/Count": [
     "data/House-SourceOfDrinkingWater/lanka_data.json"
   ],
-  "House/Time*Country*RoofType/Count": [
+  "House/Time_Country_RoofType/Count": [
     "data/House-RoofType/lanka_data.json"
   ],
-  "House/Time*Province*RoofType/Count": [
+  "House/Time_Province_RoofType/Count": [
     "data/House-RoofType/lanka_data.json"
   ],
-  "House/Time*District*RoofType/Count": [
+  "House/Time_District_RoofType/Count": [
     "data/House-RoofType/lanka_data.json"
   ],
-  "House/Time*DSD*RoofType/Count": [
+  "House/Time_DSD_RoofType/Count": [
     "data/House-RoofType/lanka_data.json"
   ],
-  "House/Time*ED*RoofType/Count": [
+  "House/Time_ED_RoofType/Count": [
     "data/House-RoofType/lanka_data.json"
   ],
-  "House/Time*PD*RoofType/Count": [
+  "House/Time_PD_RoofType/Count": [
     "data/House-RoofType/lanka_data.json"
   ],
-  "House/Time*Country*WallType/Count": [
+  "House/Time_Country_WallType/Count": [
     "data/House-WallType/lanka_data.json"
   ],
-  "House/Time*Province*WallType/Count": [
+  "House/Time_Province_WallType/Count": [
     "data/House-WallType/lanka_data.json"
   ],
-  "House/Time*District*WallType/Count": [
+  "House/Time_District_WallType/Count": [
     "data/House-WallType/lanka_data.json"
   ],
-  "House/Time*DSD*WallType/Count": [
+  "House/Time_DSD_WallType/Count": [
     "data/House-WallType/lanka_data.json"
   ],
-  "House/Time*ED*WallType/Count": [
+  "House/Time_ED_WallType/Count": [
     "data/House-WallType/lanka_data.json"
   ],
-  "House/Time*PD*WallType/Count": [
+  "House/Time_PD_WallType/Count": [
     "data/House-WallType/lanka_data.json"
   ],
-  "Person/Time*Country*Sex/Count": [
+  "Person/Time_Country_Sex/Count": [
     "data/Person-Sex/lanka_data.json"
   ],
-  "Person/Time*Province*Sex/Count": [
+  "Person/Time_Province_Sex/Count": [
     "data/Person-Sex/lanka_data.json"
   ],
-  "Person/Time*District*Sex/Count": [
+  "Person/Time_District_Sex/Count": [
     "data/Person-Sex/lanka_data.json",
     "data/final-report-tables/chapter-5/5.2.1-Population-Temporarily-Living-Abroad-by-District-and-Sex-2024/lanka_data.json"
   ],
-  "Person/Time*DSD*Sex/Count": [
+  "Person/Time_DSD_Sex/Count": [
     "data/Person-Sex/lanka_data.json"
   ],
-  "Person/Time*ED*Sex/Count": [
+  "Person/Time_ED_Sex/Count": [
     "data/Person-Sex/lanka_data.json"
   ],
-  "Person/Time*PD*Sex/Count": [
+  "Person/Time_PD_Sex/Count": [
     "data/Person-Sex/lanka_data.json"
   ],
-  "House/Time*Country*FloorType/Count": [
+  "House/Time_Country_FloorType/Count": [
     "data/House-FloorType/lanka_data.json"
   ],
-  "House/Time*Province*FloorType/Count": [
+  "House/Time_Province_FloorType/Count": [
     "data/House-FloorType/lanka_data.json"
   ],
-  "House/Time*District*FloorType/Count": [
+  "House/Time_District_FloorType/Count": [
     "data/House-FloorType/lanka_data.json"
   ],
-  "House/Time*DSD*FloorType/Count": [
+  "House/Time_DSD_FloorType/Count": [
     "data/House-FloorType/lanka_data.json"
   ],
-  "House/Time*ED*FloorType/Count": [
+  "House/Time_ED_FloorType/Count": [
     "data/House-FloorType/lanka_data.json"
   ],
-  "House/Time*PD*FloorType/Count": [
+  "House/Time_PD_FloorType/Count": [
     "data/House-FloorType/lanka_data.json"
   ],
-  "Person/Time*Country*Ethnicity/Count": [
+  "Person/Time_Country_Ethnicity/Count": [
     "data/Person-Ethnicity/lanka_data.json"
   ],
-  "Person/Time*Province*Ethnicity/Count": [
+  "Person/Time_Province_Ethnicity/Count": [
     "data/Person-Ethnicity/lanka_data.json"
   ],
-  "Person/Time*District*Ethnicity/Count": [
+  "Person/Time_District_Ethnicity/Count": [
     "data/Person-Ethnicity/lanka_data.json"
   ],
-  "Person/Time*DSD*Ethnicity/Count": [
+  "Person/Time_DSD_Ethnicity/Count": [
     "data/Person-Ethnicity/lanka_data.json"
   ],
-  "Person/Time*ED*Ethnicity/Count": [
+  "Person/Time_ED_Ethnicity/Count": [
     "data/Person-Ethnicity/lanka_data.json"
   ],
-  "Person/Time*PD*Ethnicity/Count": [
+  "Person/Time_PD_Ethnicity/Count": [
     "data/Person-Ethnicity/lanka_data.json"
   ],
-  "House/Time*Country*ToiletFacilities/Count": [
+  "House/Time_Country_ToiletFacilities/Count": [
     "data/House-ToiletFacilities/lanka_data.json"
   ],
-  "House/Time*Province*ToiletFacilities/Count": [
+  "House/Time_Province_ToiletFacilities/Count": [
     "data/House-ToiletFacilities/lanka_data.json"
   ],
-  "House/Time*District*ToiletFacilities/Count": [
+  "House/Time_District_ToiletFacilities/Count": [
     "data/House-ToiletFacilities/lanka_data.json"
   ],
-  "House/Time*DSD*ToiletFacilities/Count": [
+  "House/Time_DSD_ToiletFacilities/Count": [
     "data/House-ToiletFacilities/lanka_data.json"
   ],
-  "House/Time*ED*ToiletFacilities/Count": [
+  "House/Time_ED_ToiletFacilities/Count": [
     "data/House-ToiletFacilities/lanka_data.json"
   ],
-  "House/Time*PD*ToiletFacilities/Count": [
+  "House/Time_PD_ToiletFacilities/Count": [
     "data/House-ToiletFacilities/lanka_data.json"
   ],
-  "Person/Time*Country*Religion/Count": [
+  "Person/Time_Country_Religion/Count": [
     "data/Person-Religion/lanka_data.json"
   ],
-  "Person/Time*Province*Religion/Count": [
+  "Person/Time_Province_Religion/Count": [
     "data/Person-Religion/lanka_data.json"
   ],
-  "Person/Time*District*Religion/Count": [
+  "Person/Time_District_Religion/Count": [
     "data/Person-Religion/lanka_data.json",
     "data/final-report-tables/chapter-6/6.1.15-Distribution-of-Population-by-Religion-and-District-2024/lanka_data.json",
     "data/final-report-tables/chapter-6/6.1.14-Distribution-of-Population-by-Religion-and-District-2012/lanka_data.json"
   ],
-  "Person/Time*DSD*Religion/Count": [
+  "Person/Time_DSD_Religion/Count": [
     "data/Person-Religion/lanka_data.json"
   ],
-  "Person/Time*ED*Religion/Count": [
+  "Person/Time_ED_Religion/Count": [
     "data/Person-Religion/lanka_data.json"
   ],
-  "Person/Time*PD*Religion/Count": [
+  "Person/Time_PD_Religion/Count": [
     "data/Person-Religion/lanka_data.json"
   ],
-  "Person/Time*District*AgeGroup/PercentInPreschool": [
+  "Person/Time_District_AgeGroup/PercentInPreschool": [
     "data/final-report-tables/chapter-7/7.4-Percentage-of-Children-Receiving-Preschool-Education-by-Age-Group-and-District-2024/lanka_data.json"
   ],
-  "Person/Time*District*LanguageLiteracy/CountLiterate": [
+  "Person/Time_District_LanguageLiteracy/CountLiterate": [
     "data/final-report-tables/chapter-7/7.10-Language-Literacy-Rate-by-Language-and-District-2024/lanka_data.json"
   ],
-  "Person/Time*AgeGroup*EducationActivity/Count": [
+  "Person/Time_AgeGroup_EducationActivity/Count": [
     "data/final-report-tables/chapter-7/7.2-Percentage-Pistribution-of-Population-Aged-03-Years-and-Over-by-Educational-Activity-and-Age-Group-2024/lanka_data.json"
   ],
-  "Person/Time*EducationActivity*Sex/Count": [
+  "Person/Time_EducationActivity_Sex/Count": [
     "data/final-report-tables/chapter-7/7.1-Population-Aged-3-Years-and-Over-by-Sex-and-Educational-Activity-During-the-Census-Reference-Period-/lanka_data.json"
   ],
-  "Person/Time*Sex/MedianAge": [
+  "Person/Time_Sex/MedianAge": [
     "data/final-report-tables/chapter-9/9.8-Mean-Age-at-Marriage-1953-2024/lanka_data.json"
   ],
-  "Person/Time*Sector*Sex/MeanAgeAtMarriage": [
+  "Person/Time_Sector_Sex/MeanAgeAtMarriage": [
     "data/final-report-tables/chapter-9/9.9-Mean-Age-at-Marriage-by-Sector-2024/lanka_data.json"
   ],
-  "Person/Time*Sector*LiveBirths/FemalePopulationCount": [
+  "Person/Time_Sector_LiveBirths/FemalePopulationCount": [
     "data/final-report-tables/chapter-9/9.12-Percentage-Distribution-of-Ever-Married-Women-Aged-15-Years-and-Over-by-the-Number-of-Live-Births-perWoman-and-Sector-2024/lanka_data.json"
   ],
-  "Person/Time*AgeGroup/MarriedWomenCount": [
+  "Person/Time_AgeGroup/MarriedWomenCount": [
     "data/final-report-tables/chapter-9/9.13-Number-and-Percentage-Distribution-of-Married-Women-Aged-15-49-Years-by-Age-Group-2012-and-2024/lanka_data.json"
   ],
-  "Person/Sector*Time/Count": [
+  "Person/Sector_Time/Count": [
     "data/final-report-tables/chapter-11/11.1-Number-of-Occupied-Housing-Units-by-Sector-2012-and-2024/lanka_data.json",
     "data/final-report-tables/chapter-3/3.5-Distribution-of-Population-by-Sector-2012-and-2024/lanka_data.json"
   ],
-  "Person/Time*District*SourceOfDrinkingWater/Count": [
+  "Person/Time_District_SourceOfDrinkingWater/Count": [
     "data/final-report-tables/chapter-11/11.10-Percentage-Distribution-of-Households-by-Availability-of-Drinking-Water-Facility-by-Sector-and-District-/lanka_data.json"
   ],
-  "Person/Time*District*TypeOfUnit/Count": [
+  "Person/Time_District_TypeOfUnit/Count": [
     "data/final-report-tables/chapter-11/11.7-of-Housing-Units-and-Status-of-Housing-Units-by-Sector-and-District-2024/lanka_data.json"
   ],
-  "Person/Time*Sector*LiquidWasteDisposal/Percent": [
+  "Person/Time_Sector_LiquidWasteDisposal/Percent": [
     "data/final-report-tables/chapter-11/11.18-Percentage-Distribution-of-Households-by-the-Main-Method-of-Disposing-Liquid-Waste-2024/lanka_data.json"
   ],
   "Person/Time/Count": [
     "data/final-report-tables/chapter-11/11.3-Number-of-Housing-Units-by-the-Year-of-Construction-2024/lanka_data.json"
   ],
-  "Person/Time*SourceOfDrinkingWater*WaterSupplyAvailability/Count": [
+  "Person/Time_SourceOfDrinkingWater_WaterSupplyAvailability/Count": [
     "data/final-report-tables/chapter-11/11.11-Distribution-of-Households-in-Sri-Lanka-s-ability-to-Obtain-Drinking-Water-Throughout-the-Year-2024/lanka_data.json"
   ],
-  "Person/Time*ToiletFacilities/Count": [
+  "Person/Time_ToiletFacilities/Count": [
     "data/final-report-tables/chapter-11/11.15-Percentage-Distribution-of-Households-by-Type-of-Toilet-Facilities-2012-and-2024/lanka_data.json"
   ],
-  "House/Sector*Time/OwnedByMembersPercent": [
+  "House/Sector_Time/OwnedByMembersPercent": [
     "data/final-report-tables/chapter-11/11.5-Percentage-of-Housing-Units-Owned-by-Household-Members-and-Sector-2012-and-2024/lanka_data.json"
   ],
-  "House/Time*District*OwnershipStatus/Percent": [
+  "House/Time_District_OwnershipStatus/Percent": [
     "data/final-report-tables/chapter-11/11.4-Tenure-of-Housing-Units-by-Sector-and-District-2024/lanka_data.json"
   ],
-  "Person/Time*SourceOfDrinkingWater/Count": [
+  "Person/Time_SourceOfDrinkingWater/Count": [
     "data/final-report-tables/chapter-11/11.9-Distribution-of-Households-by-Main-Source-of-Drinking-Water-2024/lanka_data.json"
   ],
-  "Person/Time*Sector*HouseholdAppliances/Percent": [
+  "Person/Time_Sector_HouseholdAppliances/Percent": [
     "data/final-report-tables/chapter-11/11.19-Percentage-Distribution-of-Households-Using-Communication-Technology-Equipment-and-Vehicles-by-Sector-2024/lanka_data.json"
   ],
-  "Person/Time*Sector*OneRoomOrMore/Count": [
+  "Person/Time_Sector_OneRoomOrMore/Count": [
     "data/final-report-tables/chapter-11/11.8-in-Housing-Units-by-Sector-2024/lanka_data.json"
   ],
-  "Person/Time*EconomicInactivityReason/Count": [
+  "Person/Time_EconomicInactivityReason/Count": [
     "data/final-report-tables/chapter-8/8.11-Economically-Inactive-Population-by-Main-Reason-for-Inactivity-2024/lanka_data.json"
   ],
-  "Person/Time*Sex*IsEconomicallyActive/Count": [
+  "Person/Time_Sex_IsEconomicallyActive/Count": [
     "data/final-report-tables/chapter-8/8.1-Economically-Active-and-Inactive-Population-by-Sex-2024/lanka_data.json"
   ],
-  "Person/Time*HighestEducationLevel2*Sex/EmployedCount": [
+  "Person/Time_HighestEducationLevel2_Sex/EmployedCount": [
     "data/final-report-tables/chapter-8/8.7-Employed-Population-by-Highest-Educational-Attainment-and-Sex-2024/lanka_data.json"
   ],
-  "Person/Time*Sector*Sex/EconomicallyActive": [
+  "Person/Time_Sector_Sex/EconomicallyActive": [
     "data/final-report-tables/chapter-8/8.6-Employed-Population-by-Sector-and-Sex-2024/lanka_data.json"
   ],
-  "Person/Time*Sector*Sex/Count": [
+  "Person/Time_Sector_Sex/Count": [
     "data/final-report-tables/chapter-8/8.2-Economically-Active-Population-by-Sector-and-Sex-2024/lanka_data.json"
   ],
-  "Person/Time*Sector*Sex/UnemployedCount": [
+  "Person/Time_Sector_Sex/UnemployedCount": [
     "data/final-report-tables/chapter-8/8.9-Unemployed-Population-by-Sector-and-Sex-2024/lanka_data.json"
   ],
-  "Person/Time*District*IsEconomicallyActive/Count": [
+  "Person/Time_District_IsEconomicallyActive/Count": [
     "data/final-report-tables/chapter-8/8.10-Employment-Rate-and-Unemployment-Rate-by-District-2024/lanka_data.json"
   ],
-  "Person/Time*AgeGroup*Sex/CountEconomicallyActive": [
+  "Person/Time_AgeGroup_Sex/CountEconomicallyActive": [
     "data/final-report-tables/chapter-8/8.3-Economically-Active-Population-by-Sex-and-Age-Group-2024/lanka_data.json"
   ],
-  "Person/Time*District*HighestEducationLevel3/Count": [
+  "Person/Time_District_HighestEducationLevel3/Count": [
     "data/final-report-tables/chapter-10/10.9-Percentage-Distribution-of-Household-Heads-by-District-and-Highest-Educational-Qualification-Obtained-/lanka_data.json"
   ],
-  "Person/Time*Sector*HighestEducationLevel3/Count": [
+  "Person/Time_Sector_HighestEducationLevel3/Count": [
     "data/final-report-tables/chapter-10/10.8-Percentage-Distribution-of-Household-Heads-by-Highest-Educational-Qualification-Obtained-and-Sector-2024/lanka_data.json"
   ],
-  "House/Time*District*HouseholdType/Count": [
+  "House/Time_District_HouseholdType/Count": [
     "data/final-report-tables/chapter-10/10.2-Percentage-Distribution-of-the-Number-and-of-Households-by-Sector-District-and-Household-Type-2024/lanka_data.json"
   ],
-  "House/Time*Sector*HouseholdSize/Count": [
+  "House/Time_Sector_HouseholdSize/Count": [
     "data/final-report-tables/chapter-10/10.1-Percentage-Distribution-of-Household-Size-by-Sector-2024/lanka_data.json"
   ],
-  "Person/Time*Ethnicity/Count": [
+  "Person/Time_Ethnicity/Count": [
     "data/final-report-tables/chapter-6/6.1.8-Population-Distribution-by-Ethnic-Group-2024/lanka_data.json",
     "data/final-report-tables/chapter-6/6.1.10-Population-by-Ethnic-Group-1911-2024-in/lanka_data.json"
   ],
-  "Person/Time*District*DisabilityTypes/Count": [
+  "Person/Time_District_DisabilityTypes/Count": [
     "data/final-report-tables/chapter-6/6.2.6-Distribution-of-Persons-Aged-5-Years-and-Over-with-Disabilities-by-District-and-Domain-of-Disability-2024/lanka_data.json"
   ],
-  "Person/Time*MaritalStatus*NonCommunicableDisease/Count": [
+  "Person/Time_MaritalStatus_NonCommunicableDisease/Count": [
     "data/final-report-tables/chapter-6/6.3.9-Prevalence-Rates-of-Non-Communicable-Diseases-by-Marital-Status-2024/lanka_data.json"
   ],
-  "Person/Time*AgeGroup/Percent": [
+  "Person/Time_AgeGroup/Percent": [
     "data/final-report-tables/chapter-6/6.1.4-Percentage-Distribution-of-Population-by-Age-Group-1946-2024/lanka_data.json"
   ],
-  "Person/Time*AgeGroup*SingleOrMultipleDisabilities/Count": [
+  "Person/Time_AgeGroup_SingleOrMultipleDisabilities/Count": [
     "data/final-report-tables/chapter-6/6.2.8-Distribution-of-Persons-with-a-Single-Disability-and-with-Multiple-Disabilities-by-Age-Group-2024/lanka_data.json"
   ],
-  "Person/Time*AgeGroup*DisabilityTypes/Count": [
+  "Person/Time_AgeGroup_DisabilityTypes/Count": [
     "data/final-report-tables/chapter-6/6.2.7-Distribution-of-Persons-Aged-5-Years-and-Over-with-Disabilities-by-Age-Group-and-Domain-of-Disability-/lanka_data.json",
     "data/final-report-tables/chapter-6/6.2.3-Distribution-of-Persons-Aged-5-Years-and-Over-with-Physical-and-Mental-Difficulties-by-Age-Group-andDifficulties-2024/lanka_data.json"
   ],
-  "Person/Time*Sector/SexRatio": [
+  "Person/Time_Sector/SexRatio": [
     "data/final-report-tables/chapter-6/6.1.2-Sex-Ratio-by-Sector-2024/lanka_data.json"
   ],
-  "Person/Time*District*NonCommunicableDisease/Count": [
+  "Person/Time_District_NonCommunicableDisease/Count": [
     "data/final-report-tables/chapter-6/6.3.4-Prevalence-Rates-of-Non-Communicable-Diseases-by-District-2024/lanka_data.json"
   ],
-  "Person/Time*HighestEducationLevel*DisabilityTypes/Count": [
+  "Person/Time_HighestEducationLevel_DisabilityTypes/Count": [
     "data/final-report-tables/chapter-6/6.2.12-Distribution-of-Persons-Aged-5-Years-and-Over-with-Disabilities-by-Highest-Educational-Qualification-andDomain-of-Disability-2024/lanka_data.json"
   ],
-  "Person/Time*EmploymentStatus*NonCommunicableDisease/Count": [
+  "Person/Time_EmploymentStatus_NonCommunicableDisease/Count": [
     "data/final-report-tables/chapter-6/6.3.12-Prevalence-Rates-of-NCDs-by-Employment-Status-2024/lanka_data.json"
   ],
-  "Person/Time*MaritalStatus*DisabilityTypes/Count": [
+  "Person/Time_MaritalStatus_DisabilityTypes/Count": [
     "data/final-report-tables/chapter-6/6.2.11-Distribution-of-Persons-Aged-5-Years-and-Over-with-Disabilities-by-Marital-Status-and-Domain-of-Disability-2024/lanka_data.json"
   ],
-  "Person/Time*Province*Ethnicity/Percentage": [
+  "Person/Time_Province_Ethnicity/Percentage": [
     "data/final-report-tables/chapter-6/6.1.9-Percentage-Distribution-of-the-Population-by-Ethnic-Group-and-Province-2024/lanka_data.json"
   ],
-  "Person/Time*Sector*NonCommunicableDisease/Count": [
+  "Person/Time_Sector_NonCommunicableDisease/Count": [
     "data/final-report-tables/chapter-6/6.3.5-Prevalence-Rates-of-Self-Reported-Illnesses-by-Sector-2024/lanka_data.json"
   ],
-  "Person/Time*HighestEducationLevel*NonCommunicableDisease/Count": [
+  "Person/Time_HighestEducationLevel_NonCommunicableDisease/Count": [
     "data/final-report-tables/chapter-6/6.3.11-Prevalence-Rates-for-the-Population-Aged-25-and-Over-by-Highest-Educational-Qualification-2024/lanka_data.json"
   ],
-  "Person/Time*Census*Sex/MedianAge": [
+  "Person/Time_Census_Sex/MedianAge": [
     "data/final-report-tables/chapter-6/6.1.7-Median-Age-of-the-Population-1946-2024/lanka_data.json"
   ],
-  "Person/Time*Ethnicity*NonCommunicableDisease/Count": [
+  "Person/Time_Ethnicity_NonCommunicableDisease/Count": [
     "data/final-report-tables/chapter-6/6.3.10-Prevalence-Rates-of-Non-Communicable-Diseases-by-Ethnic-Group-2024/lanka_data.json"
   ],
-  "Person/Time*District*CensusOfficer/Count": [
+  "Person/Time_District_CensusOfficer/Count": [
     "data/final-report-tables/chapter-1/1.1.1-Officers-who-have-Assigned-for-Census-of-Population-and-Housing-2024-Activities/lanka_data.json"
   ],
-  "Census/CensusTopic*Time/WasTopicIncluded": [
+  "Census/CensusTopic_Time/WasTopicIncluded": [
     "data/final-report-tables/chapter-1/1.1.2-The-Questions-and-Topics-Included-in-the-Censuses-of-Sri-Lanka-1871-2024/lanka_data.json"
   ],
-  "Person/Time*District*Sector/Count": [
+  "Person/Time_District_Sector/Count": [
     "data/final-report-tables/chapter-3/3.6-Population-Distribution-by-District-and-Sector-2024/lanka_data.json"
   ],
-  "Person/Time*District/Count": [
+  "Person/Time_District/Count": [
     "data/final-report-tables/chapter-3/3.3-Population-and-Average-Annual-Growth-Rate-by-District-Census-Years-1981-2024/lanka_data.json",
     "data/final-report-tables/chapter-3/3.2-Distribution-of-Population-by-Province-and-District-2024/lanka_data.json"
   ],
-  "Person/Time*District/PopulationDensity": [
+  "Person/Time_District/PopulationDensity": [
     "data/final-report-tables/chapter-3/3.4-Population-Density-by-District-1981-2001-2012-and-2024/lanka_data.json"
   ],
-  "Person/Sex*Time/WhippleIndex": [
+  "Person/Sex_Time/WhippleIndex": [
     "data/final-report-tables/chapter-12/12.4-Whipple-s-Index-by-Sex-1981-2001-2012-and-2024/lanka_data.json"
   ],
-  "Person/Sex*Time/MyersIndex": [
+  "Person/Sex_Time/MyersIndex": [
     "data/final-report-tables/chapter-12/12.1-Myer-s-Index-by-Sex-1981-2001-2012-and-2024/lanka_data.json"
   ],
-  "District/District*Time/IsExisting": [
+  "District/District_Time/IsExisting": [
     "data/final-report-tables/chapter-2/2.1-Evolution-of-the-Number-of-Administrative-Districts-In-Sri-Lanka-from-1871-to-2024/lanka_data.json"
   ],
-  "District/Time*District*AdministrativeEntity/Count": [
+  "District/Time_District_AdministrativeEntity/Count": [
     "data/final-report-tables/chapter-2/2.4-Administrative-Structure-by-District-2024/lanka_data.json",
     "data/final-report-tables/chapter-2/2.2-Administrative-Structure-by-District-1981/lanka_data.json",
     "data/final-report-tables/chapter-2/2.3-Administrative-Structure-by-District-2012/lanka_data.json"
   ],
-  "Person/Time*District*MigrationDirection/Count": [
+  "Person/Time_District_MigrationDirection/Count": [
     "data/final-report-tables/chapter-5/5.1.5-In-migration-Out-migration-and-Net-Migration-by-District-/lanka_data.json",
     "data/final-report-tables/chapter-5/5.1.2-In-Out-and-Net-Lifetime-Migrants-by-District-2024/lanka_data.json"
   ],
-  "Person/Time*District*MigrationStatus/Count": [
+  "Person/Time_District_MigrationStatus/Count": [
     "data/final-report-tables/chapter-5/5.1.1-Lifetime-Migrants-by-District-of-Dirth-and-District-of-Usual-Residence-/lanka_data.json"
   ],
-  "Person/Time*District*TimeDurationGroup/Count": [
+  "Person/Time_District_TimeDurationGroup/Count": [
     "data/final-report-tables/chapter-5/5.1.6-In-migrants-by-District-of-Usual-Residence-and-Duration-of-Residence-2024/lanka_data.json"
   ],
-  "Person/Time*AgeGroup*EmmigrationReason/Count": [
+  "Person/Time_AgeGroup_EmmigrationReason/Count": [
     "data/final-report-tables/chapter-5/5.2.4-Population-Temporarily-Living-Abroad-by-Main-Reason-for-Living-Abroad-and-Age-Group-2024/lanka_data.json"
   ],
-  "Person/Time*District*EmmigrationReason/Count": [
+  "Person/Time_District_EmmigrationReason/Count": [
     "data/final-report-tables/chapter-5/5.2.3-Population-Temporarily-Living-Abroad-by-District-and-Main-Reason-for-Living-in-Abroad-2024/lanka_data.json"
   ],
-  "Person/Time*District*ResidentRelativeToDistrict/Count": [
+  "Person/Time_District_ResidentRelativeToDistrict/Count": [
     "data/final-report-tables/chapter-5/5.1.8-Distribution-of-the-Usually-Resident-Population-of-a-District-by-their-Permanent-Residence-2024/lanka_data.json"
   ]
 }

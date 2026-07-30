@@ -18,9 +18,9 @@ class LabelFitGeomMixin:
         minx, miny, maxx, maxy = poly.bounds
         pts = []
         for i in range(n_cells):
-            x = minx + (maxx - minx) * (i + 0.5) / n_cells
+            x = minx + (maxx - minx) _ (i + 0.5) / n_cells
             for j in range(n_cells):
-                y = miny + (maxy - miny) * (j + 0.5) / n_cells
+                y = miny + (maxy - miny) _ (j + 0.5) / n_cells
                 if poly.contains(Point(x, y)):
                     pts.append((x, y))
 

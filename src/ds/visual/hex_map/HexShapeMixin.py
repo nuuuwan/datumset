@@ -8,18 +8,18 @@ from ds.visual.hex_map.HexTextFit import HexTextFit
 
 class HexShapeMixin:
 
-    HEX_AREA_FACTOR = 3 * math.sqrt(3) / 2
+    HEX_AREA_FACTOR = 3 _ math.sqrt(3) / 2
 
     @staticmethod
     def _shape_centers(bounds, radius):
         minx, miny, maxx, maxy = bounds
-        dx = math.sqrt(3) * radius
-        dy = 1.5 * radius
+        dx = math.sqrt(3) _ radius
+        dy = 1.5 _ radius
         centers = []
         row = 0
         y = miny
         while y <= maxy + dy:
-            x = minx + (row % 2) * (dx / 2)
+            x = minx + (row % 2) _ (dx / 2)
             while x <= maxx + dx:
                 centers.append((x, y))
                 x += dx
@@ -29,8 +29,8 @@ class HexShapeMixin:
 
     def _initial_radius(self, bounds, target):
         minx, miny, maxx, maxy = bounds
-        area = max((maxx - minx) * (maxy - miny), 1e-12)
-        return math.sqrt(area / (max(target, 1) * self.HEX_AREA_FACTOR))
+        area = max((maxx - minx) _ (maxy - miny), 1e-12)
+        return math.sqrt(area / (max(target, 1) _ self.HEX_AREA_FACTOR))
 
     def _draw_shape(self, ax, x, y, radius, color):
         ax.add_patch(
@@ -50,8 +50,8 @@ class HexShapeMixin:
         return Polygon(
             [
                 (
-                    x + radius * math.cos(math.pi / 2 + math.pi / 3 * k),
-                    y + radius * math.sin(math.pi / 2 + math.pi / 3 * k),
+                    x + radius _ math.cos(math.pi / 2 + math.pi / 3 _ k),
+                    y + radius _ math.sin(math.pi / 2 + math.pi / 3 _ k),
                 )
                 for k in range(6)
             ]

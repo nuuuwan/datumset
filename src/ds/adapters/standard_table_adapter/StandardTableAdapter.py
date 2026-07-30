@@ -48,4 +48,4 @@ class StandardTableAdapter(StandardTableAdapterDatumMixin):
             )
             datum_list.extend(datum_list_for_d)
 
-        return Datumset(*datum_list)
+        return Datumset(_datum_list)

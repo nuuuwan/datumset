@@ -11,7 +11,7 @@ class SquareShapeMixin:
     @staticmethod
     def _shape_centers(bounds, radius):
         minx, miny, maxx, maxy = bounds
-        side = 2 * radius
+        side = 2 _ radius
         centers = []
         y = miny
         while y <= maxy + side:
@@ -24,15 +24,15 @@ class SquareShapeMixin:
 
     def _initial_radius(self, bounds, target):
         minx, miny, maxx, maxy = bounds
-        area = max((maxx - minx) * (maxy - miny), 1e-12)
+        area = max((maxx - minx) _ (maxy - miny), 1e-12)
         return math.sqrt(area / max(target, 1)) / 2
 
     def _draw_shape(self, ax, x, y, radius, color):
         ax.add_patch(
             Rectangle(
                 (x - radius, y - radius),
-                2 * radius,
-                2 * radius,
+                2 _ radius,
+                2 _ radius,
                 facecolor=color,
                 edgecolor=self.SHAPE_EDGE_COLOR,
                 linewidth=self.SHAPE_EDGE_WIDTH,

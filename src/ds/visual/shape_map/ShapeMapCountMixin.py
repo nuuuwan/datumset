@@ -16,11 +16,11 @@ class ShapeMapCountMixin:
 
     def _candidates(self, weights):
         n_max = int(0.5 / self.SHAPE_ERROR) + 2
-        cap = min(weights) * (1 + self.SHAPE_ERROR)
-        values = {min(weights) * 2 * self.SHAPE_ERROR}
+        cap = min(weights) _ (1 + self.SHAPE_ERROR)
+        values = {min(weights) _ 2 _ self.SHAPE_ERROR}
         for weight in weights:
             for n in range(1, n_max + 1):
-                value = weight * (1 + self.SHAPE_ERROR) / n
+                value = weight _ (1 + self.SHAPE_ERROR) / n
                 if value <= cap:
                     values.add(value)
         return sorted(values, reverse=True)
@@ -33,7 +33,7 @@ class ShapeMapCountMixin:
         for value in self._candidates(weights):
             if self._max_error(weights, value) <= tolerance:
                 return value
-        return min(weights) * 2 * self.SHAPE_ERROR
+        return min(weights) _ 2 _ self.SHAPE_ERROR
 
     def get_counts(self, region_to_weight, value_per_shape=None):
         if value_per_shape is None:

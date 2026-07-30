@@ -7,7 +7,7 @@ from ds.datum.Datum import Datum
 class DatumsetBase:
     _value: list[Datum]
 
-    def __init__(self, *data: Datum):
+    def __init__(self, _data: Datum):
         object.__setattr__(self, "_value", list(data))
 
     def __iter__(self):
@@ -19,9 +19,9 @@ class DatumsetBase:
     def __add__(self, other):
         cls = self.__class__
         if isinstance(other, cls):
-            return cls(*(self._value + other._value))
+            return cls(_(self._value + other._value))
         if isinstance(other, Datum):
-            return cls(*(self._value + [other]))
+            return cls(_(self._value + [other]))
 
         raise TypeError(
             "Unsupported operand type(s) for +:"

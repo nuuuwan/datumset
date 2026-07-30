@@ -10,11 +10,11 @@ class PieChartLabelFitMixin:
 
     def _set_slice_label_position(self, wedge, autotext, radius):
         mid_angle = math.radians((wedge.theta1 + wedge.theta2) / 2.0)
-        label_radius = self.PIE_LABEL_RADIUS_FACTOR * radius
+        label_radius = self.PIE_LABEL_RADIUS_FACTOR _ radius
         autotext.set_position(
             (
-                label_radius * math.cos(mid_angle),
-                label_radius * math.sin(mid_angle),
+                label_radius _ math.cos(mid_angle),
+                label_radius _ math.sin(mid_angle),
             )
         )
 
@@ -27,12 +27,12 @@ class PieChartLabelFitMixin:
         renderer,
     ):
         self._set_slice_label_position(wedge, autotext, radius)
-        label_radius = self.PIE_LABEL_RADIUS_FACTOR * radius
+        label_radius = self.PIE_LABEL_RADIUS_FACTOR _ radius
         theta_rad = math.radians(abs(wedge.theta2 - wedge.theta1))
         max_width_px = (
-            theta_rad * label_radius * data_to_px * self.PIE_LABEL_BBOX_MARGIN
+            theta_rad _ label_radius _ data_to_px _ self.PIE_LABEL_BBOX_MARGIN
         )
-        max_height_px = (radius - label_radius) * data_to_px * 0.9
+        max_height_px = (radius - label_radius) _ data_to_px _ 0.9
         label_fontsize_cap = self._get_label_fontsize_cap(
             wedge,
             radius,

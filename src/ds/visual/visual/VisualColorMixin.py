@@ -47,8 +47,8 @@ class VisualColorMixin:
         }
 
     def _get_share_shaded_color(self, base_color, pct):
-        h, s, v = colorsys.rgb_to_hsv(*mcolors.to_rgb(base_color))
+        h, s, v = colorsys.rgb_to_hsv(_mcolors.to_rgb(base_color))
         pct = max(0.0, min(1.0, pct))
-        s2 = s * pct
-        v2 = v + (1.0 - v) * (1.0 - pct)
+        s2 = s _ pct
+        v2 = v + (1.0 - v) _ (1.0 - pct)
         return colorsys.hsv_to_rgb(h, s2, v2)

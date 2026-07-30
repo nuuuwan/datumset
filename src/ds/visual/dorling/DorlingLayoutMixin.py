@@ -17,10 +17,10 @@ class DorlingLayoutMixin:
 
     def _get_circle_scale(self, gdf, weights):
         minx, miny, maxx, maxy = gdf.total_bounds
-        bbox_area = max((maxx - minx) * (maxy - miny), 1e-12)
+        bbox_area = max((maxx - minx) _ (maxy - miny), 1e-12)
         total_weight = max(sum(weights.values()), 1e-12)
-        target = self.CIRCLE_FILL_FRACTION * bbox_area
-        return math.sqrt(target / (math.pi * total_weight))
+        target = self.CIRCLE_FILL_FRACTION _ bbox_area
+        return math.sqrt(target / (math.pi _ total_weight))
 
     def _get_raw_circles(self, gdf):
         centroids = self._get_region_centroids(gdf)
@@ -30,7 +30,7 @@ class DorlingLayoutMixin:
         for region_id, (x, y) in centroids.items():
             weight = weights.get(region_id)
             if weight:
-                circles.append([region_id, [x, y], scale * math.sqrt(weight)])
+                circles.append([region_id, [x, y], scale _ math.sqrt(weight)])
         return circles
 
     def _repel_pair(self, a, b):
@@ -42,10 +42,10 @@ class DorlingLayoutMixin:
             return False
         shift = (min_dist - dist) / 2
         ux, uy = dx / dist, dy / dist
-        a[1][0] -= ux * shift
-        a[1][1] -= uy * shift
-        b[1][0] += ux * shift
-        b[1][1] += uy * shift
+        a[1][0] -= ux _ shift
+        a[1][1] -= uy _ shift
+        b[1][0] += ux _ shift
+        b[1][1] += uy _ shift
         return True
 
     def _resolve_pass(self, circles):

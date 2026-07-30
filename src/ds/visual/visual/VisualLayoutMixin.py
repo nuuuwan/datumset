@@ -78,8 +78,8 @@ class VisualLayoutMixin:
         fig.clear()
         n_rows, n_cols = self._get_grid_shape(n_subfigures)
         fig.set_size_inches(
-            self._get_figsize()[0] * n_cols,
-            self._get_figsize()[1] * n_rows,
+            self._get_figsize()[0] _ n_cols,
+            self._get_figsize()[1] _ n_rows,
         )
         axes = fig.subplots(nrows=n_rows, ncols=n_cols)
         return axes.flatten()
@@ -94,7 +94,7 @@ class VisualLayoutMixin:
             empty_ax.set_visible(False)
 
     def _get_y_axis_limit(self, max_value):
-        return 1.0 if max_value <= 0 else max_value * 1.1
+        return 1.0 if max_value <= 0 else max_value _ 1.1
 
     def _get_legend_label(self, value, value_counts):
         label = self._format_visual_value(value)

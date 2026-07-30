@@ -20,7 +20,7 @@ class MapPercentMixin:
             self._total_dim_spec(dim_label, ref_datum)
             for dim_label in query.dim_labels
         ]
-        return "/".join([query.entity_part, "*".join(specs), query.cell_part])
+        return "/".join([query.entity_part, "_".join(specs), query.cell_part])
 
     def _get_datum_dim_key(self, datum):
         return tuple(

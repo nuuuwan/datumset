@@ -32,7 +32,7 @@ class TSVAdapterBuildMixin:
             Datum(
                 entity_cls,
                 {
-                    **(extra_dims or {}),
+                    __(extra_dims or {}),
                     "Time": time_concept,
                     r_name: region_instance,
                     m_name: concept,
@@ -64,4 +64,4 @@ class TSVAdapterBuildMixin:
             )
             if rows:
                 datum_list.extend(rows)
-        return Datumset(*datum_list)
+        return Datumset(_datum_list)

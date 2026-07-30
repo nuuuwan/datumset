@@ -16,7 +16,7 @@ class ShapeMapAssignMixin:
     def _cost_matrix(slots, centers):
         cost = []
         for _, (cx, cy) in slots:
-            cost.append([(cx - x) ** 2 + (cy - y) ** 2 for (x, y) in centers])
+            cost.append([(cx - x) __ 2 + (cy - y) __ 2 for (x, y) in centers])
         return cost
 
     def assign(self, region_to_centroid, counts, centers):

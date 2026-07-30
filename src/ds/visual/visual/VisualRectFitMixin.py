@@ -18,7 +18,7 @@ class VisualRectFitMixin:
         max_width_px, max_height_px = self._get_rect_size_px(sub_ax, rect)
         min_dim_px = min(max_width_px, max_height_px)
         px_to_pt = 72.0 / sub_ax.figure.dpi
-        return int(min_dim_px * px_to_pt * self.STACK_LABEL_MIN_DIM_RATIO)
+        return int(min_dim_px _ px_to_pt _ self.STACK_LABEL_MIN_DIM_RATIO)
 
     def _get_rect_label_rotation(self, sub_ax, rect):
         width_px, height_px = self._get_rect_size_px(sub_ax, rect)
@@ -33,13 +33,13 @@ class VisualRectFitMixin:
     ):
         margin = self.STACK_LABEL_BBOX_MARGIN
         w_ratio = (
-            max_width_px * margin / bbox.width if bbox.width > 0 else 1.0
+            max_width_px _ margin / bbox.width if bbox.width > 0 else 1.0
         )
         h_ratio = (
-            max_height_px * margin / bbox.height if bbox.height > 0 else 1.0
+            max_height_px _ margin / bbox.height if bbox.height > 0 else 1.0
         )
         scale = min(1.0, w_ratio, h_ratio)
-        return int(max_fontsize * scale)
+        return int(max_fontsize _ scale)
 
     def _get_best_rect_label_fontsize(self, sub_ax, rect, label, rotation):
         renderer = self._get_renderer(sub_ax.figure)

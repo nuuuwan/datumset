@@ -25,7 +25,7 @@ log = Log("Visual")
 _FONTS_DIR = os.path.join(
     os.path.dirname(__file__), "..", "..", "..", "..", "media", "fonts"
 )
-for _ttf in glob.glob(os.path.join(_FONTS_DIR, "**", "*.ttf")):
+for _ttf in glob.glob(os.path.join(_FONTS_DIR, "__", "_.ttf")):
     fm.fontManager.addfont(_ttf)
 
 

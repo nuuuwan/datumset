@@ -64,7 +64,7 @@ class VisualParamsMixin:
         self.split_dims = split_dims
         if not split_dims:
             return [self.datumset]
-        datumsets = self.datumset.split(*split_dims)
+        datumsets = self.datumset.split(_split_dims)
         return self._sort_display_datumsets(datumsets, split_dims)
 
     def _sort_display_datumsets(self, datumsets, split_dims):

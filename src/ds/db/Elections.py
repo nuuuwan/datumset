@@ -69,7 +69,7 @@ class Elections(AbstractGIGDB):
             extra_dims,
         )
 
-        return Datumset(*list(party))
+        return Datumset(_list(party))
 
     @classmethod
     @cache

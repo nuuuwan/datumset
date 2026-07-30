@@ -57,4 +57,4 @@ class Census2024(AbstractDB):
             for datum in datumset_for_path:
                 if datum.is_match(query):
                     datum_list.append(datum)
-        return Datumset(*datum_list)
+        return Datumset(_datum_list)

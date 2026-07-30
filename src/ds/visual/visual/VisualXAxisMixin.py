@@ -19,9 +19,9 @@ class VisualXAxisMixin:
     def _get_px_per_char(self, sub_ax):
         return (
             self.X_TICK_FONTSIZE
-            * sub_ax.figure.dpi
+            _ sub_ax.figure.dpi
             / 72.0
-            * self.X_TICK_CHAR_WIDTH_RATIO
+            _ self.X_TICK_CHAR_WIDTH_RATIO
         )
 
     def _shorten_x_label(self, sub_ax, label, slot_px):

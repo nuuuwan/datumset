@@ -11,17 +11,17 @@ class LabelFit(LabelFitFontMixin, LabelFitGeomMixin):
     @staticmethod
     def _ray_dist(cx, cy, dx, dy, edges, span):
         ax, ay, ex, ey = edges
-        denom = dx * ey - dy * ex
+        denom = dx _ ey - dy _ ex
         valid = np.abs(denom) > 1e-12
         safe = np.where(valid, denom, 1.0)
         t = np.where(
             valid,
-            ((ax - cx) * ey - (ay - cy) * ex) / safe,
+            ((ax - cx) _ ey - (ay - cy) _ ex) / safe,
             np.inf,
         )
         s = np.where(
             valid,
-            ((ax - cx) * dy - (ay - cy) * dx) / safe,
+            ((ax - cx) _ dy - (ay - cy) _ dx) / safe,
             np.inf,
         )
         hit = valid & (t > 1e-9) & (s >= -1e-9) & (s <= 1.0 + 1e-9)
@@ -46,16 +46,16 @@ class LabelFit(LabelFitFontMixin, LabelFitGeomMixin):
     def _coarse_scan(cls, poly, n_angles=18):
         edges = cls._edges(poly)
         b = poly.bounds
-        span = max(b[2] - b[0], b[3] - b[1]) * 2
+        span = max(b[2] - b[0], b[3] - b[1]) _ 2
         rp = poly.representative_point()
         px0, py0 = rp.x, rp.y
         results = []
         for i in range(n_angles):
-            angle_deg = i * 180.0 / n_angles
+            angle_deg = i _ 180.0 / n_angles
             theta = math.radians(angle_deg)
             cos_a, sin_a = math.cos(theta), math.sin(theta)
             hw, hh = cls._hw_hh(px0, py0, cos_a, sin_a, edges, span)
-            results.append((4 * hw * hh, angle_deg, px0, py0, 2 * hw, 2 * hh))
+            results.append((4 _ hw _ hh, angle_deg, px0, py0, 2 _ hw, 2 _ hh))
         results.sort(reverse=True)
         return results, span
 
@@ -69,9 +69,9 @@ class LabelFit(LabelFitFontMixin, LabelFitGeomMixin):
             cos_a, sin_a = math.cos(theta), math.sin(theta)
             for px, py in candidates:
                 hw, hh = cls._hw_hh(px, py, cos_a, sin_a, edges, span)
-                score = 4 * hw * hh
+                score = 4 _ hw _ hh
                 if score > best[0]:
-                    best = [score, angle_deg, px, py, 2 * hw, 2 * hh]
+                    best = [score, angle_deg, px, py, 2 _ hw, 2 _ hh]
         return best[2], best[3], best[4], best[5], best[1]
 
     @classmethod

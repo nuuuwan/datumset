@@ -42,6 +42,6 @@ class LankaDataDerivedQueryMixin:
         base_datumset = cls[cls._get_base_query_str(query)]
         group_dims = query.dim_labels[:-1]
         top_datums = cls._get_top_datums(base_datumset, group_dims)
-        datumset = Datumset(*top_datums)
+        datumset = Datumset(_top_datums)
         object.__setattr__(datumset, "_query_str", query_str)
         return datumset
