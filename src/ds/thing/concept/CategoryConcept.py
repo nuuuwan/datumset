@@ -51,3 +51,8 @@ class CategoryConcept(Concept):
     @cache
     def __class_getitem__(cls, value: str):
         return cls.from_value(value)
+
+    @classmethod
+    @cache
+    def is_ordered(cls):
+        return False

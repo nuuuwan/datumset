@@ -1,6 +1,7 @@
 [
   "District/Time*District=colombo*AdministrativeEntity/Count/StackedBarChart",
   "House/Time*District*OwnershipStatus=owned_by_a_household_member/Count/MapVisual",
+  "House/Time*Sector=urban*HouseholdSize/Count/BarChart",
   "House/Time=2024*DSD*FloorType/Count",
   "House/Time=2024*ED*CookingFuel/Count/MarimekkoChart",
   "Person/Sector*Time/Count/BarChart",
