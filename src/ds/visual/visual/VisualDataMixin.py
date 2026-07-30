@@ -15,10 +15,22 @@ class VisualDataMixin:
         rank = {x_label: i for i, x_label in enumerate(order)}
         return sorted(x_labels, key=lambda x: rank.get(x, len(order)))
 
+    @staticmethod
+    def _dedup_datums(datumset):
+        seen = set()
+        for datum in datumset:
+            key = tuple(
+                sorted((k, v.get_value()) for k, v in datum.dim_idx.items())
+            )
+            if key in seen:
+                continue
+            seen.add(key)
+            yield datum
+
     def _get_category_cell_xy(self, datumset, dim_key, cell_key):
         totals = {}
         order = []
-        for datum in datumset:
+        for datum in self._dedup_datums(datumset):
             x = self._remap_category(datum.dim_idx[dim_key].get_value())
             v = float(datum.cell_idx[cell_key].get_value())
             if x not in totals:
