@@ -1,7 +1,6 @@
 import unittest
 
 from ds.lanka_data.LankaData import LankaData
-from ds.query.DerivedQuery import DerivedQuery
 
 
 class TestCase(unittest.TestCase):
@@ -18,7 +17,7 @@ class TestCase(unittest.TestCase):
         return expected
 
     def test_top(self):
-        top_datumset = DerivedQuery["Person/Time*Province*Religion/Top"]
+        top_datumset = LankaData["Person/Time*Province*Religion/Top"]
         base_datumset = LankaData["Person/Time*Province*Religion/Count"]
 
         group_dims = ["Time", "Province"]

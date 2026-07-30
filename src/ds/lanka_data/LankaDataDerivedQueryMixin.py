@@ -1,11 +1,10 @@
 from functools import cache
 
 from ds.datumset.Datumset import Datumset
-from ds.lanka_data.LankaData import LankaData
 from ds.query.Query import Query
 
 
-class DerivedQuery:
+class LankaDataDerivedQueryMixin:
 
     CELL_TOP = "Top"
     CELL_COUNT = "Count"
@@ -38,9 +37,9 @@ class DerivedQuery:
 
     @classmethod
     @cache
-    def __class_getitem__(cls, query_str):
+    def _get_derived(cls, query_str):
         query = Query(query_str)
-        base_datumset = LankaData[cls._get_base_query_str(query)]
+        base_datumset = cls[cls._get_base_query_str(query)]
         group_dims = query.dim_labels[:-1]
         top_datums = cls._get_top_datums(base_datumset, group_dims)
         datumset = Datumset(*top_datums)
