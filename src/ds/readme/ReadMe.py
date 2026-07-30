@@ -20,10 +20,6 @@ class ReadMe:
 
     def get_lines_for_query(self, i_query, query_str):
         image_file = File("images", query_str + ".png")
-        if not image_file.exists():
-            raise FileNotFoundError(
-                f"Image file {image_file.path}  does not exist"
-            )
 
         return [
             f"### {i_query}",
@@ -32,7 +28,7 @@ class ReadMe:
             query_str,
             "```",
             "",
-            f"![Image]({image_file.path})",
+            f"![{image_file.path}]({image_file.path})",
             "",
         ]
 
