@@ -1,4 +1,5 @@
 from ds.thing.concept.region.Region import Region
+from ds.thing.concept.Time import Time
 
 
 class VisualParamsMixin:
@@ -8,6 +9,16 @@ class VisualParamsMixin:
 
     def _is_region_dim(self, dim_key):
         return isinstance(self._get_dim_concept(dim_key), Region)
+
+    def _is_time_dim(self, dim_key):
+        return isinstance(self._get_dim_concept(dim_key), Time)
+
+    def _get_x_dim_key(self):
+        varying = self._get_varying_dim_keys()
+        for dim_key in varying:
+            if self._is_time_dim(dim_key):
+                return dim_key
+        return varying[-1]
 
     def _get_region_dim_key(self):
         for dim_key in self._get_dim_labels():

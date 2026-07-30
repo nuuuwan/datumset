@@ -45,6 +45,8 @@ class VisualDataMixin:
             dim_key,
             cell_key,
         )
+        if self._is_time_dim(dim_key):
+            return sorted(order)
         value_by_x = dict(zip(order, y_values))
         return sorted(order, key=lambda x: value_by_x[x], reverse=True)
 

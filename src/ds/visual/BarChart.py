@@ -5,7 +5,7 @@ class BarChart(Visual):
 
     def __init__(self, datumset):
         super().__init__(datumset)
-        self.x_dim_key = self._get_varying_dim_keys()[-1]
+        self.x_dim_key = self._get_x_dim_key()
         self.y_cell_key = self._get_y_cell_key()
         self.display_datumsets = self._get_display_datumsets({self.x_dim_key})
         self.x_values, self.x_color_idx = self._init_category_colors(
