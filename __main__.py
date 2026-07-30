@@ -8,5 +8,5 @@ if __name__ == "__main__":
         sys.exit(1)
     visual_query_str = sys.argv[1]
     result = VisualLankaData[visual_query_str]
-    if result:
-        result.open("code")
+    # if result:
+    #     result.open("code")

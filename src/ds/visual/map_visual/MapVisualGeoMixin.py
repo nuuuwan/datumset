@@ -4,6 +4,7 @@ import urllib.request
 from collections import defaultdict
 
 import geopandas
+from utils_future import String
 
 GEO_URL = (
     "https://raw.githubusercontent.com"
@@ -16,9 +17,7 @@ GEO_CACHE_DIR = os.path.join(tempfile.gettempdir(), "datumset_geo")
 class MapVisualGeoMixin:
 
     def _normalize_region_key(self, raw_value):
-        return (
-            str(raw_value).strip().lower().replace("-", "_").replace(" ", "_")
-        )
+        return String(raw_value).snake
 
     def _load_gdf(self):
         region_type = self.region_dim_key.lower() + "s"
