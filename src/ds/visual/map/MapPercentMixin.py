@@ -1,6 +1,7 @@
 from collections import defaultdict
 
 from ds.lanka_data.LankaData import LankaData
+from ds.query.Query import Query
 from ds.thing.concept.Time import Time
 
 
@@ -20,7 +21,9 @@ class MapPercentMixin:
             self._total_dim_spec(dim_label, ref_datum)
             for dim_label in query.dim_labels
         ]
-        return "/".join([query.entity_part, "*".join(specs), query.cell_part])
+        return "/".join(
+            [query.entity_part, Query.OPR_MULT.join(specs), query.cell_part]
+        )
 
     def _get_datum_dim_key(self, datum):
         return tuple(
