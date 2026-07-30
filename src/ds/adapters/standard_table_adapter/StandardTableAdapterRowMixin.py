@@ -1,5 +1,9 @@
+from utils_future import Log
+
 from ds.thing.concept.region.Region import Region
 from ds.thing.ThingFactory import ThingFactory
+
+log = Log("StandardTableAdapterRowMixin")
 
 
 class StandardTableAdapterRowMixin:
@@ -25,7 +29,8 @@ class StandardTableAdapterRowMixin:
     def _safe_from_value(cls, row_dim_cls, row_value):
         try:
             return row_dim_cls.from_value(row_value)
-        except ValueError:
+        except ValueError as e:
+            log.error(e)
             return None
 
     @classmethod
