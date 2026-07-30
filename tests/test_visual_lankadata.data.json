@@ -1,6 +1,7 @@
 [
   "District/Time*District=colombo*AdministrativeEntity/Count/StackedBarChart",
   "House/Time*District*OwnershipStatus=owned_by_a_household_member/Count/MapVisual",
+  "House/Time=2024*DSD*FloorType/Count",
   "House/Time=2024*ED*CookingFuel/Count/MarimekkoChart",
   "Person/Sector*Time/Count/BarChart",
   "Person/Time*District*CensusOfficer/Count/MarimekkoChart",
@@ -22,6 +23,5 @@
   "Vote/ElectionType=presidential*Time=2024*Province*Party/Count/HexMap",
   "Vote/ElectionType=presidential*Time=2024*Province*Party/Count/MarimekkoChart",
   "Vote/ElectionType=presidential*Time=2024*Province*Party/Count/StackedBarChart",
-  "Vote/ElectionType=presidential*Time=2024*Province*Party/Top/HexMap",
-  "House/Time=2024*DSD*FloorType/Count"
+  "Vote/ElectionType=presidential*Time=2024*Province*Party/Top/HexMap"
 ]
