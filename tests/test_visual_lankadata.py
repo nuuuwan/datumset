@@ -32,6 +32,7 @@ class TestCase(unittest.TestCase):
             "Vote/ElectionType=presidential*Time=2024*Province*Party/Count"
             + "/MarimekkoChart",
             "Person/Time*District*CensusOfficer/Count/MarimekkoChart",
+            "Person/Time*District*MigrationStatus/Count/MarimekkoChart",
             # MapVisual
             "Person/Time=2024*Province*Religion/Count/MapVisual",
             # Cartogram
