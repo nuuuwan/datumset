@@ -31,7 +31,7 @@
   },
   {
     "entity_class_name": "Person",
-    "measurement_class_name": "Gender",
+    "measurement_class_name": "Sex",
     "measurement_id": "population-gender",
     "region_group_id": "regions"
   },

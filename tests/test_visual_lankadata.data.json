@@ -16,6 +16,7 @@
   "Person/Time*District*EmmigrationReason/Count/MekkoChart",
   "Person/Time*District*MigrationStatus/Count/MekkoChart",
   "Person/Time*District*Sector/Count/StackedBarChart",
+  "Person/Time*EconomicInactivityReason/Count/BarChart",
   "Person/Time*EmploymentStatus*NonCommunicableDisease/Count/MekkoChart",
   "Person/Time*Ethnicity=veddahs*NonCommunicableDisease/Count/BarChart",
   "Person/Time*HighestEducationLevel*DisabilityTypes/Count/MekkoChart",
@@ -34,6 +35,5 @@
   "Vote/ElectionType=presidential*Time=2024*Province*Party/Count/HexMap",
   "Vote/ElectionType=presidential*Time=2024*Province*Party/Count/MekkoChart",
   "Vote/ElectionType=presidential*Time=2024*Province*Party/Count/StackedBarChart",
-  "Vote/ElectionType=presidential*Time=2024*Province*Party/Top/HexMap",
-  "Person/Time*EconomicInactivityReason/Count/BarChart"
+  "Vote/ElectionType=presidential*Time=2024*Province*Party/Top/HexMap"
 ]
