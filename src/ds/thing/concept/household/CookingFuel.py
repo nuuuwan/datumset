@@ -9,9 +9,8 @@ class CookingFuel(CategoryConcept):
             "kerosene",
             "gas",
             "electricity",
-            "saw_dust_or_paddy_husk",
+            "sawdust_paddy_husk",
             "other",
-            #
             "bio_gas",
             "not_relevant",
         ]
@@ -19,8 +18,12 @@ class CookingFuel(CategoryConcept):
     @classmethod
     def map_alias(cls):
         return {
-            "fire_wood": ["firewood"],
-            "saw_dust_or_paddy_husk": ["sawdust_paddy_husk"],
+            "fire_wood": [
+                "firewood",
+            ],
+            "sawdust_paddy_husk": [
+                "saw_dust_or_paddy_husk",
+            ],
         }
 
     @classmethod
@@ -30,7 +33,7 @@ class CookingFuel(CategoryConcept):
             "kerosene": "#3840D0",
             "gas": "#6CD038",
             "electricity": "#D03899",
-            "saw_dust_or_paddy_husk": "#38C5D0",
+            "sawdust_paddy_husk": "#38C5D0",
             "other": "#cccccc",
             "bio_gas": "#D0AF38",
             "not_relevant": "#cccccc",

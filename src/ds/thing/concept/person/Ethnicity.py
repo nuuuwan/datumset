@@ -2,47 +2,62 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 
 class Ethnicity(CategoryConcept):
-
     @classmethod
     def valid_values(cls):
         return [
             "sinhala",
             "sri_lanka_tamil",
-            "ind_and_malaiyaga_tamil",
-            "sri_lanka_moor_or_muslim",
+            "indian_tamil",
+            "sri_lanka_muslim",
             "burgher",
             "malay",
             "sri_lanka_chetty",
             "bharatha",
             "veddahs",
             "other",
-            # legacy
             "indian_muslim",
             "european",
             "burgher_and_eurasian",
-            "low_country_sinhalese",
-            "up_country_kandyan_sinhalese",
+            "low_country_sinhala",
+            "up_country_sinhala",
         ]
 
     @classmethod
     def map_alias(cls):
         return {
-            "veddahs": ["veddas", "veddha"],
-            "sinhala": ["sinhalese"],
-            "sri_lanka_tamil": ["sl_tamil"],
-            "sri_lanka_moor_or_muslim": [
-                "sri_lanka_muslim",
-                "sl_moor",
-                "sri_lanka_moor_muslim",
-            ],
-            "sri_lanka_chetty": ["sl_chetty"],
-            "ind_and_malaiyaga_tamil": [
+            "indian_tamil": [
                 "ind_tamil",
-                "indian_tamil",
                 "indian_malaiyaga_tamil",
                 "indian_tamil_or_malaiyaga_thamilar",
+                "ind_and_malaiyaga_tamil",
             ],
-            "other": ["other_eth"],
+            "low_country_sinhala": [
+                "low_country_sinhalese",
+            ],
+            "other": [
+                "other_eth",
+            ],
+            "sinhala": [
+                "sinhalese",
+            ],
+            "sri_lanka_chetty": [
+                "sl_chetty",
+            ],
+            "sri_lanka_muslim": [
+                "sl_moor",
+                "sri_lanka_moor_muslim",
+                "sri_lanka_moor_or_muslim",
+            ],
+            "sri_lanka_tamil": [
+                "sl_tamil",
+            ],
+            "up_country_sinhala": [
+                "up_country_kandyan_sinhalese",
+            ],
+            "veddahs": [
+                "veddas",
+                "veddha",
+            ],
         }
 
     @classmethod
@@ -50,20 +65,17 @@ class Ethnicity(CategoryConcept):
         return {
             "sinhala": "#941E32",
             "sri_lanka_tamil": "#DF7500",
-            "sri_lanka_moor_or_muslim": "#005F56",
-            #
-            "ind_and_malaiyaga_tamil": "#ff8888",
+            "sri_lanka_muslim": "#005F56",
+            "indian_tamil": "#ff8888",
             "burgher": "#8e44ad",
             "malay": "#cccccc",
-            #
             "sri_lanka_chetty": "#e67e22",
             "bharatha": "#16a085",
             "veddahs": "#795548",
             "other": "#999999",
-            # legacy
             "indian_muslim": "#00897b",
             "european": "#6c5ce7",
             "burgher_and_eurasian": "#9b59b6",
-            "low_country_sinhalese": "#c0392b",
-            "up_country_kandyan_sinhalese": "#e74c3c",
+            "low_country_sinhala": "#c0392b",
+            "up_country_sinhala": "#e74c3c",
         }

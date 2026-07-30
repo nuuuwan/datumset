@@ -11,21 +11,27 @@ class HighestEducationLevel(CategoryConcept):
             "gce_advanced_level",
             "degree_and_above",
             "no_schooling",
-            #
             "passed_grade_1_5",
             "passed_grade_6_8",
             "passed_grade_9_10",
-            #
-            "g_c_e_o_or_l_or_equivalent",
-            "g_c_e_a_or_l_or_equivalent",
+            "gce_o_or_l",
+            "gce_a_or_l",
         ]
 
     @classmethod
     def map_alias(cls):
         return {
-            "no_schooling": ["never_attended_school"],
-            "g_c_e_o_or_l_or_equivalent": ["g_c_e_o_or_l_or_equal"],
-            "g_c_e_a_or_l_or_equivalent": ["g_c_e_a_or_l_or_equal"],
+            "gce_a_or_l": [
+                "g_c_e_a_or_l_or_equal",
+                "g_c_e_a_or_l_or_equivalent",
+            ],
+            "gce_o_or_l": [
+                "g_c_e_o_or_l_or_equal",
+                "g_c_e_o_or_l_or_equivalent",
+            ],
+            "no_schooling": [
+                "never_attended_school",
+            ],
         }
 
     @classmethod
@@ -40,6 +46,6 @@ class HighestEducationLevel(CategoryConcept):
             "passed_grade_1_5": "#8238D0",
             "passed_grade_6_8": "#38D056",
             "passed_grade_9_10": "#D03847",
-            "g_c_e_o_or_l_or_equivalent": "#3873D0",
-            "g_c_e_a_or_l_or_equivalent": "#9FD038",
+            "gce_o_or_l": "#3873D0",
+            "gce_a_or_l": "#9FD038",
         }

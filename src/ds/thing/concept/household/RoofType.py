@@ -10,16 +10,18 @@ class RoofType(CategoryConcept):
             "concrete",
             "zink_aluminium_sheet",
             "metal_sheet",
-            "cadjan_palmyrah_straw",
+            "cadjan_palmyrah",
             "other",
-            #
             "not_relevant",
         ]
 
     @classmethod
     def map_alias(cls):
         return {
-            "cadjan_palmyrah_straw": ["cadjan_or_palmyrah_or_straw"],
+            "cadjan_palmyrah": [
+                "cadjan_or_palmyrah_or_straw",
+                "cadjan_palmyrah_straw",
+            ],
         }
 
     @classmethod
@@ -30,7 +32,7 @@ class RoofType(CategoryConcept):
             "concrete": "#6CD038",
             "zink_aluminium_sheet": "#D03899",
             "metal_sheet": "#38C5D0",
-            "cadjan_palmyrah_straw": "#D0AF38",
+            "cadjan_palmyrah": "#D0AF38",
             "other": "#cccccc",
             "not_relevant": "#cccccc",
         }

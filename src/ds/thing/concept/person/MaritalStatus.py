@@ -12,9 +12,17 @@ class MaritalStatus(CategoryConcept):
             "widowed",
             "divorced",
             "legally_separated",
-            "separated_not_legally",
+            "separated_not_legal",
             "not_stated",
         ]
+
+    @classmethod
+    def map_alias(cls):
+        return {
+            "separated_not_legal": [
+                "separated_not_legally",
+            ],
+        }
 
     @classmethod
     def get_color_map(cls):
@@ -26,6 +34,6 @@ class MaritalStatus(CategoryConcept):
             "widowed": "#38C5D0",
             "divorced": "#D0AF38",
             "legally_separated": "#8238D0",
-            "separated_not_legally": "#38D056",
+            "separated_not_legal": "#38D056",
             "not_stated": "#cccccc",
         }

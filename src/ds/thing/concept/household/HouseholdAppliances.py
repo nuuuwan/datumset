@@ -2,7 +2,6 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 
 class HouseholdAppliances(CategoryConcept):
-
     @classmethod
     def valid_values(cls):
         return [
@@ -16,10 +15,18 @@ class HouseholdAppliances(CategoryConcept):
             "tablet_computer",
             "internet_facilities",
             "bicycle",
-            "motorcycle_or_scooter",
+            "motorcycle_scooter",
             "three_wheeler",
             "other",
         ]
+
+    @classmethod
+    def map_alias(cls):
+        return {
+            "motorcycle_scooter": [
+                "motorcycle_or_scooter",
+            ],
+        }
 
     @classmethod
     def get_color_map(cls):
@@ -34,7 +41,7 @@ class HouseholdAppliances(CategoryConcept):
             "tablet_computer": "#38D056",
             "internet_facilities": "#D03847",
             "bicycle": "#3873D0",
-            "motorcycle_or_scooter": "#9FD038",
+            "motorcycle_scooter": "#9FD038",
             "three_wheeler": "#D038CB",
             "other": "#cccccc",
         }
