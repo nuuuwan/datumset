@@ -18,6 +18,10 @@ class NonCommunicableDisease(CategoryConcept):
             "cancer",
             "epilepsy",
             "thalassemia",
-            # new
-            "stroke",
         ]
+
+    @classmethod
+    def map_alias(cls):
+        return {
+            "stroke": "stroke_or_paralysis",
+        }

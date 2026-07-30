@@ -14,9 +14,15 @@ class EmploymentStatus(CategoryConcept):
             "own_account_worker_don't_have_employees",
             "contributing_to_family_enterprise_unpaid_family_worker",
             #
-            "contributing_to_family_enterprise",
-            "own_account_worker",
             "government_or_semi_government_paid_employee",
-            "private_sector_paid_employee",
-            "employer",
         ]
+
+    @classmethod
+    def map_alias(cls):
+        return {
+            "contributing_to_family_enterprise": "contributing_to_family"
+            + "_enterprise_unpaid_family_worker",
+            "own_account_worker": "own_account_worker_don't_have_employees",
+            "private_sector_paid_employee": "paid_employee_private_sector",
+            "employer": "employer_have_employees",
+        }
