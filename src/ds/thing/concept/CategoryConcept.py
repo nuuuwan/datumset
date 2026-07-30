@@ -32,11 +32,33 @@ class CategoryConcept(Concept):
 
     @classmethod
     @cache
+    def _check_map_alias(cls):
+        valid_values = cls.valid_values()
+        for valid_value in cls.map_alias():
+            if valid_value not in valid_values:
+                raise ValueError(
+                    f"Invalid map_alias key: {valid_value}"
+                    + f" for {cls.__name__}."
+                    + f" Valid values: {valid_values}"
+                )
+
+    @classmethod
+    @cache
+    def _alias_to_value(cls):
+        idx = {}
+        for valid_value, aliases in cls.map_alias().items():
+            for alias in aliases:
+                idx[alias] = valid_value
+        return idx
+
+    @classmethod
+    @cache
     def from_value(cls, value: str):
+        cls._check_map_alias()
         value = value.replace("*", "")
         value = String(value).snake
         value = value.lower()
-        value = cls.map_alias().get(value, value)
+        value = cls._alias_to_value().get(value, value)
 
         idx = cls.idx()
         if value in idx:

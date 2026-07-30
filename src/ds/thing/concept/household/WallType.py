@@ -24,10 +24,10 @@ class WallType(CategoryConcept):
     @classmethod
     def map_alias(cls):
         return {
-            "brick": "bricks",
-            "soil_bricks": "pressed_soil_bricks",
-            "mud": "warichchi_mud",
-            "cadjan_or_palmyrah": "cadjan_palmyrah",
+            "bricks": ["brick"],
+            "pressed_soil_bricks": ["soil_bricks"],
+            "warichchi_mud": ["mud"],
+            "cadjan_palmyrah": ["cadjan_or_palmyrah"],
         }
 
     @classmethod

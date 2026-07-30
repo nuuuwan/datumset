@@ -27,19 +27,22 @@ class Ethnicity(CategoryConcept):
     @classmethod
     def map_alias(cls):
         return {
-            "veddas": "veddahs",
-            "veddha": "veddahs",
-            "sinhalese": "sinhala",
-            "sl_tamil": "sri_lanka_tamil",
-            "sri_lanka_muslim": "sri_lanka_moor_or_muslim",
-            "sl_moor": "sri_lanka_moor_or_muslim",
-            "sl_chetty": "sri_lanka_chetty",
-            "ind_tamil": "ind_and_malaiyaga_tamil",
-            "other_eth": "other",
-            "indian_tamil": "ind_and_malaiyaga_tamil",
-            "indian_malaiyaga_tamil": "ind_and_malaiyaga_tamil",
-            "indian_tamil_or_malaiyaga_thamilar": "ind_and_malaiyaga_tamil",
-            "sri_lanka_moor_muslim": "sri_lanka_moor_or_muslim",
+            "veddahs": ["veddas", "veddha"],
+            "sinhala": ["sinhalese"],
+            "sri_lanka_tamil": ["sl_tamil"],
+            "sri_lanka_moor_or_muslim": [
+                "sri_lanka_muslim",
+                "sl_moor",
+                "sri_lanka_moor_muslim",
+            ],
+            "sri_lanka_chetty": ["sl_chetty"],
+            "ind_and_malaiyaga_tamil": [
+                "ind_tamil",
+                "indian_tamil",
+                "indian_malaiyaga_tamil",
+                "indian_tamil_or_malaiyaga_thamilar",
+            ],
+            "other": ["other_eth"],
         }
 
     @classmethod

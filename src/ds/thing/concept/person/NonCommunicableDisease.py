@@ -23,7 +23,7 @@ class NonCommunicableDisease(CategoryConcept):
     @classmethod
     def map_alias(cls):
         return {
-            "stroke": "stroke_or_paralysis",
+            "stroke_or_paralysis": ["stroke"],
         }
 
     @classmethod
