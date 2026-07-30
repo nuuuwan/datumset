@@ -33,6 +33,7 @@ class TestCase(unittest.TestCase):
             + "/MarimekkoChart",
             "Person/Time*District*CensusOfficer/Count/MarimekkoChart",
             "Person/Time*District*MigrationStatus/Count/MarimekkoChart",
+            "Person/Time*District*EmmigrationReason/Count/MarimekkoChart",
             # MapVisual
             "Person/Time=2024*Province*Religion/Count/MapVisual",
             # Cartogram
