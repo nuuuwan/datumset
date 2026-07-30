@@ -5,13 +5,15 @@ from ds.visual.label_fit.LabelFit import LabelFit
 
 class MapVisualLabelMixin:
 
-    LABEL_MIN_FONTSIZE = 6
+    LABEL_MIN_FONTSIZE = 8
 
     def _fit_label_text(self, label, rw, rh, ax, renderer):
-        fontsize = LabelFit.fit_fontsize(label, rw, rh, ax, renderer)
-        if fontsize >= self.LABEL_MIN_FONTSIZE:
+        full_size = LabelFit.fit_fontsize(label, rw, rh, ax, renderer)
+        if full_size >= self.LABEL_MIN_FONTSIZE:
             return label
-        return String(label).shorten(3)
+        short = String(label).shorten(3)
+        short_size = LabelFit.fit_fontsize(short, rw, rh, ax, renderer)
+        return short if short_size > full_size else label
 
     def _get_label_angle(self, angle_deg, rw, rh):
         text_angle = angle_deg if rw >= rh else angle_deg + 90
