@@ -2,10 +2,11 @@ import math
 
 import numpy as np
 
+from ds.visual.label_fit.LabelFitFontMixin import LabelFitFontMixin
 from ds.visual.label_fit.LabelFitGeomMixin import LabelFitGeomMixin
 
 
-class LabelFit(LabelFitGeomMixin):
+class LabelFit(LabelFitFontMixin, LabelFitGeomMixin):
 
     @staticmethod
     def _ray_dist(cx, cy, dx, dy, edges, span):
@@ -72,19 +73,6 @@ class LabelFit(LabelFitGeomMixin):
                 if score > best[0]:
                     best = [score, angle_deg, px, py, 2 * hw, 2 * hh]
         return best[2], best[3], best[4], best[5], best[1]
-
-    @staticmethod
-    def fit_fontsize(label, rect_w, rect_h, ax, renderer):
-        temp = ax.text(0, 0, label, fontsize=12)
-        bbox = temp.get_window_extent(renderer=renderer)
-        temp.remove()
-        axes_bb = ax.get_window_extent(renderer=renderer)
-        xlim, ylim = ax.get_xlim(), ax.get_ylim()
-        rx = axes_bb.width * rect_w / max(xlim[1] - xlim[0], 1e-9)
-        ry = axes_bb.height * rect_h / max(ylim[1] - ylim[0], 1e-9)
-        ws = rx / max(bbox.width, 1e-9)
-        hs = ry / max(bbox.height, 1e-9)
-        return max(4, 12 * min(ws, hs) * 0.65)
 
     @classmethod
     def best_label_fit(cls, geom):

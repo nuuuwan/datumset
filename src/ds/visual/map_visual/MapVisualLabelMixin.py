@@ -5,15 +5,7 @@ from ds.visual.label_fit.LabelFit import LabelFit
 
 class MapVisualLabelMixin:
 
-    LABEL_MIN_FONTSIZE = 8
-
-    def _fit_label_text(self, label, rw, rh, ax, renderer):
-        full_size = LabelFit.fit_fontsize(label, rw, rh, ax, renderer)
-        if full_size >= self.LABEL_MIN_FONTSIZE:
-            return label
-        short = String(label).shorten(3)
-        short_size = LabelFit.fit_fontsize(short, rw, rh, ax, renderer)
-        return short if short_size > full_size else label
+    LABEL_FONTSIZE = 10
 
     def _get_label_angle(self, angle_deg, rw, rh):
         text_angle = angle_deg if rw >= rh else angle_deg + 90
@@ -24,15 +16,16 @@ class MapVisualLabelMixin:
     def _add_region_label(self, ax, renderer, row):
         label = row.get("name") or row["region_id"]
         cx, cy, rw, rh, angle_deg = LabelFit.best_label_fit(row.geometry)
-        label = self._fit_label_text(label, rw, rh, ax, renderer)
-        fontsize = LabelFit.fit_fontsize(label, rw, rh, ax, renderer)
-        fontsize = max(4, min(9, fontsize))
+        budget = LabelFit.char_budget(
+            rw, rh, self.LABEL_FONTSIZE, ax, renderer
+        )
+        label = String(label).shorten(max(budget, 1))
         ax.annotate(
             label,
             xy=(cx, cy),
             ha="center",
             va="center",
-            fontsize=fontsize,
+            fontsize=self.LABEL_FONTSIZE,
             color=self._get_contrast_text_color(row["color"]),
             rotation=self._get_label_angle(angle_deg, rw, rh),
             clip_on=True,
