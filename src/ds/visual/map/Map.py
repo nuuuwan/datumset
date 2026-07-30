@@ -1,20 +1,20 @@
 from ds.query.Query import Query
-from ds.visual.map_visual.MapVisualColorMixin import MapVisualColorMixin
-from ds.visual.map_visual.MapVisualGdfMixin import MapVisualGdfMixin
-from ds.visual.map_visual.MapVisualGeoMixin import MapVisualGeoMixin
-from ds.visual.map_visual.MapVisualLabelMixin import MapVisualLabelMixin
-from ds.visual.map_visual.MapVisualPercentMixin import MapVisualPercentMixin
-from ds.visual.map_visual.MapVisualPlotMixin import MapVisualPlotMixin
+from ds.visual.map.MapColorMixin import MapColorMixin
+from ds.visual.map.MapGdfMixin import MapGdfMixin
+from ds.visual.map.MapGeoMixin import MapGeoMixin
+from ds.visual.map.MapLabelMixin import MapLabelMixin
+from ds.visual.map.MapPercentMixin import MapPercentMixin
+from ds.visual.map.MapPlotMixin import MapPlotMixin
 from ds.visual.visual.Visual import Visual
 
 
-class MapVisual(
-    MapVisualGeoMixin,
-    MapVisualGdfMixin,
-    MapVisualColorMixin,
-    MapVisualLabelMixin,
-    MapVisualPercentMixin,
-    MapVisualPlotMixin,
+class Map(
+    MapGeoMixin,
+    MapGdfMixin,
+    MapColorMixin,
+    MapLabelMixin,
+    MapPercentMixin,
+    MapPlotMixin,
     Visual,
 ):
 

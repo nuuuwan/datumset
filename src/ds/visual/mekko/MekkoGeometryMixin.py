@@ -1,4 +1,4 @@
-class MarimekkoGeometryMixin:
+class MekkoGeometryMixin:
 
     BAR_HEIGHT = 1.0
     BAR_GAP = 0.01

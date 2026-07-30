@@ -2,19 +2,19 @@ from matplotlib.ticker import FuncFormatter
 from utils_future import Percent
 
 
-class MarimekkoAxisMixin:
+class MekkoAxisMixin:
 
     def _get_bar_centers(self, geometries):
         return [left + width / 2.0 for left, width in geometries]
 
-    def _set_marimekko_yaxis(self, sub_ax):
+    def _set_mekko_yaxis(self, sub_ax):
         sub_ax.set_ylabel("Share")
         sub_ax.set_ylim(0, self.BAR_HEIGHT)
         sub_ax.yaxis.set_major_formatter(
             FuncFormatter(lambda value, _: Percent(value).humanize)
         )
 
-    def _set_marimekko_xaxis(
+    def _set_mekko_xaxis(
         self, sub_ax, geometries, x_labels, sub_datumset
     ):
         centers = self._get_bar_centers(geometries)
@@ -46,7 +46,7 @@ class MarimekkoAxisMixin:
                 color=self.SUBTITLE_COLOR,
             )
 
-    def _style_marimekko_subfigure(
+    def _style_mekko_subfigure(
         self,
         sub_ax,
         geometries,
@@ -56,7 +56,7 @@ class MarimekkoAxisMixin:
     ):
         sub_ax.set_xlim(0, 1)
         sub_ax.set_box_aspect(self._get_box_aspect())
-        self._set_marimekko_yaxis(sub_ax)
-        self._set_marimekko_xaxis(sub_ax, geometries, x_labels, sub_datumset)
+        self._set_mekko_yaxis(sub_ax)
+        self._set_mekko_xaxis(sub_ax, geometries, x_labels, sub_datumset)
         self._add_bar_total_labels(sub_ax, geometries, totals)
         self._set_subfigure_title(sub_ax, sub_datumset)

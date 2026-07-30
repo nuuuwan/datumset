@@ -3,7 +3,7 @@ import colorsys
 import matplotlib.colors as mcolors
 
 
-class MapVisualColorMixin:
+class MapColorMixin:
     MIN_LIGHT, MAX_LIGHT = 0.2, 0.95
     NEUTRAL_COLOR = "#888888"
 

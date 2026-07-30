@@ -1,7 +1,7 @@
 import matplotlib.colors as mcolors
 
 
-class MapVisualGdfMixin:
+class MapGdfMixin:
 
     def _get_category_gdf(self, sub_datumset, ctx):
         winners = self._get_region_winner_category(sub_datumset)

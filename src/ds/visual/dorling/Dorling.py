@@ -1,13 +1,13 @@
 from ds.visual.dorling.DorlingDrawMixin import DorlingDrawMixin
 from ds.visual.dorling.DorlingLabelMixin import DorlingLabelMixin
 from ds.visual.dorling.DorlingLayoutMixin import DorlingLayoutMixin
-from ds.visual.map_visual.MapVisual import MapVisual
+from ds.visual.map.Map import Map
 
 
 class Dorling(
     DorlingLayoutMixin,
     DorlingDrawMixin,
     DorlingLabelMixin,
-    MapVisual,
+    Map,
 ):
     pass

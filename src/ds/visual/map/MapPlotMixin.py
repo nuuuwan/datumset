@@ -2,7 +2,7 @@ import matplotlib.cm as cm
 import matplotlib.colors as mcolors
 
 
-class MapVisualPlotMixin:
+class MapPlotMixin:
 
     def _plot_subfigure(self, fig, sub_ax, sub_datumset, ctx):
         gdf = self._get_colored_gdf(sub_datumset, ctx)
