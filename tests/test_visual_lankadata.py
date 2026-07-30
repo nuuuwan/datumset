@@ -49,6 +49,8 @@ class TestCase(unittest.TestCase):
             "Vote/ElectionType=presidential*Time=2024*Province*Party/Count"
             + "/HexMap",
             # UnitHexMap
+            "Vote/ElectionType=presidential*Time=2024*Province*Party"
+            + "/HexMap",
             # SquareMap
             # UnitSquareMap
         ]
