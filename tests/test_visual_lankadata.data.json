@@ -1,6 +1,6 @@
 [
   "District/Time*District=colombo*AdministrativeEntity/Count/StackedBarChart",
-  "House/Time*District*OwnershipStatus=owned_by_a_household_member/Count/Map",
+  "House/Time*District*OwnershipStatus=encroached/Count/Map",
   "House/Time*District*RoofType/Top/UnitHexMap",
   "House/Time*Sector=urban*HouseholdSize/Count/BarChart",
   "House/Time=2024*DSD<District=batticaloa*Lighting=kerosene/Count/Map",

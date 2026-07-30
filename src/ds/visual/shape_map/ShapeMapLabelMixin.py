@@ -33,7 +33,8 @@ class ShapeMapLabelMixin:
 
     def _add_shape_label(self, ax, renderer, radius, label, points, color):
         cx, cy, rect_w, rect_h, angle = self._best_label_fit(points, radius)
-        label = self._shorten_to_fit(label, rect_w, rect_h, ax, renderer)
+        if self._can_shorten_dim(self.region_dim_key):
+            label = self._shorten_to_fit(label, rect_w, rect_h, ax, renderer)
         ax.annotate(
             label,
             xy=(cx, cy),

@@ -8,6 +8,12 @@ class VisualParamsMixin:
     def _get_dim_concept(self, dim_key):
         return self.datumset[0].dim_idx.get(dim_key)
 
+    def _can_shorten_dim(self, dim_key):
+        concept = self._get_dim_concept(dim_key)
+        if isinstance(concept, CategoryConcept):
+            return type(concept).can_shorten()
+        return True
+
     def _get_ordered_category_valid_values(self, dim_key):
         concept = self._get_dim_concept(dim_key)
         if not isinstance(concept, CategoryConcept):

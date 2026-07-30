@@ -16,10 +16,11 @@ class MapLabelMixin:
     def _add_region_label(self, ax, renderer, row):
         label = row.get("name") or row["region_id"]
         cx, cy, rw, rh, angle_deg = LabelFit.best_label_fit(row.geometry)
-        budget = LabelFit.char_budget(
-            rw, rh, self.LABEL_FONTSIZE, ax, renderer
-        )
-        label = String(label).shorten(max(budget, 1))
+        if self._can_shorten_dim(self.region_dim_key):
+            budget = LabelFit.char_budget(
+                rw, rh, self.LABEL_FONTSIZE, ax, renderer
+            )
+            label = String(label).shorten(max(budget, 1))
         ax.annotate(
             label,
             xy=(cx, cy),
