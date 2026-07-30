@@ -2,19 +2,19 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 
 class MigrationStatus(CategoryConcept):
+
     @classmethod
     def valid_values(cls):
         return [
-            # 1 - 3
-            "local",
-            "foreign",
-            "migrant",
+            'foreign',
+            'local',
+            'migrant',
         ]
 
     @classmethod
     def get_color_map(cls):
         return {
-            "local": "#D05D38",
-            "foreign": "#3840D0",
-            "migrant": "#6CD038",
+            'foreign': '#3840D0',
+            'local': '#D05D38',
+            'migrant': '#6CD038',
         }

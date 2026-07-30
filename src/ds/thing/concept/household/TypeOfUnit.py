@@ -2,22 +2,23 @@ from ds.thing.concept.CategoryConcept import CategoryConcept
 
 
 class TypeOfUnit(CategoryConcept):
+
     @classmethod
     def valid_values(cls):
         return [
-            "permanent",
-            "not_permanent",
-            "semi_permanent",
-            "improvised",
-            "unclassified",
+            'improvised',
+            'not_permanent',
+            'permanent',
+            'semi_permanent',
+            'unclassified',
         ]
 
     @classmethod
     def get_color_map(cls):
         return {
-            "permanent": "#D05D38",
-            "not_permanent": "#3840D0",
-            "semi_permanent": "#6CD038",
-            "improvised": "#D03899",
-            "unclassified": "#cccccc",
+            'improvised': '#D03899',
+            'not_permanent': '#3840D0',
+            'permanent': '#D05D38',
+            'semi_permanent': '#6CD038',
+            'unclassified': '#cccccc',
         }

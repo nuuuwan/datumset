@@ -19,7 +19,7 @@ class Region(CategoryConcept):
     @classmethod
     @cache
     def valid_values(cls):
-        return [r.get_value() for r in cls.list()]
+        return sorted([r.get_value() for r in cls.list()])
 
     @cache
     def get_ent(self):
@@ -65,7 +65,8 @@ class Region(CategoryConcept):
     @cache
     def list(cls):
         data_list = cls.get_ents()
-        return [cls(String(d["name"]).snake) for d in data_list]
+        values = sorted(set(String(d["name"]).snake for d in data_list))
+        return [cls(value) for value in values]
 
     @classmethod
     @cache

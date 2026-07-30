@@ -17,6 +17,14 @@ class CategoryConcept(Concept):
         pass  # pragma: no cover
 
     @classmethod
+    def _sorted_unique(cls, values: list[str]) -> list[str]:
+        return sorted(set(values))
+
+    @classmethod
+    def _sorted_dict(cls, d: dict) -> dict:
+        return {k: d[k] for k in sorted(d)}
+
+    @classmethod
     def list(cls):
         return [cls(value) for value in cls.valid_values()]
 
@@ -29,6 +37,13 @@ class CategoryConcept(Concept):
     @cache
     def map_alias(cls):
         return {}
+
+    @classmethod
+    @cache
+    def _sorted_map_alias(cls):
+        alias_map = cls.map_alias()
+        sorted_map = cls._sorted_dict(alias_map)
+        return {k: cls._sorted_unique(sorted_map[k]) for k in sorted_map}
 
     @classmethod
     @cache
@@ -46,7 +61,7 @@ class CategoryConcept(Concept):
     @cache
     def _alias_to_value(cls):
         idx = {}
-        for valid_value, aliases in cls.map_alias().items():
+        for valid_value, aliases in cls._sorted_map_alias().items():
             for alias in aliases:
                 idx[alias] = valid_value
         return idx
