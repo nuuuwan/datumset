@@ -8,13 +8,16 @@ class IsEconomicallyActive(CategoryConcept):
             "employed",
             "unemployed",
             "economically_active",
-            "economically_inactive",
+            "inactive",
         ]
 
     @classmethod
     def map_alias(cls):
         return {
-            "economically_inactive": ["economically_not_active"],
+            "inactive": [
+                "economically_not_active",
+                "economically_inactive",
+            ],
         }
 
     @classmethod
@@ -23,5 +26,5 @@ class IsEconomicallyActive(CategoryConcept):
             "employed": "#D05D38",
             "unemployed": "#3840D0",
             "economically_active": "#6CD038",
-            "economically_inactive": "#D03899",
+            "inactive": "#D03899",
         }

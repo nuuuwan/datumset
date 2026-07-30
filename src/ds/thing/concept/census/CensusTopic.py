@@ -5,45 +5,78 @@ class CensusTopic(CategoryConcept):
     @classmethod
     def valid_values(cls):
         return [
-            # 1 - 5
             "schedule",
-            "demographic_and_personal_information",
+            "demographic_info",
             "name",
-            "relationship_to_head_of_the_household",
+            "relationship_head",
             "sex",
-            # 6 - 10
             "date_of_birth",
             "age",
             "marital_status",
             "ethnic_group",
             "religion",
-            # 11 - 15
             "citizenship",
             "n_i_c_no",
-            "status_of_clergy_or_priest",
-            "educational_characteristics",
-            "ability_to_speak_sinhala_and_tamil",
-            # 16 - 20
-            "ability_to_speak_english",
-            "ability_to_speak_sinhala_english_and_tamil",
+            "clergy_or_priest",
+            "education_chars",
+            "speak_sinhala_tamil",
+            "speak_english",
+            "speak_all_languages",
             "literacy",
             "english_literacy",
-            "sinhala_english_and_tamil_literacy",
-            # 21 - 25
+            "all_literacy",
             "computer_literacy",
             "digital_literacy",
-            "educational_attainment_or_highest_level_of",
-            "school_attendance_or_attend_in_educational",
-            "vocational_and_apprenticeship_qualification",
+            "education_attainment",
+            "school_attendance",
+            "vocational_quals",
         ]
+
+    @classmethod
+    def map_alias(cls):
+        return {
+            "all_literacy": [
+                "sinhala_english_and_tamil_literacy",
+            ],
+            "clergy_or_priest": [
+                "status_of_clergy_or_priest",
+            ],
+            "demographic_info": [
+                "demographic_and_personal_information",
+            ],
+            "education_attainment": [
+                "educational_attainment_or_highest_level_of",
+            ],
+            "education_chars": [
+                "educational_characteristics",
+            ],
+            "relationship_head": [
+                "relationship_to_head_of_the_household",
+            ],
+            "school_attendance": [
+                "school_attendance_or_attend_in_educational",
+            ],
+            "speak_all_languages": [
+                "ability_to_speak_sinhala_english_and_tamil",
+            ],
+            "speak_english": [
+                "ability_to_speak_english",
+            ],
+            "speak_sinhala_tamil": [
+                "ability_to_speak_sinhala_and_tamil",
+            ],
+            "vocational_quals": [
+                "vocational_and_apprenticeship_qualification",
+            ],
+        }
 
     @classmethod
     def get_color_map(cls):
         return {
             "schedule": "#D05D38",
-            "demographic_and_personal_information": "#3840D0",
+            "demographic_info": "#3840D0",
             "name": "#6CD038",
-            "relationship_to_head_of_the_household": "#D03899",
+            "relationship_head": "#D03899",
             "sex": "#38C5D0",
             "date_of_birth": "#D0AF38",
             "age": "#8238D0",
@@ -52,17 +85,17 @@ class CensusTopic(CategoryConcept):
             "religion": "#3873D0",
             "citizenship": "#9FD038",
             "n_i_c_no": "#D038CB",
-            "status_of_clergy_or_priest": "#38D0A8",
-            "educational_characteristics": "#D07C38",
-            "ability_to_speak_sinhala_and_tamil": "#5038D0",
-            "ability_to_speak_english": "#4DD038",
-            "ability_to_speak_sinhala_english_and_tamil": "#D03879",
+            "clergy_or_priest": "#38D0A8",
+            "education_chars": "#D07C38",
+            "speak_sinhala_tamil": "#5038D0",
+            "speak_english": "#4DD038",
+            "speak_all_languages": "#D03879",
             "literacy": "#38A6D0",
             "english_literacy": "#D0CE38",
-            "sinhala_english_and_tamil_literacy": "#A238D0",
+            "all_literacy": "#A238D0",
             "computer_literacy": "#38D076",
             "digital_literacy": "#D04938",
-            "educational_attainment_or_highest_level_of": "#3853D0",
-            "school_attendance_or_attend_in_educational": "#80D038",
-            "vocational_and_apprenticeship_qualification": "#D038AC",
+            "education_attainment": "#3853D0",
+            "school_attendance": "#80D038",
+            "vocational_quals": "#D038AC",
         }

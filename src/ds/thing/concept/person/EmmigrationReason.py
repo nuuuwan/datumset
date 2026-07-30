@@ -5,18 +5,25 @@ class EmmigrationReason(CategoryConcept):
     @classmethod
     def valid_values(cls):
         return [
-            # 1 - 4
             "employment",
             "education",
-            "accompanying_family_member_in_need",
+            "family_in_need",
             "other",
         ]
+
+    @classmethod
+    def map_alias(cls):
+        return {
+            "family_in_need": [
+                "accompanying_family_member_in_need",
+            ],
+        }
 
     @classmethod
     def get_color_map(cls):
         return {
             "employment": "#D05D38",
             "education": "#3840D0",
-            "accompanying_family_member_in_need": "#6CD038",
+            "family_in_need": "#6CD038",
             "other": "#cccccc",
         }

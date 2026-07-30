@@ -5,29 +5,60 @@ class CensusOfficer(CategoryConcept):
     @classmethod
     def valid_values(cls):
         return [
-            # 1 - 5
-            "deputy_census_commissioners",
-            "assistant_census_commissioners",
-            "technical_staff_zonal_supervisors_and_district_statistical_branch_head",  # noqa: E501
-            "technical_staff_divisional_census_officer",
-            "technical_staff_area_supervisors",
-            # 6 - 9
-            "technical_staff_circle_officers",
-            "other_non_technical_staff",
-            "enumerators_who_used_tablet_computers_capi",
-            "enumerators_who_used_smart_phones_byoad",
+            "deputy_commissioners",
+            "asst_commissioners",
+            "zonal_supervisors",
+            "divisional_officer",
+            "area_supervisors",
+            "circle_officers",
+            "other_non_technical",
+            "enumerators_capi",
+            "enumerators_byoad",
         ]
+
+    @classmethod
+    def map_alias(cls):
+        return {
+            "area_supervisors": [
+                "technical_staff_area_supervisors",
+            ],
+            "asst_commissioners": [
+                "assistant_census_commissioners",
+            ],
+            "circle_officers": [
+                "technical_staff_circle_officers",
+            ],
+            "deputy_commissioners": [
+                "deputy_census_commissioners",
+            ],
+            "divisional_officer": [
+                "technical_staff_divisional_census_officer",
+            ],
+            "enumerators_byoad": [
+                "enumerators_who_used_smart_phones_byoad",
+            ],
+            "enumerators_capi": [
+                "enumerators_who_used_tablet_computers_capi",
+            ],
+            "other_non_technical": [
+                "other_non_technical_staff",
+            ],
+            "zonal_supervisors": [
+                "technical_staff_zonal_supervisors_"
+                "and_district_statistical_branch_head",
+            ],
+        }
 
     @classmethod
     def get_color_map(cls):
         return {
-            "deputy_census_commissioners": "#D05D38",
-            "assistant_census_commissioners": "#3840D0",
-            "technical_staff_zonal_supervisors_and_district_statistical_branch_head": "#6CD038",  # noqa: E501
-            "technical_staff_divisional_census_officer": "#D03899",
-            "technical_staff_area_supervisors": "#38C5D0",
-            "technical_staff_circle_officers": "#D0AF38",
-            "other_non_technical_staff": "#8238D0",
-            "enumerators_who_used_tablet_computers_capi": "#38D056",
-            "enumerators_who_used_smart_phones_byoad": "#D03847",
+            "deputy_commissioners": "#D05D38",
+            "asst_commissioners": "#3840D0",
+            "zonal_supervisors": "#6CD038",
+            "divisional_officer": "#D03899",
+            "area_supervisors": "#38C5D0",
+            "circle_officers": "#D0AF38",
+            "other_non_technical": "#8238D0",
+            "enumerators_capi": "#38D056",
+            "enumerators_byoad": "#D03847",
         }
