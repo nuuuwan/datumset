@@ -45,9 +45,10 @@ class Region(CategoryConcept):
             + "/lk_admin_regions/refs/heads/main"
             + f"/data/ents/{cls.region_class_id()}s.json"
         )
+        if not data_file.exists():
+            log.debug(f"Downloading {cls.region_class_id()}s from {url}")
         WWW(url).download(File(data_file.path))
         data_list = data_file.read()
-        log.debug(f"Downloaded {len(data_list)} items from {url}")
         return data_list
 
     @classmethod
