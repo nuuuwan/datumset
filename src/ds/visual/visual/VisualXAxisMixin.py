@@ -79,7 +79,7 @@ class VisualXAxisMixin:
         sub_ax.set_ylabel(y_cell_key)
         sub_ax.set_ylim(0, y_limit)
         self._format_humanized_y_axis(sub_ax)
-        sub_ax.set_box_aspect(1)
+        sub_ax.set_box_aspect(self._get_box_aspect())
         if x_labels:
             display_x_labels = self._get_uniform_x_labels(sub_ax, x_labels)
             self._set_x_tick_labels(

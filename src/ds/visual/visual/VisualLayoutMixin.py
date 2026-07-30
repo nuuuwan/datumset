@@ -78,8 +78,8 @@ class VisualLayoutMixin:
         fig.clear()
         n_rows, n_cols = self._get_grid_shape(n_subfigures)
         fig.set_size_inches(
-            self.FIGSIZE[0] * n_cols,
-            self.FIGSIZE[1] * n_rows,
+            self._get_figsize()[0] * n_cols,
+            self._get_figsize()[1] * n_rows,
         )
         axes = fig.subplots(nrows=n_rows, ncols=n_cols)
         return axes.flatten()

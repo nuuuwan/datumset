@@ -60,6 +60,10 @@ class Visual(
     def _get_figsize(self):
         return self.FIGSIZE
 
+    def _get_box_aspect(self):
+        width, height = self._get_figsize()
+        return height / width
+
     def draw(self):
         self._set_font()
         self._renderer = None

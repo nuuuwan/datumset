@@ -36,6 +36,8 @@ class TestCase(unittest.TestCase):
             "Person/Time*District*EmmigrationReason/Count/MarimekkoChart",
             # MapVisual
             "Person/Time=2024*Province*Religion/Count/MapVisual",
+            "House/Time*District*OwnershipStatus=owned_by_a_household_member/Count"
+            + "/MapVisual",
             # Cartogram
             "Person/Time=2024*PD<District=colombo*Religion=islam/Count"
             + "/Cartogram",
