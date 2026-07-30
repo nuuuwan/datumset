@@ -14,8 +14,12 @@ DATA_PATH = os.path.join(
 class TestCase(unittest.TestCase):
 
     @staticmethod
-    def get_scenarios():
-        return JSONFile(DATA_PATH).read()
+    def get_query_strs():
+        query_strs_file = JSONFile(DATA_PATH)
+        query_strs = query_strs_file.read()
+        query_strs.sort()
+        query_strs_file.write(query_strs)
+        return query_strs
 
     @staticmethod
     def build_test(visual_query_str):
@@ -26,7 +30,7 @@ class TestCase(unittest.TestCase):
         return test
 
 
-for i, scenario in enumerate(TestCase.get_scenarios()):
+for i, scenario in enumerate(TestCase.get_query_strs()):
     cleaned_scenario = re.sub(r"[^0-9a-zA-Z_]+", "_", scenario)
     test_name = f"test_{i}_{cleaned_scenario}"
     setattr(TestCase, test_name, TestCase.build_test(scenario))
