@@ -78,3 +78,7 @@ class CategoryConcept(Concept):
     @cache
     def is_ordered(cls):
         return False
+
+    @classmethod
+    def can_shorten(cls):
+        return False

@@ -89,3 +89,7 @@ class Region(CategoryConcept):
             f"Invalid region_id: {region_id} for {cls.__name__}."
             + f" Valid region_ids: {list(idx.keys())}"
         )
+
+    @classmethod
+    def can_shorten(cls):
+        return True
