@@ -27,6 +27,7 @@ class TestCase(unittest.TestCase):
             + "/StackedBarChart",
             "District/Time*District=colombo*AdministrativeEntity/Count"
             + "/StackedBarChart",
+            "Person/Time*District*Sector/Count/StackedBarChart",
             # MarimekkoChart
             "Vote/ElectionType=presidential*Time=2024*Province*Party/Count"
             + "/MarimekkoChart",
