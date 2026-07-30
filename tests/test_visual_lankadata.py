@@ -17,6 +17,10 @@ class TestCase(unittest.TestCase):
     def get_query_strs():
         query_strs_file = JSONFile(DATA_PATH)
         query_strs = query_strs_file.read()
+        for query_str in query_strs:
+            tokens = query_str.split("/")
+            if len(tokens) != 4:
+                raise ValueError(f"Invalid query string: {query_str}")
         query_strs.sort()
         query_strs_file.write(query_strs)
         return query_strs
