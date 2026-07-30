@@ -24,18 +24,23 @@ class ToiletFacilities(CategoryConcept):
     @classmethod
     def map_alias(cls):
         return {
-            "within_unit_exclusive": "within_the_housing_unit"
-            + "_exclusively_for_the_household",
-            "within_unit_shared": "within_the_housing_unit"
-            + "_sharing_with_another_household",
-            "within_premises_exclusive": "within_premises"
-            + "_exclusively_for_the_household",
-            "within_premises_shared": "within_premises"
-            + "_sharing_with_another_household",
-            "no_toilet_sharing": "no_toilet_but_sharing"
-            + "_with_another_housing_unit_or_units",
-            "common_public": "common_or_public_toilet",
-            "none": "not_using_a_toilet",
+            "within_the_housing_unit_exclusively_for_the_household": [
+                "within_unit_exclusive"
+            ],
+            "within_the_housing_unit_sharing_with_another_household": [
+                "within_unit_shared"
+            ],
+            "within_premises_exclusively_for_the_household": [
+                "within_premises_exclusive"
+            ],
+            "within_premises_sharing_with_another_household": [
+                "within_premises_shared"
+            ],
+            "no_toilet_but_sharing_with_another_housing_unit_or_units": [
+                "no_toilet_sharing"
+            ],
+            "common_or_public_toilet": ["common_public"],
+            "not_using_a_toilet": ["none"],
         }
 
     @classmethod

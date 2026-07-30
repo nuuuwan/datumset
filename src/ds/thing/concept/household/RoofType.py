@@ -19,7 +19,7 @@ class RoofType(CategoryConcept):
     @classmethod
     def map_alias(cls):
         return {
-            "cadjan_or_palmyrah_or_straw": "cadjan_palmyrah_straw",
+            "cadjan_palmyrah_straw": ["cadjan_or_palmyrah_or_straw"],
         }
 
     @classmethod

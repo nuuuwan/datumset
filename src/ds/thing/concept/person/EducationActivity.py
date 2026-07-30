@@ -19,8 +19,10 @@ class EducationActivity(CategoryConcept):
     @classmethod
     def map_alias(cls):
         return {
-            "pre_school": "preschool_education",
-            "undergraduate_or_postgraduate_education": "degree_or_postgraduate_education",  # noqa: E501
+            "preschool_education": ["pre_school"],
+            "degree_or_postgraduate_education": [
+                "undergraduate_or_postgraduate_education"
+            ],
         }
 
     @classmethod

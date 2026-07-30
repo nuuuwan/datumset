@@ -23,9 +23,9 @@ class HighestEducationLevel(CategoryConcept):
     @classmethod
     def map_alias(cls):
         return {
-            "never_attended_school": "no_schooling",
-            "g_c_e_o_or_l_or_equal": "g_c_e_o_or_l_or_equivalent",
-            "g_c_e_a_or_l_or_equal": "g_c_e_a_or_l_or_equivalent",
+            "no_schooling": ["never_attended_school"],
+            "g_c_e_o_or_l_or_equivalent": ["g_c_e_o_or_l_or_equal"],
+            "g_c_e_a_or_l_or_equivalent": ["g_c_e_a_or_l_or_equal"],
         }
 
     @classmethod

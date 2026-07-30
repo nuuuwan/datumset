@@ -21,7 +21,7 @@ class LiveBirths(CategoryConcept):
     @classmethod
     def map_alias(cls) -> dict:
         return {
-            "7_plus": "7_or_more",
+            "7_or_more": ["7_plus"],
         }
 
     @classmethod

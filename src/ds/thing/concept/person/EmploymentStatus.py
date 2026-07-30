@@ -20,11 +20,12 @@ class EmploymentStatus(CategoryConcept):
     @classmethod
     def map_alias(cls):
         return {
-            "contributing_to_family_enterprise": "contributing_to_family"
-            + "_enterprise_unpaid_family_worker",
-            "own_account_worker": "own_account_worker_don't_have_employees",
-            "private_sector_paid_employee": "paid_employee_private_sector",
-            "employer": "employer_have_employees",
+            "contributing_to_family_enterprise_unpaid_family_worker": [
+                "contributing_to_family_enterprise"
+            ],
+            "own_account_worker_don't_have_employees": ["own_account_worker"],
+            "paid_employee_private_sector": ["private_sector_paid_employee"],
+            "employer_have_employees": ["employer"],
         }
 
     @classmethod

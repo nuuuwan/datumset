@@ -14,7 +14,7 @@ class IsEconomicallyActive(CategoryConcept):
     @classmethod
     def map_alias(cls):
         return {
-            "economically_not_active": "economically_inactive",
+            "economically_inactive": ["economically_not_active"],
         }
 
     @classmethod

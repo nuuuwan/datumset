@@ -19,8 +19,8 @@ class CookingFuel(CategoryConcept):
     @classmethod
     def map_alias(cls):
         return {
-            "firewood": "fire_wood",
-            "sawdust_paddy_husk": "saw_dust_or_paddy_husk",
+            "fire_wood": ["firewood"],
+            "saw_dust_or_paddy_husk": ["sawdust_paddy_husk"],
         }
 
     @classmethod

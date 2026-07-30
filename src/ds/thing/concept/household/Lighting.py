@@ -21,7 +21,7 @@ class Lighting(CategoryConcept):
     @classmethod
     def map_alias(cls):
         return {
-            "kerosene_lamp": "kerosene",
+            "kerosene": ["kerosene_lamp"],
         }
 
     @classmethod
