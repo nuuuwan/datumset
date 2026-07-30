@@ -13,8 +13,6 @@ class VisualLankaData:
     @cache
     def __class_getitem__(cls, visual_query_str):
         query_str, visual_class_name = visual_query_str.rsplit("/", 1)
-        log.debug(f"{query_str=}")
-        log.debug(f"{visual_class_name=}")
         datumset = LankaData[query_str]
         visual_class = VisualFactory[visual_class_name]
 

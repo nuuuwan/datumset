@@ -27,11 +27,12 @@ class LankaData:
         datumset = Datumset.empty()
         for db_class in cls.get_db_class_List():
             datumset_for_db_class = db_class[query_str]
-            log.debug(
-                f"{len(datumset_for_db_class)} datums"
-                + f" from {db_class.__name__}"
-                + f' for query "{query_str}"'
-            )
+            if len(datumset_for_db_class) > 0:
+                log.debug(
+                    f"{len(datumset_for_db_class)} datums"
+                    + f" from {db_class.__name__}"
+                    + f' for query "{query_str}"'
+                )
             datumset += datumset_for_db_class
         object.__setattr__(datumset, "_query_str", query_str)
         return datumset

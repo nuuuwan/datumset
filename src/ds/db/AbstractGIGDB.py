@@ -42,10 +42,6 @@ class AbstractGIGDB(AbstractDB, ABC):
         for item in cls.get_metadata():
             if cls.is_metadata_item_matching_query(item, query):
                 metadata_for_query.append(item)
-        log.debug(
-            f"{len(metadata_for_query)} metadata items"
-            + f" matched {query_str}"
-        )
         return metadata_for_query
 
     @classmethod
@@ -53,9 +49,7 @@ class AbstractGIGDB(AbstractDB, ABC):
     def __class_getitem__(cls, query_str):
         query = Query(query_str)
         metadata_for_query = cls.get_metadata_for_query(query_str)
-        datumset_list = [
-            cls.get_datumset(item) for item in metadata_for_query
-        ]
+        datumset_list = [cls.get_datumset(item) for item in metadata_for_query]
         datum_list = []
         n_datum = 0
         n_datum_matching = 0
@@ -67,8 +61,4 @@ class AbstractGIGDB(AbstractDB, ABC):
                     n_datum_matching += 1
         datumset = Datumset(*datum_list)
         object.__setattr__(datumset, "_query_str", query_str)
-        log.debug(
-            f"Found {n_datum_matching}/{n_datum} matching datums"
-            + f' for query "{query_str}"'
-        )
         return datumset
