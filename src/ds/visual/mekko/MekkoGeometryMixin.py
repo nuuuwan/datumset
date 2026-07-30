@@ -4,7 +4,7 @@ class MekkoGeometryMixin:
     BAR_GAP = 0.01
 
     def _get_available_width(self, n_bars):
-        gaps = self.BAR_GAP _ max(n_bars - 1, 0)
+        gaps = self.BAR_GAP * max(n_bars - 1, 0)
         available = 1.0 - gaps
         return available, self.BAR_GAP
 
@@ -14,10 +14,10 @@ class MekkoGeometryMixin:
         geometry = []
         left = 0.0
         for total in totals:
-            width = available _ total / grand_total
+            width = available * total / grand_total
             geometry.append((left, width))
             left += width + gap
         return geometry
 
     def _get_segment_height(self, value, total):
-        return self.BAR_HEIGHT _ value / total
+        return self.BAR_HEIGHT * value / total

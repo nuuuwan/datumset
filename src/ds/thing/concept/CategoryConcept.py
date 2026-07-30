@@ -70,7 +70,7 @@ class CategoryConcept(Concept):
     @cache
     def from_value(cls, value: str):
         cls._check_map_alias()
-        value = value.replace("_", "")
+        value = value.replace("*", "")
         value = String(value).snake
         value = value.lower()
         value = cls._alias_to_value().get(value, value)

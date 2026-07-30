@@ -27,7 +27,7 @@ class DatumsetSerializeMixin:
             sd = ShallowDict({datum_key: cells})
             datum = Datum.from_data(sd.to_deep())
             datum_list.append(datum)
-        return cls(_datum_list)
+        return cls(*datum_list)
 
     def __eq__(self, other):
         return self.to_data() == other.to_data()

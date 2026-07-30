@@ -8,7 +8,7 @@ class Query:
 
     DELIM_PART = "/"
     OPR_ADD = "+"
-    OPR_MULT = "_"
+    OPR_MULT = "*"
     OPR_EQ = "="
     OPR_LT = "<"
     OPR_OR = ","

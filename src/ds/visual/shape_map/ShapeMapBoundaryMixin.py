@@ -16,7 +16,7 @@ class ShapeMapBoundaryMixin:
         return region_to_polys
 
     def _merge(self, polys, radius):
-        eps = self.MERGE_EPS_FACTOR _ radius
+        eps = self.MERGE_EPS_FACTOR * radius
         grown = unary_union([poly.buffer(eps) for poly in polys])
         return grown.buffer(-eps)
 

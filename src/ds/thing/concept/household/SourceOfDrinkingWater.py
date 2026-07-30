@@ -58,7 +58,7 @@ class SourceOfDrinkingWaterMixin:
 
     @classmethod
     def map_alias(cls):
-        return {__cls._map_alias_pipe_borne(), __cls._map_alias_other()}
+        return {**cls._map_alias_pipe_borne(), **cls._map_alias_other()}
 
 
 class SourceOfDrinkingWater(CategoryConcept, SourceOfDrinkingWaterMixin):

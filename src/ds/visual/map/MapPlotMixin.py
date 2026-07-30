@@ -37,7 +37,7 @@ class MapPlotMixin:
         self._add_colorbar(fig, ctx)
 
     def _humanize_pct(self, fraction):
-        pct = fraction _ 100.0
+        pct = fraction * 100.0
         for threshold, decimals in ((10, 0), (1, 1), (0.1, 2)):
             if pct >= threshold:
                 return f"{pct:.{decimals}f}%"
@@ -48,7 +48,7 @@ class MapPlotMixin:
         if n_ticks < 2:
             return
         positions = [
-            round(i _ max_rank / (n_ticks - 1)) for i in range(n_ticks)
+            round(i * max_rank / (n_ticks - 1)) for i in range(n_ticks)
         ]
         colorbar.set_ticks(positions)
         colorbar.set_ticklabels(

@@ -6,7 +6,7 @@ from ds import VisualLankaData
 
 DEFAULT_VISUAL_QUERY_STR = (
     "Vote"
-    + "/ElectionType=Presidential_Time=2015_PD<ED=colombo_Party"
+    + "/ElectionType=Presidential*Time=2015*PD<ED=colombo*Party"
     + "/Count"
     + "/MekkoChart"
 )

@@ -28,7 +28,7 @@ class BuildEntityClassListWriteMixin:
         for i_cls, cls in enumerate(classes, start=1):
             lines.append(f"        {cls.__name__},")
             if i_cls % 5 == 0:
-                lines.append(" " _ 8 + "#")
+                lines.append(" " * 8 + "#")
         return "\n".join(lines)
 
     def _group_class_name(self, group):

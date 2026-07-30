@@ -10,14 +10,14 @@ class VisualContrastMixin:
     def _to_linear_rgb_channel(self, channel_value):
         if channel_value <= 0.04045:
             return channel_value / 12.92
-        return ((channel_value + 0.055) / 1.055) __ 2.4
+        return ((channel_value + 0.055) / 1.055) ** 2.4
 
     def _get_relative_luminance(self, color):
         red, green, blue = mcolors.to_rgb(color)
         red = self._to_linear_rgb_channel(red)
         green = self._to_linear_rgb_channel(green)
         blue = self._to_linear_rgb_channel(blue)
-        return 0.2126 _ red + 0.7152 _ green + 0.0722 _ blue
+        return 0.2126 * red + 0.7152 * green + 0.0722 * blue
 
     def _get_contrast_text_color(self, background_color):
         luminance = self._get_relative_luminance(background_color)

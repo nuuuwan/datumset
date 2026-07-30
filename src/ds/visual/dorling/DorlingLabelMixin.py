@@ -9,7 +9,7 @@ class DorlingLabelMixin:
 
     def _add_circle_label(self, ax, renderer, circle, name, color):
         radius = circle[2]
-        diam = radius _ 2
+        diam = radius * 2
         label = name
         if self._can_shorten_dim(self.region_dim_key):
             budget = LabelFit.char_budget(

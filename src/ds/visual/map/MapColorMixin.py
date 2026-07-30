@@ -8,11 +8,11 @@ class MapColorMixin:
     NEUTRAL_COLOR = "#888888"
 
     def _build_hsl_lightness_cmap(self, base_color):
-        h, _, s = colorsys.rgb_to_hls(_mcolors.to_rgb(base_color))
+        h, _, s = colorsys.rgb_to_hls(*mcolors.to_rgb(base_color))
         colors = []
         for i in range(256):
             ratio = i / 255
-            new_l = self.MAX_LIGHT + (self.MIN_LIGHT - self.MAX_LIGHT) _ ratio
+            new_l = self.MAX_LIGHT + (self.MIN_LIGHT - self.MAX_LIGHT) * ratio
             colors.append(colorsys.hls_to_rgb(h, new_l, s))
         return mcolors.ListedColormap(colors)
 

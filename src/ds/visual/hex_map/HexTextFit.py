@@ -16,7 +16,7 @@ class HexTextFit:
 
     @staticmethod
     def _project(point, axis):
-        return point[0] _ axis[0] + point[1] _ axis[1]
+        return point[0] * axis[0] + point[1] * axis[1]
 
     @classmethod
     def _lines(cls, points, u, v, line_spacing):
@@ -30,7 +30,7 @@ class HexTextFit:
     def _longest_in_line(cls, items, step):
         items.sort(key=lambda item: item[0])
         longest_run = run = [items[0]]
-        tolerance = step _ cls.ADJACENCY_TOLERANCE
+        tolerance = step * cls.ADJACENCY_TOLERANCE
         for prev, cur in zip(items, items[1:]):
             run = (
                 run + [cur]
@@ -43,8 +43,8 @@ class HexTextFit:
 
     @classmethod
     def _best_run(cls, points, radius):
-        step = cls.STEP_FACTOR _ radius
-        line_spacing = cls.LINE_SPACING_FACTOR _ radius
+        step = cls.STEP_FACTOR * radius
+        line_spacing = cls.LINE_SPACING_FACTOR * radius
         best = None
         for angle_deg in cls.ANGLES_DEG:
             u, v = cls._axes(angle_deg)
@@ -66,7 +66,7 @@ class HexTextFit:
         return (
             cx,
             cy,
-            count _ step,
-            cls.LINE_SPACING_FACTOR _ radius,
+            count * step,
+            cls.LINE_SPACING_FACTOR * radius,
             angle_deg,
         )

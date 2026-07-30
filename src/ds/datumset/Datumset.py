@@ -4,7 +4,7 @@ from ds.datumset.DatumsetSerializeMixin import DatumsetSerializeMixin
 
 class DatumsetSplitMixin:
 
-    def split(self, _split_dims: list[str]) -> list["Datumset"]:
+    def split(self, *split_dims: list[str]) -> list["Datumset"]:
         idx = {}
         for datum in self:
             key_items = []
@@ -18,7 +18,7 @@ class DatumsetSplitMixin:
 
         datumset_list = []
         for datum_list_for_key in idx.values():
-            datumset_list.append(Datumset(_datum_list_for_key))
+            datumset_list.append(Datumset(*datum_list_for_key))
         return datumset_list
 
     def get_dim_to_values(self) -> dict[str, set]:
