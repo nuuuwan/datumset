@@ -1,4 +1,3 @@
-# 🤖 via BuildCategoryConceptClass.py
 from ds.thing.concept.CategoryConcept import CategoryConcept
 
 
