@@ -9,6 +9,7 @@
   "House/Time=2024*District*SourceOfDrinkingWater/Top/UnitHexMap",
   "House/Time=2024*District*ToiletFacilities/Top/MapVisual",
   "House/Time=2024*ED*CookingFuel/Count/MarimekkoChart",
+  "House/Time=2024*Province*WallType/Count/MarimekkoChart",
   "Person/Sector*Time/Count/BarChart",
   "Person/Time*District*CensusOfficer/Count/MarimekkoChart",
   "Person/Time*District*EmmigrationReason/Count/MarimekkoChart",

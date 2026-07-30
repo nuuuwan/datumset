@@ -9,10 +9,7 @@ class VisualTitleMixin:
         parts = []
         first_datum = datumset[0]
         for dim_key in first_datum.query.dim_labels:
-            if (
-                dim_key in excluded_dim_keys
-                or dim_key not in varying_dim_keys
-            ):
+            if dim_key in excluded_dim_keys or dim_key not in varying_dim_keys:
                 continue
             first_value = first_datum.dim_idx[dim_key].get_value()
             if all(
@@ -46,7 +43,9 @@ class VisualTitleMixin:
         for dim_key in self.datumset.get_non_singleton_dims():
             by_part.append(dim_key)
         title += " by " + " & ".join(by_part)
-        title = title.replace("Person Count", "Population")
+        title = title.replace("House Count", "Households").replace(
+            "Person Count", "Population"
+        )
         return title
 
     def _get_subtitle_text(self):
