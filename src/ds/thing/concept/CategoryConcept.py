@@ -43,10 +43,7 @@ class CategoryConcept(Concept):
     def _sorted_map_alias(cls):
         alias_map = cls.map_alias()
         sorted_map = cls._sorted_dict(alias_map)
-        return {
-            k: cls._sorted_unique(sorted_map[k])
-            for k in sorted_map
-        }
+        return {k: cls._sorted_unique(sorted_map[k]) for k in sorted_map}
 
     @classmethod
     @cache
