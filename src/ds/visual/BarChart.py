@@ -69,6 +69,22 @@ class BarChart(Visual):
             x_labels,
         )
 
+    def _x_axis_matches_legend(self):
+        order = self._get_category_value_order(
+            self.x_dim_key,
+            self.y_cell_key,
+        )
+        values = set()
+        for sub_datumset in self.display_datumsets:
+            x_labels, _ = self._get_ordered_category_cell_xy(
+                sub_datumset,
+                self.x_dim_key,
+                self.y_cell_key,
+                order,
+            )
+            values.update(x_labels)
+        return values == set(self.x_color_idx)
+
     def _plot(self, fig, ax):
         axes, n_datumsets = self._get_display_axes(
             fig,
@@ -78,5 +94,6 @@ class BarChart(Visual):
         y_limit = self._get_y_limit()
         for sub_ax, sub_datumset in zip(axes, self.display_datumsets):
             self._plot_subfigure(sub_ax, sub_datumset, y_limit)
-        self._add_color_legend(fig, self.x_color_idx, self.x_dim_key)
+        if not self._x_axis_matches_legend():
+            self._add_color_legend(fig, self.x_color_idx, self.x_dim_key)
         self._hide_empty_axes(axes, n_datumsets)
