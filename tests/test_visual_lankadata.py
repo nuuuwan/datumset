@@ -1,3 +1,4 @@
+import re
 import unittest
 
 from ds import VisualLankaData
@@ -52,7 +53,15 @@ class TestCase(unittest.TestCase):
             # UnitSquareMap
         ]
 
-    def test_basic(self):
-        for visual_query_str in self._get_scenarios():
+    @staticmethod
+    def _build_test(visual_query_str):
+        def test(self):
             image_file = VisualLankaData[visual_query_str]
             self.assertTrue(image_file.exists())
+
+        return test
+
+
+for i, scenario in enumerate(TestCase._get_scenarios()):
+    name = "test_%03d_%s" % (i, re.sub(r"\W+", "_", scenario))
+    setattr(TestCase, name, TestCase._build_test(scenario))
