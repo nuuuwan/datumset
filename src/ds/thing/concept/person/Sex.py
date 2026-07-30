@@ -1,19 +1,11 @@
 from ds.thing.concept.CategoryConcept import CategoryConcept
 
-
 class Sex(CategoryConcept):
+
     @classmethod
     def valid_values(cls):
-        return [
-            "male",
-            "female",
-            "both_sexes",
-        ]
+        return ['both_sexes', 'female', 'male']
 
     @classmethod
     def get_color_map(cls):
-        return {
-            "male": "#D05D38",
-            "female": "#3840D0",
-            "both_sexes": "#6CD038",
-        }
+        return {'both_sexes': '#6CD038', 'female': '#3840D0', 'male': '#D05D38'}

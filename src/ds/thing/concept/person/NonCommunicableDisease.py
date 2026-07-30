@@ -1,41 +1,15 @@
 from ds.thing.concept.CategoryConcept import CategoryConcept
 
-
 class NonCommunicableDisease(CategoryConcept):
+
     @classmethod
     def valid_values(cls):
-        return [
-            # 1 - 5
-            "high_blood_pressure",
-            "diabetes",
-            "high_cholesterol",
-            "heart_disease",
-            "asthma",
-            # 6 - 10
-            "kidney_disease",
-            "stroke_or_paralysis",
-            "cancer",
-            "epilepsy",
-            "thalassemia",
-        ]
+        return ['asthma', 'cancer', 'diabetes', 'epilepsy', 'heart_disease', 'high_blood_pressure', 'high_cholesterol', 'kidney_disease', 'stroke_or_paralysis', 'thalassemia']
 
     @classmethod
     def map_alias(cls):
-        return {
-            "stroke_or_paralysis": ["stroke"],
-        }
+        return {'stroke_or_paralysis': ['stroke']}
 
     @classmethod
     def get_color_map(cls):
-        return {
-            "high_blood_pressure": "#D05D38",
-            "diabetes": "#3840D0",
-            "high_cholesterol": "#6CD038",
-            "heart_disease": "#D03899",
-            "asthma": "#38C5D0",
-            "kidney_disease": "#D0AF38",
-            "stroke_or_paralysis": "#8238D0",
-            "cancer": "#38D056",
-            "epilepsy": "#D03847",
-            "thalassemia": "#3873D0",
-        }
+        return {'asthma': '#38C5D0', 'cancer': '#38D056', 'diabetes': '#3840D0', 'epilepsy': '#D03847', 'heart_disease': '#D03899', 'high_blood_pressure': '#D05D38', 'high_cholesterol': '#6CD038', 'kidney_disease': '#D0AF38', 'stroke_or_paralysis': '#8238D0', 'thalassemia': '#3873D0'}
