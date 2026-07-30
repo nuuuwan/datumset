@@ -11,3 +11,13 @@ class TypeOfUnit(CategoryConcept):
             "improvised",
             "unclassified",
         ]
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "permanent": "#D05D38",
+            "not_permanent": "#3840D0",
+            "semi_permanent": "#6CD038",
+            "improvised": "#D03899",
+            "unclassified": "#cccccc",
+        }

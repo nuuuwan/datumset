@@ -11,3 +11,11 @@ class MigrationStatus(CategoryConcept):
             "foreign",
             "migrant",
         ]
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "local": "#D05D38",
+            "foreign": "#3840D0",
+            "migrant": "#6CD038",
+        }

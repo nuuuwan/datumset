@@ -16,3 +16,15 @@ class EconomicInactivityReason(CategoryConcept):
             "other",
             "income_recipient_such_as_from_investment_rental_and_interest",
         ]
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "engaged_in_household_work_or_childcare_or_elder_care": "#D05D38",
+            "engage_in_educational_or_vocational_training": "#3840D0",
+            "unable_or_too_old_to_work_or_retired": "#6CD038",
+            "long_term_illness_or_disabled": "#D03899",
+            "does_not_want_or_interest_to_do_any_economic_activity": "#38C5D0",
+            "other": "#cccccc",
+            "income_recipient_such_as_from_investment_rental_and_interest": "#D0AF38",  # noqa: E501
+        }

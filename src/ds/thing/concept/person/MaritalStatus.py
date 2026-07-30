@@ -15,3 +15,17 @@ class MaritalStatus(CategoryConcept):
             "separated_not_legally",
             "not_stated",
         ]
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "never_married": "#D05D38",
+            "married_registered": "#3840D0",
+            "married_customary": "#6CD038",
+            "married": "#D03899",
+            "widowed": "#38C5D0",
+            "divorced": "#D0AF38",
+            "legally_separated": "#8238D0",
+            "separated_not_legally": "#38D056",
+            "not_stated": "#cccccc",
+        }

@@ -52,3 +52,34 @@ class SourceOfDrinkingWater(CategoryConcept):
             "pipe_borne_private": "pipe_borne_water_private"
             + "_water_supply_project",
         }
+
+    @classmethod
+    def get_color_map(cls):
+        return {
+            "protected_well_within_premises": "#D05D38",
+            "protected_well_outside_premises": "#3840D0",
+            "unprotected_well": "#6CD038",
+            "tap_within_unit_main_line": "#D03899",
+            "tap_within_premises_but_outside_unit_main_line": "#38C5D0",
+            "tap_outside_premises_main_line": "#D0AF38",
+            "rural_water_projects": "#8238D0",
+            "tube_well": "#38D056",
+            "bowser": "#D03847",
+            "river_or_tank_or_stream": "#3873D0",
+            "rain_water": "#9FD038",
+            "bottled_water": "#D038CB",
+            "other": "#cccccc",
+            "pipe_borne_water": "#38D0A8",
+            "ground_water": "#D07C38",
+            "within_housing_unit": "#5038D0",
+            "within_premises": "#4DD038",
+            "outside_premises": "#D03879",
+            "protected_well": "#38A6D0",
+            "semi_protected_well": "#D0CE38",
+            "pipe_borne_water_national_water_supply_and_drainage_board": "#A238D0",  # noqa: E501
+            "pipe_borne_water_local_authority": "#38D076",
+            "pipe_borne_water_community_based_organization": "#D04938",
+            "pipe_borne_water_private_water_supply_project": "#3853D0",
+            "spring_or_fountain": "#80D038",
+            "filter_water_r_o_plant": "#D038AC",
+        }
