@@ -1,7 +1,8 @@
+from ds.visual.visual.AxisFigsizeMixin import AxisFigsizeMixin
 from ds.visual.visual.Visual import Visual
 
 
-class BarChart(Visual):
+class BarChart(AxisFigsizeMixin, Visual):
 
     def __init__(self, datumset):
         super().__init__(datumset)

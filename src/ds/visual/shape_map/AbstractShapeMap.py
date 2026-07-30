@@ -1,8 +1,6 @@
 from ds.visual.map_visual.MapVisual import MapVisual
 from ds.visual.shape_map.ShapeMapAssignMixin import ShapeMapAssignMixin
-from ds.visual.shape_map.ShapeMapBoundaryMixin import (
-    ShapeMapBoundaryMixin,
-)
+from ds.visual.shape_map.ShapeMapBoundaryMixin import ShapeMapBoundaryMixin
 from ds.visual.shape_map.ShapeMapCountMixin import ShapeMapCountMixin
 from ds.visual.shape_map.ShapeMapDrawMixin import ShapeMapDrawMixin
 from ds.visual.shape_map.ShapeMapGridMixin import ShapeMapGridMixin

@@ -57,10 +57,13 @@ class Visual(
     def _plot(self, fig, ax):
         pass  # pragma: no cover
 
+    def _get_figsize(self):
+        return self.FIGSIZE
+
     def draw(self):
         self._set_font()
         self._renderer = None
-        fig, ax = plt.subplots(figsize=self.FIGSIZE, dpi=self.DPI)
+        fig, ax = plt.subplots(figsize=self._get_figsize(), dpi=self.DPI)
         self._plot(fig, ax)
         self._add_title(fig)
         self._add_subtitle(fig)
