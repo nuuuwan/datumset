@@ -95,6 +95,8 @@ class VisualDataMixin:
 
         def share(x):
             total = sum(per_x_stack[x].values())
+            if total == 0:
+                return 0.0
             return per_x_stack[x][dominant] / total
 
         return sorted(per_x_stack, key=share, reverse=True)
