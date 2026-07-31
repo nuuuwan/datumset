@@ -22,6 +22,8 @@ class Map(
     REGION_EDGE_LINEWIDTH = 0.1
     CATEGORY_CELLS = {"Top", "2nd", "3rd"}
     CELL_TOP = "Top"
+    CELL_2ND = "2nd"
+    CELL_3RD = "3rd"
     CELL_BOTTOM = "Bottom"
 
     def __init__(self, datumset):
@@ -45,6 +47,8 @@ class Map(
             return False
         return Query(query_str).cell_part in {
             self.CELL_TOP,
+            self.CELL_2ND,
+            self.CELL_3RD,
             self.CELL_BOTTOM,
         }
 
