@@ -39,8 +39,6 @@ class Map(
             return False
         return Query(query_str).cell_part in self.CATEGORY_CELLS
 
-    def _get_region_color_dim_key(self):
-        if not self._is_category_cell():
     def _is_top_or_bottom(self):
         query_str = getattr(self.datumset, "_query_str", None)
         if query_str is None:
