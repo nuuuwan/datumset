@@ -62,14 +62,7 @@ class Census2024(AbstractDB):
         for partial_path in partial_paths_for_query:
             local_data_file = cls._get_local_data_file(partial_path)
             datumset_for_path = Datumset.from_data(local_data_file.read())
-            n_matches = 0
             for datum in datumset_for_path:
                 if datum.is_match(query):
                     datum_list.append(datum)
-                    n_matches += 1
-            if n_matches > 0:
-                log.debug(
-                    f"Found {n_matches} matches for"
-                    + f' query "{query_str}" in "{partial_path}".'
-                )
         return Datumset(*datum_list)

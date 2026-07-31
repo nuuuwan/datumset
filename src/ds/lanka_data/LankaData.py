@@ -37,5 +37,6 @@ class LankaData(LankaDataDerivedQueryMixin):
                 )
             datumset += datumset_for_db_class
         datumset = datumset.dedupe()
+        log.info(f"{len(datumset)} datums" + f' for query "{query_str}"')
         object.__setattr__(datumset, "_query_str", query_str)
         return datumset
