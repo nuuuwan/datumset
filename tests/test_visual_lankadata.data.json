@@ -22,7 +22,7 @@
   "Person/Time+EmploymentStatus+NonCommunicableDisease/Count/MekkoChart",
   "Person/Time+Ethnicity=veddahs+NonCommunicableDisease/Count/BarChart",
   "Person/Time+HighestEducationLevel+DisabilityTypes/Count/MekkoChart",
-  "Person/Time+Province+Religion/Count/BarChart",
+  "Person/Time+Province=eastern+Religion/Count/StackedBarChart",
   "Person/Time+Province=Western+Religion/Count/BarChart",
   "Person/Time+Province=Western+Religion=hindu/Count/BarChart",
   "Person/Time+Province=northern+Religion/Count/PieChart",
