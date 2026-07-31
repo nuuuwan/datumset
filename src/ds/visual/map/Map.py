@@ -45,6 +45,8 @@ class Map(
             return False
         return Query(query_str).cell_part in {
             self.CELL_TOP,
+            self.CELL_2ND,
+            self.CELL_3RD,
             self.CELL_BOTTOM,
         }
 
