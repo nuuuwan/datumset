@@ -21,6 +21,7 @@ class TestCase(unittest.TestCase):
             tokens = query_str.split("/")
             if len(tokens) != 4:
                 raise ValueError(f"Invalid query string: {query_str}")
+        query_strs = list(set(query_strs))
         query_strs.sort()
         query_strs_file.write(query_strs)
         return query_strs

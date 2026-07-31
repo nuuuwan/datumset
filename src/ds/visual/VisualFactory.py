@@ -1,4 +1,5 @@
 from ds.visual.BarChart import BarChart
+from ds.visual.bubble_map.BubbleMap import BubbleMap
 from ds.visual.dorling.Dorling import Dorling
 from ds.visual.hex_map.HexMap import HexMap
 from ds.visual.hex_map.UnitHexMap import UnitHexMap
@@ -9,6 +10,8 @@ from ds.visual.pie_chart.PieChart import PieChart
 from ds.visual.square_map.SquareMap import SquareMap
 from ds.visual.square_map.UnitSquareMap import UnitSquareMap
 from ds.visual.stacked_bar_chart.StackedBarChart import StackedBarChart
+from ds.visual.treemap.TreeMap import TreeMap
+from ds.visual.WaffleChart import WaffleChart
 
 
 class VisualFactory:
@@ -18,6 +21,7 @@ class VisualFactory:
         return [
             BarChart,
             Map,
+            BubbleMap,
             Cartogram,
             Dorling,
             HexMap,
@@ -27,6 +31,8 @@ class VisualFactory:
             MekkoChart,
             PieChart,
             StackedBarChart,
+            TreeMap,
+            WaffleChart,
         ]
 
     @classmethod
