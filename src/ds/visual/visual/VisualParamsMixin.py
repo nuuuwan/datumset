@@ -48,9 +48,10 @@ class VisualParamsMixin:
         )  # pragma: no cover
 
     def _get_y_cell_key(self):
-        # TODO: At the moment, everything is "Count",
-        # but this should change.
-        return "Count"
+        return next(iter(self.datumset[0].cell_idx))
+
+    def _get_cell_concept(self, cell_key):
+        return self.datumset[0].cell_idx.get(cell_key)
 
     def _get_varying_dim_keys(self) -> list[str]:
         return self.datumset.get_non_singleton_dims()

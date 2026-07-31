@@ -48,7 +48,7 @@ class MekkoPlotMixin:
 
     def _add_segment_labels(self, sub_ax):
         for rect, value in self._segment_labels:
-            label = self._format_humanized_value(float(value), None)
+            label = self._format_y_value(value)
             self._add_fitted_label_in_rect(sub_ax, rect, label)
 
     def _plot_subfigure(self, sub_ax, sub_datumset):
