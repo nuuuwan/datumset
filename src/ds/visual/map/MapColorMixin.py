@@ -47,13 +47,6 @@ class MapColorMixin:
 
     def _get_color_context(self):
         if self.region_color_dim_key is not None:
-            if self._is_single_map():
-                base_color = self._get_single_map_base_color()
-                return {
-                    "mode": "value",
-                    "cmap": self._build_hsl_lightness_cmap(base_color),
-                    "values": self._get_sorted_values(),
-                }
             return {
                 "mode": "category",
                 "color_idx": self._get_category_color_idx(),
