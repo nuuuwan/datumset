@@ -10,7 +10,7 @@ This repository contains data related to Sri Lanka.
 House/Time+District+OwnershipStatus=encroached/Count/Map
 ```
 
-![images/House/Time+District+OwnershipStatus=encroached/Count/Map.png](images/House/Time+District+OwnershipStatus=encroached/Count/Map.png)
+![images_for_readme/House/Time+District+OwnershipStatus=encroached/Count/Map.png](images_for_readme/House/Time+District+OwnershipStatus=encroached/Count/Map.png)
 
 ### 2
 
@@ -18,7 +18,7 @@ House/Time+District+OwnershipStatus=encroached/Count/Map
 House/Time+District+RoofType/Top/UnitHexMap
 ```
 
-![images/House/Time+District+RoofType/Top/UnitHexMap.png](images/House/Time+District+RoofType/Top/UnitHexMap.png)
+![images_for_readme/House/Time+District+RoofType/Top/UnitHexMap.png](images_for_readme/House/Time+District+RoofType/Top/UnitHexMap.png)
 
 ### 3
 
@@ -26,7 +26,7 @@ House/Time+District+RoofType/Top/UnitHexMap
 House/Time+Sector=urban+HouseholdSize/Count/BarChart
 ```
 
-![images/House/Time+Sector=urban+HouseholdSize/Count/BarChart.png](images/House/Time+Sector=urban+HouseholdSize/Count/BarChart.png)
+![images_for_readme/House/Time+Sector=urban+HouseholdSize/Count/BarChart.png](images_for_readme/House/Time+Sector=urban+HouseholdSize/Count/BarChart.png)
 
 ### 4
 
@@ -34,7 +34,7 @@ House/Time+Sector=urban+HouseholdSize/Count/BarChart
 House/Time=2024+DSD<District=batticaloa+Lighting=kerosene/Count/Map
 ```
 
-![images/House/Time=2024+DSD<District=batticaloa+Lighting=kerosene/Count/Map.png](images/House/Time=2024+DSD<District=batticaloa+Lighting=kerosene/Count/Map.png)
+![images_for_readme/House/Time=2024+DSD<District=batticaloa+Lighting=kerosene/Count/Map.png](images_for_readme/House/Time=2024+DSD<District=batticaloa+Lighting=kerosene/Count/Map.png)
 
 ### 5
 
@@ -42,7 +42,7 @@ House/Time=2024+DSD<District=batticaloa+Lighting=kerosene/Count/Map
 House/Time=2024+DSD<District=galle+HouseholdStructure/Count/StackedBarChart
 ```
 
-![images/House/Time=2024+DSD<District=galle+HouseholdStructure/Count/StackedBarChart.png](images/House/Time=2024+DSD<District=galle+HouseholdStructure/Count/StackedBarChart.png)
+![images_for_readme/House/Time=2024+DSD<District=galle+HouseholdStructure/Count/StackedBarChart.png](images_for_readme/House/Time=2024+DSD<District=galle+HouseholdStructure/Count/StackedBarChart.png)
 
 ### 6
 
@@ -50,7 +50,7 @@ House/Time=2024+DSD<District=galle+HouseholdStructure/Count/StackedBarChart
 House/Time=2024+DSD<District=matara+FloorType/Top/Map
 ```
 
-![images/House/Time=2024+DSD<District=matara+FloorType/Top/Map.png](images/House/Time=2024+DSD<District=matara+FloorType/Top/Map.png)
+![images_for_readme/House/Time=2024+DSD<District=matara+FloorType/Top/Map.png](images_for_readme/House/Time=2024+DSD<District=matara+FloorType/Top/Map.png)
 
 ### 7
 
@@ -58,7 +58,7 @@ House/Time=2024+DSD<District=matara+FloorType/Top/Map
 House/Time=2024+District+SourceOfDrinkingWater/Top/UnitHexMap
 ```
 
-![images/House/Time=2024+District+SourceOfDrinkingWater/Top/UnitHexMap.png](images/House/Time=2024+District+SourceOfDrinkingWater/Top/UnitHexMap.png)
+![images_for_readme/House/Time=2024+District+SourceOfDrinkingWater/Top/UnitHexMap.png](images_for_readme/House/Time=2024+District+SourceOfDrinkingWater/Top/UnitHexMap.png)
 
 ### 8
 
@@ -66,7 +66,7 @@ House/Time=2024+District+SourceOfDrinkingWater/Top/UnitHexMap
 House/Time=2024+District+ToiletFacilities/Top/Map
 ```
 
-![images/House/Time=2024+District+ToiletFacilities/Top/Map.png](images/House/Time=2024+District+ToiletFacilities/Top/Map.png)
+![images_for_readme/House/Time=2024+District+ToiletFacilities/Top/Map.png](images_for_readme/House/Time=2024+District+ToiletFacilities/Top/Map.png)
 
 ### 9
 
@@ -74,7 +74,7 @@ House/Time=2024+District+ToiletFacilities/Top/Map
 House/Time=2024+ED+CookingFuel/Count/MekkoChart
 ```
 
-![images/House/Time=2024+ED+CookingFuel/Count/MekkoChart.png](images/House/Time=2024+ED+CookingFuel/Count/MekkoChart.png)
+![images_for_readme/House/Time=2024+ED+CookingFuel/Count/MekkoChart.png](images_for_readme/House/Time=2024+ED+CookingFuel/Count/MekkoChart.png)
 
 ### 10
 
@@ -82,7 +82,7 @@ House/Time=2024+ED+CookingFuel/Count/MekkoChart
 House/Time=2024+Province+WallType/Count/MekkoChart
 ```
 
-![images/House/Time=2024+Province+WallType/Count/MekkoChart.png](images/House/Time=2024+Province+WallType/Count/MekkoChart.png)
+![images_for_readme/House/Time=2024+Province+WallType/Count/MekkoChart.png](images_for_readme/House/Time=2024+Province+WallType/Count/MekkoChart.png)
 
 ### 11
 
@@ -90,7 +90,7 @@ House/Time=2024+Province+WallType/Count/MekkoChart
 Person/Sector+Time/Count/MekkoChart
 ```
 
-![images/Person/Sector+Time/Count/MekkoChart.png](images/Person/Sector+Time/Count/MekkoChart.png)
+![images_for_readme/Person/Sector+Time/Count/MekkoChart.png](images_for_readme/Person/Sector+Time/Count/MekkoChart.png)
 
 ### 12
 
@@ -98,7 +98,7 @@ Person/Sector+Time/Count/MekkoChart
 Person/Time+AgeGroup+EducationActivity/Count/MekkoChart
 ```
 
-![images/Person/Time+AgeGroup+EducationActivity/Count/MekkoChart.png](images/Person/Time+AgeGroup+EducationActivity/Count/MekkoChart.png)
+![images_for_readme/Person/Time+AgeGroup+EducationActivity/Count/MekkoChart.png](images_for_readme/Person/Time+AgeGroup+EducationActivity/Count/MekkoChart.png)
 
 ### 13
 
@@ -106,7 +106,7 @@ Person/Time+AgeGroup+EducationActivity/Count/MekkoChart
 Person/Time+District+CensusOfficer/Count/MekkoChart
 ```
 
-![images/Person/Time+District+CensusOfficer/Count/MekkoChart.png](images/Person/Time+District+CensusOfficer/Count/MekkoChart.png)
+![images_for_readme/Person/Time+District+CensusOfficer/Count/MekkoChart.png](images_for_readme/Person/Time+District+CensusOfficer/Count/MekkoChart.png)
 
 ### 14
 
@@ -114,7 +114,7 @@ Person/Time+District+CensusOfficer/Count/MekkoChart
 Person/Time+District+EmmigrationReason/Count/MekkoChart
 ```
 
-![images/Person/Time+District+EmmigrationReason/Count/MekkoChart.png](images/Person/Time+District+EmmigrationReason/Count/MekkoChart.png)
+![images_for_readme/Person/Time+District+EmmigrationReason/Count/MekkoChart.png](images_for_readme/Person/Time+District+EmmigrationReason/Count/MekkoChart.png)
 
 ### 15
 
@@ -122,7 +122,7 @@ Person/Time+District+EmmigrationReason/Count/MekkoChart
 Person/Time+District+MigrationStatus/Count/MekkoChart
 ```
 
-![images/Person/Time+District+MigrationStatus/Count/MekkoChart.png](images/Person/Time+District+MigrationStatus/Count/MekkoChart.png)
+![images_for_readme/Person/Time+District+MigrationStatus/Count/MekkoChart.png](images_for_readme/Person/Time+District+MigrationStatus/Count/MekkoChart.png)
 
 ### 16
 
@@ -130,7 +130,7 @@ Person/Time+District+MigrationStatus/Count/MekkoChart
 Person/Time+District+Sector/Count/StackedBarChart
 ```
 
-![images/Person/Time+District+Sector/Count/StackedBarChart.png](images/Person/Time+District+Sector/Count/StackedBarChart.png)
+![images_for_readme/Person/Time+District+Sector/Count/StackedBarChart.png](images_for_readme/Person/Time+District+Sector/Count/StackedBarChart.png)
 
 ### 17
 
@@ -138,7 +138,7 @@ Person/Time+District+Sector/Count/StackedBarChart
 Person/Time+EconomicInactivityReason/Count/BarChart
 ```
 
-![images/Person/Time+EconomicInactivityReason/Count/BarChart.png](images/Person/Time+EconomicInactivityReason/Count/BarChart.png)
+![images_for_readme/Person/Time+EconomicInactivityReason/Count/BarChart.png](images_for_readme/Person/Time+EconomicInactivityReason/Count/BarChart.png)
 
 ### 18
 
@@ -146,7 +146,7 @@ Person/Time+EconomicInactivityReason/Count/BarChart
 Person/Time+EmploymentStatus+NonCommunicableDisease/Count/MekkoChart
 ```
 
-![images/Person/Time+EmploymentStatus+NonCommunicableDisease/Count/MekkoChart.png](images/Person/Time+EmploymentStatus+NonCommunicableDisease/Count/MekkoChart.png)
+![images_for_readme/Person/Time+EmploymentStatus+NonCommunicableDisease/Count/MekkoChart.png](images_for_readme/Person/Time+EmploymentStatus+NonCommunicableDisease/Count/MekkoChart.png)
 
 ### 19
 
@@ -154,7 +154,7 @@ Person/Time+EmploymentStatus+NonCommunicableDisease/Count/MekkoChart
 Person/Time+Ethnicity=veddahs+NonCommunicableDisease/Count/BarChart
 ```
 
-![images/Person/Time+Ethnicity=veddahs+NonCommunicableDisease/Count/BarChart.png](images/Person/Time+Ethnicity=veddahs+NonCommunicableDisease/Count/BarChart.png)
+![images_for_readme/Person/Time+Ethnicity=veddahs+NonCommunicableDisease/Count/BarChart.png](images_for_readme/Person/Time+Ethnicity=veddahs+NonCommunicableDisease/Count/BarChart.png)
 
 ### 20
 
@@ -162,7 +162,7 @@ Person/Time+Ethnicity=veddahs+NonCommunicableDisease/Count/BarChart
 Person/Time+HighestEducationLevel+DisabilityTypes/Count/MekkoChart
 ```
 
-![images/Person/Time+HighestEducationLevel+DisabilityTypes/Count/MekkoChart.png](images/Person/Time+HighestEducationLevel+DisabilityTypes/Count/MekkoChart.png)
+![images_for_readme/Person/Time+HighestEducationLevel+DisabilityTypes/Count/MekkoChart.png](images_for_readme/Person/Time+HighestEducationLevel+DisabilityTypes/Count/MekkoChart.png)
 
 ### 21
 
@@ -170,7 +170,7 @@ Person/Time+HighestEducationLevel+DisabilityTypes/Count/MekkoChart
 Person/Time+Province+Religion/Count/BarChart
 ```
 
-![images/Person/Time+Province+Religion/Count/BarChart.png](images/Person/Time+Province+Religion/Count/BarChart.png)
+![images_for_readme/Person/Time+Province+Religion/Count/BarChart.png](images_for_readme/Person/Time+Province+Religion/Count/BarChart.png)
 
 ### 22
 
@@ -178,7 +178,7 @@ Person/Time+Province+Religion/Count/BarChart
 Person/Time+Province=Western+Religion/Count/BarChart
 ```
 
-![images/Person/Time+Province=Western+Religion/Count/BarChart.png](images/Person/Time+Province=Western+Religion/Count/BarChart.png)
+![images_for_readme/Person/Time+Province=Western+Religion/Count/BarChart.png](images_for_readme/Person/Time+Province=Western+Religion/Count/BarChart.png)
 
 ### 23
 
@@ -186,7 +186,7 @@ Person/Time+Province=Western+Religion/Count/BarChart
 Person/Time+Province=Western+Religion=hindu/Count/BarChart
 ```
 
-![images/Person/Time+Province=Western+Religion=hindu/Count/BarChart.png](images/Person/Time+Province=Western+Religion=hindu/Count/BarChart.png)
+![images_for_readme/Person/Time+Province=Western+Religion=hindu/Count/BarChart.png](images_for_readme/Person/Time+Province=Western+Religion=hindu/Count/BarChart.png)
 
 ### 24
 
@@ -194,7 +194,7 @@ Person/Time+Province=Western+Religion=hindu/Count/BarChart
 Person/Time+Province=northern+Religion/Count/PieChart
 ```
 
-![images/Person/Time+Province=northern+Religion/Count/PieChart.png](images/Person/Time+Province=northern+Religion/Count/PieChart.png)
+![images_for_readme/Person/Time+Province=northern+Religion/Count/PieChart.png](images_for_readme/Person/Time+Province=northern+Religion/Count/PieChart.png)
 
 ### 25
 
@@ -202,7 +202,7 @@ Person/Time+Province=northern+Religion/Count/PieChart
 Person/Time=2024+DSD<District=gampaha+Religion/Count/StackedBarChart
 ```
 
-![images/Person/Time=2024+DSD<District=gampaha+Religion/Count/StackedBarChart.png](images/Person/Time=2024+DSD<District=gampaha+Religion/Count/StackedBarChart.png)
+![images_for_readme/Person/Time=2024+DSD<District=gampaha+Religion/Count/StackedBarChart.png](images_for_readme/Person/Time=2024+DSD<District=gampaha+Religion/Count/StackedBarChart.png)
 
 ### 26
 
@@ -210,7 +210,7 @@ Person/Time=2024+DSD<District=gampaha+Religion/Count/StackedBarChart
 Person/Time=2024+District+Religion/Count/StackedBarChart
 ```
 
-![images/Person/Time=2024+District+Religion/Count/StackedBarChart.png](images/Person/Time=2024+District+Religion/Count/StackedBarChart.png)
+![images_for_readme/Person/Time=2024+District+Religion/Count/StackedBarChart.png](images_for_readme/Person/Time=2024+District+Religion/Count/StackedBarChart.png)
 
 ### 27
 
@@ -218,7 +218,7 @@ Person/Time=2024+District+Religion/Count/StackedBarChart
 Person/Time=2024+District<Province=western+Religion/Count/StackedBarChart
 ```
 
-![images/Person/Time=2024+District<Province=western+Religion/Count/StackedBarChart.png](images/Person/Time=2024+District<Province=western+Religion/Count/StackedBarChart.png)
+![images_for_readme/Person/Time=2024+District<Province=western+Religion/Count/StackedBarChart.png](images_for_readme/Person/Time=2024+District<Province=western+Religion/Count/StackedBarChart.png)
 
 ### 28
 
@@ -226,7 +226,7 @@ Person/Time=2024+District<Province=western+Religion/Count/StackedBarChart
 Person/Time=2024+PD<District=colombo+Religion=islam/Count/Cartogram
 ```
 
-![images/Person/Time=2024+PD<District=colombo+Religion=islam/Count/Cartogram.png](images/Person/Time=2024+PD<District=colombo+Religion=islam/Count/Cartogram.png)
+![images_for_readme/Person/Time=2024+PD<District=colombo+Religion=islam/Count/Cartogram.png](images_for_readme/Person/Time=2024+PD<District=colombo+Religion=islam/Count/Cartogram.png)
 
 ### 29
 
@@ -234,7 +234,7 @@ Person/Time=2024+PD<District=colombo+Religion=islam/Count/Cartogram
 Person/Time=2024+Province+Religion/Count/Map
 ```
 
-![images/Person/Time=2024+Province+Religion/Count/Map.png](images/Person/Time=2024+Province+Religion/Count/Map.png)
+![images_for_readme/Person/Time=2024+Province+Religion/Count/Map.png](images_for_readme/Person/Time=2024+Province+Religion/Count/Map.png)
 
 ### 30
 
@@ -242,7 +242,7 @@ Person/Time=2024+Province+Religion/Count/Map
 Person/Time=2024+Province+Religion/Count/PieChart
 ```
 
-![images/Person/Time=2024+Province+Religion/Count/PieChart.png](images/Person/Time=2024+Province+Religion/Count/PieChart.png)
+![images_for_readme/Person/Time=2024+Province+Religion/Count/PieChart.png](images_for_readme/Person/Time=2024+Province+Religion/Count/PieChart.png)
 
 ### 31
 
@@ -250,7 +250,7 @@ Person/Time=2024+Province+Religion/Count/PieChart
 Person/Time=2024+Province+Religion/Count/StackedBarChart
 ```
 
-![images/Person/Time=2024+Province+Religion/Count/StackedBarChart.png](images/Person/Time=2024+Province+Religion/Count/StackedBarChart.png)
+![images_for_readme/Person/Time=2024+Province+Religion/Count/StackedBarChart.png](images_for_readme/Person/Time=2024+Province+Religion/Count/StackedBarChart.png)
 
 ### 32
 
@@ -258,7 +258,7 @@ Person/Time=2024+Province+Religion/Count/StackedBarChart
 Person/Time=2024+Province+Religion=buddhist/Count/Dorling
 ```
 
-![images/Person/Time=2024+Province+Religion=buddhist/Count/Dorling.png](images/Person/Time=2024+Province+Religion=buddhist/Count/Dorling.png)
+![images_for_readme/Person/Time=2024+Province+Religion=buddhist/Count/Dorling.png](images_for_readme/Person/Time=2024+Province+Religion=buddhist/Count/Dorling.png)
 
 ### 33
 
@@ -266,7 +266,7 @@ Person/Time=2024+Province+Religion=buddhist/Count/Dorling
 Vote/ElectionType=presidential+Time+District+Party/Top/UnitHexMap
 ```
 
-![images/Vote/ElectionType=presidential+Time+District+Party/Top/UnitHexMap.png](images/Vote/ElectionType=presidential+Time+District+Party/Top/UnitHexMap.png)
+![images_for_readme/Vote/ElectionType=presidential+Time+District+Party/Top/UnitHexMap.png](images_for_readme/Vote/ElectionType=presidential+Time+District+Party/Top/UnitHexMap.png)
 
 ### 34
 
@@ -274,7 +274,7 @@ Vote/ElectionType=presidential+Time+District+Party/Top/UnitHexMap
 Vote/ElectionType=presidential+Time=1999+Province+Party/Top/HexMap
 ```
 
-![images/Vote/ElectionType=presidential+Time=1999+Province+Party/Top/HexMap.png](images/Vote/ElectionType=presidential+Time=1999+Province+Party/Top/HexMap.png)
+![images_for_readme/Vote/ElectionType=presidential+Time=1999+Province+Party/Top/HexMap.png](images_for_readme/Vote/ElectionType=presidential+Time=1999+Province+Party/Top/HexMap.png)
 
 ### 35
 
@@ -282,7 +282,7 @@ Vote/ElectionType=presidential+Time=1999+Province+Party/Top/HexMap
 Vote/ElectionType=presidential+Time=2005+Province+Party/Count/StackedBarChart
 ```
 
-![images/Vote/ElectionType=presidential+Time=2005+Province+Party/Count/StackedBarChart.png](images/Vote/ElectionType=presidential+Time=2005+Province+Party/Count/StackedBarChart.png)
+![images_for_readme/Vote/ElectionType=presidential+Time=2005+Province+Party/Count/StackedBarChart.png](images_for_readme/Vote/ElectionType=presidential+Time=2005+Province+Party/Count/StackedBarChart.png)
 
 ### 36
 
@@ -290,4 +290,4 @@ Vote/ElectionType=presidential+Time=2005+Province+Party/Count/StackedBarChart
 Vote/ElectionType=presidential+Time=2015+Province+Party/Count/MekkoChart
 ```
 
-![images/Vote/ElectionType=presidential+Time=2015+Province+Party/Count/MekkoChart.png](images/Vote/ElectionType=presidential+Time=2015+Province+Party/Count/MekkoChart.png)
+![images_for_readme/Vote/ElectionType=presidential+Time=2015+Province+Party/Count/MekkoChart.png](images_for_readme/Vote/ElectionType=presidential+Time=2015+Province+Party/Count/MekkoChart.png)

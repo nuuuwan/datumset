@@ -1,14 +1,13 @@
 from functools import cached_property
 
-from utils_future import File, JSONFile, Log
+from utils_future import Directory, File, JSONFile, Log
 
 log = Log("ReadMe")
 
 
 class ReadMe:
-    @cached_property
-    def readme_file(self):
-        return File("README.md")
+    DIR_IMAGES_FOR_README = Directory("images_for_readme")
+    README_FILE = File("README.md")
 
     def get_lines_for_header(self):
         return [
@@ -20,6 +19,14 @@ class ReadMe:
 
     def get_lines_for_query(self, i_query, query_str):
         image_file = File("images", query_str + ".png")
+        image_file_for_readme = File(
+            self.DIR_IMAGES_FOR_README, query_str + ".png"
+        )
+        parent_dir = image_file_for_readme.get_parent_directory()
+        if not parent_dir.exists():
+            parent_dir.make()
+
+        image_file.copy(image_file_for_readme)
 
         return [
             f"### {i_query}",
@@ -28,7 +35,8 @@ class ReadMe:
             query_str,
             "```",
             "",
-            f"![{image_file.path}]({image_file.path})",
+            f"![{image_file_for_readme.path}]"
+            + f"({image_file_for_readme.path})",
             "",
         ]
 
@@ -46,5 +54,5 @@ class ReadMe:
 
     def build(self):
         lines = self.get_lines()
-        self.readme_file.write("\n".join(lines))
-        log.info(f"Wrote {len(lines)} lines to {self.readme_file}")
+        self.README_FILE.write("\n".join(lines))
+        log.info(f"Wrote {len(lines)} lines to {self.README_FILE}")
