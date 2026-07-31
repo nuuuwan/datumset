@@ -26,7 +26,7 @@ class StackedBarChartDataMixin:
         )
         if ordered_values is not None:
             return ordered_values
-        return self._get_x_dominant_share_order(
+        return self._get_x_total_value_order(
             self.x_dim_key,
             self.y_cell_key,
             self.stack_dim_key,
