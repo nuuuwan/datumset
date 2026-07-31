@@ -95,20 +95,12 @@ House/Time=2024+District+HouseholdStructure/Count/MekkoChart
 ### 12
 
 ```text
-House/Time=2024+District+Lighting/Count/TreeMap
-```
-
-![images_for_readme/House/Time=2024+District+Lighting/Count/TreeMap.png](images_for_readme/House/Time=2024+District+Lighting/Count/TreeMap.png)
-
-### 13
-
-```text
 House/Time=2024+District+SourceOfDrinkingWater/2nd/UnitHexMap
 ```
 
 ![images_for_readme/House/Time=2024+District+SourceOfDrinkingWater/2nd/UnitHexMap.png](images_for_readme/House/Time=2024+District+SourceOfDrinkingWater/2nd/UnitHexMap.png)
 
-### 14
+### 13
 
 ```text
 House/Time=2024+District+SourceOfDrinkingWater/Top/UnitHexMap
@@ -116,7 +108,7 @@ House/Time=2024+District+SourceOfDrinkingWater/Top/UnitHexMap
 
 ![images_for_readme/House/Time=2024+District+SourceOfDrinkingWater/Top/UnitHexMap.png](images_for_readme/House/Time=2024+District+SourceOfDrinkingWater/Top/UnitHexMap.png)
 
-### 15
+### 14
 
 ```text
 House/Time=2024+District+ToiletFacilities/3rd/Map
@@ -124,7 +116,7 @@ House/Time=2024+District+ToiletFacilities/3rd/Map
 
 ![images_for_readme/House/Time=2024+District+ToiletFacilities/3rd/Map.png](images_for_readme/House/Time=2024+District+ToiletFacilities/3rd/Map.png)
 
-### 16
+### 15
 
 ```text
 House/Time=2024+District+ToiletFacilities/Count/WaffleChart
@@ -132,7 +124,7 @@ House/Time=2024+District+ToiletFacilities/Count/WaffleChart
 
 ![images_for_readme/House/Time=2024+District+ToiletFacilities/Count/WaffleChart.png](images_for_readme/House/Time=2024+District+ToiletFacilities/Count/WaffleChart.png)
 
-### 17
+### 16
 
 ```text
 House/Time=2024+District+ToiletFacilities/Top/Map
@@ -140,7 +132,7 @@ House/Time=2024+District+ToiletFacilities/Top/Map
 
 ![images_for_readme/House/Time=2024+District+ToiletFacilities/Top/Map.png](images_for_readme/House/Time=2024+District+ToiletFacilities/Top/Map.png)
 
-### 18
+### 17
 
 ```text
 House/Time=2024+District+ToiletFacilities=not_using_a_toilet/Count/HexMap
@@ -148,7 +140,7 @@ House/Time=2024+District+ToiletFacilities=not_using_a_toilet/Count/HexMap
 
 ![images_for_readme/House/Time=2024+District+ToiletFacilities=not_using_a_toilet/Count/HexMap.png](images_for_readme/House/Time=2024+District+ToiletFacilities=not_using_a_toilet/Count/HexMap.png)
 
-### 19
+### 18
 
 ```text
 House/Time=2024+ED+CookingFuel/Count/MekkoChart
@@ -156,7 +148,7 @@ House/Time=2024+ED+CookingFuel/Count/MekkoChart
 
 ![images_for_readme/House/Time=2024+ED+CookingFuel/Count/MekkoChart.png](images_for_readme/House/Time=2024+ED+CookingFuel/Count/MekkoChart.png)
 
-### 20
+### 19
 
 ```text
 House/Time=2024+Province+WallType/Count/MekkoChart
@@ -164,7 +156,7 @@ House/Time=2024+Province+WallType/Count/MekkoChart
 
 ![images_for_readme/House/Time=2024+Province+WallType/Count/MekkoChart.png](images_for_readme/House/Time=2024+Province+WallType/Count/MekkoChart.png)
 
-### 21
+### 20
 
 ```text
 Person/Sector+Time/Count/MekkoChart
@@ -172,7 +164,7 @@ Person/Sector+Time/Count/MekkoChart
 
 ![images_for_readme/Person/Sector+Time/Count/MekkoChart.png](images_for_readme/Person/Sector+Time/Count/MekkoChart.png)
 
-### 22
+### 21
 
 ```text
 Person/Time+AgeGroup+EducationActivity/Count/MekkoChart
@@ -180,7 +172,7 @@ Person/Time+AgeGroup+EducationActivity/Count/MekkoChart
 
 ![images_for_readme/Person/Time+AgeGroup+EducationActivity/Count/MekkoChart.png](images_for_readme/Person/Time+AgeGroup+EducationActivity/Count/MekkoChart.png)
 
-### 23
+### 22
 
 ```text
 Person/Time+District+CensusOfficer/Count/MekkoChart
@@ -188,7 +180,7 @@ Person/Time+District+CensusOfficer/Count/MekkoChart
 
 ![images_for_readme/Person/Time+District+CensusOfficer/Count/MekkoChart.png](images_for_readme/Person/Time+District+CensusOfficer/Count/MekkoChart.png)
 
-### 24
+### 23
 
 ```text
 Person/Time+District+EmmigrationReason/Count/MekkoChart
@@ -196,7 +188,7 @@ Person/Time+District+EmmigrationReason/Count/MekkoChart
 
 ![images_for_readme/Person/Time+District+EmmigrationReason/Count/MekkoChart.png](images_for_readme/Person/Time+District+EmmigrationReason/Count/MekkoChart.png)
 
-### 25
+### 24
 
 ```text
 Person/Time+District+MigrationStatus/Count/MekkoChart
@@ -204,7 +196,7 @@ Person/Time+District+MigrationStatus/Count/MekkoChart
 
 ![images_for_readme/Person/Time+District+MigrationStatus/Count/MekkoChart.png](images_for_readme/Person/Time+District+MigrationStatus/Count/MekkoChart.png)
 
-### 26
+### 25
 
 ```text
 Person/Time+District+Sector/Count/StackedBarChart
@@ -212,7 +204,7 @@ Person/Time+District+Sector/Count/StackedBarChart
 
 ![images_for_readme/Person/Time+District+Sector/Count/StackedBarChart.png](images_for_readme/Person/Time+District+Sector/Count/StackedBarChart.png)
 
-### 27
+### 26
 
 ```text
 Person/Time+EconomicInactivityReason/Count/BarChart
@@ -220,7 +212,7 @@ Person/Time+EconomicInactivityReason/Count/BarChart
 
 ![images_for_readme/Person/Time+EconomicInactivityReason/Count/BarChart.png](images_for_readme/Person/Time+EconomicInactivityReason/Count/BarChart.png)
 
-### 28
+### 27
 
 ```text
 Person/Time+EmploymentStatus+NonCommunicableDisease/Count/MekkoChart
@@ -228,7 +220,7 @@ Person/Time+EmploymentStatus+NonCommunicableDisease/Count/MekkoChart
 
 ![images_for_readme/Person/Time+EmploymentStatus+NonCommunicableDisease/Count/MekkoChart.png](images_for_readme/Person/Time+EmploymentStatus+NonCommunicableDisease/Count/MekkoChart.png)
 
-### 29
+### 28
 
 ```text
 Person/Time+Ethnicity=veddahs+NonCommunicableDisease/Count/BarChart
@@ -236,7 +228,7 @@ Person/Time+Ethnicity=veddahs+NonCommunicableDisease/Count/BarChart
 
 ![images_for_readme/Person/Time+Ethnicity=veddahs+NonCommunicableDisease/Count/BarChart.png](images_for_readme/Person/Time+Ethnicity=veddahs+NonCommunicableDisease/Count/BarChart.png)
 
-### 30
+### 29
 
 ```text
 Person/Time+HighestEducationLevel+DisabilityTypes/Count/MekkoChart
@@ -244,7 +236,7 @@ Person/Time+HighestEducationLevel+DisabilityTypes/Count/MekkoChart
 
 ![images_for_readme/Person/Time+HighestEducationLevel+DisabilityTypes/Count/MekkoChart.png](images_for_readme/Person/Time+HighestEducationLevel+DisabilityTypes/Count/MekkoChart.png)
 
-### 31
+### 30
 
 ```text
 Person/Time+Province=Western+Religion/Count/BarChart
@@ -252,7 +244,7 @@ Person/Time+Province=Western+Religion/Count/BarChart
 
 ![images_for_readme/Person/Time+Province=Western+Religion/Count/BarChart.png](images_for_readme/Person/Time+Province=Western+Religion/Count/BarChart.png)
 
-### 32
+### 31
 
 ```text
 Person/Time+Province=Western+Religion=hindu/Count/BarChart
@@ -260,7 +252,7 @@ Person/Time+Province=Western+Religion=hindu/Count/BarChart
 
 ![images_for_readme/Person/Time+Province=Western+Religion=hindu/Count/BarChart.png](images_for_readme/Person/Time+Province=Western+Religion=hindu/Count/BarChart.png)
 
-### 33
+### 32
 
 ```text
 Person/Time+Province=eastern+Religion/Count/StackedBarChart
@@ -268,13 +260,21 @@ Person/Time+Province=eastern+Religion/Count/StackedBarChart
 
 ![images_for_readme/Person/Time+Province=eastern+Religion/Count/StackedBarChart.png](images_for_readme/Person/Time+Province=eastern+Religion/Count/StackedBarChart.png)
 
-### 34
+### 33
 
 ```text
 Person/Time+Province=northern+Religion/Count/PieChart
 ```
 
 ![images_for_readme/Person/Time+Province=northern+Religion/Count/PieChart.png](images_for_readme/Person/Time+Province=northern+Religion/Count/PieChart.png)
+
+### 34
+
+```text
+Person/Time=2024+Country+Ethnicity/Count/TreeMap
+```
+
+![images_for_readme/Person/Time=2024+Country+Ethnicity/Count/TreeMap.png](images_for_readme/Person/Time=2024+Country+Ethnicity/Count/TreeMap.png)
 
 ### 35
 
