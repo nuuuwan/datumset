@@ -18,9 +18,9 @@ class DatumMatchMixin(DatumMatchRegionMixin):
         return False
 
     def is_match_dim_idx(self, concept_part: str) -> bool:
-        dim_labels = list(self.dim_idx.keys())
+        dim_labels = set(self.dim_idx.keys())
         labels_required, values_required = self._parse_dim_part(concept_part)
-        if labels_required != dim_labels:
+        if set(labels_required) != dim_labels:
             return False
         for dim_label, required_value in values_required.items():
             if not self._is_match_required_value(dim_label, required_value):

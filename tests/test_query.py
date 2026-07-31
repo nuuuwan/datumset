@@ -44,3 +44,10 @@ class TestCase(unittest.TestCase):
             query.base_query_str,
             "Person/Time+District+Religion/Count",
         )
+
+    def test_dim_order_flexibility(self):
+        query1 = Query("Person/Time+District+Religion/Count")
+        query2 = Query("Person/District+Time+Religion/Count")
+
+        self.assertEqual(query1.dim_labels_set, query2.dim_labels_set)
+        self.assertNotEqual(query1.base_query_str, query2.base_query_str)

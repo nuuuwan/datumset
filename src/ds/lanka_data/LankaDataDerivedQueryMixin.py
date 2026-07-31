@@ -36,11 +36,24 @@ class LankaDataDerivedQueryMixin:
         return [datum for datum, _ in best.values()]
 
     @classmethod
+    def _get_top_target_dim_label(cls, base_datumset):
+        if len(base_datumset) == 0:
+            return None
+        return base_datumset[0].query.dim_labels[-1]
+
+    @classmethod
     @cache
     def _get_derived(cls, query_str):
         query = Query(query_str)
         base_datumset = cls[cls._get_base_query_str(query)]
-        group_dims = query.dim_labels[:-1]
+        target_dim_label = cls._get_top_target_dim_label(base_datumset)
+        if target_dim_label is None:
+            return Datumset.empty()
+        group_dims = [
+            dim_label
+            for dim_label in query.dim_labels
+            if dim_label != target_dim_label
+        ]
         top_datums = cls._get_top_datums(base_datumset, group_dims)
         datumset = Datumset(*top_datums)
         object.__setattr__(datumset, "_query_str", query_str)
