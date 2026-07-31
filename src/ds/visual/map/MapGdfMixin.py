@@ -26,7 +26,10 @@ class MapGdfMixin:
         ]
 
     def _get_value_gdf(self, sub_datumset, ctx):
-        region_values = self._get_region_percentages(sub_datumset)
+        if self.y_cell_key == "Count":
+            region_values = self._get_region_percentages(sub_datumset)
+        else:
+            region_values = self._get_region_values_for(sub_datumset)
         gdf = self._load_gdf().rename(columns={"id": "region_id"})
         gdf["value"] = gdf.apply(
             lambda row: self._lookup_region_value(row, region_values),

@@ -51,7 +51,7 @@ class MekkoAxisMixin:
             sub_ax.text(
                 left + width / 2.0,
                 self.BAR_HEIGHT + offset,
-                self._format_humanized_value(float(total), None),
+                self._format_y_value(total),
                 ha="center",
                 va="bottom",
                 fontsize=7,

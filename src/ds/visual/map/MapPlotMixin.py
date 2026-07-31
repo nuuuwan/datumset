@@ -43,6 +43,11 @@ class MapPlotMixin:
                 return f"{pct:.{decimals}f}%"
         return f"{pct:.3f}%"
 
+    def _format_colorbar_tick(self, value):
+        if self.y_cell_key == "Count":
+            return self._humanize_pct(value)
+        return self._format_cell_value_for_axis(self.y_cell_key, value, None)
+
     def _set_rank_ticks(self, colorbar, values, max_rank):
         n_ticks = min(5, len(values))
         if n_ticks < 2:
@@ -52,7 +57,7 @@ class MapPlotMixin:
         ]
         colorbar.set_ticks(positions)
         colorbar.set_ticklabels(
-            [self._humanize_pct(values[p]) for p in positions]
+            [self._format_colorbar_tick(values[p]) for p in positions]
         )
 
     def _add_colorbar(self, fig, ctx):
@@ -71,7 +76,7 @@ class MapPlotMixin:
             pad=0.04,
         )
         self._set_rank_ticks(colorbar, values, max_rank)
-        colorbar.set_label("%")
+        colorbar.set_label(self.y_cell_key)
 
     def _plot(self, fig, ax):
         axes, n_datumsets = self._get_display_axes(
