@@ -39,8 +39,21 @@ class MapColorMixin:
         categories = self._get_unique_dim_values(self.region_color_dim_key)
         return self._get_dim_color_idx(self.region_color_dim_key, categories)
 
+    def _is_single_map(self):
+        return len(self.display_datumsets) == 1
+
+    def _get_single_map_base_color(self):
+        return self._get_subfigure_base_color(self.display_datumsets[0])
+
     def _get_color_context(self):
         if self.region_color_dim_key is not None:
+            if self._is_single_map():
+                base_color = self._get_single_map_base_color()
+                return {
+                    "mode": "value",
+                    "cmap": self._build_hsl_lightness_cmap(base_color),
+                    "values": self._get_sorted_values(),
+                }
             return {
                 "mode": "category",
                 "color_idx": self._get_category_color_idx(),
