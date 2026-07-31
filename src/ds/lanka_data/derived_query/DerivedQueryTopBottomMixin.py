@@ -29,6 +29,12 @@ class DerivedQueryTopBottomMixin:
         result = []
         for datums in groups.values():
             sorted_d = sorted(datums, key=cls._get_count, reverse=True)
+            for datum in sorted_d:
+                print(
+                    cls._get_group_key(datum, group_dims),
+                    cls._get_count(datum),
+                )
+
             if len(sorted_d) >= n:
                 result.append(sorted_d[n - 1])
         return result
