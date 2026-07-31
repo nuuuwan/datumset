@@ -15,8 +15,8 @@ commit_if_modified "[pipeline.sh-$TIME_STAMP] Updated tests/test_visual_lankadat
     tests/test_visual_lankadata.data.json
 
 rm -rf images
+rm -rf images_for_readme
 python3 -m pytest -x -v -p no:warnings "$*"
-commit_if_modified "[pipeline.sh-$TIME_STAMP] Updated images" images
-
 python3 workflows/readme_build.py
+commit_if_modified "[pipeline.sh-$TIME_STAMP] Updated images_for_readme" images_for_readme
 commit_if_modified "[pipeline.sh-$TIME_STAMP] Updated README.md" README.md
