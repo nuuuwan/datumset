@@ -96,34 +96,6 @@ class VisualLayoutMixin:
     def _get_y_axis_limit(self, max_value):
         return 1.0 if max_value <= 0 else max_value * 1.1
 
-    def _get_legend_label(self, value, value_counts):
-        label = self._format_visual_value(value)
-        if value_counts is None:
-            return label
-        count = value_counts.get(value, 0)
-        if count == 0:
-            return label
-        return f"{label} ({count})"
-
-    def _add_color_legend(
-        self, fig, value_color_idx, title, value_counts=None
-    ):
-        legend_handles = [
-            mpatches.Patch(
-                color=color,
-                label=self._get_legend_label(value, value_counts),
-            )
-            for value, color in value_color_idx.items()
-        ]
-        fig.legend(
-            handles=legend_handles,
-            title=title,
-            loc="lower center",
-            bbox_to_anchor=(0.5, 0.01),
-            ncol=min(4, len(legend_handles)),
-            frameon=False,
-        )
-
     def _set_font(self):
         for file in os.listdir(self.DIR_FONTS):
             if file.endswith(".ttf"):

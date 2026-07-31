@@ -9,6 +9,6 @@
 - [ ] Add batch rendering for multiple visual queries
 - [ ] Add flat data export helpers for CSV, Excel, and tabular JSON
 - [ ] Add output formats beyond PNG, including SVG, PDF, and interactive HTML
-- [ ] Add better legends and labeling for multi-category charts and maps
+- [x] Add better legends and labeling for multi-category charts and maps
 - [ ] Add cache management, refresh controls, and offline prefetching
 - [ ] Add pluggable registration for new data sources and visualization types

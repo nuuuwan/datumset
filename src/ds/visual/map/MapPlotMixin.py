@@ -30,7 +30,7 @@ class MapPlotMixin:
             self._add_color_legend(
                 fig,
                 self._sort_color_idx_by_count(ctx["color_idx"], counts),
-                None,
+                self.region_color_dim_key,
                 counts,
             )
             return
