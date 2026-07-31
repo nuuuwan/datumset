@@ -1,4 +1,4 @@
-from utils_future import Directory, File, JSONFile, Log
+from utils_future import Directory, File, Log, YAMLFile
 
 log = Log("ReadMe")
 
@@ -39,8 +39,8 @@ class ReadMe:
         ]
 
     def get_lines_for_examples(self):
-        query_strs = JSONFile(
-            "tests", "test_visual_lankadata.data.json"
+        query_strs = YAMLFile(
+            "tests", "test_visual_lankadata.data.yaml"
         ).read()
         lines = ["## Examples", ""]
         for i_query, query_str in enumerate(query_strs, start=1):
