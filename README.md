@@ -191,26 +191,26 @@ Person/Time+HighestEducationLevel+DisabilityTypes/Count/MekkoChart
 ### 24
 
 ```text
-Person/Time+Province+Religion/Count/BarChart
-```
-
-![images_for_readme/Person/Time+Province+Religion/Count/BarChart.png](images_for_readme/Person/Time+Province+Religion/Count/BarChart.png)
-
-### 25
-
-```text
 Person/Time+Province=Western+Religion/Count/BarChart
 ```
 
 ![images_for_readme/Person/Time+Province=Western+Religion/Count/BarChart.png](images_for_readme/Person/Time+Province=Western+Religion/Count/BarChart.png)
 
-### 26
+### 25
 
 ```text
 Person/Time+Province=Western+Religion=hindu/Count/BarChart
 ```
 
 ![images_for_readme/Person/Time+Province=Western+Religion=hindu/Count/BarChart.png](images_for_readme/Person/Time+Province=Western+Religion=hindu/Count/BarChart.png)
+
+### 26
+
+```text
+Person/Time+Province=eastern+Religion/Count/StackedBarChart
+```
+
+![images_for_readme/Person/Time+Province=eastern+Religion/Count/StackedBarChart.png](images_for_readme/Person/Time+Province=eastern+Religion/Count/StackedBarChart.png)
 
 ### 27
 
