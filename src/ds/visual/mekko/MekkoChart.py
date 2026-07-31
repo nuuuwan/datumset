@@ -11,6 +11,9 @@ class MekkoChart(
     StackedBarChart,
 ):
 
+    def _excluded_dim_keys(self):
+        return {self.x_dim_key, self.stack_dim_key}
+
     def _plot(self, fig, ax):
         axes, n_datumsets = self._get_display_axes(
             fig,
