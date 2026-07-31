@@ -1,3 +1,4 @@
+import re
 from dataclasses import dataclass
 
 from ds.thing.concept.Concept import Concept
@@ -43,6 +44,7 @@ class AgeGroup(Concept):
     # flake8: noqa: C901
     @classmethod
     def from_value(cls, value):
+        print(value)
         value = value.replace("-", "_")
         value = value.replace(" ", "_")
         value = value.replace("To", "_")
@@ -50,8 +52,10 @@ class AgeGroup(Concept):
         if cls._has_total_terms(value):
             return cls(cls.MIN_TIME, cls.MAX_TIME)
 
-        tokens = value.split("_")
-        num_tokens = [int(token) for token in tokens if token.isdigit()]
+        # num_value should value with the num chars and the other chars set of space
+        num_value = "".join([c if c.isnumeric() else " " for c in value])
+        num_value = re.sub(r"\s+", " ", num_value).strip()
+        num_tokens = num_value.split(" ")
 
         if cls._has_more_terms(value):
             return cls(int(num_tokens[0]), cls.MAX_TIME)
@@ -67,3 +71,7 @@ class AgeGroup(Concept):
             return cls(int(num_tokens[0]), int(num_tokens[1]))
 
         raise ValueError(f"Cannot parse AgeGroup from value: {value}")
+
+    @classmethod
+    def can_shorten(cls):
+        return False
