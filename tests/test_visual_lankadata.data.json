@@ -9,7 +9,7 @@
   "House/Time=2024+District+ToiletFacilities/Top/Map",
   "House/Time=2024+ED+CookingFuel/Count/MekkoChart",
   "House/Time=2024+Province+WallType/Count/MekkoChart",
-  "Person/Sector+Time/Count/BarChart",
+  "Person/Sector+Time/Count/MekkoChart",
   "Person/Time+AgeGroup+EducationActivity/Count/MekkoChart",
   "Person/Time+District+CensusOfficer/Count/MekkoChart",
   "Person/Time+District+EmmigrationReason/Count/MekkoChart",
