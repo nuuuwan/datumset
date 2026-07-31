@@ -100,3 +100,20 @@ class VisualDataMixin:
             return per_x_stack[x][dominant] / total
 
         return sorted(per_x_stack, key=share, reverse=True)
+
+    def _get_x_total_value_order(
+        self,
+        x_dim_key,
+        cell_key,
+        stack_dim_key,
+    ):
+        per_x_stack, _ = self._collect_x_stack_totals(
+            x_dim_key,
+            cell_key,
+            stack_dim_key,
+        )
+
+        def total_value(x):
+            return sum(per_x_stack[x].values())
+
+        return sorted(per_x_stack, key=total_value, reverse=True)
