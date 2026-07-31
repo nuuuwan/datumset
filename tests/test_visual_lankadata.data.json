@@ -39,3 +39,6 @@
   "Vote/ElectionType=presidential+Time=2005+Province+Party/Count/StackedBarChart",
   "Vote/ElectionType=presidential+Time=2015+Province+Party/Count/MekkoChart"
 ]
+  "Vote/ElectionType=presidential+Time=2015+Province+Party/Count/MekkoChart",
+  "Person/Time=2024+District+Ethnicity/Bottom/Map"
+]
