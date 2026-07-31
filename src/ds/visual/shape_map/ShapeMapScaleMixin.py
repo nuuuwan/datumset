@@ -50,8 +50,11 @@ class ShapeMapScaleMixin:
     def _get_shared_value_per_shape(self):
         all_weights = []
         for sub_datumset in self.display_datumsets:
-            totals = self._get_region_totals(sub_datumset)
-            all_weights.extend(w for w in totals.values() if w > 0)
+            if self._use_count_weights():
+                weights = self._get_region_values_for(sub_datumset)
+            else:
+                weights = self._get_region_totals(sub_datumset)
+            all_weights.extend(w for w in weights.values() if w > 0)
         return self._value_per_shape(dict(enumerate(all_weights)))
 
     def _plot(self, fig, ax):

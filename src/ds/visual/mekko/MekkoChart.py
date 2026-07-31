@@ -14,6 +14,13 @@ class MekkoChart(
     def _excluded_dim_keys(self):
         return {self.x_dim_key, self.stack_dim_key}
 
+    def _get_x_order(self):
+        return self._get_x_dominant_share_order(
+            self.x_dim_key,
+            self.y_cell_key,
+            self.stack_dim_key,
+        )
+
     def _plot(self, fig, ax):
         axes, n_datumsets = self._get_display_axes(
             fig,

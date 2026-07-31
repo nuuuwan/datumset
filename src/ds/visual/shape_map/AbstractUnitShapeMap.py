@@ -5,3 +5,6 @@ class AbstractUnitShapeMap:
 
     def _add_shape_scale_note(self, fig):
         pass
+
+    def _use_count_weights(self):
+        return False

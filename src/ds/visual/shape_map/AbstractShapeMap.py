@@ -18,4 +18,6 @@ class AbstractShapeMap(
     ShapeMapScaleMixin,
     Map,
 ):
-    pass
+
+    def _use_count_weights(self):
+        return self.y_cell_key == "Count"
