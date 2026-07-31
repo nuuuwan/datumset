@@ -35,6 +35,10 @@ class TestCase(unittest.TestCase):
         self.assertEqual(query.entity_class_names, ["Person"])
         self.assertEqual(query.dim_labels, ["Time", "District", "Religion"])
         self.assertEqual(query.dim_values_idx, {})
+        self.assertEqual(
+            query.child_region_parent_values_idx,
+            {"Province": "western"},
+        )
         self.assertEqual(query.cell_labels, ["Count"])
         self.assertEqual(
             query.base_query_str,
