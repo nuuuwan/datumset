@@ -191,12 +191,20 @@ Person/Time+Province=Western+Religion=hindu/Count/BarChart
 ### 24
 
 ```text
+Person/Time+Province=northern+Religion/Count/PieChart
+```
+
+![images/Person/Time+Province=northern+Religion/Count/PieChart.png](images/Person/Time+Province=northern+Religion/Count/PieChart.png)
+
+### 25
+
+```text
 Person/Time=2024+DSD<District=gampaha+Religion/Count/StackedBarChart
 ```
 
 ![images/Person/Time=2024+DSD<District=gampaha+Religion/Count/StackedBarChart.png](images/Person/Time=2024+DSD<District=gampaha+Religion/Count/StackedBarChart.png)
 
-### 25
+### 26
 
 ```text
 Person/Time=2024+District+Religion/Count/StackedBarChart
@@ -204,7 +212,7 @@ Person/Time=2024+District+Religion/Count/StackedBarChart
 
 ![images/Person/Time=2024+District+Religion/Count/StackedBarChart.png](images/Person/Time=2024+District+Religion/Count/StackedBarChart.png)
 
-### 26
+### 27
 
 ```text
 Person/Time=2024+District<Province=western+Religion/Count/StackedBarChart
@@ -212,7 +220,7 @@ Person/Time=2024+District<Province=western+Religion/Count/StackedBarChart
 
 ![images/Person/Time=2024+District<Province=western+Religion/Count/StackedBarChart.png](images/Person/Time=2024+District<Province=western+Religion/Count/StackedBarChart.png)
 
-### 27
+### 28
 
 ```text
 Person/Time=2024+PD<District=colombo+Religion=islam/Count/Cartogram
@@ -220,7 +228,7 @@ Person/Time=2024+PD<District=colombo+Religion=islam/Count/Cartogram
 
 ![images/Person/Time=2024+PD<District=colombo+Religion=islam/Count/Cartogram.png](images/Person/Time=2024+PD<District=colombo+Religion=islam/Count/Cartogram.png)
 
-### 28
+### 29
 
 ```text
 Person/Time=2024+Province+Religion/Count/Map
@@ -228,7 +236,7 @@ Person/Time=2024+Province+Religion/Count/Map
 
 ![images/Person/Time=2024+Province+Religion/Count/Map.png](images/Person/Time=2024+Province+Religion/Count/Map.png)
 
-### 29
+### 30
 
 ```text
 Person/Time=2024+Province+Religion/Count/PieChart
@@ -236,7 +244,7 @@ Person/Time=2024+Province+Religion/Count/PieChart
 
 ![images/Person/Time=2024+Province+Religion/Count/PieChart.png](images/Person/Time=2024+Province+Religion/Count/PieChart.png)
 
-### 30
+### 31
 
 ```text
 Person/Time=2024+Province+Religion/Count/StackedBarChart
@@ -244,7 +252,7 @@ Person/Time=2024+Province+Religion/Count/StackedBarChart
 
 ![images/Person/Time=2024+Province+Religion/Count/StackedBarChart.png](images/Person/Time=2024+Province+Religion/Count/StackedBarChart.png)
 
-### 31
+### 32
 
 ```text
 Person/Time=2024+Province+Religion=buddhist/Count/Dorling
@@ -252,21 +260,13 @@ Person/Time=2024+Province+Religion=buddhist/Count/Dorling
 
 ![images/Person/Time=2024+Province+Religion=buddhist/Count/Dorling.png](images/Person/Time=2024+Province+Religion=buddhist/Count/Dorling.png)
 
-### 32
-
-```text
-Person/Time=2024+Province=northern+Religion/Count/PieChart
-```
-
-![images/Person/Time=2024+Province=northern+Religion/Count/PieChart.png](images/Person/Time=2024+Province=northern+Religion/Count/PieChart.png)
-
 ### 33
 
 ```text
-Vote/ElectionType=presidential+Time=2024+Province+Party/Count/HexMap
+Vote/ElectionType=presidential+Time+District+Party/Top/UnitHexMap
 ```
 
-![images/Vote/ElectionType=presidential+Time=2024+Province+Party/Count/HexMap.png](images/Vote/ElectionType=presidential+Time=2024+Province+Party/Count/HexMap.png)
+![images/Vote/ElectionType=presidential+Time+District+Party/Top/UnitHexMap.png](images/Vote/ElectionType=presidential+Time+District+Party/Top/UnitHexMap.png)
 
 ### 34
 
