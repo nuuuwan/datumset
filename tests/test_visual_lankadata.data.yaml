@@ -14,6 +14,7 @@
 - House/Time=2024+District+SourceOfDrinkingWater/2nd/UnitHexMap
 - House/Time=2024+District+SourceOfDrinkingWater/Top/UnitHexMap
 - House/Time=2024+District+ToiletFacilities/3rd/Map
+- House/Time=2024+District+ToiletFacilities/Count/WaffleChart
 - House/Time=2024+District+ToiletFacilities/Top/Map
 - House/Time=2024+District+ToiletFacilities=not_using_a_toilet/Count/HexMap
 - House/Time=2024+ED+CookingFuel/Count/MekkoChart
@@ -44,7 +45,6 @@
 - Person/Time=2024+Province+Religion/Count/PieChart
 - Person/Time=2024+Province+Religion/Count/StackedBarChart
 - Person/Time=2024+Province+Religion/Count/TreeMap
-- Person/Time=2024+Province+Religion/Count/WaffleChart
 - Person/Time=2024+Province+Religion=buddhist/Count/BubbleMap
 - Person/Time=2024+Province+Religion=buddhist/Count/Dorling
 - Person/Time=2024+Province+Religion=buddhist/Count/WaffleChart
