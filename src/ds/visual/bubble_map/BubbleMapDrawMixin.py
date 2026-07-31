@@ -33,9 +33,7 @@ class BubbleMapDrawMixin:
         for region_id, (x, y) in centroids.items():
             weight = weights.get(region_id)
             if weight:
-                bubbles.append(
-                    [region_id, [x, y], scale * math.sqrt(weight)]
-                )
+                bubbles.append([region_id, [x, y], scale * math.sqrt(weight)])
         return bubbles
 
     def _draw_bubble(self, ax, xy, radius, color):
