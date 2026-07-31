@@ -9,6 +9,7 @@ from ds.visual.pie_chart.PieChart import PieChart
 from ds.visual.square_map.SquareMap import SquareMap
 from ds.visual.square_map.UnitSquareMap import UnitSquareMap
 from ds.visual.stacked_bar_chart.StackedBarChart import StackedBarChart
+from ds.visual.WaffleChart import WaffleChart
 
 
 class VisualFactory:
@@ -27,6 +28,7 @@ class VisualFactory:
             MekkoChart,
             PieChart,
             StackedBarChart,
+            WaffleChart,
         ]
 
     @classmethod
