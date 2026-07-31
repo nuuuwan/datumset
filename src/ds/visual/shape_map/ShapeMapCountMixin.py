@@ -1,6 +1,6 @@
 class ShapeMapCountMixin:
 
-    SHAPE_ERROR = 0.1
+    SHAPE_ERROR = 0.2
 
     @staticmethod
     def _region_error(actual, ideal):

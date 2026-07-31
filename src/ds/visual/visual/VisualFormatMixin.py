@@ -15,7 +15,7 @@ class VisualFormatMixin:
         return value
 
     def _format_humanized_value(self, value, _pos):
-        return Int(value).humanize
+        return Int(int(round(value, 0))).humanize
 
     def _format_humanized_y_axis(self, ax):
         formatter = FuncFormatter(self._format_humanized_value)
