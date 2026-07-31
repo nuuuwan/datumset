@@ -1,6 +1,3 @@
-from collections import defaultdict
-
-
 class TreeMapDataMixin:
 
     def _get_tree_map_data(self, sub_datumset):
@@ -36,17 +33,21 @@ class TreeMapDataMixin:
         )
         return [item[0] for item in combined], [item[1] for item in combined]
 
+    def _append_to_rows(self, rows, current, n_rows):
+        if not current:
+            return rows
+        if len(rows) < n_rows:
+            rows.append(current)
+        else:
+            rows[-1].extend(current)
+        return rows
+
     def _split_rows(self, values, n_rows):
-        n = len(values)
         target_total = sum(values) / n_rows if n_rows > 0 else 0.0
         rows = []
-        current = []
-        current_total = 0.0
-        for value in values:
-            if not rows and not current:
-                current.append(value)
-                current_total = value
-                continue
+        current = [values[0]]
+        current_total = values[0]
+        for value in values[1:]:
             if current_total + value / 2.0 > target_total:
                 rows.append(current)
                 current = [value]
@@ -54,11 +55,7 @@ class TreeMapDataMixin:
             else:
                 current.append(value)
                 current_total += value
-        if current:
-            if len(rows) < n_rows:
-                rows.append(current)
-            else:
-                rows[-1].extend(current)
+        rows = self._append_to_rows(rows, current, n_rows)
         while len(rows) < n_rows:
             rows.append([])
         return rows
