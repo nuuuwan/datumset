@@ -14,15 +14,21 @@ class MekkoAxisMixin:
             FuncFormatter(lambda value, _: Percent(value).humanize)
         )
 
+    def _get_mekko_x_label(self, sub_ax, x_label, width):
+        axis_width_px = self._get_axis_width_px(sub_ax)
+        slot_px = width * axis_width_px
+        formatted_label = self._format_mekko_x_label(x_label)
+        if not self._can_shorten_dim(self.x_dim_key):
+            max_chars = max(2, int(slot_px / self._get_px_per_char(sub_ax)))
+            return self._wrap_x_label(formatted_label, max_chars)
+        return self._shorten_formatted_x_label(
+            sub_ax, formatted_label, slot_px
+        )
+
     def _set_mekko_xaxis(self, sub_ax, geometries, x_labels, sub_datumset):
         centers = self._get_bar_centers(geometries)
-        axis_width_px = self._get_axis_width_px(sub_ax)
         display_labels = [
-            self._shorten_formatted_x_label(
-                sub_ax,
-                self._format_mekko_x_label(x_label),
-                width * axis_width_px,
-            )
+            self._get_mekko_x_label(sub_ax, x_label, width)
             for (_, width), x_label in zip(geometries, x_labels)
         ]
         _, stack_labels, data = self._get_mekko_data(sub_datumset)
