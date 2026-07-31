@@ -1,7 +1,23 @@
+from collections import defaultdict
+
 from utils_future import Percent
 
 
 class PieChartPlotMixin:
+
+    def _get_category_counts(self):
+        if len(self.display_datumsets) <= 1:
+            return None
+        counts = defaultdict(int)
+        for sub_datumset in self.display_datumsets:
+            x_labels, y_values = self._get_category_cell_xy(
+                sub_datumset, self.x_dim_key, self.y_cell_key
+            )
+            if not y_values:
+                continue
+            winner_idx = max(range(len(y_values)), key=lambda i: y_values[i])
+            counts[x_labels[winner_idx]] += 1
+        return counts
 
     def _plot_subfigure(
         self,
@@ -51,5 +67,10 @@ class PieChartPlotMixin:
                 max_total,
                 n_datumsets,
             )
-        self._add_color_legend(fig, self.x_color_idx, self.x_dim_key)
+        self._add_color_legend(
+            fig,
+            self.x_color_idx,
+            self.x_dim_key,
+            self._get_category_counts(),
+        )
         self._hide_empty_axes(axes, n_datumsets)

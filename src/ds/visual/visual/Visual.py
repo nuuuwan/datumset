@@ -12,6 +12,7 @@ from ds.visual.visual.VisualContrastMixin import VisualContrastMixin
 from ds.visual.visual.VisualDataMixin import VisualDataMixin
 from ds.visual.visual.VisualFormatMixin import VisualFormatMixin
 from ds.visual.visual.VisualLayoutMixin import VisualLayoutMixin
+from ds.visual.visual.VisualLegendMixin import VisualLegendMixin
 from ds.visual.visual.VisualParamsMixin import VisualParamsMixin
 from ds.visual.visual.VisualPathMixin import VisualPathMixin
 from ds.visual.visual.VisualRectFitMixin import VisualRectFitMixin
@@ -36,6 +37,7 @@ class Visual(
     VisualColorMixin,
     VisualContrastMixin,
     VisualFormatMixin,
+    VisualLegendMixin,
     VisualPathMixin,
     VisualTitleMixin,
     VisualXAxisMixin,
