@@ -102,17 +102,22 @@ class TestCase(unittest.TestCase):
             self.assertAlmostEqual(total, 1.0, places=9)
 
     def test_change(self):
-        change_datumset = LankaData["Person/Province+Time/Change"]
-        base_datumset = LankaData["Person/Province+Time/Count"]
+        change_datumset = LankaData["Person/Province+Religion+Time/Change"]
+        base_datumset = LankaData["Person/Province+Religion+Time/Count"]
 
         self.assertGreater(len(change_datumset), 0)
         for datum in change_datumset:
             self.assertIn("Change", datum.cell_idx)
 
-        provinces = set()
+        groups = set()
         for datum in base_datumset:
-            provinces.add(datum.dim_idx["Province"].get_value())
-        self.assertEqual(len(change_datumset), len(provinces))
+            groups.add(
+                (
+                    datum.dim_idx["Province"].get_value(),
+                    datum.dim_idx["Religion"].get_value(),
+                )
+            )
+        self.assertEqual(len(change_datumset), len(groups))
 
 
 if __name__ == "__main__":

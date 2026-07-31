@@ -5,8 +5,22 @@ from ds.thing.concept.atom.Float import Float
 class DerivedQueryChangeMixin:
 
     @classmethod
+    def _infer_target_dim(cls, base_datumset, group_dims):
+        if len(base_datumset) == 0:
+            return None
+        group_dims_set = set(group_dims)
+        candidates = [
+            d
+            for d in base_datumset[0].dim_idx.keys()
+            if d not in group_dims_set
+        ]
+        return candidates[0] if candidates else None
+
+    @classmethod
     def _get_change_datums(cls, base_datumset, group_dims):
-        target_dim = cls._get_target_dim_label(base_datumset)
+        target_dim = cls._infer_target_dim(base_datumset, group_dims)
+        if target_dim is None:
+            return []
         groups = {}
         for datum in base_datumset:
             key = cls._get_group_key(datum, group_dims)

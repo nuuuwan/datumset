@@ -41,11 +41,17 @@ class LankaDataDerivedQueryMixin(
         return Query(query_str).cell_part in cls.DERIVED_CELLS
 
     @classmethod
+    def _get_target_dim_for_cell(cls, query, base_datumset):
+        if query.cell_part == cls.CELL_CHANGE:
+            return query.dim_labels[-1]
+        return cls._get_target_dim_label(base_datumset)
+
+    @classmethod
     @cache
     def _get_derived(cls, query_str):
         query = Query(query_str)
         base_datumset = cls[cls._get_base_query_str(query)]
-        target_dim_label = cls._get_target_dim_label(base_datumset)
+        target_dim_label = cls._get_target_dim_for_cell(query, base_datumset)
         if target_dim_label is None:
             return Datumset.empty()
         group_dims = [
