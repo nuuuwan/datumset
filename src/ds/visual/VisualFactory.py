@@ -1,4 +1,5 @@
 from ds.visual.BarChart import BarChart
+from ds.visual.bubble_map.BubbleMap import BubbleMap
 from ds.visual.dorling.Dorling import Dorling
 from ds.visual.hex_map.HexMap import HexMap
 from ds.visual.hex_map.UnitHexMap import UnitHexMap
@@ -19,6 +20,7 @@ class VisualFactory:
         return [
             BarChart,
             Map,
+            BubbleMap,
             Cartogram,
             Dorling,
             HexMap,
