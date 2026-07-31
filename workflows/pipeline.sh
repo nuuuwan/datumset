@@ -11,12 +11,12 @@ commit_if_modified() {
     fi
 }
 
-commit_if_modified "[pipeline.sh-$TIME_STAMP] Updated tests/test_visual_lankadata.data.json" \
+commit_if_modified "pipeline@$TIME_STAMP - Updated tests/test_visual_lankadata.data.json" \
     tests/test_visual_lankadata.data.json
 
 rm -rf images
 rm -rf images_for_readme
 python3 -m pytest -x -v -p no:warnings "$*"
 python3 workflows/readme_build.py
-commit_if_modified "[pipeline.sh-$TIME_STAMP] Updated images_for_readme" images_for_readme
-commit_if_modified "[pipeline.sh-$TIME_STAMP] Updated README.md" README.md
+commit_if_modified "pipeline@$TIME_STAMP - Updated images_for_readme" images_for_readme
+commit_if_modified "pipeline@$TIME_STAMP - Updated README.md" README.md
