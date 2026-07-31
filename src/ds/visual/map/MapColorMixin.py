@@ -51,8 +51,9 @@ class MapColorMixin:
                 "mode": "category",
                 "color_idx": self._get_category_color_idx(),
             }
+        cmap = self._get_subfigure_cmap(self.display_datumsets[0])
         return {
             "mode": "value",
-            "cmap": self._get_neutral_cmap(),
+            "cmap": cmap,
             "values": self._get_sorted_values(),
         }
