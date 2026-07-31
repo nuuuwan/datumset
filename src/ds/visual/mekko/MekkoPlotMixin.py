@@ -52,7 +52,7 @@ class MekkoPlotMixin:
             self._add_fitted_label_in_rect(sub_ax, rect, label)
 
     def _plot_subfigure(self, sub_ax, sub_datumset):
-        x_labels, stack_labels, data = self._get_data(sub_datumset)
+        x_labels, stack_labels, data = self._get_mekko_data(sub_datumset)
         totals = self._get_totals(x_labels, data)
         geometries = self._get_bar_geometry(totals)
         self._segment_labels = []

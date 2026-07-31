@@ -89,3 +89,20 @@ class TestCase(unittest.TestCase):
                 "Time=2012+District<Province=southern+Religion=buddhist"
             )
         )
+
+    def test_match_dim_order_flexibility(self):
+        datum = self._build_datum()
+
+        self.assertTrue(
+            datum.is_match_dim_idx("Time=2012+District+Religion=buddhist")
+        )
+        self.assertTrue(
+            datum.is_match_dim_idx("Religion=buddhist+Time=2012+District")
+        )
+        self.assertTrue(
+            datum.is_match(
+                Query(
+                    "Person/District+Religion=buddhist+Time=2012/Count1+Count2"
+                )
+            )
+        )

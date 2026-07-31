@@ -44,12 +44,22 @@ class Census2024(AbstractDB):
         return local_data_file
 
     @classmethod
+    def _get_partial_paths_for_query(cls, query: Query):
+        for base_query_str, partial_paths in cls.metadata_idx().items():
+            base_query = Query(base_query_str)
+            if (
+                base_query.entity_part == query.entity_part
+                and base_query.cell_part == query.cell_part
+                and base_query.dim_labels_set == query.dim_labels_set
+            ):
+                return partial_paths
+        return []
+
+    @classmethod
     @cache
     def __class_getitem__(cls, query_str):
         query = Query(query_str)
-        partial_paths_for_query = cls.metadata_idx().get(
-            query.base_query_str, []
-        )
+        partial_paths_for_query = cls._get_partial_paths_for_query(query)
         datum_list = []
         for partial_path in partial_paths_for_query:
             local_data_file = cls._get_local_data_file(partial_path)

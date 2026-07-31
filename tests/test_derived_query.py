@@ -34,6 +34,24 @@ class TestCase(unittest.TestCase):
                 expected[key][1],
             )
 
+    def test_top_reordered_dims(self):
+        top_datumset = LankaData["Person/Religion+Time+Province/Top"]
+        base_datumset = LankaData["Person/Time+Province+Religion/Count"]
+
+        group_dims = ["Time", "Province"]
+        expected = self._get_expected_top(
+            base_datumset, group_dims, "Religion"
+        )
+
+        self.assertGreater(len(top_datumset), 0)
+        self.assertEqual(len(top_datumset), len(expected))
+        for datum in top_datumset:
+            key = tuple(datum.dim_idx[dim].get_value() for dim in group_dims)
+            self.assertEqual(
+                datum.dim_idx["Religion"].get_value(),
+                expected[key][1],
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

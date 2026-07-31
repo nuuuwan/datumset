@@ -17,10 +17,13 @@ class MekkoAxisMixin:
     def _get_mekko_x_label(self, sub_ax, x_label, width):
         axis_width_px = self._get_axis_width_px(sub_ax)
         slot_px = width * axis_width_px
+        formatted_label = self._format_mekko_x_label(x_label)
         if not self._can_shorten_dim(self.x_dim_key):
             max_chars = max(2, int(slot_px / self._get_px_per_char(sub_ax)))
-            return self._wrap_x_label(x_label, max_chars)
-        return self._shorten_x_label(sub_ax, x_label, slot_px)
+            return self._wrap_x_label(formatted_label, max_chars)
+        return self._shorten_formatted_x_label(
+            sub_ax, formatted_label, slot_px
+        )
 
     def _set_mekko_xaxis(self, sub_ax, geometries, x_labels, sub_datumset):
         centers = self._get_bar_centers(geometries)
@@ -28,7 +31,11 @@ class MekkoAxisMixin:
             self._get_mekko_x_label(sub_ax, x_label, width)
             for (_, width), x_label in zip(geometries, x_labels)
         ]
-        label_colors = self._get_x_label_colors(sub_datumset, x_labels)
+        _, stack_labels, data = self._get_mekko_data(sub_datumset)
+        label_colors = [
+            self._get_x_label_color(x_label, stack_labels, data)
+            for x_label in x_labels
+        ]
         half_widths = [width / 2.0 * 0.9 for (_, width) in geometries]
         self._set_x_tick_labels(
             sub_ax,
