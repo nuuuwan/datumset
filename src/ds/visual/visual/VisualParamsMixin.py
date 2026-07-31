@@ -34,6 +34,9 @@ class VisualParamsMixin:
         for dim_key in varying:
             if self._is_time_dim(dim_key):
                 return dim_key
+        for dim_key in varying:
+            if self._is_region_dim(dim_key):
+                return dim_key
         return varying[-1]
 
     def _get_region_dim_key(self):
