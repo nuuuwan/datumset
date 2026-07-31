@@ -31,9 +31,7 @@ class MekkoCategoryMixin:
     def _format_mekko_x_label(self, x_label):
         other_category = self._get_other_category()
         if x_label == other_category:
-            return self.OTHER_CATEGORY_SUFFIX.format(
-                category=self.x_dim_key
-            )
+            return self.OTHER_CATEGORY_SUFFIX.format(category=self.x_dim_key)
         return self._format_visual_value(x_label)
 
     def _build_remapped_data(self, x_labels, stack_labels, data, small_x):
