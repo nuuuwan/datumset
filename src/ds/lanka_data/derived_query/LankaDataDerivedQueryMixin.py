@@ -23,6 +23,8 @@ class LankaDataDerivedQueryMixin(
     DerivedQueryCommonMixin,
 ):
     CELL_TOP = "Top"
+    CELL_2ND = "2nd"
+    CELL_3RD = "3rd"
     CELL_BOTTOM = "Bottom"
     CELL_RANK = "Rank"
     CELL_SHARE = "Share"
@@ -30,6 +32,8 @@ class LankaDataDerivedQueryMixin(
 
     DERIVED_CELLS = {
         CELL_TOP,
+        CELL_2ND,
+        CELL_3RD,
         CELL_BOTTOM,
         CELL_RANK,
         CELL_SHARE,
@@ -61,6 +65,8 @@ class LankaDataDerivedQueryMixin(
         ]
         handlers = {
             cls.CELL_TOP: cls._get_top_datums,
+            cls.CELL_2ND: cls._get_2nd_datums,
+            cls.CELL_3RD: cls._get_3rd_datums,
             cls.CELL_BOTTOM: cls._get_bottom_datums,
             cls.CELL_RANK: cls._get_rank_datums,
             cls.CELL_SHARE: cls._get_share_datums,

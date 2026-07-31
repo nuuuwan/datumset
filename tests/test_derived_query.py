@@ -20,6 +20,26 @@ class TestCase(unittest.TestCase):
                 expected[key] = (count, target)
         return expected
 
+    @staticmethod
+    def _get_expected_nth(base_datumset, group_dims, target_dim, n):
+        groups = {}
+        for datum in base_datumset:
+            key = tuple(datum.dim_idx[dim].get_value() for dim in group_dims)
+            groups.setdefault(key, []).append(datum)
+        expected = {}
+        for key, datums in groups.items():
+            sorted_d = sorted(
+                datums,
+                key=lambda d: float(d.cell_idx["Count"].get_value()),
+                reverse=True,
+            )
+            if len(sorted_d) >= n:
+                expected[key] = (
+                    float(sorted_d[n - 1].cell_idx["Count"].get_value()),
+                    sorted_d[n - 1].dim_idx[target_dim].get_value(),
+                )
+        return expected
+
     def test_top(self):
         top_datumset = LankaData["Person/Time+Province+Religion/Top"]
         base_datumset = LankaData[BASE_QUERY]
@@ -48,6 +68,40 @@ class TestCase(unittest.TestCase):
         self.assertGreater(len(top_datumset), 0)
         self.assertEqual(len(top_datumset), len(expected))
         for datum in top_datumset:
+            key = tuple(datum.dim_idx[dim].get_value() for dim in GROUP_DIMS)
+            self.assertEqual(
+                datum.dim_idx[TARGET_DIM].get_value(),
+                expected[key][1],
+            )
+
+    def test_2nd(self):
+        second_datumset = LankaData["Person/Time+Province+Religion/2nd"]
+        base_datumset = LankaData[BASE_QUERY]
+
+        expected = self._get_expected_nth(
+            base_datumset, GROUP_DIMS, TARGET_DIM, 2
+        )
+
+        self.assertGreater(len(second_datumset), 0)
+        self.assertEqual(len(second_datumset), len(expected))
+        for datum in second_datumset:
+            key = tuple(datum.dim_idx[dim].get_value() for dim in GROUP_DIMS)
+            self.assertEqual(
+                datum.dim_idx[TARGET_DIM].get_value(),
+                expected[key][1],
+            )
+
+    def test_3rd(self):
+        third_datumset = LankaData["Person/Time+Province+Religion/3rd"]
+        base_datumset = LankaData[BASE_QUERY]
+
+        expected = self._get_expected_nth(
+            base_datumset, GROUP_DIMS, TARGET_DIM, 3
+        )
+
+        self.assertGreater(len(third_datumset), 0)
+        self.assertEqual(len(third_datumset), len(expected))
+        for datum in third_datumset:
             key = tuple(datum.dim_idx[dim].get_value() for dim in GROUP_DIMS)
             self.assertEqual(
                 datum.dim_idx[TARGET_DIM].get_value(),

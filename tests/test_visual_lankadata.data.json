@@ -1,14 +1,19 @@
 [
   "House/Time+District+OwnershipStatus=encroached/Count/Map",
+  "House/Time+District+RoofType/2nd/UnitHexMap",
+  "House/Time+District+RoofType/3rd/UnitHexMap",
   "House/Time+District+RoofType/Top/UnitHexMap",
   "House/Time+Sector=urban+HouseholdSize/Count/BarChart",
   "House/Time=2024+DSD<District=batticaloa+Lighting=kerosene/Count/Map",
   "House/Time=2024+DSD<District=batticaloa+ToiletFacilities=not_using_a_toilet/Count/Map",
   "House/Time=2024+DSD<District=galle+HouseholdStructure/Count/StackedBarChart",
+  "House/Time=2024+DSD<District=matara+FloorType/2nd/Map",
   "House/Time=2024+DSD<District=matara+FloorType/Top/Map",
   "House/Time=2024+District+HouseholdStructure/Count/MekkoChart",
+  "House/Time=2024+District+SourceOfDrinkingWater/2nd/UnitHexMap",
   "House/Time=2024+District+Lighting/Count/TreeMap",
   "House/Time=2024+District+SourceOfDrinkingWater/Top/UnitHexMap",
+  "House/Time=2024+District+ToiletFacilities/3rd/Map",
   "House/Time=2024+District+ToiletFacilities/Top/Map",
   "House/Time=2024+District+ToiletFacilities=not_using_a_toilet/Count/HexMap",
   "House/Time=2024+ED+CookingFuel/Count/MekkoChart",
@@ -41,10 +46,13 @@
   "Person/Time=2024+Province+Religion/Count/WaffleChart",
   "Person/Time=2024+Province+Religion=buddhist/Count/BubbleMap",
   "Person/Time=2024+Province+Religion=buddhist/Count/Dorling",
+  "Vote/ElectionType=presidential+Time+District+Party/2nd/UnitHexMap",
   "Person/Time=2024+Province+Religion=buddhist/Count/WaffleChart",
   "Vote/ElectionType=presidential+Time+District+Party/Top/UnitHexMap",
+  "Vote/ElectionType=presidential+Time=1999+Province+Party/3rd/HexMap",
   "Vote/ElectionType=presidential+Time=1999+Province+Party/Top/HexMap",
   "Vote/ElectionType=presidential+Time=2005+Province+Party/Count/StackedBarChart",
+  "Vote/ElectionType=presidential+Time=2015+Province+Party/Count/MekkoChart"
   "Vote/ElectionType=presidential+Time=2015+Province+Party/Count/MekkoChart",
   "Vote/ElectionType=presidential+Time=2015+Province+Party/Count/TreeMap"
 ]
