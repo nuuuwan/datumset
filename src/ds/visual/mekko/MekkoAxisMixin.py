@@ -18,10 +18,18 @@ class MekkoAxisMixin:
         centers = self._get_bar_centers(geometries)
         axis_width_px = self._get_axis_width_px(sub_ax)
         display_labels = [
-            self._shorten_x_label(sub_ax, x_label, width * axis_width_px)
+            self._shorten_formatted_x_label(
+                sub_ax,
+                self._format_mekko_x_label(x_label),
+                width * axis_width_px,
+            )
             for (_, width), x_label in zip(geometries, x_labels)
         ]
-        label_colors = self._get_x_label_colors(sub_datumset, x_labels)
+        _, stack_labels, data = self._get_mekko_data(sub_datumset)
+        label_colors = [
+            self._get_x_label_color(x_label, stack_labels, data)
+            for x_label in x_labels
+        ]
         half_widths = [width / 2.0 * 0.9 for (_, width) in geometries]
         self._set_x_tick_labels(
             sub_ax,

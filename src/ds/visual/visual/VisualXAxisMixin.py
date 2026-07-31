@@ -29,6 +29,10 @@ class VisualXAxisMixin:
         display = self._format_visual_value(label)
         return String(str(display)).shorten(char_limit)
 
+    def _shorten_formatted_x_label(self, sub_ax, label, slot_px):
+        char_limit = max(2, int(slot_px / self._get_px_per_char(sub_ax)))
+        return String(str(label)).shorten(char_limit)
+
     def _get_uniform_x_labels(self, sub_ax, x_labels):
         if not x_labels:
             return []
