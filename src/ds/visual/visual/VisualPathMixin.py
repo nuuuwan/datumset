@@ -25,7 +25,7 @@ class VisualPathMixin:
                 dim_specs.append(f"{dim_label}={dim_values[0]}")
                 continue
             dim_specs.append(dim_label)
-        dim_part = Query.OPR_MULT.join(dim_specs)
+        dim_part = Query.OPR_ADD.join(dim_specs)
         return Query.DELIM_PART.join(
             [
                 query.entity_part,

@@ -8,7 +8,6 @@ class Query:
 
     DELIM_PART = "/"
     OPR_ADD = "+"
-    OPR_MULT = "+"
     OPR_EQ = "="
     OPR_LT = "<"
     OPR_OR = ","
@@ -49,7 +48,7 @@ class Query:
 
     @cached_property
     def dim_specs(self):
-        return self.dim_part.split(self.OPR_MULT)
+        return self.dim_part.split(self.OPR_ADD)
 
     @cached_property
     def dim_labels(self):
@@ -69,7 +68,7 @@ class Query:
 
     @cached_property
     def cell_labels(self):
-        return self.cell_part.split(self.OPR_MULT)
+        return self.cell_part.split(self.OPR_ADD)
 
     @cached_property
     def base_query_str(self):
@@ -84,7 +83,7 @@ class Query:
     @cache
     def from_parts(cls, entity_class_names, dim_labels, cell_labels):
         entity_part = cls.OPR_ADD.join(entity_class_names)
-        dim_part = cls.OPR_MULT.join(dim_labels)
-        cell_part = cls.OPR_MULT.join(cell_labels)
+        dim_part = cls.OPR_ADD.join(dim_labels)
+        cell_part = cls.OPR_ADD.join(cell_labels)
         query_str = cls.DELIM_PART.join([entity_part, dim_part, cell_part])
         return cls(query_str)

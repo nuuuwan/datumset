@@ -22,7 +22,7 @@ class MapPercentMixin:
             for dim_label in query.dim_labels
         ]
         return "/".join(
-            [query.entity_part, Query.OPR_MULT.join(specs), query.cell_part]
+            [query.entity_part, Query.OPR_ADD.join(specs), query.cell_part]
         )
 
     def _get_datum_dim_key(self, datum):

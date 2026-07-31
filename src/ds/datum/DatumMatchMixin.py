@@ -29,7 +29,7 @@ class DatumMatchMixin(DatumMatchRegionMixin):
 
     def is_match_cell_idx(self, cell_part: str) -> bool:
         cell_labels = list(self.cell_idx.keys())
-        labels_required = cell_part.split(Query.OPR_MULT)
+        labels_required = cell_part.split(Query.OPR_ADD)
         if labels_required != cell_labels:
             return False
         return True

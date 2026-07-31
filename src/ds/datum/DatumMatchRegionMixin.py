@@ -48,7 +48,7 @@ class DatumMatchRegionMixin:
     ) -> tuple[list[str], dict[str, str | tuple[str, ...]]]:
         labels_required = []
         values_required = {}
-        for dim_spec in concept_part.split(Query.OPR_MULT):
+        for dim_spec in concept_part.split(Query.OPR_ADD):
             if DatumMatchRegionMixin._is_child_region_spec(dim_spec):
                 child_dim_label, parent_spec = dim_spec.split(
                     Query.OPR_LT,
