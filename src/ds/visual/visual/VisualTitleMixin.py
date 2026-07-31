@@ -1,3 +1,6 @@
+from ds.query.Query import Query
+
+
 class VisualTitleMixin:
 
     TITLE_COLOR = "#333333"
@@ -51,10 +54,25 @@ class VisualTitleMixin:
         )
         return title
 
+    def _get_query_singleton_dim_values(self):
+        query_str = getattr(self.datumset, "_query_str", None)
+        if not query_str:
+            return {}
+        query = Query(query_str)
+        dim_values = {}
+        dim_values.update(query.child_region_parent_values_idx)
+        dim_values.update(query.dim_values_idx)
+        return dim_values
+
     def _get_subtitle_text(self):
         where_part = []
+        query_singleton_dim_values = self._get_query_singleton_dim_values()
         for dim_key in self.datumset.get_singleton_dims():
             dim_value = self.datumset[0].dim_idx[dim_key].get_value()
+            display_value = self._format_visual_value(dim_value)
+            where_part.append(f"{dim_key}={display_value}")
+            query_singleton_dim_values.pop(dim_key, None)
+        for dim_key, dim_value in query_singleton_dim_values.items():
             display_value = self._format_visual_value(dim_value)
             where_part.append(f"{dim_key}={display_value}")
         subtitle = " & ".join(where_part)

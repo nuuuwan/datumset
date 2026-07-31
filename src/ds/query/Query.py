@@ -67,6 +67,19 @@ class Query:
         return dim_values_idx
 
     @cached_property
+    def child_region_parent_values_idx(self):
+        parent_values_idx = {}
+        for dim_spec in self.dim_specs:
+            if not self._is_child_region_spec(dim_spec):
+                continue
+            parent_spec = dim_spec.split(self.OPR_LT, 1)[1]
+            if self.OPR_EQ not in parent_spec:
+                continue
+            dim_label, dim_value = parent_spec.split(self.OPR_EQ, 1)
+            parent_values_idx[dim_label] = dim_value
+        return parent_values_idx
+
+    @cached_property
     def cell_labels(self):
         return self.cell_part.split(self.OPR_ADD)
 

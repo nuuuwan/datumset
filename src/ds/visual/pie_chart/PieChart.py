@@ -25,8 +25,18 @@ class PieChart(
         self.x_dim_key = self._get_varying_dim_keys()[-1]
         self.y_cell_key = self._get_y_cell_key()
         self.display_datumsets = self._get_display_datumsets({self.x_dim_key})
+        self.display_datumsets = self._get_sorted_display_datumsets()
         self.x_values, self.x_color_idx = self._init_category_colors(
             self.x_dim_key
+        )
+
+    def _get_sorted_display_datumsets(self):
+        if len(self.display_datumsets) <= 1:
+            return self.display_datumsets
+        return sorted(
+            self.display_datumsets,
+            key=self._get_sub_datumset_total,
+            reverse=True,
         )
 
     def _get_category_dim_key(self):
