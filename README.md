@@ -87,10 +87,10 @@ House/Time=2024+Province+WallType/Count/MekkoChart
 ### 11
 
 ```text
-Person/Sector+Time/Count/BarChart
+Person/Sector+Time/Count/MekkoChart
 ```
 
-![images/Person/Sector+Time/Count/BarChart.png](images/Person/Sector+Time/Count/BarChart.png)
+![images/Person/Sector+Time/Count/MekkoChart.png](images/Person/Sector+Time/Count/MekkoChart.png)
 
 ### 12
 
