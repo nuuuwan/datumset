@@ -44,7 +44,6 @@ class AgeGroup(Concept):
     # flake8: noqa: C901
     @classmethod
     def from_value(cls, value):
-        print(value)
         value = value.replace("-", "_")
         value = value.replace(" ", "_")
         value = value.replace("To", "_")
