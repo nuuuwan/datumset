@@ -1,18 +1,14 @@
 from functools import cache
 
 from ds.datumset.Datumset import Datumset
-from ds.lanka_data.derived_query.DerivedQueryChangeMixin import (
-    DerivedQueryChangeMixin,
-)
-from ds.lanka_data.derived_query.DerivedQueryCommonMixin import (
-    DerivedQueryCommonMixin,
-)
-from ds.lanka_data.derived_query.DerivedQueryRankShareMixin import (
-    DerivedQueryRankShareMixin,
-)
-from ds.lanka_data.derived_query.DerivedQueryTopBottomMixin import (
-    DerivedQueryTopBottomMixin,
-)
+from ds.lanka_data.derived_query.DerivedQueryChangeMixin import \
+    DerivedQueryChangeMixin
+from ds.lanka_data.derived_query.DerivedQueryCommonMixin import \
+    DerivedQueryCommonMixin
+from ds.lanka_data.derived_query.DerivedQueryRankShareMixin import \
+    DerivedQueryRankShareMixin
+from ds.lanka_data.derived_query.DerivedQueryTopBottomMixin import \
+    DerivedQueryTopBottomMixin
 from ds.query.Query import Query
 
 
