@@ -10,7 +10,7 @@
 - House/Time=2024+DSD<District=matara+FloorType/2nd/Map
 - House/Time=2024+DSD<District=matara+FloorType/Top/Map
 - House/Time=2024+District+HouseholdStructure/Count/MekkoChart
-- House/Time=2024+District+Lighting/Count/TreeMap
+- Person/Time=2024+Country+Ethnicity/Count/TreeMap
 - House/Time=2024+District+SourceOfDrinkingWater/2nd/UnitHexMap
 - House/Time=2024+District+SourceOfDrinkingWater/Top/UnitHexMap
 - House/Time=2024+District+ToiletFacilities/3rd/Map
