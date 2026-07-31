@@ -79,5 +79,9 @@ class MapGeoMixin:
     def _get_sorted_values(self):
         values = set()
         for sub_datumset in self.display_datumsets:
-            values.update(self._get_region_percentages(sub_datumset).values())
+            if self.y_cell_key == "Count":
+                vals = self._get_region_percentages(sub_datumset)
+            else:
+                vals = self._get_region_values_for(sub_datumset)
+            values.update(vals.values())
         return sorted(values)
