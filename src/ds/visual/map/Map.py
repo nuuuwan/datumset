@@ -20,7 +20,7 @@ class Map(
 
     REGION_EDGE_COLOR = "#888888"
     REGION_EDGE_LINEWIDTH = 0.1
-    CELL_TOP = "Top"
+    CATEGORY_CELLS = {"Top", "2nd", "3rd"}
 
     def __init__(self, datumset):
         super().__init__(datumset)
@@ -31,14 +31,14 @@ class Map(
             self._excluded_split_dim_keys()
         )
 
-    def _is_top(self):
+    def _is_category_cell(self):
         query_str = getattr(self.datumset, "_query_str", None)
         if query_str is None:
             return False
-        return Query(query_str).cell_part == self.CELL_TOP
+        return Query(query_str).cell_part in self.CATEGORY_CELLS
 
     def _get_region_color_dim_key(self):
-        if not self._is_top():
+        if not self._is_category_cell():
             return None
         return self._get_dim_labels()[-1]
 
