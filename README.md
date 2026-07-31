@@ -271,23 +271,23 @@ Vote/ElectionType=presidential+Time+District+Party/Top/UnitHexMap
 ### 34
 
 ```text
-Vote/ElectionType=presidential+Time=2024+Province+Party/Count/MekkoChart
+Vote/ElectionType=presidential+Time=1999+Province+Party/Top/HexMap
 ```
 
-![images/Vote/ElectionType=presidential+Time=2024+Province+Party/Count/MekkoChart.png](images/Vote/ElectionType=presidential+Time=2024+Province+Party/Count/MekkoChart.png)
+![images/Vote/ElectionType=presidential+Time=1999+Province+Party/Top/HexMap.png](images/Vote/ElectionType=presidential+Time=1999+Province+Party/Top/HexMap.png)
 
 ### 35
 
 ```text
-Vote/ElectionType=presidential+Time=2024+Province+Party/Count/StackedBarChart
+Vote/ElectionType=presidential+Time=2005+Province+Party/Count/StackedBarChart
 ```
 
-![images/Vote/ElectionType=presidential+Time=2024+Province+Party/Count/StackedBarChart.png](images/Vote/ElectionType=presidential+Time=2024+Province+Party/Count/StackedBarChart.png)
+![images/Vote/ElectionType=presidential+Time=2005+Province+Party/Count/StackedBarChart.png](images/Vote/ElectionType=presidential+Time=2005+Province+Party/Count/StackedBarChart.png)
 
 ### 36
 
 ```text
-Vote/ElectionType=presidential+Time=2024+Province+Party/Top/HexMap
+Vote/ElectionType=presidential+Time=2015+Province+Party/Count/MekkoChart
 ```
 
-![images/Vote/ElectionType=presidential+Time=2024+Province+Party/Top/HexMap.png](images/Vote/ElectionType=presidential+Time=2024+Province+Party/Top/HexMap.png)
+![images/Vote/ElectionType=presidential+Time=2015+Province+Party/Count/MekkoChart.png](images/Vote/ElectionType=presidential+Time=2015+Province+Party/Count/MekkoChart.png)
