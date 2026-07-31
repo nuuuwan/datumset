@@ -55,11 +55,19 @@ class MapPercentMixin:
             if totals.get(region)
         }
 
+    def _use_count_weights(self):
+        return False
+
     def _get_region_id_to_weight(self, gdf, sub_datumset=None):
-        totals = self._get_region_totals(sub_datumset)
+        if self._use_count_weights():
+            region_values = self._get_region_values_for(
+                sub_datumset or self.datumset
+            )
+        else:
+            region_values = self._get_region_totals(sub_datumset)
         weights = {}
         for _, row in gdf.iterrows():
-            weight = self._lookup_region_value(row, totals)
+            weight = self._lookup_region_value(row, region_values)
             if weight is not None:
                 weights[row["region_id"]] = weight
         return weights
