@@ -15,21 +15,13 @@ class VisualPathMixin:
 
     def _get_query_str_for_path(self):
         source_query_str = getattr(self.datumset, "_query_str", None)
-        if source_query_str and Query.OPR_LT in source_query_str:
+        if source_query_str:
             return source_query_str
         query = self.datumset[0].query
-        dim_specs = []
-        for dim_label in query.dim_labels:
-            dim_values = self._get_unique_dim_values(dim_label)
-            if len(dim_values) == 1:
-                dim_specs.append(f"{dim_label}={dim_values[0]}")
-                continue
-            dim_specs.append(dim_label)
-        dim_part = Query.OPR_ADD.join(dim_specs)
         return Query.DELIM_PART.join(
             [
                 query.entity_part,
-                dim_part,
+                query.dim_part,
                 self._get_path_cell_part(),
             ]
         )
