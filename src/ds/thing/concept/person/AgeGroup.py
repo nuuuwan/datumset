@@ -52,7 +52,8 @@ class AgeGroup(Concept):
         if cls._has_total_terms(value):
             return cls(cls.MIN_TIME, cls.MAX_TIME)
 
-        # num_value should value with the num chars and the other chars set of space
+        # num_value should value with the num chars and the other chars set of
+        # space
         num_value = "".join([c if c.isnumeric() else " " for c in value])
         num_value = re.sub(r"\s+", " ", num_value).strip()
         num_tokens = num_value.split(" ")
