@@ -91,6 +91,10 @@ class Query:
             tuple(self.cell_labels),
         ).query_str
 
+    @cached_property
+    def dim_labels_set(self):
+        return frozenset(self.dim_labels)
+
     # ---
     @classmethod
     @cache
