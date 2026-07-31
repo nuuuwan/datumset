@@ -30,6 +30,9 @@ class TestCase(unittest.TestCase):
         def test(self):
             image_file = VisualLankaData[visual_query_str]
             self.assertTrue(image_file.exists())
+            query_str = visual_query_str.rsplit("/", 1)[0]
+            expected_path = os.path.join("images", query_str + ".png")
+            self.assertEqual(image_file.path, expected_path)
 
         return test
 
