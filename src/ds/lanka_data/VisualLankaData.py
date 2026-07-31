@@ -14,6 +14,8 @@ class VisualLankaData:
     def __class_getitem__(cls, visual_query_str):
         query_str, visual_class_name = visual_query_str.rsplit("/", 1)
         datumset = LankaData[query_str]
+        if len(datumset) == 0:
+            raise ValueError(f"No data found for query: {query_str}")
         visual_class = VisualFactory[visual_class_name]
         visual = visual_class(datumset)
         visual.draw()
