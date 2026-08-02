@@ -28,27 +28,24 @@ class TSVAdapterBuildMixin:
         except ValueError:
             return None
         r_name = region_cls.__name__
-        return [
-            Datum(
-                entity_cls,
-                {
-                    **(extra_dims or {}),
-                    "Time": time_concept,
-                    r_name: region_instance,
-                    m_name: concept,
-                },
-                {
-                    "Count": Int(
-                        int(
-                            float(
-                                d.get(k, "0").strip().replace(",", "") or "0"
-                            )
-                        )
-                    )
-                },
+
+        datum_list = []
+        for k, (m_name, concept) in col_map.items():
+            count_value = int(
+                float(d.get(k, "0").strip().replace(",", "") or "0")
             )
-            for k, (m_name, concept) in col_map.items()
-        ]
+            if count_value > 0:
+                datum = Datum(
+                    entity_cls,
+                    {
+                        **(extra_dims or {}),
+                        "Time": time_concept,
+                        r_name: region_instance,
+                        m_name: concept,
+                    },
+                    {"Count": Int(count_value)},
+                )
+                datum_list.append(datum)
 
     @classmethod
     def build_datumset(
