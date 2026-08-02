@@ -2,6 +2,7 @@ from utils_future import WWW, Directory, TSVFile
 
 from ds.adapters.tsv_adapter.TSVAdapterBuildMixin import TSVAdapterBuildMixin
 from ds.datumset.Datumset import Datumset
+from ds.thing.Thing import Thing
 
 
 class TSVAdapter(TSVAdapterBuildMixin):
@@ -41,9 +42,16 @@ class TSVAdapter(TSVAdapterBuildMixin):
         compress_d_list2 = []
         for d in col_compressed_d_list:
             new_d = {}
+            excluded_value_sum = 0.0
             for k, v in d.items():
                 if k in valid_keys or k == "entity_id":
                     new_d[k] = v
+                else:
+                    excluded_value_sum += float(v)
+            if excluded_value_sum > 0:
+                new_d[Thing.SPECIAL_VALUE_EXCLUDED_SMALL] = str(
+                    excluded_value_sum
+                )
             compress_d_list2.append(new_d)
 
         return compress_d_list2

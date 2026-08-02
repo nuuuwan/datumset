@@ -5,6 +5,7 @@ from functools import cache
 from utils_future import String
 
 from ds.thing.concept.Concept import Concept
+from ds.thing.Thing import Thing
 
 
 @dataclass(frozen=True)
@@ -26,7 +27,9 @@ class CategoryConcept(Concept):
 
     @classmethod
     def list(cls):
-        return [cls(value) for value in cls.valid_values()]
+        valid_values = [cls(value) for value in cls.valid_values()]
+        valid_values.append(cls(Thing.SPECIAL_VALUE_EXCLUDED_SMALL))
+        return valid_values
 
     @classmethod
     @cache

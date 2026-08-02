@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 from ds.thing.concept.Concept import Concept
 from ds.thing.concept.TimeDurationGroup import TimeDurationGroup
+from ds.thing.Thing import Thing
 
 
 @dataclass(frozen=True)
@@ -44,6 +45,11 @@ class AgeGroup(Concept):
     # flake8: noqa: C901
     @classmethod
     def from_value(cls, value):
+        if value == Thing.SPECIAL_VALUE_EXCLUDED_SMALL:
+            return cls(
+                Thing.SPECIAL_VALUE_EXCLUDED_SMALL,
+                Thing.SPECIAL_VALUE_EXCLUDED_SMALL,
+            )
         value = value.replace("-", "_")
         value = value.replace(" ", "_")
         value = value.replace("To", "_")

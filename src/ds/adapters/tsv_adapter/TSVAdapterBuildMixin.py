@@ -39,7 +39,11 @@ class TSVAdapterBuildMixin:
                 },
                 {
                     "Count": Int(
-                        int(float(d[k].strip().replace(",", "") or "0"))
+                        int(
+                            float(
+                                d.get(k, "0").strip().replace(",", "") or "0"
+                            )
+                        )
                     )
                 },
             )

@@ -5,6 +5,7 @@ from dataclasses import dataclass
 @dataclass(frozen=True)
 class Thing(ABC):
     _value: str
+    SPECIAL_VALUE_EXCLUDED_SMALL = "excluded_small"
 
     def __init__(self, _value):
         object.__setattr__(self, "_value", str(_value))
