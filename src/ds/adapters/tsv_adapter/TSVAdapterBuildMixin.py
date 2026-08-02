@@ -46,6 +46,7 @@ class TSVAdapterBuildMixin:
                     {"Count": Int(count_value)},
                 )
                 datum_list.append(datum)
+        return datum_list
 
     @classmethod
     def build_datumset(
