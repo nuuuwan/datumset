@@ -23,7 +23,9 @@ class Census2024(AbstractDB):
     @classmethod
     @cache
     def metadata_idx(cls):
-        WWW(cls.URL_LANKA_DATA_METADATA).download(cls.LANKA_DATA_METADATA_FILE)
+        WWW(cls.URL_LANKA_DATA_METADATA).download(
+            cls.LANKA_DATA_METADATA_FILE
+        )
         return cls.LANKA_DATA_METADATA_FILE.read()
 
     @classmethod

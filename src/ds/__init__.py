@@ -1,5 +1,6 @@
 from ds.adapters.standard_table_adapter.StandardTableAdapter import \
     StandardTableAdapter
+from ds.adapters.tsv_adapter.TSVAdapter import TSVAdapter
 from ds.datumset.Datumset import Datumset
 from ds.lanka_data.LankaData import LankaData
 from ds.lanka_data.VisualLankaData import VisualLankaData
