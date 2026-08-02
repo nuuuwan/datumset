@@ -7,7 +7,7 @@ from ds.thing.Thing import Thing
 
 class TSVAdapter(TSVAdapterBuildMixin):
     TEMP_DIR = "gig2"
-    MIN_P = 0.005  # 0.5%
+    MIN_P = 0.05  # 5%
 
     @classmethod
     def compress(cls, d_list, skip_keys):
@@ -28,16 +28,20 @@ class TSVAdapter(TSVAdapterBuildMixin):
                 new_d[k] = v
             col_compressed_d_list.append(new_d)
 
-        d_lk = [d for d in col_compressed_d_list if d["entity_id"] == "LK"][0]
-        values = {}
-        for k, v in d_lk.items():
-            if k == "entity_id":
-                continue
-            values[k] = float(v)
+        valid_keys = set()
+        for d in col_compressed_d_list:
+            values = {}
+            for k, v in d.items():
+                if k == "entity_id":
+                    continue
+                values[k] = float(v)
 
-        total = sum(values.values())
-        p_values = {k: v / total for k, v in values.items()}
-        valid_keys = [k for k, v in p_values.items() if v >= cls.MIN_P]
+            total = sum(values.values())
+            if total > 0:
+                p_values = {k: v / total for k, v in values.items()}
+                valid_keys.update(
+                    k for k, v in p_values.items() if v >= cls.MIN_P
+                )
 
         compress_d_list2 = []
         for d in col_compressed_d_list:
