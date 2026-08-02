@@ -7,7 +7,7 @@ from ds.thing.Thing import Thing
 
 class TSVAdapter(TSVAdapterBuildMixin):
     TEMP_DIR = "gig2"
-    MIN_P = 0.001  # 0.1%
+    MIN_P = 0.005  # 0.5%
 
     @classmethod
     def compress(cls, d_list, skip_keys):
